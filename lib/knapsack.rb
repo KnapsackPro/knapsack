@@ -1,5 +1,6 @@
 require 'knapsack/version'
 require 'singleton'
+require 'yaml'
 
 module Knapsack
   class << self
@@ -33,13 +34,12 @@ module Knapsack
         end
 
         config.after(:each) do
-          puts "Stop time: " + Knapsack.tracker.stop_timer.to_s
-          puts "Global time: " + Knapsack.tracker.global_time.to_s
+          Knapsack.tracker.stop_timer.to_s
         end
 
         config.after(:suite) do
-          puts "Files:"
-          puts Knapsack.tracker.files
+          puts "Global time execution: #{Knapsack.tracker.global_time}"
+          puts Knapsack.tracker.files.to_yaml
         end
       end
     end
@@ -59,6 +59,10 @@ module Knapsack
       file_path = RSpec.current_example.metadata[:example_group][:file_path]
       @files[file_path] ||= 0
       @files[file_path] += @execution_time
+    end
+
+    def save_report
+      # TODO
     end
   end
 end
