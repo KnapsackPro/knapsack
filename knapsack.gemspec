@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "knapsack"
   spec.version       = Knapsack::VERSION
   spec.authors       = ["ArturT"]
-  spec.email         = ["artur.trzop@lunarlogic.io"]
+  spec.email         = ["arturtrzop@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
