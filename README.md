@@ -18,7 +18,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add to your `spec_helper.rb`:
+
+    require 'knapsack'
+    Knapsack.tracker
+
+Run your specs with enabled tracker:
+
+    $ KNAPSACK_TRACKER_ENABLED=true rspec spec
 
 ## Contributing
 
