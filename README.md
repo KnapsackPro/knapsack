@@ -21,7 +21,7 @@ Or install it yourself as:
 Add to your `spec_helper.rb`:
 
     require 'knapsack'
-    Knapsack.tracker
+    Knapsack::RSpec::Adapter.bind
 
 Run your specs with enabled tracker:
 
