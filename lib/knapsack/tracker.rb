@@ -8,9 +8,7 @@ module Knapsack
     attr_writer :spec_path
 
     def initialize
-      return unless enabled?
       set_defaults
-      start
     end
 
     def enabled?
@@ -37,10 +35,6 @@ module Knapsack
     def set_defaults
       @global_time = 0
       @files = {}
-    end
-
-    def start
-      puts 'Knapsack started!'
     end
 
     def update_global_time
