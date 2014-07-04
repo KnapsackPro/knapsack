@@ -1,10 +1,10 @@
-require 'knapsack'
 require 'timecop'
-require 'codeclimate-test-reporter'
-
 Timecop.safe_mode = true
 
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
+
+require 'knapsack'
 
 RSpec.configure do |config|
   config.order = :random
