@@ -1,7 +1,9 @@
 # Knapsack
 
-[![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)](https://travis-ci.org/ArturT/knapsack)
-[![Code Climate](https://codeclimate.com/github/ArturT/knapsack.png)](https://codeclimate.com/github/ArturT/knapsack)
+[![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)](travis)
+[![Code Climate](https://codeclimate.com/github/ArturT/knapsack.png)](codeclimate)
+[travis]: http://travis-ci.org/ArturT/knapsack
+[codeclimate]: https://codeclimate.com/github/ArturT/knapsack
 
 Parallel specs across CI server nodes based on each spec file's time execution.
 
