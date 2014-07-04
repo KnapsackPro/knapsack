@@ -26,7 +26,7 @@ module Knapsack
     def stop_timer
       @execution_time = Time.now.to_f - @start_time
       update_global_time
-      update_time_for_spec_file
+      update_spec_file_time
       @execution_time
     end
 
@@ -41,7 +41,7 @@ module Knapsack
       @global_time += @execution_time
     end
 
-    def update_time_for_spec_file
+    def update_spec_file_time
       @files[spec_path] ||= 0
       @files[spec_path] += @execution_time
     end
