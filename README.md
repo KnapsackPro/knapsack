@@ -12,6 +12,8 @@
 
 Parallel specs across CI server nodes based on each spec file's time execution.
 
+*Work in progress, not ready yet!*
+
 ## Installation
 
 Add this line to your application's Gemfile:
