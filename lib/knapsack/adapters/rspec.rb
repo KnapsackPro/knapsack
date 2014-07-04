@@ -15,6 +15,7 @@ module Knapsack
           end
 
           config.after(:suite) do
+            puts
             puts Presenter.global_time
           end
         end
