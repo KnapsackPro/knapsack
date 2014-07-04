@@ -1,5 +1,7 @@
 # Knapsack
 
+[![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)](https://travis-ci.org/ArturT/knapsack)
+
 Parallel specs across CI server nodes based on each spec file's time execution.
 
 ## Installation
