@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 gem 'rspec', '~> 3.0.0'
 gem 'timecop', require: false
+gem 'codeclimate-test-reporter', require: false

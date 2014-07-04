@@ -6,6 +6,9 @@ rvm:
   - 2.1.0
   - 2.1.1
   - 2.1.2
+addons:
+  code_climate:
+    repo_token: 38686058eed480dd0fcf8bce9015733e0bae88e44e30f4a1ac63df8aec2f86d8
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 script:

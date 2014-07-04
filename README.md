@@ -2,8 +2,11 @@
 
 [![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)](travis)
 [![Code Climate](https://codeclimate.com/github/ArturT/knapsack.png)](codeclimate)
+[![Coverage Status](https://codeclimate.com/github/ArturT/knapsack/coverage.png)][coverage]
+
 [travis]: http://travis-ci.org/ArturT/knapsack
 [codeclimate]: https://codeclimate.com/github/ArturT/knapsack
+[coverage]: https://codeclimate.com/github/ArturT/knapsack
 
 Parallel specs across CI server nodes based on each spec file's time execution.
 
