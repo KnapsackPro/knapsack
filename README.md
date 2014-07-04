@@ -1,6 +1,6 @@
 # Knapsack
 
-TODO: Write a gem description
+Parallel specs across CI server nodes based on each spec file's time execution.
 
 ## Installation
 
@@ -18,14 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-Add to your `spec_helper.rb`:
+Add at the beginning of your `spec_helper.rb`:
 
     require 'knapsack'
+    # default configuration, you can change it or omit
+    Knapsack.tracker.config({
+        enable_time_offset_warning: true,
+        time_offset_warning: 30,
+    })
     Knapsack::Adapters::Rspec.bind
 
-Run your specs with enabled tracker:
+Generate time execution report for your spec files.
 
-    $ KNAPSACK_TRACKER_ENABLED=true rspec spec
+    $ KNAPSACK_GENERATE_REPORT=true rspec spec
+
+Commit generated report `knapsack_report.json` into your repository.
 
 ## Contributing
 

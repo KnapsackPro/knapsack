@@ -11,8 +11,13 @@ module Knapsack
       set_defaults
     end
 
-    def enabled?
-      ENV['KNAPSACK_TRACKER_ENABLED'] || false
+    def generate_report?
+      ENV['KNAPSACK_GENERATE_REPORT'] || false
+    end
+
+    def config(opts={})
+      @config ||= default_config
+      @config.merge!(opts)
     end
 
     def reset!
@@ -31,6 +36,13 @@ module Knapsack
     end
 
     private
+
+    def default_config
+      {
+        enable_time_offset_warning: true,
+        time_offset_warning: 30,
+      }
+    end
 
     def set_defaults
       @global_time = 0

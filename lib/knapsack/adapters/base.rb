@@ -5,13 +5,24 @@ module Knapsack
         new
       end
 
+      protected
+
       def initialize
-        return unless Knapsack.tracker.enabled?
-        puts 'Knapsack started!'
-        default_bind
+        if Knapsack.tracker.generate_report?
+          puts 'Knapsack report generator started!'
+          bind_time_tracker
+          bind_report_generator
+        elsif Knapsack.tracker.config[:enable_time_offset_warning]
+          bind_time_tracker
+          # TODO
+        end
       end
 
-      def default_bind
+      def bind_time_tracker
+        raise NotImplementedError
+      end
+
+      def bind_report_generator
         raise NotImplementedError
       end
     end

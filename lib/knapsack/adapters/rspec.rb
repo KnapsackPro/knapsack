@@ -1,7 +1,9 @@
 module Knapsack
   module Adapters
     class Rspec < Base
-      def default_bind
+      protected
+
+      def bind_time_tracker
         ::RSpec.configure do |config|
           config.before(:each) do
             Knapsack.tracker.spec_path = Rspec.spec_path
@@ -14,6 +16,13 @@ module Knapsack
 
           config.after(:suite) do
             puts Presenter.global_time
+          end
+        end
+      end
+
+      def bind_report_generator
+        ::RSpec.configure do |config|
+          config.after(:suite) do
             puts Presenter.report_yml
             puts Presenter.report_json
           end

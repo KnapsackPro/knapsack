@@ -13,7 +13,7 @@ module Knapsack
       end
 
       def global_time
-        "Global time execution: #{Knapsack.tracker.global_time}"
+        "Knapsack global time execution for specs: #{Knapsack.tracker.global_time}s"
       end
     end
   end
