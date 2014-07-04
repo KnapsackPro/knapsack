@@ -12,7 +12,7 @@
 
 Parallel specs across CI server nodes based on each spec file's time execution.
 
-*Work in progress, not ready yet!*
+**Work in progress, gem is not ready yet!**
 
 ## Installation
 
