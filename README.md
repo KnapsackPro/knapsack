@@ -41,3 +41,23 @@ Commit generated report `knapsack_report.json` into your repository.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Tests
+
+### Spec
+
+To run specs for Knapsack gem type:
+
+    $ rspec spec
+
+### Spec examples
+
+Directory `spec_examples` contains examples of fast and slow specs. There is a `spec_helper.rb` with binded Knapsack.
+
+Change one spec to make it sure it will take more than 5 seconds then run below to see Knapsack time offset warning.
+
+    $ rspec --default-path spec_examples
+
+To generate a new knapsack report file please type:
+
+    $ KNAPSACK_GENERATE_REPORT=true rspec --default-path spec_examples
