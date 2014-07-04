@@ -15,6 +15,10 @@ module Knapsack
       def global_time
         "Knapsack global time execution for specs: #{Knapsack.tracker.global_time}s"
       end
+
+      def report_details
+        "Knapsack report was generated. Preview:\n" + Presenter.report_json
+      end
     end
   end
 end

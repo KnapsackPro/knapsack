@@ -24,8 +24,8 @@ module Knapsack
       def bind_report_generator
         ::RSpec.configure do |config|
           config.after(:suite) do
-            puts Presenter.report_yml
-            puts Presenter.report_json
+            Report.save
+            puts Presenter.report_details
           end
         end
       end
