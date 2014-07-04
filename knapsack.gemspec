@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["ArturT"]
   spec.email         = ["arturtrzop@gmail.com"]
   spec.summary       = %q{Parallel specs across CI server nodes based on each spec file's time execution.}
-  spec.description   = %q{}
-  spec.homepage      = ""
+  spec.description   = %q{Parallel specs across CI server nodes based on each spec file's time execution. It generates spec time execution report and uses it for further test runs.}
+  spec.homepage      = "https://github.com/ArturT/knapsack"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
