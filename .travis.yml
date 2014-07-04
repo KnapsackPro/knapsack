@@ -1,0 +1,18 @@
+---
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0
+  - 2.1.1
+  - 2.1.2
+before_install:
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+script:
+  - bundle exec rspec spec
+  # generate knapsack report
+  - KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples
+  # run specs with enabled time offset warning
+  - bundle exec rspec --default-path spec_examples
+notifications:
+  email: false
