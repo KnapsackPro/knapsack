@@ -1,8 +1,6 @@
 module Knapsack
   module Adapters
     class Rspec < Base
-      protected
-
       def bind_time_tracker
         ::RSpec.configure do |config|
           config.before(:each) do
@@ -29,6 +27,8 @@ module Knapsack
           end
         end
       end
+
+      protected
 
       def self.spec_path
         ::RSpec.current_example.metadata[:example_group][:file_path]
