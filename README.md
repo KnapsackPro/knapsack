@@ -37,7 +37,7 @@ Add at the beginning of your `spec_helper.rb`:
     # default configuration, you can change it or omit
     Knapsack.tracker.config({
         enable_time_offset_warning: true,
-        time_offset_warning: 30, # in seconds
+        time_offset_in_seconds: 30
     })
 
     # default configuration for report

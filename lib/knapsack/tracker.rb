@@ -38,7 +38,7 @@ module Knapsack
     def default_config
       {
         enable_time_offset_warning: true,
-        time_offset_warning: 30,
+        time_offset_in_seconds: 30,
       }
     end
 
