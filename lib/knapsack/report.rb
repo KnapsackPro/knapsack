@@ -9,7 +9,7 @@ module Knapsack
 
     def save
       File.open(config[:report_path], 'w+') do |f|
-        f.write(Presenter.report_json)
+        f.write(report_json)
       end
     end
 
@@ -26,6 +26,10 @@ module Knapsack
       {
         report_path: 'knapsack_report.json'
       }
+    end
+
+    def report_json
+      Presenter.report_json
     end
   end
 end
