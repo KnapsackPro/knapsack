@@ -12,12 +12,12 @@ module Knapsack
         JSON.pretty_generate(Knapsack.tracker.spec_files_with_time)
       end
 
-      def global_time
-        "Knapsack global time execution for specs: #{Knapsack.tracker.global_time}s"
-      end
-
       def report_details
         "Knapsack report was generated. Preview:\n" + Presenter.report_json
+      end
+
+      def global_time
+        "Knapsack global time execution for specs: #{Knapsack.tracker.global_time}s"
       end
     end
   end
