@@ -21,18 +21,18 @@ module Knapsack
         end
       end
 
-      protected
-
-      def tracker
-        Knapsack.tracker
-      end
-
       def bind_time_tracker
         raise NotImplementedError
       end
 
       def bind_report_generator
         raise NotImplementedError
+      end
+
+      protected
+
+      def tracker
+        Knapsack.tracker
       end
     end
   end

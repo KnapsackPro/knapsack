@@ -1,7 +1,7 @@
 describe Knapsack::Adapters::Base do
-  let(:adapter) { instance_double(described_class) }
-
   describe '.bind' do
+    let(:adapter) { instance_double(described_class) }
+
     subject { described_class.bind }
 
     before do
@@ -14,8 +14,6 @@ describe Knapsack::Adapters::Base do
 
   describe '#bind' do
     let(:tracker) { instance_double(Knapsack::Tracker) }
-
-    subject { described_class.new }
 
     before do
       allow(subject).to receive(:tracker).and_return(tracker)
@@ -57,6 +55,22 @@ describe Knapsack::Adapters::Base do
         expect(subject).not_to receive(:bind_report_generator)
         subject.bind
       end
+    end
+  end
+
+  describe '#bind_time_tracker' do
+    it do
+      expect {
+        subject.bind_time_tracker
+      }.to raise_error(NotImplementedError)
+    end
+  end
+
+  describe '#bind_report_generator' do
+    it do
+      expect {
+        subject.bind_report_generator
+      }.to raise_error(NotImplementedError)
     end
   end
 end
