@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Knapsack do
   describe '.tracker' do
     subject { described_class.tracker }

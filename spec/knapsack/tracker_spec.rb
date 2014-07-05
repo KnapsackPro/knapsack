@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 shared_examples 'default trakcer attributes' do
   it { expect(tracker.global_time).to eql 0 }
   it { expect(tracker.spec_files_with_time).to eql({}) }
