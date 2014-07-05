@@ -1,5 +1,9 @@
 describe Knapsack::Report do
   let(:report) { described_class.send(:new) }
+  let(:report_path) { 'tmp/fake_report.json' }
+  let(:report_json) do
+    %Q[{"a_spec.rb": #{rand(Math::E..Math::PI)}}]
+  end
 
   describe '#config' do
     context 'when passed options' do
@@ -27,23 +31,43 @@ describe Knapsack::Report do
     end
   end
 
-  # TODO improve it
-  describe '#save' do
-    let(:report_path) { 'tmp/fake_report.json' }
-
+  describe '#save', :clear_tmp do
     before do
-      expect(File.exist?(report_path)).to be false
-      expect(report).to receive(:report_json).and_return('{}')
+      expect(report).to receive(:report_json).and_return(report_json)
       report.config({
         report_path: report_path
       })
       report.save
     end
 
-    it { expect(File.exist?(report_path)).to be true }
+    it { expect(File.read(report_path)).to eql report_json }
   end
 
   describe '.open' do
-    # TODO
+    let(:subject) { report.open }
+
+    before do
+      report.config({
+        report_path: report_path
+      })
+    end
+
+    context 'when report file exists' do
+      before do
+        expect(File).to receive(:read).with(report_path).and_return(report_json)
+      end
+
+      it { should eql(JSON.parse(report_json)) }
+    end
+
+    context "when report file doesn't exist" do
+      let(:report_path) { 'tmp/non_existing_report.json' }
+
+      it do
+        expect {
+          subject
+        }.to raise_error("Knapsack report file doesn't exist. Please generate report first!")
+      end
+    end
   end
 end
