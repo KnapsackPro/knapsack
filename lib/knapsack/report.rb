@@ -2,8 +2,6 @@ module Knapsack
   class Report
     include Singleton
 
-    REPORT_PATH = 'knapsack_report.json'
-
     def config(opts={})
       @config ||= default_config
       @config.merge!(opts)
