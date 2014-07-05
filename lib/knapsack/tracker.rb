@@ -2,7 +2,7 @@ module Knapsack
   class Tracker
     include Singleton
 
-    attr_reader :global_time, :files
+    attr_reader :global_time, :spec_files_with_time
     attr_writer :spec_path
 
     def initialize
@@ -44,7 +44,7 @@ module Knapsack
 
     def set_defaults
       @global_time = 0
-      @files = {}
+      @spec_files_with_time = {}
     end
 
     def update_global_time
@@ -52,8 +52,8 @@ module Knapsack
     end
 
     def update_spec_file_time
-      @files[spec_path] ||= 0
-      @files[spec_path] += @execution_time
+      @spec_files_with_time[spec_path] ||= 0
+      @spec_files_with_time[spec_path] += @execution_time
     end
 
     def spec_path

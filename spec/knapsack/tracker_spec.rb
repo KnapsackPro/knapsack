@@ -2,7 +2,7 @@ require 'spec_helper'
 
 shared_examples 'default trakcer attributes' do
   it { expect(tracker.global_time).to eql 0 }
-  it { expect(tracker.files).to eql({}) }
+  it { expect(tracker.spec_files_with_time).to eql({}) }
 end
 
 describe Knapsack::Tracker do
@@ -73,7 +73,7 @@ describe Knapsack::Tracker do
 
     it { expect(tracker.global_time).to eql 3.0 }
     it do
-      expect(tracker.files).to eql({
+      expect(tracker.spec_files_with_time).to eql({
         'a_spec.rb' => 1.0,
         'b_spec.rb' => 2.0,
       })
