@@ -1,5 +1,3 @@
-require 'singleton'
-
 module Knapsack
   class Tracker
     include Singleton

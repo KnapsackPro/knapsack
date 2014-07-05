@@ -3,6 +3,9 @@ Knapsack.tracker.config({
   enable_time_offset_warning: true,
   time_offset_warning: 5
 })
+Knapsack.report.config({
+  report_path: 'knapsack_report.json'
+})
 Knapsack::Adapters::Rspec.bind
 
 RSpec.configure do |config|

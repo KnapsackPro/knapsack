@@ -33,11 +33,18 @@ Or install it yourself as:
 Add at the beginning of your `spec_helper.rb`:
 
     require 'knapsack'
+
     # default configuration, you can change it or omit
     Knapsack.tracker.config({
         enable_time_offset_warning: true,
         time_offset_warning: 30,
     })
+
+    # default configuration for report
+    Knapsack.report.config({
+      report_path: 'knapsack_report.json'
+    })
+
     Knapsack::Adapters::Rspec.bind
 
 Generate time execution report for your spec files.

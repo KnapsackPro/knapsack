@@ -24,7 +24,7 @@ module Knapsack
       def bind_report_generator
         ::RSpec.configure do |config|
           config.after(:suite) do
-            Report.save
+            Knapsack.report.save
             puts Presenter.report_details
           end
         end
