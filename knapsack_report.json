@@ -1,14 +1,11 @@
 {
-  "./spec_examples/fast/1_spec.rb": 9.584426879882812e-05,
-  "./spec_examples/fast/2_spec.rb": 0.00014638900756835938,
-  "./spec_examples/fast/3_spec.rb": 0.0002243518829345703,
-  "./spec_examples/fast/4_spec.rb": 0.0002560615539550781,
-  "./spec_examples/fast/5_spec.rb": 0.00023126602172851562,
-  "./spec_examples/fast/6_spec.rb": 0.00020503997802734375,
-  "./spec_examples/slow/a_spec.rb": 1.6018133163452148,
-  "./spec_examples/slow/b_spec.rb": 3.202699661254883,
-  "./spec_examples/slow/c_spec.rb": 1.0021936893463135,
-  "./spec_examples/slow/d_spec.rb": 4.001989841461182,
-  "./spec_examples/slow/e_spec.rb": 2.4013099670410156,
-  "./spec_examples/slow/f_spec.rb": 0.60198974609375
+  "./spec_examples/fast/4_spec.rb": 0.000102996826171875,
+  "./spec_examples/fast/5_spec.rb": 0.00012373924255371094,
+  "./spec_examples/slow/b_spec.rb": 0.9029951095581055,
+  "./spec_examples/fast/3_spec.rb": 5.5789947509765625e-05,
+  "./spec_examples/fast/2_spec.rb": 6.389617919921875e-05,
+  "./spec_examples/fast/6_spec.rb": 9.608268737792969e-05,
+  "./spec_examples/slow/c_spec.rb": 1.0023877620697021,
+  "./spec_examples/fast/1_spec.rb": 3.3855438232421875e-05,
+  "./spec_examples/slow/a_spec.rb": 1.6020748615264893
 }
