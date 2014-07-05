@@ -1,8 +1,8 @@
 # Knapsack
 
 [![Gem Version](https://badge.fury.io/rb/knapsack.png)][gem_version]
-[![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)](travis)
-[![Code Climate](https://codeclimate.com/github/ArturT/knapsack.png)](codeclimate)
+[![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/ArturT/knapsack.png)][codeclimate]
 [![Coverage Status](https://codeclimate.com/github/ArturT/knapsack/coverage.png)][coverage]
 
 [gem_version]: https://rubygems.org/gems/knapsack
