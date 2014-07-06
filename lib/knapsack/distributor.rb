@@ -20,7 +20,12 @@ module Knapsack
     end
 
     def total_time_execution
-      report.values.reduce(0, :+)
+      @total_time_execution ||= report.values.reduce(0, :+).to_f
+    end
+
+    def node_time_execution
+      @node_time_execution ||= total_time_execution / ci_node_total
+    end
     end
   end
 end

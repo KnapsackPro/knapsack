@@ -72,7 +72,7 @@ describe Knapsack::Distributor do
     end
   end
 
-  describe '#total_time_execution' do
+  context do
     let(:report) do
       {
         'a_spec.rb' => 3.0,
@@ -82,6 +82,26 @@ describe Knapsack::Distributor do
     end
     let(:args) { { report: report } }
 
-    it { expect(subject.total_time_execution).to eql 5.5 }
+    describe '#total_time_execution' do
+      context 'when time is float' do
+        it { expect(subject.total_time_execution).to eql 5.5 }
+      end
+
+      context 'when time is not float' do
+        let(:report) do
+          {
+            'a_spec.rb' => 3,
+            'b_spec.rb' => 1,
+          }
+        end
+
+        it { expect(subject.total_time_execution).to eql 4.0 }
+      end
+    end
+
+    describe '#node_time_execution' do
+      let(:args) { { report: report, ci_node_total: 4 } }
+      it { expect(subject.node_time_execution).to eql 1.375 }
+    end
   end
 end
