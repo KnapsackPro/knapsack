@@ -24,25 +24,25 @@ describe Knapsack::Distributor do
   end
 
   describe '#ci_node_total' do
-    context 'when env is given' do
-      before { stub_const('ENV', {'CI_NODE_TOTAL' => 4}) }
+    context 'when ci_node_total is given' do
+      let(:args) { { ci_node_total: 4 } }
 
       it { expect(subject.ci_node_total).to eql 4 }
     end
 
-    context 'when env is not given' do
+    context 'when ci_node_total is not given' do
       it { expect(subject.ci_node_total).to eql 1 }
     end
   end
 
   describe '#ci_node_index' do
-    context 'when env is given' do
-      before { stub_const('ENV', {'CI_NODE_INDEX' => 3}) }
+    context 'when ci_node_index is given' do
+      let(:args) { { ci_node_index: 3 } }
 
       it { expect(subject.ci_node_index).to eql 3 }
     end
 
-    context 'when env is not given' do
+    context 'when ci_node_index is not given' do
       it { expect(subject.ci_node_index).to eql 0 }
     end
   end
