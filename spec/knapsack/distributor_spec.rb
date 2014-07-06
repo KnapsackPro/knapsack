@@ -46,4 +46,42 @@ describe Knapsack::Distributor do
       it { expect(subject.ci_node_index).to eql 0 }
     end
   end
+
+  describe '#sorted_report' do
+    let(:report) do
+      {
+        'e_spec.rb' => 3.0,
+        'f_spec.rb' => 3.5,
+        'c_spec.rb' => 2.0,
+        'd_spec.rb' => 2.5,
+        'a_spec.rb' => 1.0,
+        'b_spec.rb' => 1.5,
+      }
+    end
+    let(:args) { { report: report } }
+
+    it do
+      expect(subject.sorted_report).to eql([
+        ["f_spec.rb", 3.5],
+        ["e_spec.rb", 3.0],
+        ["d_spec.rb", 2.5],
+        ["c_spec.rb", 2.0],
+        ["b_spec.rb", 1.5],
+        ["a_spec.rb", 1.0],
+      ])
+    end
+  end
+
+  describe '#total_time_execution' do
+    let(:report) do
+      {
+        'a_spec.rb' => 3.0,
+        'b_spec.rb' => 1.0,
+        'c_spec.rb' => 1.5,
+      }
+    end
+    let(:args) { { report: report } }
+
+    it { expect(subject.total_time_execution).to eql 5.5 }
+  end
 end

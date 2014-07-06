@@ -19,5 +19,13 @@ module Knapsack
     def default_ci_node_index
       ENV['CI_NODE_INDEX'] || 0
     end
+
+    def sorted_report
+      @sorted_report ||= report.sort_by{|k,v| v}.reverse
+    end
+
+    def total_time_execution
+      report.values.reduce(0, :+)
+    end
   end
 end
