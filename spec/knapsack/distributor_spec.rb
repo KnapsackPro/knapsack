@@ -104,4 +104,28 @@ describe Knapsack::Distributor do
       it { expect(subject.node_time_execution).to eql 1.375 }
     end
   end
+
+  describe '#assign_spec_file_per_node' do
+    let(:report) do
+      {
+        'e_spec.rb' => 3.0,
+        'f_spec.rb' => 3.5,
+        'c_spec.rb' => 2.0,
+        'd_spec.rb' => 2.5,
+        'a_spec.rb' => 1.0,
+        'b_spec.rb' => 1.5,
+      }
+    end
+    let(:args) do
+      {
+        report: report,
+        ci_node_total: 3
+      }
+    end
+
+    xit do
+      subject.assign_spec_file_per_node
+      expect(subject.node_specs).to eql({}) # FIXME
+    end
+  end
 end
