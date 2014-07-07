@@ -71,7 +71,7 @@ To run specs for Knapsack gem type:
 
 ### Spec examples
 
-Directory `spec_examples` contains examples of fast and slow specs. There is a `spec_helper.rb` with binded Knapsack.
+Directory `spec_examples` contains examples of fast and slow specs. There is a `spec_example/spec_helper.rb` with binded Knapsack.
 
 Change one spec to make it sure it will take more than 5 seconds then run below to see Knapsack time offset warning.
 
