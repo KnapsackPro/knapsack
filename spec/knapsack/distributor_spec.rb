@@ -105,10 +105,12 @@ describe Knapsack::Distributor do
     end
   end
 
-  describe '#assign_spec_file_per_node' do
+  describe '#assign_spec_files_to_node' do
     let(:report) do
       {
-        'e_spec.rb' => 3.0,
+        'g_spec.rb' => 9.0,
+        'h_spec.rb' => 3.0,
+        'i_spec.rb' => 3.0,
         'f_spec.rb' => 3.5,
         'c_spec.rb' => 2.0,
         'd_spec.rb' => 2.5,
@@ -123,9 +125,17 @@ describe Knapsack::Distributor do
       }
     end
 
-    xit do
-      subject.assign_spec_file_per_node
-      expect(subject.node_specs).to eql({}) # FIXME
+    it do
+      puts subject.total_time_execution
+      puts subject.node_time_execution
+
+      puts subject.sorted_report.inspect
+
+      subject.assign_spec_files_to_node
+
+      puts 'node_specs:'
+      puts subject.node_specs
+      #expect(subject.node_specs).to eql({}) # FIXME
     end
   end
 end
