@@ -36,23 +36,41 @@ module Knapsack
 
     private
 
+    def default_node_specs
+      @node_specs = []
+      ci_node_total.times do |index|
+        @node_specs << {
+          node_index: index,
+          time_left: node_time_execution,
+          spec_files_with_time: []
+        }
+      end
+    end
+
     def assign_slow_spec_files
       @not_assigned_spec_files = []
-      node_index = 0
+      @node_index = 0
       sorted_report.each do |spec_file_with_time|
-        time = spec_file_with_time[1]
-
-        time_left = node_specs[node_index][:time_left] - time
-        if time_left >= 0 or node_specs[node_index][:spec_files_with_time].empty?
-          node_specs[node_index][:time_left] -= time
-          node_specs[node_index][:spec_files_with_time] << spec_file_with_time
-        else
-          @not_assigned_spec_files << spec_file_with_time
-        end
-
-        node_index += 1
-        node_index = 0 if node_index == ci_node_total
+        assign_slow_spec_file(spec_file_with_time)
+        update_node_index
       end
+    end
+
+    def assign_slow_spec_file(spec_file_with_time)
+      time = spec_file_with_time[1]
+      time_left = node_specs[@node_index][:time_left] - time
+
+      if time_left >= 0 or node_specs[@node_index][:spec_files_with_time].empty?
+        node_specs[@node_index][:time_left] -= time
+        node_specs[@node_index][:spec_files_with_time] << spec_file_with_time
+      else
+        @not_assigned_spec_files << spec_file_with_time
+      end
+    end
+
+    def update_node_index
+      @node_index += 1
+      @node_index = 0 if @node_index == ci_node_total
     end
 
     def assign_remaining_spec_files
@@ -67,17 +85,6 @@ module Knapsack
     def node_with_max_time_left
       node_spec = node_specs.max { |a,b| a[:time_left] <=> b[:time_left] }
       node_spec[:node_index]
-    end
-
-    def default_node_specs
-      @node_specs = []
-      ci_node_total.times do |index|
-        @node_specs << {
-          node_index: index,
-          time_left: node_time_execution,
-          spec_files_with_time: []
-        }
-      end
     end
   end
 end
