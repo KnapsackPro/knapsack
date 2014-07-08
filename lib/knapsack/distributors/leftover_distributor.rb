@@ -3,14 +3,6 @@ module Knapsack
     class LeftoverDistributor < BaseDistributor
       attr_reader :spec_pattern
 
-      def post_initialize(args={})
-        @spec_pattern = args[:spec_pattern] || default_spec_pattern
-      end
-
-      def default_spec_pattern
-        'spec/**/*_spec.rb'
-      end
-
       def report_specs
         @report_specs ||= @report.keys
       end
@@ -24,6 +16,14 @@ module Knapsack
       end
 
       private
+
+      def post_initialize(args={})
+        @spec_pattern = args[:spec_pattern] || default_spec_pattern
+      end
+
+      def default_spec_pattern
+        'spec/**/*_spec.rb'
+      end
 
       def post_assign_spec_files_to_node
         leftover_specs.each do |spec_file|
