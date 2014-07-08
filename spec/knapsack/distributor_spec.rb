@@ -2,7 +2,7 @@ describe Knapsack::Distributor do
   let(:args) { {} }
   let(:default_report) { { 'default_report_spec.rb' => 1.0 } }
 
-  subject { described_class.new(args) }
+  let(:distributor) { described_class.new(args) }
 
   before do
     allow(Knapsack).to receive(:report) {
@@ -11,43 +11,51 @@ describe Knapsack::Distributor do
   end
 
   describe '#report' do
+    subject { distributor.report }
+
     context 'when report is given' do
       let(:report) { { 'a_spec.rb' => 2.0 } }
       let(:args) { { report: report } }
 
-      it { expect(subject.report).to eql(report) }
+      it { should eql(report) }
     end
 
     context 'when report is not given' do
-      it { expect(subject.report).to eql(default_report) }
+      it { should eql(default_report) }
     end
   end
 
   describe '#ci_node_total' do
+    subject { distributor.ci_node_total }
+
     context 'when ci_node_total is given' do
       let(:args) { { ci_node_total: 4 } }
 
-      it { expect(subject.ci_node_total).to eql 4 }
+      it { should eql 4 }
     end
 
     context 'when ci_node_total is not given' do
-      it { expect(subject.ci_node_total).to eql 1 }
+      it { should eql 1 }
     end
   end
 
   describe '#ci_node_index' do
+    subject { distributor.ci_node_index }
+
     context 'when ci_node_index is given' do
       let(:args) { { ci_node_index: 3 } }
 
-      it { expect(subject.ci_node_index).to eql 3 }
+      it { should eql 3 }
     end
 
     context 'when ci_node_index is not given' do
-      it { expect(subject.ci_node_index).to eql 0 }
+      it { should eql 0 }
     end
   end
 
   describe '#sorted_report' do
+    subject { distributor.sorted_report }
+
     let(:report) do
       {
         'e_spec.rb' => 3.0,
@@ -61,7 +69,7 @@ describe Knapsack::Distributor do
     let(:args) { { report: report } }
 
     it do
-      expect(subject.sorted_report).to eql([
+      should eql([
         ["f_spec.rb", 3.5],
         ["e_spec.rb", 3.0],
         ["d_spec.rb", 2.5],
@@ -83,8 +91,10 @@ describe Knapsack::Distributor do
     let(:args) { { report: report } }
 
     describe '#total_time_execution' do
+      subject { distributor.total_time_execution }
+
       context 'when time is float' do
-        it { expect(subject.total_time_execution).to eql 5.5 }
+        it { should eql 5.5 }
       end
 
       context 'when time is not float' do
@@ -95,13 +105,14 @@ describe Knapsack::Distributor do
           }
         end
 
-        it { expect(subject.total_time_execution).to eql 4.0 }
+        it { should eql 4.0 }
       end
     end
 
     describe '#node_time_execution' do
+      subject { distributor.node_time_execution }
       let(:args) { { report: report, ci_node_total: 4 } }
-      it { expect(subject.node_time_execution).to eql 1.375 }
+      it { should eql 1.375 }
     end
   end
 
@@ -126,12 +137,10 @@ describe Knapsack::Distributor do
     end
 
     describe '#assign_spec_files_to_node' do
-      before do
-        subject.assign_spec_files_to_node
-      end
+      before { distributor.assign_spec_files_to_node }
 
       it do
-        expect(subject.node_specs[0]).to eql({
+        expect(distributor.node_specs[0]).to eql({
           :node_index => 0,
           :time_left => -0.5,
           :spec_files_with_time => [
@@ -141,7 +150,7 @@ describe Knapsack::Distributor do
       end
 
       it do
-        expect(subject.node_specs[1]).to eql({
+        expect(distributor.node_specs[1]).to eql({
           :node_index => 1,
           :time_left => 0.0,
           :spec_files_with_time => [
@@ -154,7 +163,7 @@ describe Knapsack::Distributor do
       end
 
       it do
-        expect(subject.node_specs[2]).to eql({
+        expect(distributor.node_specs[2]).to eql({
           :node_index => 2,
           :time_left => 0.5,
           :spec_files_with_time => [
@@ -169,7 +178,7 @@ describe Knapsack::Distributor do
     describe '#specs_for_node' do
       context 'when node exists' do
         it do
-          expect(subject.specs_for_node(1)).to eql([
+          expect(distributor.specs_for_node(1)).to eql([
             'f_spec.rb',
             'd_spec.rb',
             'a_spec.rb',
@@ -179,7 +188,7 @@ describe Knapsack::Distributor do
       end
 
       context "when node doesn't exist" do
-        it { expect(subject.specs_for_node(42)).to be_nil }
+        it { expect(distributor.specs_for_node(42)).to be_nil }
       end
     end
   end
