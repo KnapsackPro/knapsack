@@ -33,6 +33,11 @@ module Knapsack
       @execution_time
     end
 
+    def spec_path
+      raise("spec_path needs to be set by Knapsack Adapter's bind method") unless @spec_path
+      @spec_path.sub(/^\.\//, '')
+    end
+
     private
 
     def default_config
@@ -54,10 +59,6 @@ module Knapsack
     def update_spec_file_time
       @spec_files_with_time[spec_path] ||= 0
       @spec_files_with_time[spec_path] += @execution_time
-    end
-
-    def spec_path
-      @spec_path || raise("spec_path needs to be set by Knapsack Adapter's bind method")
     end
   end
 end

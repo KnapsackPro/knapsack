@@ -51,6 +51,28 @@ describe Knapsack::Tracker do
     end
   end
 
+  describe '#spec_path' do
+    subject { tracker.spec_path }
+
+    context 'when spec_path not set' do
+      it do
+        expect { subject }.to raise_error("spec_path needs to be set by Knapsack Adapter's bind method")
+      end
+    end
+
+    context 'when spec_path set' do
+      context 'when spec path has prefix ./' do
+        before { tracker.spec_path = './spec/models/user_spec.rb' }
+        it { should eql 'spec/models/user_spec.rb' }
+      end
+
+      context 'when spec path has not prefix ./' do
+        before { tracker.spec_path = 'spec/models/user_spec.rb' }
+        it { should eql 'spec/models/user_spec.rb' }
+      end
+    end
+  end
+
   describe 'track time execution' do
     let(:now) { Time.now }
     let(:spec_paths) { ['a_spec.rb', 'b_spec.rb'] }
