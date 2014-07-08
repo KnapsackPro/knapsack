@@ -9,8 +9,7 @@ module Knapsack
       @report = args[:report] || default_report
       @ci_node_total = args[:ci_node_total] || DEFAULT_CI_NODE_TOTAL
       @ci_node_index = args[:ci_node_index] || DEFAULT_CI_NODE_INDEX
-      @not_assigned_spec_files = []
-      default_node_specs
+      assign_spec_files_to_node
     end
 
     def default_report
@@ -30,6 +29,7 @@ module Knapsack
     end
 
     def assign_spec_files_to_node
+      default_node_specs
       assign_slow_spec_files
       assign_remaining_spec_files
     end
@@ -37,6 +37,7 @@ module Knapsack
     private
 
     def assign_slow_spec_files
+      @not_assigned_spec_files = []
       node_index = 0
       sorted_report.each do |spec_file_with_time|
         time = spec_file_with_time[1]
