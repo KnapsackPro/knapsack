@@ -23,12 +23,13 @@ module Knapsack
 
       def specs_for_node(node_index)
         assign_spec_files_to_node
-        raise NotImplementedError
+        post_specs_for_node(node_index)
       end
 
       def assign_spec_files_to_node
         default_node_specs
-        raise NotImplementedError
+        @node_index = 0
+        post_assign_spec_files_to_node
       end
 
       protected
@@ -37,13 +38,21 @@ module Knapsack
         nil
       end
 
-      def update_node_index
-        @node_index += 1
-        @node_index = 0 if @node_index == ci_node_total
+      def post_specs_for_node(node_index)
+        raise NotImplementedError
+      end
+
+      def post_assign_spec_files_to_node
+        raise NotImplementedError
       end
 
       def default_node_specs
         raise NotImplementedError
+      end
+
+      def update_node_index
+        @node_index += 1
+        @node_index = 0 if @node_index == ci_node_total
       end
     end
   end

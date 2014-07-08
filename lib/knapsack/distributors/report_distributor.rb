@@ -13,20 +13,18 @@ module Knapsack
         @node_time_execution ||= total_time_execution / ci_node_total
       end
 
-      def assign_spec_files_to_node
-        default_node_specs
+      private
+
+      def post_assign_spec_files_to_node
         assign_slow_spec_files
         assign_remaining_spec_files
       end
 
-      def specs_for_node(node_index)
-        assign_spec_files_to_node
+      def post_specs_for_node(node_index)
         node_spec = node_specs[node_index]
         return unless node_spec
         node_spec[:spec_files_with_time].map(&:first)
       end
-
-      private
 
       def default_node_specs
         @node_specs = []

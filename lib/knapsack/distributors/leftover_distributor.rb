@@ -23,23 +23,20 @@ module Knapsack
         @leftover_specs ||= all_specs - report_specs
       end
 
-      def assign_spec_files_to_node
-        default_node_specs
-        @node_index = 0
+      private
+
+      def post_assign_spec_files_to_node
         leftover_specs.each do |spec_file|
           node_specs[@node_index] << spec_file
           update_node_index
         end
       end
 
-      def specs_for_node(node_index)
-        assign_spec_files_to_node
+      def post_specs_for_node(node_index)
         spec_files = node_specs[node_index]
         return unless spec_files
         spec_files
       end
-
-      private
 
       def default_node_specs
         @node_specs = []
