@@ -1,4 +1,4 @@
-describe Knapsack::LeftoverDistributor do
+describe Knapsack::Distributors::LeftoverDistributor do
   let(:args) { {} }
   let(:default_report) do
     {
