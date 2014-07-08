@@ -10,6 +10,7 @@ module Knapsack
         @report = args[:report] || default_report
         @ci_node_total = args[:ci_node_total] || DEFAULT_CI_NODE_TOTAL
         @ci_node_index = args[:ci_node_index] || DEFAULT_CI_NODE_INDEX
+        post_initialize(args)
       end
 
       def default_report
@@ -31,6 +32,10 @@ module Knapsack
       end
 
       protected
+
+      def post_initialize(args)
+        nil
+      end
 
       def update_node_index
         @node_index += 1

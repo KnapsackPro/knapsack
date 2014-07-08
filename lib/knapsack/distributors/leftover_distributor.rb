@@ -3,9 +3,8 @@ module Knapsack
     class LeftoverDistributor < BaseDistributor
       attr_reader :spec_pattern
 
-      def initialize(args={})
+      def post_initialize(args={})
         @spec_pattern = args[:spec_pattern] || default_spec_pattern
-        super(args)
       end
 
       def default_spec_pattern
