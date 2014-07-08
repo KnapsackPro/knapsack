@@ -42,12 +42,12 @@ describe Knapsack::Distributors::LeftoverDistributor do
 
     before do
       expect(leftover_distributor).to receive(:all_specs).and_return([
-      'a_spec.rb',
-      'b_spec.rb',
-      'c_spec.rb',
-      'd_spec.rb',
-      'e_spec.rb',
-      'f_spec.rb',
+        'a_spec.rb',
+        'b_spec.rb',
+        'c_spec.rb',
+        'd_spec.rb',
+        'e_spec.rb',
+        'f_spec.rb',
       ])
     end
 
