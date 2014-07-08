@@ -4,6 +4,7 @@ require 'knapsack/tracker'
 require 'knapsack/presenter'
 require 'knapsack/report'
 require 'knapsack/distributor'
+require 'knapsack/leftover_distributor'
 require 'knapsack/adapters/base'
 require 'knapsack/adapters/rspec'
 
