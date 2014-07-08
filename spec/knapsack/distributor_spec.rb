@@ -129,10 +129,12 @@ describe Knapsack::Distributor do
         'b_spec.rb' => 1.5,
       }
     end
+    let(:ci_node_index) { nil }
     let(:args) do
       {
         report: report,
-        ci_node_total: 3
+        ci_node_total: 3,
+        ci_node_index: ci_node_index
       }
     end
 
@@ -189,6 +191,28 @@ describe Knapsack::Distributor do
 
       context "when node doesn't exist" do
         it { expect(distributor.specs_for_node(42)).to be_nil }
+      end
+    end
+
+    describe '#specs_for_current_node' do
+      let(:specs) { double }
+
+      subject { distributor.specs_for_current_node }
+
+      context 'when ci_node_index not set' do
+        it do
+          expect(distributor).to receive(:specs_for_node).with(0).and_return(specs)
+          expect(subject).to eql specs
+        end
+      end
+
+      context 'when ci_node_index set' do
+        let(:ci_node_index) { 2 }
+
+        it do
+          expect(distributor).to receive(:specs_for_node).with(ci_node_index).and_return(specs)
+          expect(subject).to eql specs
+        end
       end
     end
   end

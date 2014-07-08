@@ -40,6 +40,10 @@ module Knapsack
       node_spec[:spec_files_with_time].map(&:first)
     end
 
+    def specs_for_current_node
+      specs_for_node(ci_node_index)
+    end
+
     private
 
     def default_node_specs
