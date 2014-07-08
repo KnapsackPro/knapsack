@@ -26,6 +26,13 @@ module Knapsack
       end
 
       def assign_spec_files_to_node
+        default_node_specs
+        raise NotImplementedError
+      end
+
+      protected
+
+      def default_node_specs
         raise NotImplementedError
       end
     end

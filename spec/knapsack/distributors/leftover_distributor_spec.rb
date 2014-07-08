@@ -53,4 +53,58 @@ describe Knapsack::Distributors::LeftoverDistributor do
 
     it { should eql ['e_spec.rb', 'f_spec.rb'] }
   end
+
+  context do
+    let(:args) { { ci_node_total: 3 } }
+    let(:leftover_specs) {[
+      'a_spec.rb',
+      'b_spec.rb',
+      'c_spec.rb',
+      'd_spec.rb',
+      'e_spec.rb',
+      'f_spec.rb',
+      'g_spec.rb',
+    ]}
+
+    before do
+      expect(distributor).to receive(:leftover_specs).and_return(leftover_specs)
+    end
+
+    describe '#assign_spec_files_to_node' do
+      before do
+        distributor.assign_spec_files_to_node
+      end
+
+      it do
+        expect(distributor.node_specs[0]).to eql([
+          'a_spec.rb',
+          'd_spec.rb',
+          'g_spec.rb',
+        ])
+      end
+
+      it do
+        expect(distributor.node_specs[1]).to eql([
+          'b_spec.rb',
+          'e_spec.rb',
+        ])
+      end
+
+      it do
+        expect(distributor.node_specs[2]).to eql([
+          'c_spec.rb',
+          'f_spec.rb',
+        ])
+      end
+    end
+
+    describe '#specs_for_node' do
+      it do
+        expect(distributor.specs_for_node(1)).to eql([
+          'b_spec.rb',
+          'e_spec.rb',
+        ])
+      end
+    end
+  end
 end
