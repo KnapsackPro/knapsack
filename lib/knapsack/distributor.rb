@@ -56,9 +56,10 @@ module Knapsack
 
     def assign_remaining_spec_files
       @not_assigned_spec_files.each do |spec_file_with_time|
+        index = node_with_max_time_left
         time = spec_file_with_time[1]
-        node_specs[node_with_max_time_left][:spec_files_with_time] << spec_file_with_time
-        node_specs[node_with_max_time_left][:time_left] -= time
+        node_specs[index][:time_left] -= time
+        node_specs[index][:spec_files_with_time] << spec_file_with_time
       end
     end
 
