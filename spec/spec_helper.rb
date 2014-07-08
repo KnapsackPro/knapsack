@@ -13,6 +13,10 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+
   config.before(:each) do
     if RSpec.current_example.metadata[:clear_tmp]
       FileUtils.mkdir_p(File.join(Knapsack.root, 'tmp'))
