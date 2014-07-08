@@ -60,11 +60,6 @@ module Knapsack
         end
       end
 
-      def update_node_index
-        @node_index += 1
-        @node_index = 0 if @node_index == ci_node_total
-      end
-
       def assign_remaining_spec_files
         @not_assigned_spec_files.each do |spec_file_with_time|
           index = node_with_max_time_left

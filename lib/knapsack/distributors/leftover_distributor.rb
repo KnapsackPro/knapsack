@@ -48,11 +48,6 @@ module Knapsack
           @node_specs[index] = []
         end
       end
-
-      def update_node_index
-        @node_index += 1
-        @node_index = 0 if @node_index == ci_node_total
-      end
     end
   end
 end

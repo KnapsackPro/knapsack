@@ -32,6 +32,11 @@ module Knapsack
 
       protected
 
+      def update_node_index
+        @node_index += 1
+        @node_index = 0 if @node_index == ci_node_total
+      end
+
       def default_node_specs
         raise NotImplementedError
       end
