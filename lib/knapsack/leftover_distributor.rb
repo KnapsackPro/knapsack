@@ -15,8 +15,8 @@ module Knapsack
       'spec/**/*_spec.rb'
     end
 
-    def reported_specs
-      @reported_specs ||= @report.keys
+    def report_specs
+      @report_specs ||= @report.keys
     end
 
     def all_specs
@@ -24,7 +24,7 @@ module Knapsack
     end
 
     def leftover_specs
-      @leftover_specs ||= all_specs - reported_specs
+      @leftover_specs ||= all_specs - report_specs
     end
   end
 end

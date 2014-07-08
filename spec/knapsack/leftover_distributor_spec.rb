@@ -17,8 +17,8 @@ describe Knapsack::LeftoverDistributor do
     }
   end
 
-  describe '#reported_specs' do
-    subject { leftover_distributor.reported_specs }
+  describe '#report_specs' do
+    subject { leftover_distributor.report_specs }
     it { should eql ['a_spec.rb', 'b_spec.rb', 'c_spec.rb', 'd_spec.rb'] }
   end
 
