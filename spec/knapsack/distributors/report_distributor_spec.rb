@@ -86,12 +86,10 @@ describe Knapsack::Distributors::ReportDistributor do
         'b_spec.rb' => 1.5,
       }
     end
-    let(:ci_node_index) { nil }
     let(:args) do
       {
         report: report,
         ci_node_total: 3,
-        ci_node_index: ci_node_index
       }
     end
 
