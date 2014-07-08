@@ -10,7 +10,7 @@ module Knapsack
       @ci_node_total = args[:ci_node_total] || DEFAULT_CI_NODE_TOTAL
       @ci_node_index = args[:ci_node_index] || DEFAULT_CI_NODE_INDEX
       @not_assigned_spec_files = []
-      set_node_specs
+      default_node_specs
     end
 
     def default_report
@@ -68,7 +68,7 @@ module Knapsack
       node_spec[:node_index]
     end
 
-    def set_node_specs
+    def default_node_specs
       @node_specs = []
       ci_node_total.times do |index|
         @node_specs << {
