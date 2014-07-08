@@ -6,7 +6,7 @@ Knapsack.tracker.config({
 Knapsack.report.config({
   report_path: 'knapsack_report.json'
 })
-Knapsack::Adapters::Rspec.bind
+Knapsack::Adapters::RspecAdapter.bind
 
 RSpec.configure do |config|
   config.order = :random

@@ -1,6 +1,6 @@
 module Knapsack
   module Adapters
-    class Base
+    class BaseAdapter
       def self.bind
         adapter = new
         adapter.bind

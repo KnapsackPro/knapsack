@@ -28,7 +28,7 @@ describe Knapsack::Distributors::LeftoverDistributor do
     context 'when default spec pattern' do
       it { should_not be_empty }
       it { should include 'spec/knapsack/tracker_spec.rb' }
-      it { should include 'spec/knapsack/adapters/rspec_spec.rb' }
+      it { should include 'spec/knapsack/adapters/rspec_adapter_spec.rb' }
     end
 
     context 'when fake spec pattern' do

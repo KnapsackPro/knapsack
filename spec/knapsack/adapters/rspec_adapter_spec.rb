@@ -1,4 +1,4 @@
-describe Knapsack::Adapters::Rspec do
+describe Knapsack::Adapters::RspecAdapter do
   before do
     expect(::RSpec).to receive(:configure)
   end

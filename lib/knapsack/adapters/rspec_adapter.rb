@@ -1,10 +1,10 @@
 module Knapsack
   module Adapters
-    class Rspec < Base
+    class RspecAdapter < BaseAdapter
       def bind_time_tracker
         ::RSpec.configure do |config|
           config.before(:each) do
-            Knapsack.tracker.spec_path = Rspec.spec_path
+            Knapsack.tracker.spec_path = RspecAdapter.spec_path
             Knapsack.tracker.start_timer
           end
 

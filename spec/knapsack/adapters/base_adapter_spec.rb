@@ -1,4 +1,4 @@
-describe Knapsack::Adapters::Base do
+describe Knapsack::Adapters::BaseAdapter do
   describe '.bind' do
     let(:adapter) { instance_double(described_class) }
 

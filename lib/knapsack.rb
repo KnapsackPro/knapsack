@@ -6,8 +6,8 @@ require 'knapsack/report'
 require 'knapsack/distributors/base_distributor'
 require 'knapsack/distributors/report_distributor'
 require 'knapsack/distributors/leftover_distributor'
-require 'knapsack/adapters/base'
-require 'knapsack/adapters/rspec'
+require 'knapsack/adapters/base_adapter'
+require 'knapsack/adapters/rspec_adapter'
 
 module Knapsack
   class << self

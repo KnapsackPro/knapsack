@@ -45,7 +45,7 @@ Add at the beginning of your `spec_helper.rb`:
       report_path: 'knapsack_report.json'
     })
 
-    Knapsack::Adapters::Rspec.bind
+    Knapsack::Adapters::RspecAdapter.bind
 
 Generate time execution report for your spec files.
 
