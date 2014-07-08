@@ -9,7 +9,7 @@ module Knapsack
       @report = args[:report] || default_report
       @ci_node_total = args[:ci_node_total] || DEFAULT_CI_NODE_TOTAL
       @ci_node_index = args[:ci_node_index] || DEFAULT_CI_NODE_INDEX
-      @assigned_spec_files = []
+      @not_assigned_spec_files = []
       set_node_specs
     end
 
@@ -45,7 +45,8 @@ module Knapsack
         if time_left >= 0 or node_specs[node_index][:spec_files_with_time].empty?
           node_specs[node_index][:time_left] -= time
           node_specs[node_index][:spec_files_with_time] << spec_file_with_time
-          @assigned_spec_files << spec_file_with_time
+        else
+          @not_assigned_spec_files << spec_file_with_time
         end
 
         node_index += 1
@@ -54,15 +55,11 @@ module Knapsack
     end
 
     def assign_remaining_spec_files
-      not_assigned_spec_files.each do |spec_file_with_time|
+      @not_assigned_spec_files.each do |spec_file_with_time|
         time = spec_file_with_time[1]
         node_specs[node_with_max_time_left][:spec_files_with_time] << spec_file_with_time
         node_specs[node_with_max_time_left][:time_left] -= time
       end
-    end
-
-    def not_assigned_spec_files
-      sorted_report - @assigned_spec_files
     end
 
     def node_with_max_time_left
