@@ -9,7 +9,7 @@ describe Knapsack::Distributors::LeftoverDistributor do
     }
   end
 
-  let(:leftover_distributor) { described_class.new(args) }
+  let(:distributor) { described_class.new(args) }
 
   before do
     allow(Knapsack).to receive(:report) {
@@ -18,12 +18,12 @@ describe Knapsack::Distributors::LeftoverDistributor do
   end
 
   describe '#report_specs' do
-    subject { leftover_distributor.report_specs }
+    subject { distributor.report_specs }
     it { should eql ['a_spec.rb', 'b_spec.rb', 'c_spec.rb', 'd_spec.rb'] }
   end
 
   describe '#all_specs' do
-    subject { leftover_distributor.all_specs }
+    subject { distributor.all_specs }
 
     context 'when default spec pattern' do
       it { should_not be_empty }
@@ -38,10 +38,10 @@ describe Knapsack::Distributors::LeftoverDistributor do
   end
 
   describe '#leftover_specs' do
-    subject { leftover_distributor.leftover_specs }
+    subject { distributor.leftover_specs }
 
     before do
-      expect(leftover_distributor).to receive(:all_specs).and_return([
+      expect(distributor).to receive(:all_specs).and_return([
         'a_spec.rb',
         'b_spec.rb',
         'c_spec.rb',
