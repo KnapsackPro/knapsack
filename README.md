@@ -34,13 +34,13 @@ Add at the beginning of your `spec_helper.rb`:
 
     require 'knapsack'
 
-    # default configuration, you can change it or omit
+    # default configuration, you can change it or omit completely
     Knapsack.tracker.config({
         enable_time_offset_warning: true,
         time_offset_in_seconds: 30
     })
 
-    # default configuration for report
+    # default configuration for report, you can change it or omit completely
     Knapsack.report.config({
       report_path: 'knapsack_report.json'
     })
@@ -52,6 +52,27 @@ Generate time execution report for your spec files.
     $ KNAPSACK_GENERATE_REPORT=true rspec spec
 
 Commit generated report `knapsack_report.json` into your repository.
+
+## Setup your CI server
+
+On your CI server run this command for the first CI node. Update `CI_NODE_INDEX` for the next one.
+
+    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="other_directory_with_specs/**/*_spec.rb" bundle exec rake knapsack:rspec
+
+You can omit `KNAPSACK_SPEC_PATTERN` if your specs are in `spec` directory.
+
+`CI_NODE_TOTAL` - total number CI nodes you have.
+`CI_NODE_INDEX` - index of current CI node starts from 0. Second CI node should have `CI_NODE_INDEX=1`.
+
+### Info for CircleCI users
+
+If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.
+Here is example for test configuration in your `circleci.yml` file.
+
+    test:
+      override:
+        - bundle exec rake knapsack:rspec
+            parallel: true
 
 ## Tests
 
