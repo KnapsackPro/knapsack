@@ -19,5 +19,7 @@ script:
   - bundle exec rspec --default-path spec_examples
   # run rake task for the first CI node
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+  # run rake task for the second CI node
+  - CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 notifications:
   email: false
