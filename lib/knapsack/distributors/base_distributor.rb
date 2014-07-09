@@ -1,7 +1,7 @@
 module Knapsack
   module Distributors
     class BaseDistributor
-      attr_reader :report, :ci_node_total, :ci_node_index, :node_specs
+      attr_reader :report, :node_specs
 
       DEFAULT_CI_NODE_TOTAL = 1
       DEFAULT_CI_NODE_INDEX = 0
@@ -15,6 +15,14 @@ module Knapsack
 
       def default_report
         Knapsack.report.open
+      end
+
+      def ci_node_total
+        @ci_node_total.to_i
+      end
+
+      def ci_node_index
+        @ci_node_index.to_i
       end
 
       def specs_for_current_node
