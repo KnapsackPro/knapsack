@@ -1,7 +1,7 @@
 require 'knapsack'
 Knapsack.tracker.config({
   enable_time_offset_warning: true,
-  time_offset_in_seconds: 5
+  time_offset_in_seconds: 3
 })
 Knapsack.report.config({
   report_path: 'knapsack_report.json'

@@ -86,10 +86,6 @@ To run specs for Knapsack gem type:
 
 Directory `spec_examples` contains examples of fast and slow specs. There is a `spec_example/spec_helper.rb` with binded Knapsack.
 
-Change one spec to make it sure it will take more than 5 seconds then run below to see Knapsack time offset warning.
-
-    $ rspec --default-path spec_examples
-
 To generate a new knapsack report for specs with `focus` tag (only specs in `spec_examples/leftover` directory have no `focus` tag), please type:
 
     $ KNAPSACK_GENERATE_REPORT=true rspec --default-path spec_examples --tag focus
@@ -99,6 +95,10 @@ To generate a new knapsack report for specs with `focus` tag (only specs in `spe
 To see specs distributed for the first CI node type:
 
     $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+
+Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a Knapsack time offset warning because we set `time_offset_in_seconds` to 3 in `spec_examples/spec_helper.rb`. Type below to see warning:
+
+    $ rspec --default-path spec_examples
 
 ## Contributing
 
