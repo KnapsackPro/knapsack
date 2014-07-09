@@ -77,11 +77,11 @@ Change one spec to make it sure it will take more than 5 seconds then run below 
 
     $ rspec --default-path spec_examples
 
-To generate a new knapsack report file please type:
+To generate a new knapsack report for specs with `focus` tag (only specs in `spec_examples/leftover` directory have no `focus` tag), please type:
 
-    $ KNAPSACK_GENERATE_REPORT=true rspec --default-path spec_examples
+    $ KNAPSACK_GENERATE_REPORT=true rspec --default-path spec_examples --tag focus
 
-**Warning:** Current `knapsack_report.json` file was generated for `spec_examples` except `spec_examples/leftover` directory. Just for testing reason to see how leftover specs will be distribute across CI nodes.
+**Warning:** Current `knapsack_report.json` file was generated for `spec_examples` except `spec_examples/leftover` directory. Just for testing reason to see how leftover specs will be distribute in a dumb way across CI nodes.
 
 To see specs distributed for the first CI node type:
 

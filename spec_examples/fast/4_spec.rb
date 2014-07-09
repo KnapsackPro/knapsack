@@ -1,4 +1,4 @@
-describe 'Fast 4' do
+describe 'Fast 4', :focus do
   it {}
   it {}
   it {}
