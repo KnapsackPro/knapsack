@@ -53,14 +53,6 @@ Generate time execution report for your spec files.
 
 Commit generated report `knapsack_report.json` into your repository.
 
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/knapsack/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
-
 ## Tests
 
 ### Spec
@@ -86,3 +78,11 @@ To generate a new knapsack report for specs with `focus` tag (only specs in `spe
 To see specs distributed for the first CI node type:
 
     $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+
+## Contributing
+
+1. Fork it ( https://github.com/[my-github-username]/knapsack/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
