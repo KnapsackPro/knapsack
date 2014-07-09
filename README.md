@@ -80,3 +80,9 @@ Change one spec to make it sure it will take more than 5 seconds then run below 
 To generate a new knapsack report file please type:
 
     $ KNAPSACK_GENERATE_REPORT=true rspec --default-path spec_examples
+
+**Warning:** Current `knapsack_report.json` file was generated for `spec_examples` except `spec_examples/leftover` directory. Just for testing reason to see how leftover specs will be distribute across CI nodes.
+
+To see specs distributed for the first CI node type:
+
+    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
