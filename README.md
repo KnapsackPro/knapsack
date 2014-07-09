@@ -62,11 +62,13 @@ On your CI server run this command for the first CI node. Update `CI_NODE_INDEX`
 You can omit `KNAPSACK_SPEC_PATTERN` if your specs are in `spec` directory.
 
 `CI_NODE_TOTAL` - total number CI nodes you have.
+
 `CI_NODE_INDEX` - index of current CI node starts from 0. Second CI node should have `CI_NODE_INDEX=1`.
 
 ### Info for CircleCI users
 
 If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.
+
 Here is example for test configuration in your `circleci.yml` file.
 
     test:
