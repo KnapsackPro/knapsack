@@ -14,7 +14,7 @@ before_install:
 script:
   - bundle exec rspec spec
   # generate knapsack report
-  - KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples
+  - KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples --tag focus
   # run specs with enabled time offset warning
   - bundle exec rspec --default-path spec_examples
 notifications:
