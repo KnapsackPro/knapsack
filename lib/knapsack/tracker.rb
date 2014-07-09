@@ -50,6 +50,7 @@ module Knapsack
     def set_defaults
       @global_time = 0
       @spec_files_with_time = {}
+      @spec_path = nil
     end
 
     def update_global_time
