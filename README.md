@@ -57,7 +57,7 @@ Commit generated report `knapsack_report.json` into your repository.
 
 On your CI server run this command for the first CI node. Update `CI_NODE_INDEX` for the next one.
 
-    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="other_directory_with_specs/**/*_spec.rb" bundle exec rake knapsack:rspec
+    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="directory_with_specs/**/*_spec.rb" bundle exec rake knapsack:rspec
 
 You can omit `KNAPSACK_SPEC_PATTERN` if your specs are in `spec` directory.
 
