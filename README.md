@@ -16,7 +16,7 @@ Parallel specs across CI server nodes based on each spec file's time execution.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile in test group:
 
     gem 'knapsack'
 
@@ -57,9 +57,13 @@ Commit generated report `knapsack_report.json` into your repository.
 
 On your CI server run this command for the first CI node. Update `CI_NODE_INDEX` for the next one.
 
+    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+
+You can add `KNAPSACK_SPEC_PATTERN` if your specs are not in `spec` directory. For instance:
+
     $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="directory_with_specs/**/*_spec.rb" bundle exec rake knapsack:rspec
 
-You can omit `KNAPSACK_SPEC_PATTERN` if your specs are in `spec` directory.
+### Info about ENV variables
 
 `CI_NODE_TOTAL` - total number CI nodes you have.
 
