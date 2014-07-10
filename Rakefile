@@ -1,2 +1,4 @@
-require "bundler/gem_tasks"
-Dir.glob('lib/tasks/*.rake').each {|r| import r}
+require 'bundler/gem_tasks'
+require 'knapsack'
+
+Knapsack.load_tasks

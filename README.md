@@ -47,6 +47,11 @@ Add at the beginning of your `spec_helper.rb`:
 
     Knapsack::Adapters::RspecAdapter.bind
 
+Add in your `Rakefile` this lines:
+
+    require 'knapsack'
+    Knapsack.load_tasks
+
 Generate time execution report for your spec files.
 
     $ KNAPSACK_GENERATE_REPORT=true rspec spec
