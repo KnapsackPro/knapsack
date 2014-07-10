@@ -16,7 +16,7 @@ describe Knapsack do
   describe '.root' do
     subject { described_class.root }
 
-    it { expect(subject).to match 'gems/knapsack' }
+    it { expect(subject).to match 'knapsack' }
   end
 
   describe '.load_tasks' do
