@@ -28,7 +28,8 @@ module Knapsack
       {
         ci_node_total: ci_node_total,
         ci_node_index: ci_node_index,
-        spec_pattern: spec_pattern
+        spec_pattern: spec_pattern,
+        report: report
       }
     end
 
@@ -42,6 +43,18 @@ module Knapsack
 
     def spec_pattern
       ENV['KNAPSACK_SPEC_PATTERN']
+    end
+
+    def report_path
+      ENV['KNAPSACK_REPORT_PATH']
+    end
+
+    def report
+      return unless report_path
+      Knapsack.report.config({
+        report_path: report_path
+      })
+      Knapsack.report.open
     end
   end
 end

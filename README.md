@@ -66,7 +66,11 @@ On your CI server run this command for the first CI node. Update `CI_NODE_INDEX`
 
 You can add `KNAPSACK_SPEC_PATTERN` if your specs are not in `spec` directory. For instance:
 
-    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="directory_with_specs/**/*_spec.rb" bundle exec rake knapsack:rspec
+    $ KNAPSACK_SPEC_PATTERN="directory_with_specs/**/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+
+You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non default location. Example:
+
+    $ KNAPSACK_REPORT_PATH="custom_knapsack_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
 
 ### Info about ENV variables
 
