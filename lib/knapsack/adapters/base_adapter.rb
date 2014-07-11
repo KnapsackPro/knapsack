@@ -15,7 +15,7 @@ module Knapsack
         elsif tracker.config[:enable_time_offset_warning]
           puts 'Knapsack time offset warning enabled!'
           bind_time_tracker
-          # TODO
+          bind_time_offset_warning
         else
           puts 'Knapsack is off!'
         end
@@ -26,6 +26,10 @@ module Knapsack
       end
 
       def bind_report_generator
+        raise NotImplementedError
+      end
+
+      def bind_time_offset_warning
         raise NotImplementedError
       end
 

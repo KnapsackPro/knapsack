@@ -27,6 +27,7 @@ describe Knapsack::Adapters::BaseAdapter do
       it do
         expect(subject).to receive(:bind_time_tracker)
         expect(subject).to receive(:bind_report_generator)
+        expect(subject).not_to receive(:bind_time_offset_warning)
         subject.bind
       end
     end
@@ -39,6 +40,7 @@ describe Knapsack::Adapters::BaseAdapter do
 
       it do
         expect(subject).to receive(:bind_time_tracker)
+        expect(subject).to receive(:bind_time_offset_warning)
         expect(subject).not_to receive(:bind_report_generator)
         subject.bind
       end
@@ -53,6 +55,7 @@ describe Knapsack::Adapters::BaseAdapter do
       it do
         expect(subject).not_to receive(:bind_time_tracker)
         expect(subject).not_to receive(:bind_report_generator)
+        expect(subject).not_to receive(:bind_time_offset_warning)
         subject.bind
       end
     end
@@ -70,6 +73,14 @@ describe Knapsack::Adapters::BaseAdapter do
     it do
       expect {
         subject.bind_report_generator
+      }.to raise_error(NotImplementedError)
+    end
+  end
+
+  describe '#bind_time_offset_warning' do
+    it do
+      expect {
+        subject.bind_time_offset_warning
       }.to raise_error(NotImplementedError)
     end
   end

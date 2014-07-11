@@ -13,7 +13,6 @@ module Knapsack
           end
 
           config.after(:suite) do
-            puts
             puts Presenter.global_time
           end
         end
@@ -24,6 +23,14 @@ module Knapsack
           config.after(:suite) do
             Knapsack.report.save
             puts Presenter.report_details
+          end
+        end
+      end
+
+      def bind_time_offset_warning
+        ::RSpec.configure do |config|
+          config.after(:suite) do
+            puts Presenter.time_exceeded
           end
         end
       end
