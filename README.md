@@ -80,7 +80,7 @@ Here is example for test configuration in your `circleci.yml` file.
 
     test:
       override:
-        - bundle exec rake knapsack:rspec
+        - bundle exec rake knapsack:rspec:
             parallel: true
 
 ## Tests
