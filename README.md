@@ -117,7 +117,7 @@ Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/knapsack/fork )
+1. Fork it ( https://github.com/ArturT/knapsack/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
