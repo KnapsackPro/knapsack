@@ -73,6 +73,56 @@ describe Knapsack::Tracker do
     end
   end
 
+  describe '#time_exceeded?' do
+    subject { tracker.time_exceeded? }
+
+    before do
+      expect(tracker).to receive(:global_time).and_return(global_time)
+      expect(tracker).to receive(:max_node_time_execution).and_return(max_node_time_execution)
+    end
+
+    context 'when true' do
+      let(:global_time) { 2 }
+      let(:max_node_time_execution) { 1 }
+      it { should be true }
+    end
+
+    context 'when false' do
+      let(:global_time) { 1 }
+      let(:max_node_time_execution) { 1 }
+      it { should be false }
+    end
+  end
+
+  describe '#max_node_time_execution' do
+    let(:report_distributor) { instance_double(Knapsack::Distributors::ReportDistributor) }
+    let(:node_time_execution) { 3.5 }
+    let(:max_node_time_execution) { node_time_execution + tracker.config[:time_offset_in_seconds] }
+
+    subject { tracker.max_node_time_execution }
+
+    before do
+      expect(tracker).to receive(:report_distributor).and_return(report_distributor)
+      expect(report_distributor).to receive(:node_time_execution).and_return(node_time_execution)
+    end
+
+    it { should eql max_node_time_execution }
+  end
+
+  describe '#exceeded_time' do
+    let(:global_time) { 5 }
+    let(:max_node_time_execution) { 2 }
+
+    subject { tracker.exceeded_time }
+
+    before do
+      expect(tracker).to receive(:global_time).and_return(global_time)
+      expect(tracker).to receive(:max_node_time_execution).and_return(max_node_time_execution)
+    end
+
+    it { should eql 3 }
+  end
+
   describe 'track time execution' do
     let(:now) { Time.now }
     let(:spec_paths) { ['a_spec.rb', 'b_spec.rb'] }

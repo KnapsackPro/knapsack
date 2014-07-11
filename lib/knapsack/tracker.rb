@@ -38,6 +38,18 @@ module Knapsack
       @spec_path.sub(/^\.\//, '')
     end
 
+    def time_exceeded?
+      global_time > max_node_time_execution
+    end
+
+    def max_node_time_execution
+      report_distributor.node_time_execution + config[:time_offset_in_seconds]
+    end
+
+    def exceeded_time
+      global_time - max_node_time_execution
+    end
+
     private
 
     def default_config
@@ -60,6 +72,10 @@ module Knapsack
     def update_spec_file_time
       @spec_files_with_time[spec_path] ||= 0
       @spec_files_with_time[spec_path] += @execution_time
+    end
+
+    def report_distributor
+      @report_distributor ||= Knapsack::Distributors::ReportDistributor.new
     end
   end
 end
