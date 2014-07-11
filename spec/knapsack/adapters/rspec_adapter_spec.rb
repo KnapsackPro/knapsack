@@ -18,4 +18,12 @@ describe Knapsack::Adapters::RspecAdapter do
       }.not_to raise_error
     end
   end
+
+  describe '#bind_time_offset_warning' do
+    it do
+      expect {
+        subject.bind_time_offset_warning
+      }.not_to raise_error
+    end
+  end
 end
