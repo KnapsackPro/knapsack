@@ -54,7 +54,7 @@ Add in your `Rakefile` this lines:
 
 Generate time execution report for your spec files.
 
-    $ KNAPSACK_GENERATE_REPORT=true rspec spec
+    $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 
 Commit generated report `knapsack_report.json` into your repository.
 
@@ -95,7 +95,7 @@ Here is example for test configuration in your `circleci.yml` file.
 
 To run specs for Knapsack gem type:
 
-    $ rspec spec
+    $ bundle exec rspec spec
 
 ### Spec examples
 
@@ -103,7 +103,7 @@ Directory `spec_examples` contains examples of fast and slow specs. There is a `
 
 To generate a new knapsack report for specs with `focus` tag (only specs in `spec_examples/leftover` directory have no `focus` tag), please type:
 
-    $ KNAPSACK_GENERATE_REPORT=true rspec --default-path spec_examples --tag focus
+    $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples --tag focus
 
 **Warning:** Current `knapsack_report.json` file was generated for `spec_examples` except `spec_examples/leftover` directory. Just for testing reason to see how leftover specs will be distribute in a dumb way across CI nodes.
 
@@ -113,7 +113,7 @@ To see specs distributed for the first CI node type:
 
 Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a Knapsack time offset warning because we set `time_offset_in_seconds` to 3 in `spec_examples/spec_helper.rb`. Type below to see warning:
 
-    $ rspec --default-path spec_examples
+    $ bundle exec rspec --default-path spec_examples
 
 ## Contributing
 
