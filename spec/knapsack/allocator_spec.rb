@@ -1,9 +1,10 @@
 describe Knapsack::Allocator do
+  let(:spec_pattern) { nil }
   let(:args) do
     {
       ci_node_total: nil,
       ci_node_index: nil,
-      spec_pattern: nil,
+      spec_pattern: spec_pattern,
       report: nil
     }
   end
@@ -39,5 +40,18 @@ describe Knapsack::Allocator do
   describe '#stringify_node_specs' do
     subject { allocator.stringify_node_specs }
     it { should eql node_specs.join(' ') }
+  end
+
+  describe '#custom_spec_dir' do
+    subject { allocator.custom_spec_dir }
+
+    context 'when spec pattern exists' do
+      let(:spec_pattern) { "custom_spec_dir/**/*_spec.rb" }
+      it { should eql 'custom_spec_dir/' }
+    end
+
+    context "when spec pattern doesn't exist" do
+      it { should be_nil }
+    end
   end
 end

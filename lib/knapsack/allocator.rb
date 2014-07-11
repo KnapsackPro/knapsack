@@ -1,9 +1,9 @@
 module Knapsack
   class Allocator
     def initialize(args={})
-      args = default_args.merge(args)
-      @report_distributor = Knapsack::Distributors::ReportDistributor.new(args)
-      @leftover_distributor = Knapsack::Distributors::LeftoverDistributor.new(args)
+      @config = default_args.merge(args)
+      @report_distributor = Knapsack::Distributors::ReportDistributor.new(@config)
+      @leftover_distributor = Knapsack::Distributors::LeftoverDistributor.new(@config)
     end
 
     def report_node_specs
@@ -22,37 +22,42 @@ module Knapsack
       node_specs.join(' ')
     end
 
+    def custom_spec_dir
+      return unless @config[:spec_pattern]
+      @config[:spec_pattern].gsub(/^(.*?)\//).first
+    end
+
     private
 
     def default_args
       {
-        ci_node_total: ci_node_total,
-        ci_node_index: ci_node_index,
-        spec_pattern: spec_pattern,
+        ci_node_total: env_ci_node_total,
+        ci_node_index: env_ci_node_index,
+        spec_pattern: env_spec_pattern,
         report: report
       }
     end
 
-    def ci_node_total
+    def env_ci_node_total
       ENV['CI_NODE_TOTAL'] || ENV['CIRCLE_NODE_TOTAL']
     end
 
-    def ci_node_index
+    def env_ci_node_index
       ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX']
     end
 
-    def spec_pattern
+    def env_spec_pattern
       ENV['KNAPSACK_SPEC_PATTERN']
     end
 
-    def report_path
+    def env_report_path
       ENV['KNAPSACK_REPORT_PATH']
     end
 
     def report
-      return unless report_path
+      return unless env_report_path
       Knapsack.report.config({
-        report_path: report_path
+        report_path: env_report_path
       })
       Knapsack.report.open
     end

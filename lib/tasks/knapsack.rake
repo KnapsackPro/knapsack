@@ -12,7 +12,10 @@ namespace :knapsack do
     puts allocator.leftover_node_specs
     puts
 
-    cmd = "bundle exec rspec #{allocator.stringify_node_specs}"
+    custom_spec_dir = allocator.custom_spec_dir
+    default_path = custom_spec_dir ? "--default-path #{custom_spec_dir}" : nil
+    cmd = %Q[bundle exec rspec #{default_path} -- #{allocator.stringify_node_specs}]
+
     exec(cmd)
   end
 end
