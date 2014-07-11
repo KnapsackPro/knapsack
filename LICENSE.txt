@@ -1,4 +1,4 @@
-Copyright (c) 2014 ArturT
+Copyright (c) 2014 Artur Trzop
 
 MIT License
 
