@@ -46,7 +46,7 @@ Add in your `Rakefile` this lines:
     require 'knapsack'
     Knapsack.load_tasks
 
-Generate time execution report for your spec files.
+Generate time execution report for your spec files. Run it on your CI machine.
 
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 
