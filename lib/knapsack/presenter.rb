@@ -43,8 +43,7 @@ module Knapsack
 Specs on this CI node took more than time offset.
 Please regenerate your knapsack report.
 If that didn't help then split your heavy test file
-or bump time_offset_in_seconds setting.
-          }
+or bump time_offset_in_seconds setting.}
         else
           str << %{
 Global time execution for this CI node is fine.
