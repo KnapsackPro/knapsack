@@ -1,11 +1,12 @@
 {
-  "spec_examples/fast/6_spec.rb": 6.628036499023438e-05,
-  "spec_examples/fast/3_spec.rb": 2.8133392333984375e-05,
-  "spec_examples/fast/2_spec.rb": 2.002716064453125e-05,
-  "spec_examples/fast/1_spec.rb": 1.0013580322265625e-05,
-  "spec_examples/fast/5_spec.rb": 7.867813110351562e-05,
-  "spec_examples/slow/b_spec.rb": 0.9035449028015137,
-  "spec_examples/fast/4_spec.rb": 6.842613220214844e-05,
-  "spec_examples/slow/a_spec.rb": 1.6037836074829102,
-  "spec_examples/slow/c_spec.rb": 1.0028371810913086
+  "spec_examples/fast/3_spec.rb": 7.82012939453125e-05,
+  "spec_examples/fast/1_spec.rb": 1.5974044799804688e-05,
+  "spec_examples/slow/c_spec.rb": 1.002314567565918,
+  "spec_examples/slow/a_spec.rb": 1.6023659706115723,
+  "spec_examples/fast/2_spec.rb": 6.985664367675781e-05,
+  "spec_examples/slow/b_spec.rb": 0.9009926319122314,
+  "spec_examples/fast/6_spec.rb": 0.00015687942504882812,
+  "spec_examples/fast/4_spec.rb": 9.894371032714844e-05,
+  "spec_examples/fast/use_shared_example_spec.rb": 0.10031008720397949,
+  "spec_examples/fast/5_spec.rb": 0.00011754035949707031
 }

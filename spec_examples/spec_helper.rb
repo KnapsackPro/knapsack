@@ -1,4 +1,6 @@
 require 'knapsack'
+require 'support/shared_examples/common_example'
+
 Knapsack.tracker.config({
   enable_time_offset_warning: true,
   time_offset_in_seconds: 3
