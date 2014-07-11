@@ -30,7 +30,7 @@ module Knapsack
       def bind_time_offset_warning
         ::RSpec.configure do |config|
           config.after(:suite) do
-            puts Presenter.time_exceeded
+            puts Presenter.time_offset_warning
           end
         end
       end

@@ -45,12 +45,12 @@ describe Knapsack::Presenter do
     it { should eql "Knapsack report was generated. Preview:\n{}" }
   end
 
-  describe '.time_exceeded' do
+  describe '.time_offset_warning' do
     let(:time_offset_in_seconds) { 30 }
     let(:max_node_time_execution) { 60 }
     let(:exceeded_time) { 3 }
 
-    subject { described_class.time_exceeded }
+    subject { described_class.time_offset_warning }
 
     before do
       allow(Knapsack).to receive(:tracker) { tracker }
