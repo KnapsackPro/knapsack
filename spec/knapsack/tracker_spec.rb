@@ -8,23 +8,13 @@ describe Knapsack::Tracker do
 
   it_behaves_like 'default trakcer attributes'
 
-  describe '#generate_report?' do
-    subject { tracker.generate_report? }
-
-    context 'when ENV variable is defined' do
-      before do
-        stub_const("ENV", { 'KNAPSACK_GENERATE_REPORT' => true })
-      end
-      it { should be true }
-    end
-
-    context 'when ENV variable is not defined' do
-      it { should be false }
-    end
-  end
-
   describe '#config' do
+    before do
+      stub_const("ENV", { 'KNAPSACK_GENERATE_REPORT' => generate_report })
+    end
+
     context 'when passed options' do
+      let(:generate_report) { true }
       let(:opts) do
         {
           enable_time_offset_warning: false,
@@ -36,16 +26,20 @@ describe Knapsack::Tracker do
         expect(tracker.config(opts)).to eql({
           enable_time_offset_warning: false,
           time_offset_in_seconds: 30,
+          generate_report: true,
           fake: true
         })
       end
     end
 
     context "when didn't pass options" do
+      let(:generate_report) { nil }
+
       it do
         expect(tracker.config).to eql({
           enable_time_offset_warning: true,
           time_offset_in_seconds: 30,
+          generate_report: false
         })
       end
     end

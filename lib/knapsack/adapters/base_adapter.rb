@@ -8,7 +8,7 @@ module Knapsack
       end
 
       def bind
-        if tracker.generate_report?
+        if tracker.config[:generate_report]
           puts 'Knapsack report generator started!'
           bind_time_tracker
           bind_report_generator

@@ -9,10 +9,6 @@ module Knapsack
       set_defaults
     end
 
-    def generate_report?
-      ENV['KNAPSACK_GENERATE_REPORT'] || false
-    end
-
     def config(opts={})
       @config ||= default_config
       @config.merge!(opts)
@@ -56,7 +52,12 @@ module Knapsack
       {
         enable_time_offset_warning: true,
         time_offset_in_seconds: 30,
+        generate_report: generate_report
       }
+    end
+
+    def generate_report
+      ENV['KNAPSACK_GENERATE_REPORT'] || false
     end
 
     def set_defaults

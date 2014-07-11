@@ -21,7 +21,7 @@ describe Knapsack::Adapters::BaseAdapter do
 
     context 'when generate report' do
       before do
-        expect(tracker).to receive(:generate_report?).and_return(true)
+        expect(tracker).to receive(:config).and_return({ generate_report: true })
       end
 
       it do
@@ -34,8 +34,10 @@ describe Knapsack::Adapters::BaseAdapter do
 
     context 'when enable time offset warning' do
       before do
-        expect(tracker).to receive(:generate_report?).and_return(false)
-        expect(tracker).to receive(:config).and_return({ enable_time_offset_warning: true })
+        expect(tracker).to receive(:config).twice.and_return({
+          generate_report: false,
+          enable_time_offset_warning: true
+        })
       end
 
       it do
@@ -48,8 +50,10 @@ describe Knapsack::Adapters::BaseAdapter do
 
     context 'when adapter is off' do
       before do
-        expect(tracker).to receive(:generate_report?).and_return(false)
-        expect(tracker).to receive(:config).and_return({ enable_time_offset_warning: false })
+        expect(tracker).to receive(:config).twice.and_return({
+          generate_report: false,
+          enable_time_offset_warning: false
+        })
       end
 
       it do
