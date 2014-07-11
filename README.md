@@ -10,9 +10,7 @@
 [codeclimate]: https://codeclimate.com/github/ArturT/knapsack
 [coverage]: https://codeclimate.com/github/ArturT/knapsack
 
-Parallel specs across CI server nodes based on each spec file's time execution.
-
-**Work in progress, gem is not ready yet!**
+Parallel specs across CI server nodes based on each spec file's time execution. It generates spec time execution report and uses it for further test runs.
 
 ## Installation
 
@@ -23,10 +21,6 @@ Add this line to your application's Gemfile in test group:
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install knapsack
 
 ## Usage
 

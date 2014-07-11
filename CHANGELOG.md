@@ -1,4 +1,8 @@
-### 0.1.0 (unreleased)
+### unreleased
+
+* nothing yet
+
+### 0.1.0
 
 * Gem ready to use it!
 
