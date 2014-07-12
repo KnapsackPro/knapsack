@@ -3,18 +3,11 @@ module Knapsack
     class BaseDistributor
       attr_reader :report, :node_specs, :spec_pattern
 
-      DEFAULT_CI_NODE_TOTAL = 1
-      DEFAULT_CI_NODE_INDEX = 0
-
       def initialize(args={})
         @report = args[:report] || default_report
-        @ci_node_total = args[:ci_node_total] || DEFAULT_CI_NODE_TOTAL
-        @ci_node_index = args[:ci_node_index] || DEFAULT_CI_NODE_INDEX
-        @spec_pattern = args[:spec_pattern] || default_spec_pattern
-      end
-
-      def default_report
-        Knapsack.report.open
+        @ci_node_total = args[:ci_node_total] || config.ci_node_total
+        @ci_node_index = args[:ci_node_index] || config.ci_node_index
+        @spec_pattern = args[:spec_pattern] || config.spec_pattern
       end
 
       def ci_node_total
@@ -60,8 +53,12 @@ module Knapsack
 
       private
 
-      def default_spec_pattern
-        'spec/**/*_spec.rb'
+      def config
+        Knapsack::Config
+      end
+
+      def default_report
+        Knapsack.report.open
       end
 
       def update_node_index

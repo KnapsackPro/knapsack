@@ -24,7 +24,7 @@ module Knapsack
 
     def default_config
       {
-        report_path: 'knapsack_report.json'
+        report_path: Config.report_path
       }
     end
 

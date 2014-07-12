@@ -50,14 +50,10 @@ module Knapsack
 
     def default_config
       {
-        enable_time_offset_warning: true,
-        time_offset_in_seconds: 30,
-        generate_report: generate_report
+        enable_time_offset_warning: Config.enable_time_offset_warning,
+        time_offset_in_seconds: Config.time_offset_in_seconds,
+        generate_report: Config.generate_report
       }
-    end
-
-    def generate_report
-      ENV['KNAPSACK_GENERATE_REPORT'] || false
     end
 
     def set_defaults

@@ -42,16 +42,16 @@ describe Knapsack::Allocator do
     it { should eql node_specs.join(' ') }
   end
 
-  describe '#custom_spec_dir' do
-    subject { allocator.custom_spec_dir }
+  describe '#spec_dir' do
+    subject { allocator.spec_dir }
 
     context 'when spec pattern exists' do
-      let(:spec_pattern) { "custom_spec_dir/**/*_spec.rb" }
-      it { should eql 'custom_spec_dir/' }
+      let(:spec_pattern) { "spec_dir/**/*_spec.rb" }
+      it { should eql 'spec_dir/' }
     end
 
     context "when spec pattern doesn't exist" do
-      it { should be_nil }
+      it { should eql 'spec/' }
     end
   end
 end
