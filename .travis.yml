@@ -12,24 +12,25 @@ addons:
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 script:
+  - echo "Run specs for Knapsack gem"
   - bundle exec rspec spec
 
-  # generate knapsack report
+  - echo "Generate knapsack report"
   - KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples --tag focus
 
-  # run specs with enabled time offset warning
+  - echo "Run specs with enabled time offset warning"
   - bundle exec rspec --default-path spec_examples
 
-  # run rake task for the first CI node
+  - echo "Run rake task for the first CI node"
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
-  # run rake task for the second CI node
+  - echo "Run rake task for the second CI node"
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
-  # run specs for custom knapsack report path
+  - echo "Run specs for custom knapsack report path"
   - cp knapsack_report.json custom_knapsack_report.json
   - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" KNAPSACK_REPORT_PATH="custom_knapsack_report.json" bundle exec rake knapsack:rspec
 
-  # run specs when spec file was removed and still exists in knapsack report json
+  - echo "Run specs when spec file was removed and still exists in knapsack report json"
   - rm spec_examples/fast/1_spec.rb
   - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 notifications:
