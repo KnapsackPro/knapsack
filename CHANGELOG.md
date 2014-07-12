@@ -1,6 +1,11 @@
 ### unreleased
 
+* TODO
+
+### 0.1.2
+
 * Fix case when someone removes spec file which exists in knapsack report.
+* Extract config to separate class and fix wrong node time execution on CI.
 
 ### 0.1.1
 
