@@ -1,6 +1,6 @@
 ### unreleased
 
-* nothing yet
+* Fix case when someone removes spec file which exists in knapsack report.
 
 ### 0.1.1
 

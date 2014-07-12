@@ -27,12 +27,44 @@ describe Knapsack::Distributors::ReportDistributor do
 
     it do
       should eql([
-        ["f_spec.rb", 3.5],
-        ["e_spec.rb", 3.0],
-        ["d_spec.rb", 2.5],
-        ["c_spec.rb", 2.0],
-        ["b_spec.rb", 1.5],
-        ["a_spec.rb", 1.0],
+        ['f_spec.rb', 3.5],
+        ['e_spec.rb', 3.0],
+        ['d_spec.rb', 2.5],
+        ['c_spec.rb', 2.0],
+        ['b_spec.rb', 1.5],
+        ['a_spec.rb', 1.0],
+      ])
+    end
+  end
+
+  describe '#sorted_report_with_existing_specs' do
+    subject { distributor.sorted_report_with_existing_specs }
+
+    before do
+      expect(distributor).to receive(:all_specs).exactly(6).times.and_return([
+        'b_spec.rb',
+        'd_spec.rb',
+        'f_spec.rb',
+      ])
+    end
+
+    let(:report) do
+      {
+        'e_spec.rb' => 3.0,
+        'f_spec.rb' => 3.5,
+        'c_spec.rb' => 2.0,
+        'd_spec.rb' => 2.5,
+        'a_spec.rb' => 1.0,
+        'b_spec.rb' => 1.5,
+      }
+    end
+    let(:args) { { report: report } }
+
+    it do
+      should eql([
+        ['f_spec.rb', 3.5],
+        ['d_spec.rb', 2.5],
+        ['b_spec.rb', 1.5],
       ])
     end
   end
@@ -46,6 +78,10 @@ describe Knapsack::Distributors::ReportDistributor do
       }
     end
     let(:args) { { report: report } }
+
+    before do
+      allow(distributor).to receive(:all_specs).and_return(report.keys)
+    end
 
     describe '#total_time_execution' do
       subject { distributor.total_time_execution }
@@ -91,6 +127,10 @@ describe Knapsack::Distributors::ReportDistributor do
         report: report,
         ci_node_total: 3,
       }
+    end
+
+    before do
+      allow(distributor).to receive(:all_specs).and_return(report.keys)
     end
 
     describe '#assign_spec_files_to_node' do

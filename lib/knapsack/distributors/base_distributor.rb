@@ -1,7 +1,7 @@
 module Knapsack
   module Distributors
     class BaseDistributor
-      attr_reader :report, :node_specs
+      attr_reader :report, :node_specs, :spec_pattern
 
       DEFAULT_CI_NODE_TOTAL = 1
       DEFAULT_CI_NODE_INDEX = 0
@@ -10,7 +10,7 @@ module Knapsack
         @report = args[:report] || default_report
         @ci_node_total = args[:ci_node_total] || DEFAULT_CI_NODE_TOTAL
         @ci_node_index = args[:ci_node_index] || DEFAULT_CI_NODE_INDEX
-        post_initialize(args)
+        @spec_pattern = args[:spec_pattern] || default_spec_pattern
       end
 
       def default_report
@@ -40,11 +40,11 @@ module Knapsack
         post_assign_spec_files_to_node
       end
 
-      protected
-
-      def post_initialize(args)
-        nil
+      def all_specs
+        @all_specs ||= Dir[spec_pattern]
       end
+
+      protected
 
       def post_specs_for_node(node_index)
         raise NotImplementedError
@@ -56,6 +56,12 @@ module Knapsack
 
       def default_node_specs
         raise NotImplementedError
+      end
+
+      private
+
+      def default_spec_pattern
+        'spec/**/*_spec.rb'
       end
 
       def update_node_index

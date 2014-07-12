@@ -28,5 +28,9 @@ script:
   # run specs for custom knapsack report path
   - cp knapsack_report.json custom_knapsack_report.json
   - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" KNAPSACK_REPORT_PATH="custom_knapsack_report.json" bundle exec rake knapsack:rspec
+
+  # run specs when spec file was removed and still exists in knapsack report json
+  - rm spec_examples/fast/1_spec.rb
+  - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 notifications:
   email: false

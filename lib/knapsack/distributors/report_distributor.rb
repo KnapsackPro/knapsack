@@ -2,11 +2,15 @@ module Knapsack
   module Distributors
     class ReportDistributor < BaseDistributor
       def sorted_report
-        @sorted_report ||= report.sort_by{|k,v| v}.reverse
+        @sorted_report ||= report.sort_by { |spec_path, time| time }.reverse
+      end
+
+      def sorted_report_with_existing_specs
+        @sorted_report_with_existing_specs ||= sorted_report.select { |spec_path, time| all_specs.include?(spec_path) }
       end
 
       def total_time_execution
-        @total_time_execution ||= report.values.reduce(0, :+).to_f
+        @total_time_execution ||= sorted_report_with_existing_specs.map(&:last).reduce(0, :+).to_f
       end
 
       def node_time_execution
@@ -40,7 +44,7 @@ module Knapsack
       def assign_slow_spec_files
         @not_assigned_spec_files = []
         @node_index = 0
-        sorted_report.each do |spec_file_with_time|
+        sorted_report_with_existing_specs.each do |spec_file_with_time|
           assign_slow_spec_file(spec_file_with_time)
           update_node_index
         end
