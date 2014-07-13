@@ -29,10 +29,10 @@ describe Knapsack::Presenter do
 
     before do
       expect(Knapsack).to receive(:tracker) { tracker }
-      expect(tracker).to receive(:global_time).and_return(4.2)
+      expect(tracker).to receive(:global_time).and_return(60*62+3)
     end
 
-    it { should eql "\nKnapsack global time execution for specs: 4.2s" }
+    it { should eql "\nKnapsack global time execution for specs: 01h 02m 03s" }
   end
 
   describe '.report_details' do
@@ -62,8 +62,8 @@ describe Knapsack::Presenter do
 
     shared_examples 'knapsack time offset warning' do
       it { should include 'Time offset: 30s' }
-      it { should include 'Max allowed node time execution: 60s' }
-      it { should include 'Exceeded time: 3s' }
+      it { should include 'Max allowed node time execution: 01m' }
+      it { should include 'Exceeded time: 03s' }
     end
 
     context 'when time exceeded' do
@@ -78,6 +78,35 @@ describe Knapsack::Presenter do
 
       it_behaves_like 'knapsack time offset warning'
       it { should include 'Global time execution for this CI node is fine.' }
+    end
+  end
+
+  describe '.pretty_seconds' do
+    subject { described_class.pretty_seconds(seconds) }
+
+    context 'when only seconds' do
+      let(:seconds) { 5 }
+      it { should eql '05s' }
+    end
+
+    context 'when only minutes' do
+      let(:seconds) { 120 }
+      it { should eql '02m' }
+    end
+
+    context 'when only hours' do
+      let(:seconds) { 60*60*3 }
+      it { should eql '03h' }
+    end
+
+    context 'when minutes and seconds' do
+      let(:seconds) { 180+9 }
+      it { should eql '03m 09s' }
+    end
+
+    context 'when all' do
+      let(:seconds) { 60*60*4+120+7 }
+      it { should eql '04h 02m 07s' }
     end
   end
 end

@@ -17,7 +17,8 @@ module Knapsack
       end
 
       def global_time
-        "\nKnapsack global time execution for specs: #{Knapsack.tracker.global_time}s"
+        global_time = pretty_seconds(Knapsack.tracker.global_time)
+        "\nKnapsack global time execution for specs: #{global_time}"
       end
 
       def time_offset
@@ -25,11 +26,13 @@ module Knapsack
       end
 
       def max_allowed_node_time_execution
-        "Max allowed node time execution: #{Knapsack.tracker.max_node_time_execution}s"
+        max_node_time_execution = pretty_seconds(Knapsack.tracker.max_node_time_execution)
+        "Max allowed node time execution: #{max_node_time_execution}"
       end
 
       def exceeded_time
-        "Exceeded time: #{Knapsack.tracker.exceeded_time}s"
+        exceeded_time = pretty_seconds(Knapsack.tracker.exceeded_time)
+        "Exceeded time: #{exceeded_time}"
       end
 
       def time_offset_warning
@@ -51,6 +54,10 @@ Happy testing!}
         end
         str << "\n=================================================\n"
         str
+      end
+
+      def pretty_seconds(seconds)
+        Time.at(seconds).gmtime.strftime('%Hh %Mm %Ss').gsub(/00(h|m|s)/, '').strip
       end
     end
   end

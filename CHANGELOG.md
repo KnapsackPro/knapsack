@@ -2,6 +2,10 @@
 
 * TODO
 
+### 0.1.3
+
+* Better time presentation instead of seconds.
+
 ### 0.1.2
 
 * Fix case when someone removes spec file which exists in knapsack report.
