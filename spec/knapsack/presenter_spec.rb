@@ -108,5 +108,10 @@ describe Knapsack::Presenter do
       let(:seconds) { 60*60*4+120+7 }
       it { should eql '04h 02m 07s' }
     end
+
+    context 'when negative seconds' do
+      let(:seconds) { -67 }
+      it { should eql '-01m 07s' }
+    end
   end
 end

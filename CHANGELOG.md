@@ -2,6 +2,10 @@
 
 * TODO
 
+### 0.1.4
+
+* Fix wrong time presentation for negative seconds.
+
 ### 0.1.3
 
 * Better time presentation instead of seconds.

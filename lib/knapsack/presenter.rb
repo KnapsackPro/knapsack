@@ -57,7 +57,14 @@ Happy testing!}
       end
 
       def pretty_seconds(seconds)
-        Time.at(seconds).gmtime.strftime('%Hh %Mm %Ss').gsub(/00(h|m|s)/, '').strip
+        sign = ''
+        if seconds < 0
+          seconds = seconds*-1
+          sign = '-'
+        end
+        time = Time.at(seconds).gmtime.strftime('%Hh %Mm %Ss')
+        time_without_zeros = time.gsub(/00(h|m|s)/, '').strip
+        sign + time_without_zeros
       end
     end
   end
