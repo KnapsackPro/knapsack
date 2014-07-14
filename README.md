@@ -14,7 +14,7 @@ Parallel specs across CI server nodes based on each spec file's time execution. 
 
 ## Installation
 
-Add this line to your application's Gemfile in test group:
+Add this line to your application's Gemfile:
 
     gem 'knapsack'
 
