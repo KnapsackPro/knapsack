@@ -80,10 +80,22 @@ If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. 
 
 Here is example for test configuration in your `circleci.yml` file.
 
+For the first time run all specs on a single CI node with enabled report generator.
+
+    test:
+      override:
+        - KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
+
+After tests pass on your CircleCI machine your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
+
+Now you should update test command and enable parallel. Please remember to add additional containers for your project in CircleCI settings.
+
     test:
       override:
         - bundle exec rake knapsack:rspec:
             parallel: true
+
+Now everything should works. You will get warning at the end of rspec results if time execution will take too much.
 
 ## Tests
 
