@@ -54,6 +54,8 @@ Generate time execution report for your spec files. Run it on your CI machine.
 
 Commit generated report `knapsack_report.json` into your repository.
 
+Report should be updated only after you add a lot of new heavy test or you change existing one which causes a big time execution difference between CI nodes. Anyway you will get time offset warning at the end of rspec results which reminds you when it's good time to regenerate knapsack report.
+
 ## Setup your CI server
 
 On your CI server run this command for the first CI node. Update `CI_NODE_INDEX` for the next one.
