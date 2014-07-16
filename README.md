@@ -14,6 +14,14 @@ Parallel specs across CI server nodes based on each spec file's time execution. 
 
 Short [presentation](http://slides.com/arturt/knapsack) about gem.
 
+## Without Knapsack
+
+![Without Knapsack gem](docs/images/without_knapsack.png)
+
+## With Knapsack
+
+![With Knapsack gem](docs/images/with_knapsack.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
