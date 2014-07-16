@@ -12,6 +12,8 @@
 
 Parallel specs across CI server nodes based on each spec file's time execution. It generates spec time execution report and uses it for further test runs.
 
+Short [presentation](http://slides.com/arturt/knapsack) about gem.
+
 ## Installation
 
 Add this line to your application's Gemfile:
