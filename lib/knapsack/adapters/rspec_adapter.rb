@@ -35,11 +35,9 @@ module Knapsack
         end
       end
 
-      protected
-
       def self.spec_path
         example_group = ::RSpec.current_example.metadata[:example_group]
-        while !example_group[:parent_example_group].nil?
+        until example_group[:parent_example_group].nil?
           example_group = example_group[:parent_example_group]
         end
         example_group[:file_path]
