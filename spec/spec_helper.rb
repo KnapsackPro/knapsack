@@ -6,6 +6,8 @@ CodeClimate::TestReporter.start
 
 require 'knapsack'
 
+Dir["#{Knapsack.root}/spec/support/**/*.rb"].each { |f| require f }
+
 RSpec.configure do |config|
   config.order = :random
   config.mock_with :rspec do |mocks|
