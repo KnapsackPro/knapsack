@@ -26,6 +26,9 @@ script:
   - echo "Run rake task for the second CI node"
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
+  - echo "Run specs with custom knapsack logger"
+  - CUSTOM_LOGGER=true KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+
   - echo "Run specs for custom knapsack report path"
   - cp knapsack_report.json custom_knapsack_report.json
   - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" KNAPSACK_REPORT_PATH="custom_knapsack_report.json" bundle exec rake knapsack:rspec

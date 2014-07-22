@@ -49,6 +49,12 @@ Add at the beginning of your `spec_helper.rb`:
       report_path: 'knapsack_report.json'
     })
 
+    # you can use your own logger or omit completely
+    require 'logger'
+    Knapsack.logger = Logger.new(STDOUT)
+    Knapsack.logger.level = Logger::INFO
+
+    # bind adapter, required
     Knapsack::Adapters::RspecAdapter.bind
 
 Add in your `Rakefile` this lines:

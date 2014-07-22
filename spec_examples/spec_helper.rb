@@ -9,10 +9,11 @@ Knapsack.report.config({
   report_path: 'knapsack_report.json'
 })
 
-# just for test
-require 'logger'
-Knapsack.logger = Logger.new(STDOUT)
-Knapsack.logger.level = Logger::INFO
+if ENV['CUSTOM_LOGGER']
+  require 'logger'
+  Knapsack.logger = Logger.new(STDOUT)
+  Knapsack.logger.level = Logger::INFO
+end
 
 Knapsack::Adapters::RspecAdapter.bind
 
