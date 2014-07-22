@@ -32,12 +32,8 @@ describe Knapsack do
   describe '.logger' do
     subject { described_class.logger }
 
-    before do
-      @logger = described_class.logger
-    end
-
     after do
-      described_class.logger = @logger
+      described_class.logger = nil
     end
 
     context 'when default logger' do
