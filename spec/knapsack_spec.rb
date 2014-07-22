@@ -32,9 +32,8 @@ describe Knapsack do
   describe '.logger' do
     subject { described_class.logger }
 
-    after do
-      described_class.logger = nil
-    end
+    before { described_class.logger = nil }
+    after  { described_class.logger = nil }
 
     context 'when default logger' do
       let(:logger) { instance_double(Knapsack::Logger) }
