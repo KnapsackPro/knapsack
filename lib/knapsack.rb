@@ -1,4 +1,5 @@
 require 'singleton'
+require 'logger'
 require_relative 'knapsack/version'
 require_relative 'knapsack/config'
 require_relative 'knapsack/tracker'
@@ -14,6 +15,8 @@ require_relative 'knapsack/adapters/rspec_adapter'
 
 module Knapsack
   class << self
+    @@logger = nil
+
     def tracker
       Knapsack::Tracker.instance
     end
@@ -29,6 +32,17 @@ module Knapsack
     def load_tasks
       task_loader = Knapsack::TaskLoader.new
       task_loader.load_tasks
+    end
+
+    def logger
+      return @@logger if @@logger
+      log = ::Logger.new(STDOUT)
+      log.level = ::Logger::INFO
+      @@logger = log
+    end
+
+    def logger=(value)
+      @@logger = value
     end
   end
 end

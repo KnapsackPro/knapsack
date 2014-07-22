@@ -9,15 +9,15 @@ module Knapsack
 
       def bind
         if tracker.config[:generate_report]
-          puts 'Knapsack report generator started!'
+          Knapsack.logger.info 'Knapsack report generator started!'
           bind_time_tracker
           bind_report_generator
         elsif tracker.config[:enable_time_offset_warning]
-          puts 'Knapsack time offset warning enabled!'
+          Knapsack.logger.info 'Knapsack time offset warning enabled!'
           bind_time_tracker
           bind_time_offset_warning
         else
-          puts 'Knapsack is off!'
+          Knapsack.logger.warn 'Knapsack adapter is off!'
         end
       end
 
