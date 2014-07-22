@@ -1,7 +1,7 @@
 require 'singleton'
-require 'logger'
 require_relative 'knapsack/version'
 require_relative 'knapsack/config'
+require_relative 'knapsack/logger'
 require_relative 'knapsack/tracker'
 require_relative 'knapsack/presenter'
 require_relative 'knapsack/report'
@@ -36,8 +36,8 @@ module Knapsack
 
     def logger
       return @@logger if @@logger
-      log = ::Logger.new(STDOUT)
-      log.level = ::Logger::INFO
+      log = Knapsack::Logger.new
+      log.level = Knapsack::Logger::INFO
       @@logger = log
     end
 

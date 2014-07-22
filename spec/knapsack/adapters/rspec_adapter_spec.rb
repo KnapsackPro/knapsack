@@ -3,6 +3,11 @@ describe Knapsack::Adapters::RspecAdapter do
 
   describe 'bind methods' do
     let(:config) { double }
+    let(:logger) { instance_double(Knapsack::Logger) }
+
+    before do
+      expect(Knapsack).to receive(:logger).and_return(logger)
+    end
 
     describe '#bind_time_tracker' do
       let(:tracker) { instance_double(Knapsack::Tracker) }
@@ -24,9 +29,9 @@ describe Knapsack::Adapters::RspecAdapter do
         expect(config).to receive(:after).with(:suite).and_yield
         expect(::RSpec).to receive(:configure).and_yield(config)
 
-        expect {
-          subject.bind_time_tracker
-        }.to output(/#{global_time}/).to_stdout
+        expect(logger).to receive(:info).with(global_time)
+
+        subject.bind_time_tracker
       end
     end
 
@@ -43,9 +48,9 @@ describe Knapsack::Adapters::RspecAdapter do
         expect(config).to receive(:after).with(:suite).and_yield
         expect(::RSpec).to receive(:configure).and_yield(config)
 
-        expect {
-          subject.bind_report_generator
-        }.to output(/#{report_details}/).to_stdout
+        expect(logger).to receive(:info).with(report_details)
+
+        subject.bind_report_generator
       end
     end
 
@@ -58,36 +63,36 @@ describe Knapsack::Adapters::RspecAdapter do
         expect(config).to receive(:after).with(:suite).and_yield
         expect(::RSpec).to receive(:configure).and_yield(config)
 
-        expect {
-          subject.bind_time_offset_warning
-        }.to output(/#{time_offset_warning}/).to_stdout
+        expect(logger).to receive(:warn).with(time_offset_warning)
+
+        subject.bind_time_offset_warning
       end
     end
+  end
 
-    describe '.spec_path' do
-      let(:current_example) { double }
-      let(:metadata) do
-        {
-          example_group: {
-            file_path: '1_shared_example.rb',
+  describe '.spec_path' do
+    let(:current_example) { double }
+    let(:metadata) do
+      {
+        example_group: {
+          file_path: '1_shared_example.rb',
+          parent_example_group: {
+            file_path: '2_shared_example.rb',
             parent_example_group: {
-              file_path: '2_shared_example.rb',
-              parent_example_group: {
-                file_path: 'a_spec.rb'
-              }
+              file_path: 'a_spec.rb'
             }
           }
         }
-      end
-
-      subject { described_class.spec_path }
-
-      before do
-        allow(::RSpec).to receive(:current_example).and_return(current_example)
-        allow(current_example).to receive(:metadata).and_return(metadata)
-      end
-
-      it { should eql 'a_spec.rb' }
+      }
     end
+
+    subject { described_class.spec_path }
+
+    before do
+      allow(::RSpec).to receive(:current_example).and_return(current_example)
+      allow(current_example).to receive(:metadata).and_return(metadata)
+    end
+
+    it { should eql 'a_spec.rb' }
   end
 end

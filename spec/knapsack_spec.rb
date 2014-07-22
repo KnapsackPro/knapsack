@@ -28,4 +28,29 @@ describe Knapsack do
       described_class.load_tasks
     end
   end
+
+  describe '.logger' do
+    subject { described_class.logger }
+
+    context 'when default logger' do
+      let(:logger) { instance_double(Knapsack::Logger) }
+
+      before do
+        expect(Knapsack::Logger).to receive(:new).and_return(logger)
+        expect(logger).to receive(:level=).with(Knapsack::Logger::INFO)
+      end
+
+      it { should eql logger }
+    end
+
+    context 'when custom logger' do
+      let(:logger) { double('custom logger') }
+
+      before do
+        described_class.logger = logger
+      end
+
+      it { should eql logger }
+    end
+  end
 end
