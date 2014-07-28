@@ -2,6 +2,10 @@
 
 * TODO
 
+### 0.2.0
+
+* Add knapsack logger. Allow to use custom logger.
+
 ### 0.1.4
 
 * Fix wrong time presentation for negative seconds.
