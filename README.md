@@ -62,13 +62,13 @@ Add in your `Rakefile` this lines:
     require 'knapsack'
     Knapsack.load_tasks
 
-Generate time execution report for your spec files. Run it on your CI machine.
+Generate time execution report for your spec files. Run below command on one of your CI nodes.
 
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 
 Commit generated report `knapsack_report.json` into your repository.
 
-Report should be updated only after you add a lot of new heavy test or you change existing one which causes a big time execution difference between CI nodes. Anyway you will get time offset warning at the end of rspec results which reminds you when it's good time to regenerate knapsack report.
+This report should be updated only after you add a lot of new slow tests or you change existing ones which causes a big time execution difference between CI nodes. Either way, you will get time offset warning at the end of the rspec results which reminds you when it’s a good time to regenerate the knapsack report.
 
 ## Setup your CI server
 
