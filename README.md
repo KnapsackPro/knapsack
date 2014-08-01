@@ -1,4 +1,4 @@
-# ![Knapsack logo](docs/images/logos/knapsack-logo-@2.png)
+# ![Knapsack logo](docs/images/logos/knapsack-logo-%402.png)
 
 [![Gem Version](https://badge.fury.io/rb/knapsack.png)][gem_version]
 [![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)][travis]
