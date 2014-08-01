@@ -1,4 +1,4 @@
-# Knapsack
+# ![Knapsack logo](docs/images/logos/knapsack-logo-@2.png)
 
 [![Gem Version](https://badge.fury.io/rb/knapsack.png)][gem_version]
 [![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)][travis]
@@ -146,3 +146,7 @@ Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a 
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Acknowledgements
+
+Many thanks to [Małgorzata Nowak](https://github.com/informatykgosia) for beautiful logo.
