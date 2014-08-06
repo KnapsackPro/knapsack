@@ -12,9 +12,11 @@ module Knapsack
       private
 
       def post_assign_spec_files_to_node
+        node_index = 0
         leftover_specs.each do |spec_file|
-          node_specs[@node_index] << spec_file
-          update_node_index
+          node_specs[node_index] << spec_file
+          node_index += 1
+          node_index %= ci_node_total
         end
       end
 

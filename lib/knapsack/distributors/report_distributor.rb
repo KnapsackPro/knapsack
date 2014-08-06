@@ -43,20 +43,21 @@ module Knapsack
 
       def assign_slow_spec_files
         @not_assigned_spec_files = []
-        @node_index = 0
+        node_index = 0
         sorted_report_with_existing_specs.each do |spec_file_with_time|
-          assign_slow_spec_file(spec_file_with_time)
-          update_node_index
+          assign_slow_spec_file(node_index, spec_file_with_time)
+          node_index += 1
+          node_index %= ci_node_total
         end
       end
 
-      def assign_slow_spec_file(spec_file_with_time)
+      def assign_slow_spec_file(node_index, spec_file_with_time)
         time = spec_file_with_time[1]
-        time_left = node_specs[@node_index][:time_left] - time
+        time_left = node_specs[node_index][:time_left] - time
 
-        if time_left >= 0 or node_specs[@node_index][:spec_files_with_time].empty?
-          node_specs[@node_index][:time_left] -= time
-          node_specs[@node_index][:spec_files_with_time] << spec_file_with_time
+        if time_left >= 0 or node_specs[node_index][:spec_files_with_time].empty?
+          node_specs[node_index][:time_left] -= time
+          node_specs[node_index][:spec_files_with_time] << spec_file_with_time
         else
           @not_assigned_spec_files << spec_file_with_time
         end

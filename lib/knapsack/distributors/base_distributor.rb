@@ -29,7 +29,6 @@ module Knapsack
 
       def assign_spec_files_to_node
         default_node_specs
-        @node_index = 0
         post_assign_spec_files_to_node
       end
 
@@ -59,11 +58,6 @@ module Knapsack
 
       def default_report
         Knapsack.report.open
-      end
-
-      def update_node_index
-        @node_index += 1
-        @node_index = 0 if @node_index == ci_node_total
       end
     end
   end
