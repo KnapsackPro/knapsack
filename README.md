@@ -113,6 +113,15 @@ Now you should update test command and enable parallel. Please remember to add a
 
 Now everything should works. You will get warning at the end of rspec results if time execution will take too much.
 
+### Info for Travis users
+
+You can parallel your builds across virtual machines with [travis matrix feature](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-your-builds-across-virtual-machines). Edit `.travis.yml`
+
+    env:
+      - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
+      - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
+    script: "bundle exec rake knapsack:rspec"
+
 ## Tests
 
 ### Spec
