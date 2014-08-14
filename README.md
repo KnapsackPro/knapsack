@@ -117,10 +117,28 @@ Now everything should works. You will get warning at the end of rspec results if
 
 You can parallel your builds across virtual machines with [travis matrix feature](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-your-builds-across-virtual-machines). Edit `.travis.yml`
 
+    script: "bundle exec rake knapsack:rspec"
     env:
       - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
       - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
+
+If you want to have some global ENVs and matrix of ENVs then do it like this:
+
     script: "bundle exec rake knapsack:rspec"
+    env:
+      global:
+        - RAILS_ENV=test
+        - MY_GLOBAL_VAR=123
+      matrix:
+        - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
+        - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
+
+Such configuration will generate matrix with 2 following ENV rows:
+
+    CI_NODE_TOTAL=2 CI_NODE_INDEX=0 RAILS_ENV=test MY_GLOBAL_VAR=123
+    CI_NODE_TOTAL=2 CI_NODE_INDEX=1 RAILS_ENV=test MY_GLOBAL_VAR=123
+
+More info in [travis docs](http://docs.travis-ci.com/user/build-configuration/#Environment-variables).
 
 ## Tests
 
