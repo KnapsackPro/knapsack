@@ -138,7 +138,7 @@ Such configuration will generate matrix with 2 following ENV rows:
     CI_NODE_TOTAL=2 CI_NODE_INDEX=0 RAILS_ENV=test MY_GLOBAL_VAR=123
     CI_NODE_TOTAL=2 CI_NODE_INDEX=1 RAILS_ENV=test MY_GLOBAL_VAR=123
 
-More info in [travis docs](http://docs.travis-ci.com/user/build-configuration/#Environment-variables).
+More info about global and matrix ENV configuration in [travis docs](http://docs.travis-ci.com/user/build-configuration/#Environment-variables).
 
 ## Tests
 
