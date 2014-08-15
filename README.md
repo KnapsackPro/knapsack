@@ -140,6 +140,18 @@ Such configuration will generate matrix with 2 following ENV rows:
 
 More info about global and matrix ENV configuration in [travis docs](http://docs.travis-ci.com/user/build-configuration/#Environment-variables).
 
+### Info for semaphoreapp.com users
+
+Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURRENT_THREAD`. The only thing you need to do is set up knapsack rspec command for as many threads as you need. Here is an example:
+
+    # thread 1
+    bundle exec rake knapsack:rspec
+
+    # thread 2
+    bundle exec rake knapsack:rspec
+
+Tests will be split across threads.
+
 ## Tests
 
 ### Spec
