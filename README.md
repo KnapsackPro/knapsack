@@ -94,7 +94,7 @@ You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non defa
 
 If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.
 
-Here is example for test configuration in your `circleci.yml` file.
+Here is an example for test configuration in your `circleci.yml` file.
 
 For the first time run all specs on a single CI node with enabled report generator.
 
@@ -114,6 +114,12 @@ Now you should update test command and enable parallel. Please remember to add a
 Now everything should works. You will get warning at the end of rspec results if time execution will take too much.
 
 ### Info for Travis users
+
+For the first time run all specs at once with enabled report generator. Edit `.travis.yml`
+
+    script: "KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec"
+
+After tests pass your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
 
 You can parallel your builds across virtual machines with [travis matrix feature](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-your-builds-across-virtual-machines). Edit `.travis.yml`
 
