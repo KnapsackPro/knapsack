@@ -6,11 +6,11 @@ module Knapsack
       end
 
       def ci_node_total
-        ENV['CI_NODE_TOTAL'] || ENV['CIRCLE_NODE_TOTAL'] || 1
+        ENV['CI_NODE_TOTAL'] || ENV['CIRCLE_NODE_TOTAL'] || ENV['SEMAPHORE_THREAD_COUNT'] || 1
       end
 
       def ci_node_index
-        ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX'] || 0
+        ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX'] || semaphore_current_thread || 0
       end
 
       def spec_pattern
@@ -27,6 +27,13 @@ module Knapsack
 
       def generate_report
         ENV['KNAPSACK_GENERATE_REPORT'] || false
+      end
+
+      private
+
+      def semaphore_current_thread
+        index = ENV['SEMAPHORE_CURRENT_THREAD']
+        index.to_i - 1 if index
       end
     end
   end

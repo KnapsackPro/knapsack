@@ -2,6 +2,10 @@
 
 * TODO
 
+### 0.3.0
+
+* Add support for semaphoreapp.com thread ENV variables.
+
 ### 0.2.0
 
 * Add knapsack logger. Allow to use custom logger.
