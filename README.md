@@ -148,6 +148,16 @@ More info about global and matrix ENV configuration in [travis docs](http://docs
 
 ### Info for semaphoreapp.com users
 
+#### Step 1
+
+For the first time run all specs at once with enabled report generator. Set up your build command:
+
+    KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
+
+After tests pass your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
+
+#### Step 2
+
 Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURRENT_THREAD`. The only thing you need to do is set up knapsack rspec command for as many threads as you need. Here is an example:
 
     # thread 1
