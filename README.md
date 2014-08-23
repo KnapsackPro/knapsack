@@ -16,6 +16,8 @@ Parallel specs across CI server nodes based on each spec file's time execution. 
 
 Short [presentation](http://slides.com/arturt/knapsack) about gem.
 
+**[Sign up](http://knapsack.launchrock.com) to get info about launch Knapsack Pro with more features and free access for beta users.**
+
 ### Without Knapsack
 
 ![Without Knapsack gem](docs/images/without_knapsack.png)
