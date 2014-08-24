@@ -1,8 +1,4 @@
 shared_examples 'adapter' do
-  before do
-    expect(::RSpec).to receive(:configure)
-  end
-
   describe '#bind_time_tracker' do
     it do
       expect {

@@ -1,5 +1,8 @@
 describe Knapsack::Adapters::RspecAdapter do
-  it_behaves_like 'adapter'
+  context do
+    before { expect(::RSpec).to receive(:configure) }
+    it_behaves_like 'adapter'
+  end
 
   describe 'bind methods' do
     let(:config) { double }
