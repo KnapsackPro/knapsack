@@ -217,3 +217,8 @@ Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a 
 ## Acknowledgements
 
 Many thanks to [Małgorzata Nowak](https://github.com/informatykgosia) for beautiful logo.
+
+## Mentions
+
+* Lunar Logic Blog | [Parallel your specs and don’t waste time](http://blog.lunarlogic.io/2014/parallel-your-specs-and-dont-waste-time/)
+* Travis CI | [Parallelizing RSpec tests on multiple VMs](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-RSpec-tests-on-multiple-VMs)
