@@ -1,3 +1,5 @@
+[Knapsack, The K is silent](http://www.youtube.com/watch?v=-Ae590hensE)
+
 # ![Knapsack logo](docs/images/logos/knapsack-logo-@2.png)
 
 [![Gem Version](https://badge.fury.io/rb/knapsack.png)][gem_version]
