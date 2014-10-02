@@ -71,10 +71,8 @@ describe Knapsack::Adapters::RspecAdapter do
   end
 
   describe '.spec_path' do
-    let(:current_example) { double }
-    let(:metadata) do
+    let(:current_example_metadata) do
       {
-        example_group: {
           file_path: '1_shared_example.rb',
           parent_example_group: {
             file_path: '2_shared_example.rb',
@@ -82,16 +80,10 @@ describe Knapsack::Adapters::RspecAdapter do
               file_path: 'a_spec.rb'
             }
           }
-        }
       }
     end
 
-    subject { described_class.spec_path }
-
-    before do
-      allow(::RSpec).to receive(:current_example).and_return(current_example)
-      allow(current_example).to receive(:metadata).and_return(metadata)
-    end
+    subject { described_class.spec_path(current_example_metadata) }
 
     it { should eql 'a_spec.rb' }
   end
