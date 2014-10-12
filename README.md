@@ -91,7 +91,7 @@ Generate time execution report for your test files. Run below command on one of 
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 
     # Step for Cucumber
-    $ KNAPSACK_GENERATE_REPORT=true cucumber
+    $ KNAPSACK_GENERATE_REPORT=true bundle exec cucumber
 
 Commit generated report `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` into your repository.
 
