@@ -56,7 +56,7 @@ Knapsack::Adapters::RspecAdapter.bind
 
 ### Step for Cucumber
 
-Create file `features/support/knapsack.rb` and add at the beginning of it:
+Create file `features/support/knapsack.rb` and add there:
 
 ```ruby
 require 'knapsack'
