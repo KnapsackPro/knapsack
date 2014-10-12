@@ -101,7 +101,7 @@ Generate time execution report for your test files. Run below command on one of 
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 
     # Step for Cucumber
-    $ KNAPSACK_GENERATE_REPORT=true bundle exec cucumber
+    $ KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
 
 Commit generated report `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` into your repository.
 
@@ -111,15 +111,27 @@ This report should be updated only after you add a lot of new slow tests or you 
 
 On your CI server run this command for the first CI node. Update `CI_NODE_INDEX` for the next one.
 
+    # Step for RSpec
     $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+
+    # Step for Cucumber
+    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
 You can add `KNAPSACK_SPEC_PATTERN` if your specs are not in `spec` directory. For instance:
 
+    # Step for RSpec
     $ KNAPSACK_SPEC_PATTERN="directory_with_specs/**/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+
+    # Step for Cucumber
+    $ KNAPSACK_SPEC_PATTERN="directory_with_specs/**/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
 You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non default location. Example:
 
+    # Step for RSpec
     $ KNAPSACK_REPORT_PATH="custom_knapsack_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+
+    # Step for Cucumber
+    $ KNAPSACK_REPORT_PATH="custom_knapsack_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
 ### Info about ENV variables
 
@@ -140,10 +152,14 @@ For the first time run all specs on a single CI node with enabled report generat
 ```yaml
 test:
   override:
+    # Step for RSpec
     - KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
+
+    # Step for Cucumber
+    - KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
 ```
 
-After tests pass on your CircleCI machine your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
+After tests pass on your CircleCI machine your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
 
 #### Step 2
 
@@ -152,11 +168,16 @@ Now you should update test command and enable parallel. Please remember to add a
 ```yaml
 test:
   override:
+    # Step for RSpec
     - bundle exec rake knapsack:rspec:
+        parallel: true
+
+    # Step for Cucumber
+    - bundle exec rake knapsack:cucumber:
         parallel: true
 ```
 
-Now everything should works. You will get warning at the end of rspec results if time execution will take too much.
+Now everything should works. You will get warning at the end of rspec/cucumber results if time execution will take too much.
 
 ### Info for Travis users
 
@@ -165,17 +186,26 @@ Now everything should works. You will get warning at the end of rspec results if
 For the first time run all specs at once with enabled report generator. Edit `.travis.yml`
 
 ```yaml
+# Step for RSpec
 script: "KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec"
+
+# Step for Cucumber
+script: "KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features"
 ```
 
-After tests pass your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
+After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
 
 #### Step 2
 
 You can parallel your builds across virtual machines with [travis matrix feature](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-your-builds-across-virtual-machines). Edit `.travis.yml`
 
 ```yaml
+# Step for RSpec
 script: "bundle exec rake knapsack:rspec"
+
+# Step for Cucumber
+script: "bundle exec rake knapsack:cucumber"
+
 env:
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
@@ -184,7 +214,12 @@ env:
 If you want to have some global ENVs and matrix of ENVs then do it like this:
 
 ```yaml
+# Step for RSpec
 script: "bundle exec rake knapsack:rspec"
+
+# Step for Cucumber
+script: "bundle exec rake knapsack:cucumber"
+
 env:
   global:
     - RAILS_ENV=test
@@ -207,19 +242,29 @@ More info about global and matrix ENV configuration in [travis docs](http://docs
 
 For the first time run all specs at once with enabled report generator. Set up your build command:
 
+    # Step for RSpec
     KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 
-After tests pass your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
+    # Step for Cucumber
+    KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
+
+After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
 
 #### Step 2
 
-Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURRENT_THREAD`. The only thing you need to do is set up knapsack rspec command for as many threads as you need. Here is an example:
+Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURRENT_THREAD`. The only thing you need to do is set up knapsack rspec/cucumber command for as many threads as you need. Here is an example:
 
-    # thread 1
+    # Thread 1
+    ## Step for RSpec
     bundle exec rake knapsack:rspec
+    ## Step for Cucumber
+    bundle exec rake knapsack:cucumber
 
-    # thread 2
+    # Thread 2
+    ## Step for RSpec
     bundle exec rake knapsack:rspec
+    ## Step for Cucumber
+    bundle exec rake knapsack:cucumber
 
 Tests will be split across threads.
 
