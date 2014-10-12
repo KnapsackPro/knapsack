@@ -47,11 +47,11 @@ And then execute:
 Add at the beginning of your `spec_helper.rb`:
 
 ```ruby
-    require 'knapsack'
+require 'knapsack'
 
-    # CUSTOM_CONFIG_GOES_HERE
+# CUSTOM_CONFIG_GOES_HERE
 
-    Knapsack::Adapters::RspecAdapter.bind
+Knapsack::Adapters::RspecAdapter.bind
 ```
 
 ### Step for Cucumber
@@ -59,11 +59,11 @@ Add at the beginning of your `spec_helper.rb`:
 Create file `features/support/knapsack.rb` and add at the beginning of it:
 
 ```ruby
-    require 'knapsack'
+require 'knapsack'
 
-    # CUSTOM_CONFIG_GOES_HERE
+# CUSTOM_CONFIG_GOES_HERE
 
-    Knapsack::Adapters::CucumberAdapter.bind
+Knapsack::Adapters::CucumberAdapter.bind
 ```
 
 ### Custom configuration
@@ -71,19 +71,19 @@ Create file `features/support/knapsack.rb` and add at the beginning of it:
 You can change default Knapsack configuration for RSpec or Cucumber tests. Here are examples what you can do. Put below configuration instead of `CUSTOM_CONFIG_GOES_HERE`.
 
 ```ruby
-    Knapsack.tracker.config({
-      enable_time_offset_warning: true,
-      time_offset_in_seconds: 30
-    })
+Knapsack.tracker.config({
+  enable_time_offset_warning: true,
+  time_offset_in_seconds: 30
+})
 
-    Knapsack.report.config({
-      report_path: 'knapsack_custom_report.json'
-    })
+Knapsack.report.config({
+  report_path: 'knapsack_custom_report.json'
+})
 
-    # you can use your own logger
-    require 'logger'
-    Knapsack.logger = Logger.new(STDOUT)
-    Knapsack.logger.level = Logger::INFO
+# you can use your own logger
+require 'logger'
+Knapsack.logger = Logger.new(STDOUT)
+Knapsack.logger.level = Logger::INFO
 ```
 
 ### Common step
@@ -91,8 +91,8 @@ You can change default Knapsack configuration for RSpec or Cucumber tests. Here 
 Add in your `Rakefile` this lines:
 
 ```ruby
-    require 'knapsack'
-    Knapsack.load_tasks
+require 'knapsack'
+Knapsack.load_tasks
 ```
 
 Generate time execution report for your test files. Run below command on one of your CI nodes.
@@ -138,9 +138,9 @@ Here is an example for test configuration in your `circleci.yml` file.
 For the first time run all specs on a single CI node with enabled report generator.
 
 ```yaml
-    test:
-      override:
-        - KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
+test:
+  override:
+    - KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 ```
 
 After tests pass on your CircleCI machine your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
@@ -150,10 +150,10 @@ After tests pass on your CircleCI machine your should copy knapsack json report 
 Now you should update test command and enable parallel. Please remember to add additional containers for your project in CircleCI settings.
 
 ```yaml
-    test:
-      override:
-        - bundle exec rake knapsack:rspec:
-            parallel: true
+test:
+  override:
+    - bundle exec rake knapsack:rspec:
+        parallel: true
 ```
 
 Now everything should works. You will get warning at the end of rspec results if time execution will take too much.
@@ -165,7 +165,7 @@ Now everything should works. You will get warning at the end of rspec results if
 For the first time run all specs at once with enabled report generator. Edit `.travis.yml`
 
 ```yaml
-    script: "KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec"
+script: "KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec"
 ```
 
 After tests pass your should copy knapsack json report which is rendered at the end of rspec results. Save it into your repository as `knapsack_report.json` file and commit.
@@ -175,23 +175,23 @@ After tests pass your should copy knapsack json report which is rendered at the 
 You can parallel your builds across virtual machines with [travis matrix feature](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-your-builds-across-virtual-machines). Edit `.travis.yml`
 
 ```yaml
-    script: "bundle exec rake knapsack:rspec"
-    env:
-      - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
-      - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
+script: "bundle exec rake knapsack:rspec"
+env:
+  - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
+  - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
 ```
 
 If you want to have some global ENVs and matrix of ENVs then do it like this:
 
 ```yaml
-    script: "bundle exec rake knapsack:rspec"
-    env:
-      global:
-        - RAILS_ENV=test
-        - MY_GLOBAL_VAR=123
-      matrix:
-        - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
-        - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
+script: "bundle exec rake knapsack:rspec"
+env:
+  global:
+    - RAILS_ENV=test
+    - MY_GLOBAL_VAR=123
+  matrix:
+    - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
+    - CI_NODE_TOTAL=2 CI_NODE_INDEX=1
 ```
 
 Such configuration will generate matrix with 2 following ENV rows:
