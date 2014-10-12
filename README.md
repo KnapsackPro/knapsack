@@ -223,7 +223,7 @@ Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURR
 
 Tests will be split across threads.
 
-## Tests
+## Gem tests
 
 ### Spec
 
