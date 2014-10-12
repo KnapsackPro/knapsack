@@ -43,14 +43,16 @@ describe Knapsack::Allocator do
   end
 
   describe '#spec_dir' do
+    let(:spec_pattern) { "spec_dir/**/*_spec.rb" }
+
     subject { allocator.spec_dir }
 
     context 'when spec pattern exists' do
-      let(:spec_pattern) { "spec_dir/**/*_spec.rb" }
       it { should eql 'spec_dir/' }
     end
 
-    context "when spec pattern doesn't exist" do
+    context "when ENV spec pattern exists" do
+      before { stub_const("ENV", { 'KNAPSACK_SPEC_PATTERN' => 'spec/**/*_spec.rb' }) }
       it { should eql 'spec/' }
     end
   end

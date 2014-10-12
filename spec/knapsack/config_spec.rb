@@ -73,7 +73,7 @@ describe Knapsack::Config do
     end
 
     context "when ENV doesn't exist" do
-      it { should eql 'spec/**/*_spec.rb' }
+      it { should be_nil }
     end
   end
 

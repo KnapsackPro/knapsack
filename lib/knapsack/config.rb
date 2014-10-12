@@ -14,7 +14,7 @@ module Knapsack
       end
 
       def spec_pattern
-        ENV['KNAPSACK_SPEC_PATTERN'] || 'spec/**/*_spec.rb'
+        ENV['KNAPSACK_SPEC_PATTERN']
       end
 
       def enable_time_offset_warning

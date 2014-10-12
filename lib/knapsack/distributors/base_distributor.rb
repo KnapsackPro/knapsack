@@ -33,6 +33,7 @@ module Knapsack
       end
 
       def all_specs
+        raise("Missing spec pattern for #{self.class}") unless spec_pattern
         @all_specs ||= Dir[spec_pattern]
       end
 

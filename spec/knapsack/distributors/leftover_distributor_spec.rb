@@ -25,7 +25,8 @@ describe Knapsack::Distributors::LeftoverDistributor do
   describe '#all_specs' do
     subject { distributor.all_specs }
 
-    context 'when default spec pattern' do
+    context 'when ENV spec pattern' do
+      before { stub_const("ENV", { 'KNAPSACK_SPEC_PATTERN' => 'spec/**/*_spec.rb' }) }
       it { should_not be_empty }
       it { should include 'spec/knapsack/tracker_spec.rb' }
       it { should include 'spec/knapsack/adapters/rspec_adapter_spec.rb' }
@@ -34,6 +35,12 @@ describe Knapsack::Distributors::LeftoverDistributor do
     context 'when fake spec pattern' do
       let(:args) { { spec_pattern: 'fake_pattern' } }
       it { should be_empty }
+    end
+
+    context 'when missing spec pattern' do
+      it do
+        expect { subject }.to raise_error('Missing spec pattern for Knapsack::Distributors::LeftoverDistributor')
+      end
     end
   end
 
