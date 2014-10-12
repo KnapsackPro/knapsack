@@ -1,6 +1,8 @@
 module Knapsack
   module Adapters
     class BaseAdapter
+      # Just examples, please overwrite constants in subclasses
+      TEST_DIR_PATTERN = 'test/**/*_test.rb'
       REPORT_PATH = 'knapsack_base_report.json'
 
       def self.bind
@@ -10,7 +12,7 @@ module Knapsack
       end
 
       def bind
-        set_report_path
+        update_report_config
 
         if tracker.config[:generate_report]
           Knapsack.logger.info 'Knapsack report generator started!'
@@ -43,8 +45,9 @@ module Knapsack
         Knapsack.tracker
       end
 
-      def set_report_path
+      def update_report_config
         Knapsack.report.config({
+          spec_pattern: self.class::TEST_DIR_PATTERN,
           report_path: self.class::REPORT_PATH
         })
       end

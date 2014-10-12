@@ -72,7 +72,9 @@ module Knapsack
     end
 
     def report_distributor
-      @report_distributor ||= Knapsack::Distributors::ReportDistributor.new
+      @report_distributor ||= Knapsack::Distributors::ReportDistributor.new({
+        spec_pattern: Knapsack.report.config[:spec_pattern]
+      })
     end
   end
 end

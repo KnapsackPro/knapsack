@@ -1,8 +1,6 @@
 module Knapsack
   class Allocator
     def initialize(args={})
-      args.merge!({ spec_pattern: Config.spec_pattern }) if Config.spec_pattern
-      @spec_pattern = args[:spec_pattern]
       @report_distributor = Knapsack::Distributors::ReportDistributor.new(args)
       @leftover_distributor = Knapsack::Distributors::LeftoverDistributor.new(args)
     end
@@ -24,7 +22,7 @@ module Knapsack
     end
 
     def spec_dir
-      @spec_pattern.gsub(/^(.*?)\//).first
+      @report_distributor.spec_pattern.gsub(/^(.*?)\//).first
     end
   end
 end

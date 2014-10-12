@@ -4,6 +4,8 @@ module Knapsack
       attr_reader :report, :node_specs, :spec_pattern
 
       def initialize(args={})
+        # FIXME ENVs should have higher priority, write it better
+        args.merge!({ spec_pattern: config.spec_pattern }) if config.spec_pattern
         @report = args[:report] || default_report
         @ci_node_total = args[:ci_node_total] || config.ci_node_total
         @ci_node_index = args[:ci_node_index] || config.ci_node_index
