@@ -3,7 +3,7 @@ require 'knapsack'
 namespace :knapsack do
   task :rspec do
     allocator = Knapsack::Allocator.new({
-      spec_pattern: 'spec/**/*_spec.rb'
+      spec_pattern: Knapsack::Adapters::RspecAdapter::TEST_DIR_PATTERN
     })
 
     puts

@@ -1,6 +1,8 @@
 module Knapsack
   module Adapters
     class RspecAdapter < BaseAdapter
+      TEST_DIR_PATTERN = 'spec/**/*_spec.rb'
+
       def bind_time_tracker
         ::RSpec.configure do |config|
           config.before(:each) do

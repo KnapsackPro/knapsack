@@ -3,7 +3,7 @@ require 'knapsack'
 namespace :knapsack do
   task :cucumber do
     allocator = Knapsack::Allocator.new({
-      spec_pattern: 'features/**/*.feature'
+      spec_pattern: Knapsack::Adapters::CucumberAdapter::TEST_DIR_PATTERN
     })
 
     puts
