@@ -3,7 +3,7 @@ module Knapsack
     include Singleton
 
     def config(opts={})
-      @config ||= default_config
+      @config ||= opts
       @config.merge!(opts)
     end
 
@@ -21,12 +21,6 @@ module Knapsack
     end
 
     private
-
-    def default_config
-      {
-        report_path: Config.report_path
-      }
-    end
 
     def report_json
       Presenter.report_json

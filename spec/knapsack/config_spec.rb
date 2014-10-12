@@ -9,7 +9,7 @@ describe Knapsack::Config do
     end
 
     context "when ENV doesn't exist" do
-      it { should eql 'knapsack_report.json' }
+      it { should be_nil }
     end
   end
 

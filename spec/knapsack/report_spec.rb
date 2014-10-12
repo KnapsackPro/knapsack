@@ -23,11 +23,7 @@ describe Knapsack::Report do
     end
 
     context "when didn't pass options" do
-      it do
-        expect(report.config).to eql({
-          report_path: 'knapsack_report.json'
-        })
-      end
+      it { expect(report.config).to eql({}) }
     end
   end
 

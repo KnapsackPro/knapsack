@@ -2,7 +2,7 @@ module Knapsack
   class Config
     class << self
       def report_path
-        ENV['KNAPSACK_REPORT_PATH'] || 'knapsack_report.json'
+        ENV['KNAPSACK_REPORT_PATH']
       end
 
       def ci_node_total
