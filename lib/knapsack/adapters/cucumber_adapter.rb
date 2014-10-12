@@ -2,6 +2,7 @@ module Knapsack
   module Adapters
     class CucumberAdapter < BaseAdapter
       TEST_DIR_PATTERN = 'features/**/*.feature'
+      REPORT_PATH = 'knapsack_cucumber_report.json'
 
       def bind_time_tracker
         Around do |scenario, block|

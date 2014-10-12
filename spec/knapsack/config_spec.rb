@@ -3,7 +3,7 @@ describe Knapsack::Config do
     subject { described_class.report_path }
 
     context 'when ENV exists' do
-      let(:report_path) { 'custom_knapsack_report.json' }
+      let(:report_path) { 'knapsack_custom_report.json' }
       before { stub_const("ENV", { 'KNAPSACK_REPORT_PATH' => report_path }) }
       it { should eql report_path }
     end

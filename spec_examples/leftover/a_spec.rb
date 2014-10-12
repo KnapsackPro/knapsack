@@ -1,4 +1,4 @@
-# this file should not be included in knapsack_report.json
+# this file should not be included in knapsack_rspec_report.json
 describe 'Leftover Slow A' do
   it { sleep 1 }
   it { sleep 0.1 }

@@ -6,7 +6,7 @@ Knapsack.tracker.config({
   time_offset_in_seconds: 3
 })
 Knapsack.report.config({
-  report_path: 'knapsack_report.json'
+  report_path: 'knapsack_rspec_report.json'
 })
 
 if ENV['CUSTOM_LOGGER']

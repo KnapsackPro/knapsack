@@ -31,8 +31,8 @@ script:
   - CUSTOM_LOGGER=true KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
   - echo "Run specs for custom knapsack report path"
-  - cp knapsack_report.json custom_knapsack_report.json
-  - KNAPSACK_REPORT_PATH="custom_knapsack_report.json" KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+  - cp knapsack_rspec_report.json knapsack_custom_report.json
+  - KNAPSACK_REPORT_PATH="knapsack_custom_report.json" KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
   - echo "Run specs when spec file was removed and still exists in knapsack report json"
   - rm spec_examples/fast/1_spec.rb

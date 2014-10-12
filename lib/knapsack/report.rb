@@ -4,7 +4,10 @@ module Knapsack
 
     def config(opts={})
       @config ||= opts
+      raise('Missing report_path') unless @config[:report_path]
       @config.merge!(opts)
+      @config.merge!({ report_path: report_path }) if report_path
+      @config
     end
 
     def save
@@ -24,6 +27,10 @@ module Knapsack
 
     def report_json
       Presenter.report_json
+    end
+
+    def report_path
+      Config.report_path
     end
   end
 end

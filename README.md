@@ -128,10 +128,10 @@ You can add `KNAPSACK_SPEC_PATTERN` if your specs are not in `spec` directory. F
 You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non default location. Example:
 
     # Step for RSpec
-    $ KNAPSACK_REPORT_PATH="custom_knapsack_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+    $ KNAPSACK_REPORT_PATH="knapsack_custom_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
 
     # Step for Cucumber
-    $ KNAPSACK_REPORT_PATH="custom_knapsack_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
+    $ KNAPSACK_REPORT_PATH="knapsack_custom_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
 ### Info about ENV variables
 
@@ -284,7 +284,7 @@ To generate a new knapsack report for specs with `focus` tag (only specs in `spe
 
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples --tag focus
 
-**Warning:** Current `knapsack_report.json` file was generated for `spec_examples` except `spec_examples/leftover` directory. Just for testing reason to see how leftover specs will be distribute in a dumb way across CI nodes.
+**Warning:** Current `knapsack_rspec_report.json` file was generated for `spec_examples` except `spec_examples/leftover` directory. Just for testing reason to see how leftover specs will be distribute in a dumb way across CI nodes.
 
 To see specs distributed for the first CI node type:
 

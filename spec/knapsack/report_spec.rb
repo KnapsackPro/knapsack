@@ -9,21 +9,25 @@ describe Knapsack::Report do
     context 'when passed options' do
       let(:opts) do
         {
-          report_path: 'new_knapsack_report.json',
+          report_path: 'knapsack_new_report.json',
           fake: true
         }
       end
 
       it do
         expect(report.config(opts)).to eql({
-          report_path: 'new_knapsack_report.json',
+          report_path: 'knapsack_new_report.json',
           fake: true
         })
       end
     end
 
     context "when didn't pass options" do
-      it { expect(report.config).to eql({}) }
+      it do
+        expect {
+          report.config
+        }.to raise_error('Missing report_path')
+      end
     end
   end
 

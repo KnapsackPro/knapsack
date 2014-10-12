@@ -2,6 +2,10 @@ require 'knapsack'
 
 namespace :knapsack do
   task :cucumber do
+    Knapsack.report.config({
+      report_path: Knapsack::Adapters::CucumberAdapter::REPORT_PATH
+    })
+
     allocator = Knapsack::Allocator.new({
       spec_pattern: Knapsack::Adapters::CucumberAdapter::TEST_DIR_PATTERN
     })
