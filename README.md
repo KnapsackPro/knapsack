@@ -40,39 +40,60 @@ And then execute:
 
 ## Usage
 
+### Step for RSpec
+
 Add at the beginning of your `spec_helper.rb`:
 
     require 'knapsack'
 
-    # default configuration, you can change it or omit completely
+    # CUSTOM_CONFIG_GOES_HERE
+
+    Knapsack::Adapters::RspecAdapter.bind
+
+### Step for Cucumber
+
+Create file `features/support/knapsack.rb` and add at the beginning of it:
+
+    require 'knapsack'
+
+    # CUSTOM_CONFIG_GOES_HERE
+
+    Knapsack::Adapters::CucumberAdapter.bind
+
+### Custom configuration
+
+You can change default Knapsack configuration for RSpec or Cucumber tests. Here are examples what you can do. Put below configuration instead of `CUSTOM_CONFIG_GOES_HERE`.
+
     Knapsack.tracker.config({
       enable_time_offset_warning: true,
       time_offset_in_seconds: 30
     })
 
-    # default configuration for report, you can change it or omit completely
     Knapsack.report.config({
-      report_path: 'knapsack_report.json'
+      report_path: 'knapsack_custom_report.json'
     })
 
-    # you can use your own logger or omit completely
+    # you can use your own logger
     require 'logger'
     Knapsack.logger = Logger.new(STDOUT)
     Knapsack.logger.level = Logger::INFO
 
-    # bind adapter, required
-    Knapsack::Adapters::RspecAdapter.bind
+### Common step
 
 Add in your `Rakefile` this lines:
 
     require 'knapsack'
     Knapsack.load_tasks
 
-Generate time execution report for your spec files. Run below command on one of your CI nodes.
+Generate time execution report for your test files. Run below command on one of your CI nodes.
 
+    # Step for RSpec
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
 
-Commit generated report `knapsack_report.json` into your repository.
+    # Step for Cucumber
+    $ KNAPSACK_GENERATE_REPORT=true cucumber
+
+Commit generated report `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` into your repository.
 
 This report should be updated only after you add a lot of new slow tests or you change existing ones which causes a big time execution difference between CI nodes. Either way, you will get time offset warning at the end of the rspec results which reminds you when it’s a good time to regenerate the knapsack report.
 
