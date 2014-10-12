@@ -1,3 +1,5 @@
+[Knapsack, The K is silent](http://www.youtube.com/watch?v=-Ae590hensE)
+
 # ![Knapsack logo](docs/images/logos/knapsack-logo-@2.png)
 
 [![Gem Version](https://badge.fury.io/rb/knapsack.png)][gem_version]
@@ -222,3 +224,4 @@ Many thanks to [Małgorzata Nowak](https://github.com/informatykgosia) for beaut
 
 * Lunar Logic Blog | [Parallel your specs and don’t waste time](http://blog.lunarlogic.io/2014/parallel-your-specs-and-dont-waste-time/)
 * Travis CI | [Parallelizing RSpec tests on multiple VMs](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-RSpec-tests-on-multiple-VMs)
+* Semaphore | [Running RSpec specs in parallel](https://semaphoreapp.com/docs/running-rspec-specs-in-threads.html)

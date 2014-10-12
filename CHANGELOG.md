@@ -2,6 +2,10 @@
 
 * TODO
 
+### 0.4.0
+
+* Add support for RSpec 2.
+
 ### 0.3.0
 
 * Add support for semaphoreapp.com thread ENV variables.
