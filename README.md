@@ -152,7 +152,7 @@ To do this with Knapsack you simply add your rspec arguments as parameters to th
 
     $ bundle exec rake "knapsack:rspec[--tag focus]"
 
-Remember that using tags to limit which specs get run will affect the time each file takes to run. One solution to this is to generate a new `knapsack_report.json` for the commonly run scenarios.
+Remember that using tags to limit which specs get run will affect the time each file takes to run. One solution to this is to generate a new `knapsack_rspec_report.json` for the commonly run scenarios.
 
 ### Info for CircleCI users
 
