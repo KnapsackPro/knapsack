@@ -2,6 +2,10 @@
 
 * TODO
 
+### 0.5.0
+
+* Allow passing arguments to rspec via knapsack:rspec task.
+
 ### 0.4.0
 
 * Add support for RSpec 2.

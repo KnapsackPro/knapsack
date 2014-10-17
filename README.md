@@ -142,6 +142,18 @@ You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non defa
 
 `CI_NODE_INDEX` - index of current CI node starts from 0. Second CI node should have `CI_NODE_INDEX=1`.
 
+### Passing arguments to rspec
+
+Knapsack allows you to pass arguments through to rspec. For example if you want to run only specs that have the tag `focus`. If you do this with rspec directly it would look like:
+
+    $ bundle exec rake rspec --tag focus
+
+To do this with Knapsack you simply add your rspec arguments as parameters to the knapsack rake task.
+
+    $ bundle exec rake "knapsack:rspec[--tag focus]"
+
+Remember that using tags to limit which specs get run will affect the time each file takes to run. One solution to this is to generate a new `knapsack_report.json` for the commonly run scenarios.
+
 ### Info for CircleCI users
 
 If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.

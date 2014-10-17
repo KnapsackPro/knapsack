@@ -1,7 +1,9 @@
 require 'knapsack'
 
 namespace :knapsack do
-  task :rspec do
+  task :rspec, [:rspec_args] do |t, args|
+    rspec_args = args[:rspec_args]
+
     Knapsack.report.config({
       report_path: Knapsack::Adapters::RspecAdapter::REPORT_PATH
     })
@@ -18,7 +20,7 @@ namespace :knapsack do
     puts allocator.leftover_node_specs
     puts
 
-    cmd = %Q[bundle exec rspec --default-path #{allocator.spec_dir} -- #{allocator.stringify_node_specs}]
+    cmd = %Q[bundle exec rspec #{rspec_args} --default-path #{allocator.spec_dir} -- #{allocator.stringify_node_specs}]
 
     exec(cmd)
   end
