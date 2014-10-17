@@ -18,8 +18,8 @@ Parallel specs across CI server nodes based on each spec file's time execution. 
 
 Presentations about gem:
 
-* [2014 X Kraków Ruby User Group](http://slides.com/arturt/parallel-tests-in-comparable-time)
-* [2014 VII Lunar Logic Dev Meeting](http://slides.com/arturt/knapsack)
+* [X 2014 Kraków Ruby User Group](http://slides.com/arturt/parallel-tests-in-comparable-time)
+* [VII 2014 Lunar Logic Dev Meeting](http://slides.com/arturt/knapsack)
 
 **[Sign up](http://knapsack.launchrock.com) to get info about launch Knapsack Pro with more features and free access for beta users.**
 
