@@ -93,6 +93,19 @@ You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non defa
 
     $ KNAPSACK_REPORT_PATH="custom_knapsack_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
 
+### Passing arguments to rspec
+Knapsack now allows you to pass arguments through to rspec.
+For example.
+If you wanted to run only specs that have the tag `focus`.  If you did this with rspec directly it would look like
+
+    $ bundle exec rspec --tag focus
+
+To do this with knapsack you simply add your rspec arguments as parameters the the knapsack rake task.
+
+    $ bundle exec knapsack:rspec[--tag focus]
+
+Remember that using tags to limit which specs get run will affect the time each file takes to run.  One solution to this is to generate a new `knapsack_report.json` for the commonly run scenarios.
+
 ### Info about ENV variables
 
 `CI_NODE_TOTAL` - total number CI nodes you have.
