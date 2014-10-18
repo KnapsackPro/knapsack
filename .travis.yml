@@ -13,31 +13,31 @@ addons:
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 script:
-  - echo "Run specs for Knapsack gem"
+  - bin/print_header.sh "Run specs for Knapsack gem"
   - bundle exec rspec spec
 
-  - echo "Generate knapsack report"
+  - bin/print_header.sh "Generate knapsack report"
   - KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples --tag focus
 
-  - echo "Run specs with enabled time offset warning"
+  - bin/print_header.sh "Run specs with enabled time offset warning"
   - bundle exec rspec --default-path spec_examples
 
-  - echo "Run rake task for the first CI node"
+  - bin/print_header.sh "Run rake task for the first CI node"
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
-  - echo "Run rake task for the second CI node"
+  - bin/print_header.sh "Run rake task for the second CI node"
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
-  - echo "Check passing arguments to rspec. Run only specs with custom_focus tag"
+  - bin/print_header.sh "Check passing arguments to rspec. Run only specs with custom_focus tag"
   - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake "knapsack:rspec[--tag custom_focus]"
 
-  - echo "Run specs with custom knapsack logger"
+  - bin/print_header.sh "Run specs with custom knapsack logger"
   - CUSTOM_LOGGER=true KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
-  - echo "Run specs for custom knapsack report path"
+  - bin/print_header.sh "Run specs for custom knapsack report path"
   - cp knapsack_rspec_report.json knapsack_custom_report.json
   - KNAPSACK_REPORT_PATH="knapsack_custom_report.json" KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
-  - echo "Run specs when spec file was removed and still exists in knapsack report json"
+  - bin/print_header.sh "Run specs when spec file was removed and still exists in knapsack report json"
   - rm spec_examples/fast/1_spec.rb
   - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 notifications:
