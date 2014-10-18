@@ -80,6 +80,7 @@ Knapsack.tracker.config({
 })
 
 Knapsack.report.config({
+  spec_pattern: 'spec/**/*_spec.rb', # default value based on adapter
   report_path: 'knapsack_custom_report.json'
 })
 
