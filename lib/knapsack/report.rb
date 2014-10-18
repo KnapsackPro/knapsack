@@ -4,7 +4,6 @@ module Knapsack
 
     def config(args={})
       @config ||= args
-      raise('Missing spec_pattern') unless @config[:spec_pattern]
       raise('Missing report_path') unless @config[:report_path]
       @config.merge!(args)
     end
