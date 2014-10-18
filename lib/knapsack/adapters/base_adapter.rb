@@ -47,8 +47,8 @@ module Knapsack
 
       def update_report_config
         Knapsack.report.config({
-          spec_pattern: self.class::TEST_DIR_PATTERN,
-          report_path: self.class::REPORT_PATH
+          spec_pattern: Knapsack::Config::Env.spec_pattern || self.class::TEST_DIR_PATTERN,
+          report_path: Knapsack::Config::Env.report_path || self.class::REPORT_PATH
         })
       end
     end

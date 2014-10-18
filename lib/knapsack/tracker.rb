@@ -50,9 +50,9 @@ module Knapsack
 
     def default_config
       {
-        enable_time_offset_warning: Config.enable_time_offset_warning,
-        time_offset_in_seconds: Config.time_offset_in_seconds,
-        generate_report: Config.generate_report
+        enable_time_offset_warning: Config::Tracker.enable_time_offset_warning,
+        time_offset_in_seconds: Config::Tracker.time_offset_in_seconds,
+        generate_report: Config::Tracker.generate_report
       }
     end
 
@@ -73,7 +73,10 @@ module Knapsack
 
     def report_distributor
       @report_distributor ||= Knapsack::Distributors::ReportDistributor.new({
-        spec_pattern: Knapsack.report.config[:spec_pattern]
+        report: Knapsack.report.open,
+        ci_node_total: Knapsack::Config::Env.ci_node_total,
+        ci_node_index: Knapsack::Config::Env.ci_node_index,
+        spec_pattern: Knapsack::Config::Env.spec_pattern || Knapsack.report.config[:spec_pattern]
       })
     end
   end

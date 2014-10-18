@@ -1,6 +1,7 @@
 require 'singleton'
 require_relative 'knapsack/version'
-require_relative 'knapsack/config'
+require_relative 'knapsack/config/env'
+require_relative 'knapsack/config/tracker'
 require_relative 'knapsack/logger'
 require_relative 'knapsack/tracker'
 require_relative 'knapsack/presenter'

@@ -2,12 +2,10 @@ module Knapsack
   class Report
     include Singleton
 
-    def config(opts={})
-      @config ||= opts
+    def config(args={})
+      @config ||= args
       raise('Missing report_path') unless @config[:report_path]
-      @config.merge!(opts)
-      @config.merge!({ report_path: Config.report_path }) if Config.report_path
-      @config
+      @config.merge!(args)
     end
 
     def save

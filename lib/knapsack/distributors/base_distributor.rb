@@ -4,12 +4,10 @@ module Knapsack
       attr_reader :report, :node_specs, :spec_pattern
 
       def initialize(args={})
-        # FIXME ENVs should have higher priority, write it better
-        args.merge!({ spec_pattern: config.spec_pattern }) if config.spec_pattern
-        @report = args[:report] || default_report
-        @ci_node_total = args[:ci_node_total] || config.ci_node_total
-        @ci_node_index = args[:ci_node_index] || config.ci_node_index
-        @spec_pattern = args[:spec_pattern] || config.spec_pattern
+        @report = args[:report] || raise('Missing report_path')
+        @ci_node_total = args[:ci_node_total] || raise('Missing ci_node_total')
+        @ci_node_index = args[:ci_node_index] || raise('Missing ci_node_index')
+        @spec_pattern = args[:spec_pattern] || raise('Missing spec_pattern')
       end
 
       def ci_node_total
@@ -35,7 +33,6 @@ module Knapsack
       end
 
       def all_specs
-        raise("Missing spec pattern for #{self.class}") unless spec_pattern
         @all_specs ||= Dir[spec_pattern]
       end
 
@@ -51,16 +48,6 @@ module Knapsack
 
       def default_node_specs
         raise NotImplementedError
-      end
-
-      private
-
-      def config
-        Knapsack::Config
-      end
-
-      def default_report
-        Knapsack.report.open
       end
     end
   end
