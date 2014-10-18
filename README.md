@@ -154,6 +154,12 @@ To do this with Knapsack you simply add your rspec arguments as parameters to th
 
 Remember that using tags to limit which specs get run will affect the time each file takes to run. One solution to this is to generate a new `knapsack_rspec_report.json` for the commonly run scenarios.
 
+### Passing arguments to cucumber
+
+Add arguments to knapsack cucumber task like this:
+
+    $ bundle exec rake "knapsack:cucumber[--name feature]"
+
 ### Info for CircleCI users
 
 If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.

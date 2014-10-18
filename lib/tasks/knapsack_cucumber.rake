@@ -1,7 +1,9 @@
 require 'knapsack'
 
 namespace :knapsack do
-  task :cucumber do
+  task :cucumber, [:cucumber_args] do |t, args|
+    cucumber_args = args[:cucumber_args]
+
     Knapsack.report.config({
       report_path: Knapsack::Adapters::CucumberAdapter::REPORT_PATH
     })
@@ -18,7 +20,7 @@ namespace :knapsack do
     puts allocator.leftover_node_specs
     puts
 
-    cmd = %Q[bundle exec cucumber -- #{allocator.stringify_node_specs}]
+    cmd = %Q[bundle exec cucumber #{cucumber_args} -- #{allocator.stringify_node_specs}]
 
     exec(cmd)
   end
