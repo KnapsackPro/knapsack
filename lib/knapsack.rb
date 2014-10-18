@@ -27,7 +27,7 @@ module Knapsack
     end
 
     def root
-      File.expand_path '../..', __FILE__
+      File.expand_path('../..', __FILE__)
     end
 
     def load_tasks
