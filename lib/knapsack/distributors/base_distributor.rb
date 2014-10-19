@@ -4,7 +4,7 @@ module Knapsack
       attr_reader :report, :node_specs, :spec_pattern
 
       def initialize(args={})
-        @report = args[:report] || raise('Missing report_path')
+        @report = args[:report] || raise('Missing report')
         @ci_node_total = args[:ci_node_total] || raise('Missing ci_node_total')
         @ci_node_index = args[:ci_node_index] || raise('Missing ci_node_index')
         @spec_pattern = args[:spec_pattern] || raise('Missing spec_pattern')
