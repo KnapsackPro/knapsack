@@ -1,6 +1,5 @@
 describe Knapsack::Distributors::LeftoverDistributor do
-  let(:args) { {} }
-  let(:default_report) do
+  let(:report) do
     {
       'a_spec.rb' => 1.0,
       'b_spec.rb' => 1.5,
@@ -8,14 +7,18 @@ describe Knapsack::Distributors::LeftoverDistributor do
       'd_spec.rb' => 2.5,
     }
   end
-
-  let(:distributor) { described_class.new(args) }
-
-  before do
-    allow(Knapsack).to receive(:report) {
-      instance_double(Knapsack::Report, open: default_report)
+  let(:spec_pattern) { 'spec/**/*_spec.rb' }
+  let(:default_args) do
+    {
+      report: report,
+      spec_pattern: spec_pattern,
+      ci_node_total: '1',
+      ci_node_index: '0'
     }
   end
+  let(:args) { default_args.merge(custom_args) }
+  let(:custom_args) { {} }
+  let(:distributor) { described_class.new(args) }
 
   describe '#report_specs' do
     subject { distributor.report_specs }
@@ -25,22 +28,30 @@ describe Knapsack::Distributors::LeftoverDistributor do
   describe '#all_specs' do
     subject { distributor.all_specs }
 
-    context 'when ENV spec pattern' do
-      before { stub_const("ENV", { 'KNAPSACK_SPEC_PATTERN' => 'spec/**/*_spec.rb' }) }
-      it { should_not be_empty }
-      it { should include 'spec/knapsack/tracker_spec.rb' }
-      it { should include 'spec/knapsack/adapters/rspec_adapter_spec.rb' }
+    context 'when given spec pattern' do
+      context 'spec/**/*_spec.rb' do
+        it { should_not be_empty }
+        it { should include 'spec/knapsack/tracker_spec.rb' }
+        it { should include 'spec/knapsack/adapters/rspec_adapter_spec.rb' }
+      end
+
+      context 'spec_examples/**/*_spec.rb' do
+        let(:spec_pattern) { 'spec_examples/**/*_spec.rb' }
+
+        it { should_not be_empty }
+        it { should include 'spec_examples/fast/1_spec.rb' }
+        it { should include 'spec_examples/leftover/a_spec.rb' }
+      end
     end
 
     context 'when fake spec pattern' do
-      let(:args) { { spec_pattern: 'fake_pattern' } }
+      let(:spec_pattern) { 'fake_pattern' }
       it { should be_empty }
     end
 
     context 'when missing spec pattern' do
-      it do
-        expect { subject }.to raise_error('Missing spec pattern for Knapsack::Distributors::LeftoverDistributor')
-      end
+      let(:spec_pattern) { nil }
+      it { expect { subject }.to raise_error('Missing spec_pattern') }
     end
   end
 
@@ -62,7 +73,7 @@ describe Knapsack::Distributors::LeftoverDistributor do
   end
 
   context do
-    let(:args) { { ci_node_total: 3 } }
+    let(:custom_args) { { ci_node_total: 3 } }
     let(:leftover_specs) {[
       'a_spec.rb',
       'b_spec.rb',
