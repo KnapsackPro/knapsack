@@ -23,22 +23,22 @@ script:
   - bundle exec rspec --default-path spec_examples
 
   - bin/print_header.sh "Run rake task for the first CI node"
-  - CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+  - CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
   - bin/print_header.sh "Run rake task for the second CI node"
-  - CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+  - CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
   - bin/print_header.sh "Check passing arguments to rspec. Run only specs with custom_focus tag"
-  - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake "knapsack:rspec[--tag custom_focus]"
+  - KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake "knapsack:rspec[--tag custom_focus]"
 
   - bin/print_header.sh "Run specs with custom knapsack logger"
-  - CUSTOM_LOGGER=true KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+  - CUSTOM_LOGGER=true KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
   - bin/print_header.sh "Run specs for custom knapsack report path"
   - cp knapsack_rspec_report.json knapsack_custom_report.json
-  - KNAPSACK_REPORT_PATH="knapsack_custom_report.json" KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+  - KNAPSACK_REPORT_PATH="knapsack_custom_report.json" KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 
   - bin/print_header.sh "Run specs when spec file was removed and still exists in knapsack report json"
   - rm spec_examples/fast/1_spec.rb
-  - KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+  - KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
 notifications:
   email: false
