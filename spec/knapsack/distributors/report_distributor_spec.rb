@@ -1,14 +1,16 @@
 describe Knapsack::Distributors::ReportDistributor do
-  let(:args) { {} }
-  let(:default_report) { { 'default_report_spec.rb' => 1.0 } }
-
-  let(:distributor) { described_class.new(args) }
-
-  before do
-    allow(Knapsack).to receive(:report) {
-      instance_double(Knapsack::Report, open: default_report)
+  let(:report) { { 'a_spec.rb' => 1.0 } }
+  let(:default_args) do
+    {
+      report: report,
+      spec_pattern: 'spec/**/*_spec.rb',
+      ci_node_total: '1',
+      ci_node_index: '0'
     }
   end
+  let(:args) { default_args.merge(custom_args) }
+  let(:custom_args) { {} }
+  let(:distributor) { described_class.new(args) }
 
   describe '#sorted_report' do
     subject { distributor.sorted_report }
@@ -23,7 +25,6 @@ describe Knapsack::Distributors::ReportDistributor do
         'b_spec.rb' => 1.5,
       }
     end
-    let(:args) { { report: report } }
 
     it do
       should eql([
@@ -40,14 +41,6 @@ describe Knapsack::Distributors::ReportDistributor do
   describe '#sorted_report_with_existing_specs' do
     subject { distributor.sorted_report_with_existing_specs }
 
-    before do
-      expect(distributor).to receive(:all_specs).exactly(6).times.and_return([
-        'b_spec.rb',
-        'd_spec.rb',
-        'f_spec.rb',
-      ])
-    end
-
     let(:report) do
       {
         'e_spec.rb' => 3.0,
@@ -58,7 +51,14 @@ describe Knapsack::Distributors::ReportDistributor do
         'b_spec.rb' => 1.5,
       }
     end
-    let(:args) { { report: report } }
+
+    before do
+      expect(distributor).to receive(:all_specs).exactly(6).times.and_return([
+        'b_spec.rb',
+        'd_spec.rb',
+        'f_spec.rb',
+      ])
+    end
 
     it do
       should eql([
@@ -77,7 +77,6 @@ describe Knapsack::Distributors::ReportDistributor do
         'c_spec.rb' => 1.5,
       }
     end
-    let(:args) { { report: report } }
 
     before do
       allow(distributor).to receive(:all_specs).and_return(report.keys)
@@ -104,7 +103,7 @@ describe Knapsack::Distributors::ReportDistributor do
 
     describe '#node_time_execution' do
       subject { distributor.node_time_execution }
-      let(:args) { { report: report, ci_node_total: 4 } }
+      let(:custom_args) { { ci_node_total: 4 } }
       it { should eql 1.375 }
     end
   end
@@ -122,12 +121,7 @@ describe Knapsack::Distributors::ReportDistributor do
         'b_spec.rb' => 1.5,
       }
     end
-    let(:args) do
-      {
-        report: report,
-        ci_node_total: 3,
-      }
-    end
+    let(:custom_args) { { ci_node_total: 3 } }
 
     before do
       allow(distributor).to receive(:all_specs).and_return(report.keys)
