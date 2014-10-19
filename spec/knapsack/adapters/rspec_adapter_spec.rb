@@ -16,9 +16,16 @@ describe Knapsack::Adapters::RspecAdapter do
       let(:tracker) { instance_double(Knapsack::Tracker) }
       let(:spec_path) { 'spec/a_spec.rb' }
       let(:global_time) { 'Global time: 01m 05s' }
+      let(:example_group) { double }
+      let(:current_example) do
+        OpenStruct.new(metadata: {
+          example_group: example_group
+        })
+      end
 
       it do
-        expect(described_class).to receive(:spec_path).and_return(spec_path)
+        expect(::RSpec).to receive(:current_example).twice.and_return(current_example)
+        expect(described_class).to receive(:spec_path).with(example_group).and_return(spec_path)
 
         allow(Knapsack).to receive(:tracker).and_return(tracker)
         expect(tracker).to receive(:spec_path=).with(spec_path)
