@@ -8,9 +8,9 @@ module Knapsack
     def allocator
       Knapsack::Allocator.new({
         report: Knapsack.report.open,
+        spec_pattern: spec_pattern,
         ci_node_total: Knapsack::Config::Env.ci_node_total,
-        ci_node_index: Knapsack::Config::Env.ci_node_index,
-        spec_pattern: spec_pattern
+        ci_node_index: Knapsack::Config::Env.ci_node_index
       })
     end
 
