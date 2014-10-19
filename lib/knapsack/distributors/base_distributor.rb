@@ -5,9 +5,9 @@ module Knapsack
 
       def initialize(args={})
         @report = args[:report] || raise('Missing report')
+        @spec_pattern = args[:spec_pattern] || raise('Missing spec_pattern')
         @ci_node_total = args[:ci_node_total] || raise('Missing ci_node_total')
         @ci_node_index = args[:ci_node_index] || raise('Missing ci_node_index')
-        @spec_pattern = args[:spec_pattern] || raise('Missing spec_pattern')
       end
 
       def ci_node_total
