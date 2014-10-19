@@ -320,6 +320,10 @@ Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a 
 
     $ bundle exec rspec --default-path spec_examples
 
+### Cucumber examples
+
+Here is [a fork of Loomio](https://github.com/ArturT/loomio) Rails application with a lot of cucumber features and some rspec examples. Knapsack was added there - [see code changes](https://github.com/ArturT/loomio/compare/loomio:master...add-knapsack-gem). Tests were splitted across a few machines on Travis CI - [see builds](https://travis-ci.org/ArturT/loomio/builds).
+
 ## Contributing
 
 1. Fork it ( https://github.com/ArturT/knapsack/fork )
