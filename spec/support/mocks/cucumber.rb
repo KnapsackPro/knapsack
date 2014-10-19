@@ -3,7 +3,9 @@ module Cucumber
   module RbSupport
     class RbDsl
       class << self
-        def register_rb_hook(phase, tag_names, proc); end
+        def register_rb_hook(phase, tag_names, proc)
+          proc.call
+        end
       end
     end
   end
