@@ -31,6 +31,10 @@ Presentations about gem:
 
 ![With Knapsack gem](docs/images/with_knapsack.png)
 
+## Update gem
+
+Please check [changelog](CHANGELOG.md) before update gem. Knapsack follows [semantic versioning](http://semver.org).
+
 ## Installation
 
 Add this line to your application's Gemfile:
