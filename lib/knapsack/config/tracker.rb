@@ -17,4 +17,3 @@ module Knapsack
     end
   end
 end
-
