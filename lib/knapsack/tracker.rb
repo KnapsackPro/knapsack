@@ -2,8 +2,8 @@ module Knapsack
   class Tracker
     include Singleton
 
-    attr_reader :global_time, :spec_files_with_time
-    attr_writer :spec_path
+    attr_reader :global_time, :test_files_with_time
+    attr_writer :test_path
 
     def initialize
       set_defaults
@@ -25,13 +25,13 @@ module Knapsack
     def stop_timer
       @execution_time = Time.now.to_f - @start_time
       update_global_time
-      update_spec_file_time
+      update_test_file_time
       @execution_time
     end
 
-    def spec_path
-      raise("spec_path needs to be set by Knapsack Adapter's bind method") unless @spec_path
-      @spec_path.sub(/^\.\//, '')
+    def test_path
+      raise("test_path needs to be set by Knapsack Adapter's bind method") unless @test_path
+      @test_path.sub(/^\.\//, '')
     end
 
     def time_exceeded?
@@ -58,25 +58,25 @@ module Knapsack
 
     def set_defaults
       @global_time = 0
-      @spec_files_with_time = {}
-      @spec_path = nil
+      @test_files_with_time = {}
+      @test_path = nil
     end
 
     def update_global_time
       @global_time += @execution_time
     end
 
-    def update_spec_file_time
-      @spec_files_with_time[spec_path] ||= 0
-      @spec_files_with_time[spec_path] += @execution_time
+    def update_test_file_time
+      @test_files_with_time[test_path] ||= 0
+      @test_files_with_time[test_path] += @execution_time
     end
 
     def report_distributor
       @report_distributor ||= Knapsack::Distributors::ReportDistributor.new({
         report: Knapsack.report.open,
+        test_file_pattern: Knapsack::Config::Env.test_file_pattern || Knapsack.report.config[:test_file_pattern],
         ci_node_total: Knapsack::Config::Env.ci_node_total,
-        ci_node_index: Knapsack::Config::Env.ci_node_index,
-        spec_pattern: Knapsack::Config::Env.spec_pattern || Knapsack.report.config[:spec_pattern]
+        ci_node_index: Knapsack::Config::Env.ci_node_index
       })
     end
   end

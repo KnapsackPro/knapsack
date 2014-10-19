@@ -8,7 +8,7 @@ module Knapsack
     def allocator
       Knapsack::Allocator.new({
         report: Knapsack.report.open,
-        spec_pattern: spec_pattern,
+        test_file_pattern: test_file_pattern,
         ci_node_total: Knapsack::Config::Env.ci_node_total,
         ci_node_index: Knapsack::Config::Env.ci_node_index
       })
@@ -26,8 +26,8 @@ module Knapsack
       Knapsack::Config::Env.report_path || @adapter_class::REPORT_PATH
     end
 
-    def spec_pattern
-      Knapsack::Config::Env.spec_pattern || @adapter_class::TEST_DIR_PATTERN
+    def test_file_pattern
+      Knapsack::Config::Env.test_file_pattern || @adapter_class::TEST_DIR_PATTERN
     end
   end
 end

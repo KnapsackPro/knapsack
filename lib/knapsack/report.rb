@@ -11,8 +11,8 @@ module Knapsack
       config[:report_path] || raise('Missing report_path')
     end
 
-    def spec_pattern
-      config[:spec_pattern] || raise('Missing spec_pattern')
+    def test_file_pattern
+      config[:test_file_pattern] || raise('Missing test_file_pattern')
     end
 
     def save

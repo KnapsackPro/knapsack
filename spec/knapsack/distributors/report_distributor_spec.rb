@@ -3,7 +3,7 @@ describe Knapsack::Distributors::ReportDistributor do
   let(:default_args) do
     {
       report: report,
-      spec_pattern: 'spec/**/*_spec.rb',
+      test_file_pattern: 'spec/**/*_spec.rb',
       ci_node_total: '1',
       ci_node_index: '0'
     }
@@ -38,8 +38,8 @@ describe Knapsack::Distributors::ReportDistributor do
     end
   end
 
-  describe '#sorted_report_with_existing_specs' do
-    subject { distributor.sorted_report_with_existing_specs }
+  describe '#sorted_report_with_existing_tests' do
+    subject { distributor.sorted_report_with_existing_tests }
 
     let(:report) do
       {
@@ -53,7 +53,7 @@ describe Knapsack::Distributors::ReportDistributor do
     end
 
     before do
-      expect(distributor).to receive(:all_specs).exactly(6).times.and_return([
+      expect(distributor).to receive(:all_tests).exactly(6).times.and_return([
         'b_spec.rb',
         'd_spec.rb',
         'f_spec.rb',
@@ -79,7 +79,7 @@ describe Knapsack::Distributors::ReportDistributor do
     end
 
     before do
-      allow(distributor).to receive(:all_specs).and_return(report.keys)
+      allow(distributor).to receive(:all_tests).and_return(report.keys)
     end
 
     describe '#total_time_execution' do
@@ -124,27 +124,27 @@ describe Knapsack::Distributors::ReportDistributor do
     let(:custom_args) { { ci_node_total: 3 } }
 
     before do
-      allow(distributor).to receive(:all_specs).and_return(report.keys)
+      allow(distributor).to receive(:all_tests).and_return(report.keys)
     end
 
-    describe '#assign_spec_files_to_node' do
-      before { distributor.assign_spec_files_to_node }
+    describe '#assign_test_files_to_node' do
+      before { distributor.assign_test_files_to_node }
 
       it do
-        expect(distributor.node_specs[0]).to eql({
+        expect(distributor.node_tests[0]).to eql({
           :node_index => 0,
           :time_left => -0.5,
-          :spec_files_with_time => [
+          :test_files_with_time => [
             ["g_spec.rb", 9.0]
           ]
         })
       end
 
       it do
-        expect(distributor.node_specs[1]).to eql({
+        expect(distributor.node_tests[1]).to eql({
           :node_index => 1,
           :time_left => 0.0,
-          :spec_files_with_time => [
+          :test_files_with_time => [
             ["f_spec.rb", 3.5],
             ["d_spec.rb", 2.5],
             ["a_spec.rb", 1.0],
@@ -154,10 +154,10 @@ describe Knapsack::Distributors::ReportDistributor do
       end
 
       it do
-        expect(distributor.node_specs[2]).to eql({
+        expect(distributor.node_tests[2]).to eql({
           :node_index => 2,
           :time_left => 0.5,
-          :spec_files_with_time => [
+          :test_files_with_time => [
             ["h_spec.rb", 3.0],
             ["c_spec.rb", 2.0],
             ["i_spec.rb", 3.0]
@@ -166,10 +166,10 @@ describe Knapsack::Distributors::ReportDistributor do
       end
     end
 
-    describe '#specs_for_node' do
+    describe '#tests_for_node' do
       context 'when node exists' do
         it do
-          expect(distributor.specs_for_node(1)).to eql([
+          expect(distributor.tests_for_node(1)).to eql([
             'f_spec.rb',
             'd_spec.rb',
             'a_spec.rb',
@@ -179,7 +179,7 @@ describe Knapsack::Distributors::ReportDistributor do
       end
 
       context "when node doesn't exist" do
-        it { expect(distributor.specs_for_node(42)).to be_nil }
+        it { expect(distributor.tests_for_node(42)).to be_nil }
       end
     end
   end

@@ -1,6 +1,6 @@
 shared_examples 'default trakcer attributes' do
   it { expect(tracker.global_time).to eql 0 }
-  it { expect(tracker.spec_files_with_time).to eql({}) }
+  it { expect(tracker.test_files_with_time).to eql({}) }
 end
 
 describe Knapsack::Tracker do
@@ -45,23 +45,23 @@ describe Knapsack::Tracker do
     end
   end
 
-  describe '#spec_path' do
-    subject { tracker.spec_path }
+  describe '#test_path' do
+    subject { tracker.test_path }
 
-    context 'when spec_path not set' do
+    context 'when test_path not set' do
       it do
-        expect { subject }.to raise_error("spec_path needs to be set by Knapsack Adapter's bind method")
+        expect { subject }.to raise_error("test_path needs to be set by Knapsack Adapter's bind method")
       end
     end
 
-    context 'when spec_path set' do
-      context 'when spec path has prefix ./' do
-        before { tracker.spec_path = './spec/models/user_spec.rb' }
+    context 'when test_path set' do
+      context 'when test_path has prefix ./' do
+        before { tracker.test_path = './spec/models/user_spec.rb' }
         it { should eql 'spec/models/user_spec.rb' }
       end
 
-      context 'when spec path has not prefix ./' do
-        before { tracker.spec_path = 'spec/models/user_spec.rb' }
+      context 'when test_path has not prefix ./' do
+        before { tracker.test_path = 'spec/models/user_spec.rb' }
         it { should eql 'spec/models/user_spec.rb' }
       end
     end
@@ -119,12 +119,12 @@ describe Knapsack::Tracker do
 
   describe 'track time execution' do
     let(:now) { Time.now }
-    let(:spec_paths) { ['a_spec.rb', 'b_spec.rb'] }
+    let(:test_paths) { ['a_spec.rb', 'b_spec.rb'] }
 
     before do
-      spec_paths.each_with_index do |spec_path, index|
+      test_paths.each_with_index do |test_path, index|
         Timecop.freeze(now) do
-          tracker.spec_path = spec_path
+          tracker.test_path = test_path
           tracker.start_timer
         end
 
@@ -137,7 +137,7 @@ describe Knapsack::Tracker do
 
     it { expect(tracker.global_time).to eql 3.0 }
     it do
-      expect(tracker.spec_files_with_time).to eql({
+      expect(tracker.test_files_with_time).to eql({
         'a_spec.rb' => 1.0,
         'b_spec.rb' => 2.0,
       })

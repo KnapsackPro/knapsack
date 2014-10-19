@@ -46,11 +46,11 @@ module Knapsack
       end
 
       def update_report_config
-        current_spec_pattern = Knapsack.report.config[:spec_pattern]
+        current_test_file_pattern = Knapsack.report.config[:test_file_pattern]
         current_report_path = Knapsack.report.config[:report_path]
 
         Knapsack.report.config({
-          spec_pattern: Knapsack::Config::Env.spec_pattern || current_spec_pattern || self.class::TEST_DIR_PATTERN,
+          test_file_pattern: Knapsack::Config::Env.test_file_pattern || current_test_file_pattern || self.class::TEST_DIR_PATTERN,
           report_path: Knapsack::Config::Env.report_path || current_report_path || self.class::REPORT_PATH
         })
       end

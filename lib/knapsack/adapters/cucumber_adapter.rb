@@ -6,7 +6,7 @@ module Knapsack
 
       def bind_time_tracker
         Around do |scenario, block|
-          Knapsack.tracker.spec_path = scenario.file
+          Knapsack.tracker.test_path = scenario.file
           Knapsack.tracker.start_timer
           block.call
           Knapsack.tracker.stop_timer

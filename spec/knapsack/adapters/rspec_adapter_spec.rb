@@ -14,7 +14,7 @@ describe Knapsack::Adapters::RspecAdapter do
 
     describe '#bind_time_tracker' do
       let(:tracker) { instance_double(Knapsack::Tracker) }
-      let(:spec_path) { 'spec/a_spec.rb' }
+      let(:test_path) { 'spec/a_spec.rb' }
       let(:global_time) { 'Global time: 01m 05s' }
       let(:example_group) { double }
       let(:current_example) do
@@ -30,10 +30,10 @@ describe Knapsack::Adapters::RspecAdapter do
         expect(::RSpec).to receive(:configure).and_yield(config)
 
         expect(::RSpec).to receive(:current_example).twice.and_return(current_example)
-        expect(described_class).to receive(:spec_path).with(example_group).and_return(spec_path)
+        expect(described_class).to receive(:test_path).with(example_group).and_return(test_path)
 
         allow(Knapsack).to receive(:tracker).and_return(tracker)
-        expect(tracker).to receive(:spec_path=).with(spec_path)
+        expect(tracker).to receive(:test_path=).with(test_path)
         expect(tracker).to receive(:start_timer)
 
         expect(tracker).to receive(:stop_timer)
@@ -78,7 +78,7 @@ describe Knapsack::Adapters::RspecAdapter do
     end
   end
 
-  describe '.spec_path' do
+  describe '.test_path' do
     let(:current_example_metadata) do
       {
           file_path: '1_shared_example.rb',
@@ -91,7 +91,7 @@ describe Knapsack::Adapters::RspecAdapter do
       }
     end
 
-    subject { described_class.spec_path(current_example_metadata) }
+    subject { described_class.test_path(current_example_metadata) }
 
     it { should eql 'a_spec.rb' }
   end

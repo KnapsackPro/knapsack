@@ -3,7 +3,7 @@ describe Knapsack::Distributors::BaseDistributor do
   let(:default_args) do
     {
       report: report,
-      spec_pattern: 'spec/**/*_spec.rb',
+      test_file_pattern: 'spec/**/*_spec.rb',
       ci_node_total: '1',
       ci_node_index: '0'
     }
@@ -51,7 +51,7 @@ describe Knapsack::Distributors::BaseDistributor do
     end
   end
 
-  describe '#specs_for_current_node' do
+  describe '#tests_for_current_node' do
     let(:custom_args) do
       {
         ci_node_total: 3,
@@ -59,14 +59,14 @@ describe Knapsack::Distributors::BaseDistributor do
       }
     end
     let(:ci_node_index) { 2 }
-    let(:specs) { double }
+    let(:tests) { double }
 
-    subject { distributor.specs_for_current_node }
+    subject { distributor.tests_for_current_node }
 
     before do
-      expect(distributor).to receive(:specs_for_node).with(ci_node_index).and_return(specs)
+      expect(distributor).to receive(:tests_for_node).with(ci_node_index).and_return(tests)
     end
 
-    it { should eql specs }
+    it { should eql tests }
   end
 end

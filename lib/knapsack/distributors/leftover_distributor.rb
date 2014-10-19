@@ -1,35 +1,35 @@
 module Knapsack
   module Distributors
     class LeftoverDistributor < BaseDistributor
-      def report_specs
-        @report_specs ||= report.keys
+      def report_tests
+        @report_tests ||= report.keys
       end
 
-      def leftover_specs
-        @leftover_specs ||= all_specs - report_specs
+      def leftover_tests
+        @leftover_tests ||= all_tests - report_tests
       end
 
       private
 
-      def post_assign_spec_files_to_node
+      def post_assign_test_files_to_node
         node_index = 0
-        leftover_specs.each do |spec_file|
-          node_specs[node_index] << spec_file
+        leftover_tests.each do |test_file|
+          node_tests[node_index] << test_file
           node_index += 1
           node_index %= ci_node_total
         end
       end
 
-      def post_specs_for_node(node_index)
-        spec_files = node_specs[node_index]
-        return unless spec_files
-        spec_files
+      def post_tests_for_node(node_index)
+        test_files = node_tests[node_index]
+        return unless test_files
+        test_files
       end
 
-      def default_node_specs
-        @node_specs = []
+      def default_node_tests
+        @node_tests = []
         ci_node_total.times do |index|
-          @node_specs[index] = []
+          @node_tests[index] = []
         end
       end
     end

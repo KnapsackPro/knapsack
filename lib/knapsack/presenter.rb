@@ -5,11 +5,11 @@ module Knapsack
   class Presenter
     class << self
       def report_yml
-        Knapsack.tracker.spec_files_with_time.to_yaml
+        Knapsack.tracker.test_files_with_time.to_yaml
       end
 
       def report_json
-        JSON.pretty_generate(Knapsack.tracker.spec_files_with_time)
+        JSON.pretty_generate(Knapsack.tracker.test_files_with_time)
       end
 
       def report_details
@@ -18,7 +18,7 @@ module Knapsack
 
       def global_time
         global_time = pretty_seconds(Knapsack.tracker.global_time)
-        "\nKnapsack global time execution for specs: #{global_time}"
+        "\nKnapsack global time execution for tests: #{global_time}"
       end
 
       def time_offset
@@ -43,7 +43,7 @@ module Knapsack
         }
         if Knapsack.tracker.time_exceeded?
           str << %{
-Specs on this CI node took more than time offset.
+Tests on this CI node took more than time offset.
 Please regenerate your knapsack report.
 If that didn't help then split your heavy test file
 or bump time_offset_in_seconds setting.}

@@ -14,8 +14,8 @@ module Knapsack
           ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX'] || semaphore_current_thread || 0
         end
 
-        def spec_pattern
-          ENV['KNAPSACK_SPEC_PATTERN']
+        def test_file_pattern
+          ENV['KNAPSACK_TEST_FILE_PATTERN']
         end
 
         private

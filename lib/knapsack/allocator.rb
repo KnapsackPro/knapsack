@@ -5,24 +5,24 @@ module Knapsack
       @leftover_distributor = Knapsack::Distributors::LeftoverDistributor.new(args)
     end
 
-    def report_node_specs
-      @report_node_specs ||= @report_distributor.specs_for_current_node
+    def report_node_tests
+      @report_node_tests ||= @report_distributor.tests_for_current_node
     end
 
-    def leftover_node_specs
-      @leftover_node_specs ||= @leftover_distributor.specs_for_current_node
+    def leftover_node_tests
+      @leftover_node_tests ||= @leftover_distributor.tests_for_current_node
     end
 
-    def node_specs
-      @node_specs ||= report_node_specs + leftover_node_specs
+    def node_tests
+      @node_tests ||= report_node_tests + leftover_node_tests
     end
 
-    def stringify_node_specs
-      node_specs.join(' ')
+    def stringify_node_tests
+      node_tests.join(' ')
     end
 
-    def spec_dir
-      @report_distributor.spec_pattern.gsub(/^(.*?)\//).first
+    def test_dir
+      @report_distributor.test_file_pattern.gsub(/^(.*?)\//).first
     end
   end
 end

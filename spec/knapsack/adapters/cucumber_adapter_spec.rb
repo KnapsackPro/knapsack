@@ -25,7 +25,7 @@ describe Knapsack::Adapters::CucumberAdapter do
       it do
         expect(subject).to receive(:Around).and_yield(scenario, block)
         allow(Knapsack).to receive(:tracker).and_return(tracker)
-        expect(tracker).to receive(:spec_path=).with(file)
+        expect(tracker).to receive(:test_path=).with(file)
         expect(tracker).to receive(:start_timer)
         expect(block).to receive(:call)
         expect(tracker).to receive(:stop_timer)

@@ -14,7 +14,7 @@
 
 **Knapsack splits tests across CI nodes and makes sure that tests will run comparable time on each node.**
 
-Parallel specs across CI server nodes based on each spec file's time execution. Knapsack generates a spec time execution report and uses it for future test runs.
+Parallel tests across CI server nodes based on each test file's time execution. Knapsack generates a test time execution report and uses it for future test runs.
 
 Presentations about gem:
 
@@ -80,7 +80,7 @@ Knapsack.tracker.config({
 })
 
 Knapsack.report.config({
-  spec_pattern: 'spec/**/*_spec.rb', # default value based on adapter
+  test_file_pattern: 'spec/**/*_spec.rb', # default value based on adapter
   report_path: 'knapsack_custom_report.json'
 })
 
@@ -109,7 +109,7 @@ Generate time execution report for your test files. Run below command on one of 
 
 Commit generated report `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` into your repository.
 
-This report should be updated only after you add a lot of new slow tests or you change existing ones which causes a big time execution difference between CI nodes. Either way, you will get time offset warning at the end of the rspec results which reminds you when it’s a good time to regenerate the knapsack report.
+This report should be updated only after you add a lot of new slow tests or you change existing ones which causes a big time execution difference between CI nodes. Either way, you will get time offset warning at the end of the rspec/cucumber results which reminds you when it’s a good time to regenerate the knapsack report.
 
 ## Setup your CI server
 
@@ -121,13 +121,13 @@ On your CI server run this command for the first CI node. Update `CI_NODE_INDEX`
     # Step for Cucumber
     $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
-You can add `KNAPSACK_SPEC_PATTERN` if your specs are not in `spec` directory. For instance:
+You can add `KNAPSACK_TEST_FILE_PATTERN` if your tests are not in default directory. For instance:
 
     # Step for RSpec
-    $ KNAPSACK_SPEC_PATTERN="directory_with_specs/**/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+    $ KNAPSACK_TEST_FILE_PATTERN="directory_with_specs/**/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
 
     # Step for Cucumber
-    $ KNAPSACK_SPEC_PATTERN="directory_with_features/**/*.feature" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
+    $ KNAPSACK_TEST_FILE_PATTERN="directory_with_features/**/*.feature" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
 You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non default location. Example:
 
@@ -169,7 +169,7 @@ Here is an example for test configuration in your `circleci.yml` file.
 
 #### Step 1
 
-For the first time run all specs on a single CI node with enabled report generator.
+For the first time run all tests on a single CI node with enabled report generator.
 
 ```yaml
 test:
@@ -205,7 +205,7 @@ Now everything should works. You will get warning at the end of rspec/cucumber r
 
 #### Step 1
 
-For the first time run all specs at once with enabled report generator. Edit `.travis.yml`
+For the first time run all tests at once with enabled report generator. Edit `.travis.yml`
 
 ```yaml
 # Step for RSpec
@@ -262,7 +262,7 @@ More info about global and matrix ENV configuration in [travis docs](http://docs
 
 #### Step 1
 
-For the first time run all specs at once with enabled report generator. Set up your build command:
+For the first time run all tests at once with enabled report generator. Set up your build command:
 
     # Step for RSpec
     KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec

@@ -13,7 +13,7 @@ module Knapsack
               else
                 example.metadata
               end
-            Knapsack.tracker.spec_path = RspecAdapter.spec_path(current_example_group)
+            Knapsack.tracker.test_path = RspecAdapter.test_path(current_example_group)
             Knapsack.tracker.start_timer
           end
 
@@ -44,7 +44,7 @@ module Knapsack
         end
       end
 
-      def self.spec_path(example_group)
+      def self.test_path(example_group)
         until example_group[:parent_example_group].nil?
           example_group = example_group[:parent_example_group]
         end

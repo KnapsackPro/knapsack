@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.0.0
+
+* Add cucumber support.
+* Rename environment variable KNAPSACK_SPEC_PATTERN to KNAPSACK_TEST_FILE_PATTERN.
+* Default name of knapsack report json file is based on adapter name so for RSpec the default report name is `knapsack_rspec_report.json` and for Cucumber the report name is `knapsack_cucumber_report.json`.
+
 ### 0.5.0
 
 * Allow passing arguments to rspec via knapsack:rspec task.

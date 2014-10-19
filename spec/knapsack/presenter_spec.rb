@@ -1,6 +1,6 @@
 describe Knapsack::Presenter do
   let(:tracker) { instance_double(Knapsack::Tracker) }
-  let(:spec_files_with_time) do
+  let(:test_files_with_time) do
     {
       'a_spec.rb' => 1.0,
       'b_spec.rb' => 0.4
@@ -10,17 +10,17 @@ describe Knapsack::Presenter do
   describe 'report methods' do
     before do
       expect(Knapsack).to receive(:tracker) { tracker }
-      expect(tracker).to receive(:spec_files_with_time).and_return(spec_files_with_time)
+      expect(tracker).to receive(:test_files_with_time).and_return(test_files_with_time)
     end
 
     describe '.report_yml' do
       subject { described_class.report_yml }
-      it { should eql spec_files_with_time.to_yaml }
+      it { should eql test_files_with_time.to_yaml }
     end
 
     describe '.report_json' do
       subject { described_class.report_json }
-      it { should eql JSON.pretty_generate(spec_files_with_time) }
+      it { should eql JSON.pretty_generate(test_files_with_time) }
     end
   end
 
@@ -32,7 +32,7 @@ describe Knapsack::Presenter do
       expect(tracker).to receive(:global_time).and_return(60*62+3)
     end
 
-    it { should eql "\nKnapsack global time execution for specs: 01h 02m 03s" }
+    it { should eql "\nKnapsack global time execution for tests: 01h 02m 03s" }
   end
 
   describe '.report_details' do

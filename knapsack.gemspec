@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Knapsack::VERSION
   spec.authors       = ["ArturT"]
   spec.email         = ["arturtrzop@gmail.com"]
-  spec.summary       = %q{Parallel specs across CI server nodes based on each spec file's time execution.}
-  spec.description   = %q{Parallel specs across CI server nodes based on each spec file's time execution. It generates a spec time execution report and uses it for future test runs.}
+  spec.summary       = %q{Knapsack splits tests across CI nodes and makes sure that tests will run comparable time on each node.}
+  spec.description   = %q{Parallel tests across CI server nodes based on each test file's time execution. It generates a test time execution report and uses it for future test runs.}
   spec.homepage      = "https://github.com/ArturT/knapsack"
   spec.license       = "MIT"
 
