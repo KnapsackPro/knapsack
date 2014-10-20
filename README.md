@@ -196,11 +196,11 @@ test:
   override:
     # Step for RSpec
     - bundle exec rake knapsack:rspec:
-        parallel: true
+        parallel: true # Caution: there are 8 spaces indentation!
 
     # Step for Cucumber
     - bundle exec rake knapsack:cucumber:
-        parallel: true
+        parallel: true # Caution: there are 8 spaces indentation!
 ```
 
 Now everything should works. You will get warning at the end of rspec/cucumber results if time execution will take too much.
