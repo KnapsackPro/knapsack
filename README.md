@@ -37,10 +37,12 @@ Please check [changelog](CHANGELOG.md) before update gem. Knapsack follows [sema
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add those lines to your application's Gemfile:
 
 ```ruby
-gem 'knapsack'
+group :test, :development do
+  gem 'knapsack'
+end
 ```
 
 And then execute:
