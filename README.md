@@ -96,10 +96,9 @@ Knapsack.logger.level = Logger::INFO
 
 ### Common step
 
-Add in your `Rakefile` this lines:
+Add this line at the bottom of `Rakefile`:
 
 ```ruby
-require 'knapsack'
 Knapsack.load_tasks if defined?(Knapsack)
 ```
 
