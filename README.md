@@ -100,7 +100,7 @@ Add in your `Rakefile` this lines:
 
 ```ruby
 require 'knapsack'
-Knapsack.load_tasks
+Knapsack.load_tasks if defined? Knapsack 
 ```
 
 Generate time execution report for your test files. Run below command on one of your CI nodes.
