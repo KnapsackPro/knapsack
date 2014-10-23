@@ -2,6 +2,10 @@
 
 * TODO
 
+### 1.0.1
+
+* Fix bug - Add support for Cucumber Scenario Outline.
+
 ### 1.0.0
 
 * Add cucumber support.

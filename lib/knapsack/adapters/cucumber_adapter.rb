@@ -5,8 +5,8 @@ module Knapsack
       REPORT_PATH = 'knapsack_cucumber_report.json'
 
       def bind_time_tracker
-        Around do |scenario, block|
-          Knapsack.tracker.test_path = scenario.file
+        Around do |scenario_or_outline_table, block|
+          Knapsack.tracker.test_path = CucumberAdapter.test_path(scenario_or_outline_table)
           Knapsack.tracker.start_timer
           block.call
           Knapsack.tracker.stop_timer
@@ -27,6 +27,14 @@ module Knapsack
       def bind_time_offset_warning
         ::Kernel.at_exit do
           Knapsack.logger.warn(Presenter.time_offset_warning)
+        end
+      end
+
+      def self.test_path(scenario_or_outline_table)
+        if scenario_or_outline_table.respond_to?(:file)
+          scenario_or_outline_table.file
+        else
+          scenario_or_outline_table.scenario_outline.file
         end
       end
 

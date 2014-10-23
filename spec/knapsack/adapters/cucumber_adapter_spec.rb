@@ -66,4 +66,24 @@ describe Knapsack::Adapters::CucumberAdapter do
       end
     end
   end
+
+  describe '.test_path' do
+    subject { described_class.test_path(scenario_or_outline_table) }
+
+    context 'when scenario' do
+      let(:scenario_file) { 'features/scenario.feature' }
+      let(:scenario_or_outline_table) { double(file: scenario_file) }
+
+      it { should eql scenario_file }
+    end
+
+    context 'when scenario outline' do
+      let(:scenario_outline_file) { 'features/scenario_outline.feature' }
+      let(:scenario_or_outline_table) do
+        double(scenario_outline: double(file: scenario_outline_file))
+      end
+
+      it { should eql scenario_outline_file }
+    end
+  end
 end
