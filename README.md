@@ -213,11 +213,12 @@ Now everything should works. You will get warning at the end of rspec/cucumber r
 For the first time run all tests at once with enabled report generator. Edit `.travis.yml`
 
 ```yaml
-# Step for RSpec
-script: "KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec"
+script:
+  # Step for RSpec
+  - "KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec"
 
-# Step for Cucumber
-script: "KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features"
+  # Step for Cucumber
+  - "KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features"
 ```
 
 After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
@@ -227,11 +228,12 @@ After tests pass your should copy knapsack json report which is rendered at the 
 You can parallel your builds across virtual machines with [travis matrix feature](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-your-builds-across-virtual-machines). Edit `.travis.yml`
 
 ```yaml
-# Step for RSpec
-script: "bundle exec rake knapsack:rspec"
+script:
+  # Step for RSpec
+  - "bundle exec rake knapsack:rspec"
 
-# Step for Cucumber
-script: "bundle exec rake knapsack:cucumber"
+  # Step for Cucumber
+  - "bundle exec rake knapsack:cucumber"
 
 env:
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
@@ -241,11 +243,12 @@ env:
 If you want to have some global ENVs and matrix of ENVs then do it like this:
 
 ```yaml
-# Step for RSpec
-script: "bundle exec rake knapsack:rspec"
+script:
+  # Step for RSpec
+  - "bundle exec rake knapsack:rspec"
 
-# Step for Cucumber
-script: "bundle exec rake knapsack:cucumber"
+  # Step for Cucumber
+  - "bundle exec rake knapsack:cucumber"
 
 env:
   global:
