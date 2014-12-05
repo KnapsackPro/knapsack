@@ -116,6 +116,12 @@ Commit generated report `knapsack_rspec_report.json` or `knapsack_cucumber_repor
 
 This report should be updated only after you add a lot of new slow tests or you change existing ones which causes a big time execution difference between CI nodes. Either way, you will get time offset warning at the end of the rspec/cucumber results which reminds you when it’s a good time to regenerate the knapsack report.
 
+## Adding or Removing Tests
+
+There is no need to regenerate the report every time when you add/remove test file. If you remove a test file then knapsack will ignore its entry in report. In case when you add a new file and it doesn't already exist in report, the test file will be assigned to one of the CI node. 
+
+You'll want to regenerate your execution report whenever you remove or add a test file with a long time execution  time that would affect one of the CI nodes. You will get knapsack notification whenever is good time to regenerate report.
+
 ## Setup your CI server
 
 On your CI server run this command for the first CI node. Update `CI_NODE_INDEX` for the next one.
