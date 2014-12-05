@@ -118,9 +118,9 @@ This report should be updated only after you add a lot of new slow tests or you 
 
 #### Adding or removing tests
 
-There is no need to regenerate the report every time when you add/remove test file. If you remove a test file then knapsack will ignore its entry in report. In case when you add a new file and it doesn't already exist in report, the test file will be assigned to one of the CI node. 
+There is no need to regenerate the report every time when you add/remove test file. If you remove a test file then Knapsack will ignore its entry in report. In case when you add a new file and it doesn't already exist in report, the test file will be assigned to one of the CI node.
 
-You'll want to regenerate your execution report whenever you remove or add a test file with a long time execution  time that would affect one of the CI nodes. You will get knapsack notification whenever is good time to regenerate report.
+You'll want to regenerate your execution report whenever you remove or add a test file with a long time execution  time that would affect one of the CI nodes. You will get Knapsack notification whenever is good time to regenerate report.
 
 ## Setup your CI server
 
