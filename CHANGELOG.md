@@ -2,6 +2,10 @@
 
 * TODO
 
+### 1.0.2
+
+* Fix bug #8 - Sort all tests just in case to avoid wrong order of files when running tests on machines where `Dir.glob` has different implementation.
+
 ### 1.0.1
 
 * Fix bug - Add support for Cucumber Scenario Outline.
