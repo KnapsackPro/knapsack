@@ -22,6 +22,17 @@ module Knapsack
       def post_assign_test_files_to_node
         assign_slow_test_files
         assign_remaining_test_files
+        sort_assigned_test_files
+      end
+
+      def sort_assigned_test_files
+        ci_node_total.times do |index|
+          # sort by first key (file name)
+          # reverse it and then sort by second key (time) in reverse order
+          node_tests[index][:test_files_with_time].sort!.reverse!.sort! do |x, y|
+            y[1] <=> x[1]
+          end
+        end
       end
 
       def post_tests_for_node(node_index)
