@@ -53,6 +53,9 @@ Global time execution for this CI node is fine.
 Happy testing!}
         end
         str << "\n=================================================\n"
+        str << %{Sign up for beta Knapsack Pro here:
+http://knapsack.launchrock.com}
+        str << "\n=================================================\n"
         str
       end
 
