@@ -118,34 +118,67 @@ describe Knapsack::Tracker do
   end
 
   describe 'track time execution' do
-    let(:now) { Time.now }
     let(:test_paths) { ['a_spec.rb', 'b_spec.rb'] }
+    let(:delta) { 0.02 }
 
-    before do
-      test_paths.each_with_index do |test_path, index|
-        Timecop.freeze(now) do
+    shared_examples 'test tracker' do
+      it { expect(tracker.global_time).to be_within(delta).of(0.3) }
+      it { expect(tracker.test_files_with_time.keys.size).to eql 2 }
+      it { expect(tracker.test_files_with_time['a_spec.rb']).to be_within(delta).of(0.1) }
+      it { expect(tracker.test_files_with_time['b_spec.rb']).to be_within(delta).of(0.2) }
+    end
+
+    context 'without Timecop' do
+      before do
+        test_paths.each_with_index do |test_path, index|
           tracker.test_path = test_path
           tracker.start_timer
-        end
-
-        seconds = index + 1
-        Timecop.freeze(now+seconds) do
+          sleep index.to_f / 10 + 0.1
           tracker.stop_timer
         end
       end
+
+      it { expect(tracker.global_time).to be_within(delta).of(0.3) }
+      it { expect(tracker.test_files_with_time.keys.size).to eql 2 }
+      it { expect(tracker.test_files_with_time['a_spec.rb']).to be_within(delta).of(0.1) }
+      it { expect(tracker.test_files_with_time['b_spec.rb']).to be_within(delta).of(0.2) }
     end
 
-    it { expect(tracker.global_time).to eql 3.0 }
-    it do
-      expect(tracker.test_files_with_time).to eql({
-        'a_spec.rb' => 1.0,
-        'b_spec.rb' => 2.0,
-      })
+    context "with Timecop - Timecop shouldn't have impact on measured test time" do
+      let(:now) { Time.now }
+
+      before do
+        test_paths.each_with_index do |test_path, index|
+          Timecop.freeze(now) do
+            tracker.test_path = test_path
+            tracker.start_timer
+          end
+
+          delay = index + 1
+          Timecop.freeze(now+delay) do
+            tracker.stop_timer
+          end
+        end
+      end
+
+      it { expect(tracker.global_time).to be >= 0 }
+      it { expect(tracker.global_time).to be_within(delta).of(0) }
+      it { expect(tracker.test_files_with_time.keys.size).to eql 2 }
+      it { expect(tracker.test_files_with_time['a_spec.rb']).to be_within(delta).of(0) }
+      it { expect(tracker.test_files_with_time['b_spec.rb']).to be_within(delta).of(0) }
+    end
+  end
+
+  describe '#reset!' do
+    before do
+      tracker.test_path = 'a_spec.rb'
+      tracker.start_timer
+      sleep 0.1
+      tracker.stop_timer
+      expect(tracker.global_time).not_to eql 0
+      tracker.reset!
     end
 
-    context '#reset!' do
-      before { tracker.reset! }
-      it_behaves_like 'default trakcer attributes'
-    end
+    it_behaves_like 'default trakcer attributes'
   end
 end
