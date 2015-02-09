@@ -7,6 +7,7 @@
 * Fix bug #11 - Track properly time when using Timecop gem in tests.
 
     https://github.com/ArturT/knapsack/issues/11
+
     https://github.com/ArturT/knapsack/issues/9
 
 ### 1.0.2
