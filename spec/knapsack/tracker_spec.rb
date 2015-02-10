@@ -161,7 +161,7 @@ describe Knapsack::Tracker do
         end
       end
 
-      it { expect(tracker.global_time).to be >= 0 }
+      it { expect(tracker.global_time).to be > 0 }
       it { expect(tracker.global_time).to be_within(delta).of(0) }
       it { expect(tracker.test_files_with_time.keys.size).to eql 2 }
       it { expect(tracker.test_files_with_time['a_spec.rb']).to be_within(delta).of(0) }
