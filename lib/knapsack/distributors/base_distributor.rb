@@ -8,6 +8,10 @@ module Knapsack
         @test_file_pattern = args[:test_file_pattern] || raise('Missing test_file_pattern')
         @ci_node_total = args[:ci_node_total] || raise('Missing ci_node_total')
         @ci_node_index = args[:ci_node_index] || raise('Missing ci_node_index')
+
+        if ci_node_index >= ci_node_total
+          raise('Node indexes are 0-based. Can\'t be higher or equal to the total number of nodes.')
+        end
       end
 
       def ci_node_total
