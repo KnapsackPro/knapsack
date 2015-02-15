@@ -10,7 +10,7 @@ module Knapsack
         @ci_node_index = args[:ci_node_index] || raise('Missing ci_node_index')
 
         if ci_node_index >= ci_node_total
-          raise('Node indexes are 0-based. Can\'t be higher or equal to the total number of nodes.')
+          raise("Node indexes are 0-based. Can't be higher or equal to the total number of nodes.")
         end
       end
 

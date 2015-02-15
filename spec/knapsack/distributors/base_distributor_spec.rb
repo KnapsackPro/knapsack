@@ -50,12 +50,20 @@ describe Knapsack::Distributors::BaseDistributor do
       it { expect { subject }.to raise_error('Missing ci_node_index') }
     end
 
-    context 'when ci_node_index is equal or higher than ci_node_total' do
-      let(:custom_args) { { ci_node_index: 1, ci_node_total: 1 } }
-      it {
-        expect { subject }.to raise_error('Node indexes are 0-based. Can\'t ' +
-                             'be higher or equal to the total number of nodes.')
-      }
+    context 'when ci_node_index has not allowed value' do
+      let(:expected_exception_message) do
+        "Node indexes are 0-based. Can't be higher or equal to the total number of nodes."
+      end
+
+      context 'when ci_node_index is equal to ci_node_total' do
+        let(:custom_args) { { ci_node_index: 1, ci_node_total: 1 } }
+        it { expect { subject }.to raise_error(expected_exception_message) }
+      end
+
+      context 'when ci_node_index is higher than ci_node_total' do
+        let(:custom_args) { { ci_node_index: 2, ci_node_total: 1 } }
+        it { expect { subject }.to raise_error(expected_exception_message) }
+      end
     end
   end
 
