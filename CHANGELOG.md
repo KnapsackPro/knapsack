@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.0.4
+
+* Pull request #12 - Raise error when CI_NODE_INDEX >= CI_NODE_TOTAL
+
+    https://github.com/ArturT/knapsack/pull/12
+
 ### 1.0.3
 
 * Fix bug #11 - Track properly time when using Timecop gem in tests.
