@@ -31,6 +31,11 @@ describe Knapsack::Config::Env do
         before { stub_const("ENV", { 'SEMAPHORE_THREAD_COUNT' => 3 }) }
         it { should eql 3 }
       end
+
+      context 'when BUILDKITE_PARALLEL_JOB_COUNT has value' do
+        before { stub_const("ENV", { 'BUILDKITE_PARALLEL_JOB_COUNT' => 4 }) }
+        it { should eql 4 }
+      end
     end
 
     context "when ENV doesn't exist" do
@@ -55,6 +60,11 @@ describe Knapsack::Config::Env do
       context 'when SEMAPHORE_CURRENT_THREAD has value' do
         before { stub_const("ENV", { 'SEMAPHORE_CURRENT_THREAD' => 1 }) }
         it { should eql 0 }
+      end
+
+      context 'when BUILDKITE_PARALLEL_JOB has value' do
+        before { stub_const("ENV", { 'BUILDKITE_PARALLEL_JOB' => 2 }) }
+        it { should eql 2 }
       end
     end
 
