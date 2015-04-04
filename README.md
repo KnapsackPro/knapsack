@@ -305,6 +305,30 @@ Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURR
 
 Tests will be split across threads.
 
+### Info for buildkite.com users
+
+#### Step 1
+
+For the first time run all tests at once with enabled report generator. Run the following commands locally:
+
+    # Step for RSpec
+    KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
+
+    # Step for Cucumber
+    KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
+
+After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
+
+#### Step 2
+
+Knapsack supports buildkite ENVs `BUILDKITE_PARALLEL_JOB_COUNT` and `BUILDKITE_PARALLEL_JOB`. The only thing you need to do is to configure the parallelism parameter in your build step and run the appropiate command in your build
+
+    # Step for RSpec
+    bundle exec rake knapsack:rspec
+
+    # Step for Cucumber
+    bundle exec rake knapsack:cucumber
+
 ## Gem tests
 
 ### Spec
