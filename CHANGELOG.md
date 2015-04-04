@@ -2,6 +2,10 @@
 
 * TODO
 
+### 1.1.0
+
+* Add support for Buildkite.com ENV variables `BUILDKITE_PARALLEL_JOB_COUNT` and `BUILDKITE_PARALLEL_JOB`.
+
 ### 1.0.4
 
 * Pull request #12 - Raise error when CI_NODE_INDEX >= CI_NODE_TOTAL
