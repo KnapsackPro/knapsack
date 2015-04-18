@@ -75,9 +75,21 @@ require 'knapsack'
 Knapsack::Adapters::CucumberAdapter.bind
 ```
 
+### Step for Minitest
+
+Add at the beginning of your `test_helper.rb`:
+
+```ruby
+require 'knapsack'
+
+# CUSTOM_CONFIG_GOES_HERE
+
+Knapsack::Adapters::MinitestAdapter.bind
+```
+
 ### Custom configuration
 
-You can change default Knapsack configuration for RSpec or Cucumber tests. Here are examples what you can do. Put below configuration instead of `CUSTOM_CONFIG_GOES_HERE`.
+You can change default Knapsack configuration for RSpec, Cucumber or Minitest tests. Here are examples what you can do. Put below configuration instead of `CUSTOM_CONFIG_GOES_HERE`.
 
 ```ruby
 Knapsack.tracker.config({
@@ -112,9 +124,12 @@ Generate time execution report for your test files. Run below command on one of 
     # Step for Cucumber
     $ KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
 
-Commit generated report `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` into your repository.
+    # Step for Minitest
+    $ KNAPSACK_GENERATE_REPORT=true bundle exec rake test
 
-This report should be updated only after you add a lot of new slow tests or you change existing ones which causes a big time execution difference between CI nodes. Either way, you will get time offset warning at the end of the rspec/cucumber results which reminds you when it’s a good time to regenerate the knapsack report.
+Commit generated report `knapsack_rspec_report.json`, `knapsack_cucumber_report.json` or `knapsack_minitest_report.json` into your repository.
+
+This report should be updated only after you add a lot of new slow tests or you change existing ones which causes a big time execution difference between CI nodes. Either way, you will get time offset warning at the end of the rspec/cucumber/minitest results which reminds you when it’s a good time to regenerate the knapsack report.
 
 #### Adding or removing tests
 
@@ -132,6 +147,9 @@ On your CI server run this command for the first CI node. Update `CI_NODE_INDEX`
     # Step for Cucumber
     $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
+    # Step for Minitest
+    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:minitest
+
 You can add `KNAPSACK_TEST_FILE_PATTERN` if your tests are not in default directory. For instance:
 
     # Step for RSpec
@@ -140,6 +158,9 @@ You can add `KNAPSACK_TEST_FILE_PATTERN` if your tests are not in default direct
     # Step for Cucumber
     $ KNAPSACK_TEST_FILE_PATTERN="directory_with_features/**/*.feature" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
+    # Step for Minitest
+    $ KNAPSACK_TEST_FILE_PATTERN="directory_with_tests/**/*_test.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:minitest
+
 You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non default location. Example:
 
     # Step for RSpec
@@ -147,6 +168,9 @@ You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non defa
 
     # Step for Cucumber
     $ KNAPSACK_REPORT_PATH="knapsack_custom_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
+
+    # Step for Minitest
+    $ KNAPSACK_REPORT_PATH="knapsack_custom_report.json" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:minitest
 
 ### Info about ENV variables
 
@@ -172,6 +196,12 @@ Add arguments to knapsack cucumber task like this:
 
     $ bundle exec rake "knapsack:cucumber[--name feature]"
 
+### Passing arguments to minitest
+
+Add arguments to knapsack minitest task like this:
+
+    $ bundle exec rake "knapsack:minitest[--arg_name value]"
+
 ### Info for CircleCI users
 
 If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.
@@ -190,9 +220,12 @@ test:
 
     # Step for Cucumber
     - KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
+
+    # Step for Minitest
+    - KNAPSACK_GENERATE_REPORT=true bundle exec rake test
 ```
 
-After tests pass on your CircleCI machine your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
+After tests pass on your CircleCI machine your should copy knapsack json report which is rendered at the end of rspec/cucumber/minitest results. Save it into your repository as `knapsack_rspec_report.json`, `knapsack_cucumber_report.json` or `knapsack_minitest_report.json` file and commit.
 
 #### Step 2
 
@@ -208,9 +241,13 @@ test:
     # Step for Cucumber
     - bundle exec rake knapsack:cucumber:
         parallel: true # Caution: there are 8 spaces indentation!
+
+    # Step for Minitest
+    - bundle exec rake knapsack:minitest:
+        parallel: true # Caution: there are 8 spaces indentation!
 ```
 
-Now everything should works. You will get warning at the end of rspec/cucumber results if time execution will take too much.
+Now everything should works. You will get warning at the end of rspec/cucumber/minitest results if time execution will take too much.
 
 ### Info for Travis users
 
@@ -225,9 +262,12 @@ script:
 
   # Step for Cucumber
   - "KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features"
+
+  # Step for Minitest
+  - "KNAPSACK_GENERATE_REPORT=true bundle exec rake test"
 ```
 
-After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
+After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber/minitest results. Save it into your repository as `knapsack_rspec_report.json`, `knapsack_cucumber_report.json` or `knapsack_minitest_report.json` file and commit.
 
 #### Step 2
 
@@ -240,6 +280,9 @@ script:
 
   # Step for Cucumber
   - "bundle exec rake knapsack:cucumber"
+
+  # Step for Minitest
+  - "bundle exec rake knapsack:minitest"
 
 env:
   - CI_NODE_TOTAL=2 CI_NODE_INDEX=0
@@ -255,6 +298,9 @@ script:
 
   # Step for Cucumber
   - "bundle exec rake knapsack:cucumber"
+
+  # Step for Minitest
+  - "bundle exec rake knapsack:minitest"
 
 env:
   global:
@@ -285,23 +331,30 @@ For the first time run all tests at once with enabled report generator. Set up y
     # Step for Cucumber
     KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
 
-After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
+    # Step for Minitest
+    KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+
+After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber/test results. Save it into your repository as `knapsack_rspec_report.json`, `knapsack_cucumber_report.json` or `knapsack_minitest_report.json` file and commit.
 
 #### Step 2
 
-Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURRENT_THREAD`. The only thing you need to do is set up knapsack rspec/cucumber command for as many threads as you need. Here is an example:
+Knapsack supports semaphoreapp ENVs `SEMAPHORE_THREAD_COUNT` and `SEMAPHORE_CURRENT_THREAD`. The only thing you need to do is set up knapsack rspec/cucumber/minitest command for as many threads as you need. Here is an example:
 
     # Thread 1
     ## Step for RSpec
     bundle exec rake knapsack:rspec
     ## Step for Cucumber
     bundle exec rake knapsack:cucumber
+    ## Step for Minitest
+    bundle exec rake knapsack:minitest
 
     # Thread 2
     ## Step for RSpec
     bundle exec rake knapsack:rspec
     ## Step for Cucumber
     bundle exec rake knapsack:cucumber
+    ## Step for Minitest
+    bundle exec rake knapsack:minitest
 
 Tests will be split across threads.
 
@@ -317,7 +370,10 @@ For the first time run all tests at once with enabled report generator. Run the 
     # Step for Cucumber
     KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
 
-After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber results. Save it into your repository as `knapsack_rspec_report.json` or `knapsack_cucumber_report.json` file and commit.
+    # Step for Minitest
+    KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+
+After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber/minitest results. Save it into your repository as `knapsack_rspec_report.json`, `knapsack_cucumber_report.json` or `knapsack_minitest_report.json` file and commit.
 
 #### Step 2
 
@@ -328,6 +384,9 @@ Knapsack supports buildkite ENVs `BUILDKITE_PARALLEL_JOB_COUNT` and `BUILDKITE_P
 
     # Step for Cucumber
     bundle exec rake knapsack:cucumber
+
+    # Step for Minitest
+    bundle exec rake knapsack:minitest
 
 ## Gem tests
 

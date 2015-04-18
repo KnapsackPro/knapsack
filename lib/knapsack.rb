@@ -15,6 +15,7 @@ require_relative 'knapsack/distributors/leftover_distributor'
 require_relative 'knapsack/adapters/base_adapter'
 require_relative 'knapsack/adapters/rspec_adapter'
 require_relative 'knapsack/adapters/cucumber_adapter'
+require_relative 'knapsack/adapters/minitest_adapter'
 
 module Knapsack
   class << self
