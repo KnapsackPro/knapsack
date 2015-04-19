@@ -84,7 +84,8 @@ require 'knapsack'
 
 # CUSTOM_CONFIG_GOES_HERE
 
-Knapsack::Adapters::MinitestAdapter.bind
+knapsack_adapter = Knapsack::Adapters::MinitestAdapter.bind
+knapsack_adapter.set_test_helper_path(__FILE__)
 ```
 
 ### Custom configuration
