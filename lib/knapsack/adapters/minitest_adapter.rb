@@ -8,8 +8,8 @@ module Knapsack
       @@parent_of_test_dir = nil
 
       def set_test_helper_path(file_path)
-        test_dir_path = File.dirname(file_path)
-        @@parent_of_test_dir = File.expand_path('../', test_dir_path)
+        @@test_dir_path = File.dirname(file_path)
+        @@parent_of_test_dir = File.expand_path('../', @@test_dir_path)
       end
 
       module BindTimeTrackerMinitestPlugin
@@ -55,12 +55,13 @@ module Knapsack
       end
 
       def self.test_path(test_class, obj)
-        array = ::Ext::Where.is_class_primarily(test_class)
-        test_path = array.first
+        # Old approach
+        #array = ::Ext::Where.is_class_primarily(test_class)
+        #test_path = array.first
 
-        #if test_path == '/Users/artur/.rvm/gems/ruby-2.2.0/gems/activesupport-4.2.0/lib/active_support/core_ext/class/attribute.rb'
-          #require 'pry'; binding.pry
-        #end
+        # New approach
+        test_path = Dir.glob("#{@@test_dir_path}/**/#{test_class.to_s.underscore}.rb").first
+
         test_path.gsub(@@parent_of_test_dir, '.')
       end
     end
