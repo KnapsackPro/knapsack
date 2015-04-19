@@ -55,11 +55,6 @@ module Knapsack
       end
 
       def self.test_path(test_class, obj)
-        # Old approach
-        #array = ::Ext::Where.is_class_primarily(test_class)
-        #test_path = array.first
-
-        # New approach
         test_path = Dir.glob("#{@@test_dir_path}/**/#{test_class.to_s.underscore}.rb").first
 
         test_path.gsub(@@parent_of_test_dir, '.')
