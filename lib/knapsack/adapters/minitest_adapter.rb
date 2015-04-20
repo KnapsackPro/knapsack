@@ -55,7 +55,9 @@ module Knapsack
       end
 
       def self.test_path(test_class, obj)
-        test_path = Dir.glob("#{@@test_dir_path}/**/#{test_class.to_s.underscore}.rb").first
+        test_file_name = ::KnapsackExt::String.underscore_and_drop_module(test_class)
+        test_file_pattern = "#{@@test_dir_path}/**/#{test_file_name}.rb"
+        test_path = Dir.glob(test_file_pattern).first
 
         test_path.gsub(@@parent_of_test_dir, '.')
       end
