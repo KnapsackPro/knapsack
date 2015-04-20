@@ -6,6 +6,7 @@ module Knapsack
       TEST_DIR_PATTERN = 'test/**/*_test.rb'
       REPORT_PATH = 'knapsack_minitest_report.json'
       @@parent_of_test_dir = nil
+      @@cached_test_paths = {}
 
       def set_test_helper_path(file_path)
         @@test_dir_path = File.dirname(file_path)
@@ -55,11 +56,14 @@ module Knapsack
       end
 
       def self.test_path(test_class, obj)
-        test_file_name = ::KnapsackExt::String.underscore_and_drop_module(test_class)
-        test_file_pattern = "#{@@test_dir_path}/**/#{test_file_name}.rb"
-        test_path = Dir.glob(test_file_pattern).first
-
-        test_path.gsub(@@parent_of_test_dir, '.')
+        unless @@cached_test_paths[test_class]
+          test_file_name = ::KnapsackExt::String.underscore_and_drop_module(test_class)
+          test_file_pattern = "#{@@test_dir_path}/**/#{test_file_name}.rb"
+          test_path = Dir.glob(test_file_pattern).first
+          test_path = test_path.gsub(@@parent_of_test_dir, '.')
+          @@cached_test_paths[test_class] = test_path
+        end
+        @@cached_test_paths[test_class]
       end
     end
   end
