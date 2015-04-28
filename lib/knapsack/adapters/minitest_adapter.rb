@@ -6,18 +6,17 @@ module Knapsack
       TEST_DIR_PATTERN = 'test/**/*_test.rb'
       REPORT_PATH = 'knapsack_minitest_report.json'
       @@parent_of_test_dir = nil
-      @@cached_test_paths = {}
 
       def set_test_helper_path(file_path)
-        @@test_dir_path = File.dirname(file_path)
-        @@parent_of_test_dir = File.expand_path('../', @@test_dir_path)
+        test_dir_path = File.dirname(file_path)
+        @@parent_of_test_dir = File.expand_path('../', test_dir_path)
       end
 
       module BindTimeTrackerMinitestPlugin
         def before_setup
           super
 
-          Knapsack.tracker.test_path = MinitestAdapter.test_path(self.class, self)
+          Knapsack.tracker.test_path = MinitestAdapter.test_path(self)
           Knapsack.tracker.start_timer
         end
 
@@ -55,15 +54,12 @@ module Knapsack
         end
       end
 
-      def self.test_path(test_class, obj)
-        unless @@cached_test_paths[test_class]
-          test_file_name = ::KnapsackExt::String.underscore_and_drop_module(test_class)
-          test_file_pattern = "#{@@test_dir_path}/**/#{test_file_name}.rb"
-          test_path = Dir.glob(test_file_pattern).first
-          test_path = test_path.gsub(@@parent_of_test_dir, '.')
-          @@cached_test_paths[test_class] = test_path
-        end
-        @@cached_test_paths[test_class]
+      def self.test_path(obj)
+        test_method_name = obj.name
+        method_object = obj.method(test_method_name)
+        full_test_path = method_object.source_location.first
+        test_path = full_test_path.gsub(@@parent_of_test_dir, '.')
+        test_path
       end
     end
   end
