@@ -18,6 +18,7 @@ namespace :knapsack do
       cmd += %Q[ruby #{args[:minitest_args]} #{test_file_path};]
     end
 
-    exec(cmd)
+    system(cmd)
+    exit($?.exitstatus)
   end
 end
