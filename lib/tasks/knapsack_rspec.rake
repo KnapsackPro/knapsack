@@ -14,6 +14,7 @@ namespace :knapsack do
 
     cmd = %Q[bundle exec rspec #{args[:rspec_args]} --default-path #{allocator.test_dir} -- #{allocator.stringify_node_tests}]
 
-    exec(cmd)
+    system(cmd)
+    exit($?.exitstatus)
   end
 end
