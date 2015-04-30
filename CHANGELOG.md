@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.1.1
+
+* Use `system` instead of `exec` in rake tasks so we can return exit code from command.
+
+https://github.com/ArturT/knapsack/compare/v1.1.0...v1.1.1
+
 ### 1.1.0
 
 * Add support for Buildkite.com ENV variables `BUILDKITE_PARALLEL_JOB_COUNT` and `BUILDKITE_PARALLEL_JOB`.
