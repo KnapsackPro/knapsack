@@ -14,6 +14,7 @@ namespace :knapsack do
 
     cmd = %Q[bundle exec cucumber #{args[:cucumber_args]} -- #{allocator.stringify_node_tests}]
 
-    exec(cmd)
+    system(cmd)
+    exit($?.exitstatus)
   end
 end
