@@ -203,6 +203,10 @@ Add arguments to knapsack minitest task like this:
 
     $ bundle exec rake "knapsack:minitest[--arg_name value]"
 
+For instance to run verbose tests:
+
+    $ bundle exec rake "knapsack:minitest[--verbose]"
+
 ### Info for CircleCI users
 
 If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.

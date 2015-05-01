@@ -1,6 +1,12 @@
 require 'knapsack'
+require 'rake/testtask'
 
 namespace :knapsack do
+  Rake::TestTask.new(:minitest_run) do |t|
+    t.libs << 'test'
+    t.test_files = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::MinitestAdapter).allocator.node_tests
+  end
+
   task :minitest, [:minitest_args] do |t, args|
     allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::MinitestAdapter).allocator
 
@@ -12,11 +18,7 @@ namespace :knapsack do
     puts allocator.leftover_node_tests
     puts
 
-    # FIXME this should be run as one commad
-    cmd = ''
-    allocator.node_tests.each do |test_file_path|
-      cmd += %Q[ruby #{args[:minitest_args]} #{test_file_path};]
-    end
+    cmd = %Q[TESTOPTS="#{args[:minitest_args]}" bundle exec rake knapsack:minitest_run]
 
     system(cmd)
     exit($?.exitstatus)
