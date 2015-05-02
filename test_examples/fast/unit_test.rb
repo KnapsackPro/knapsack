@@ -1,4 +1,4 @@
-require 'minitest/autorun'
+require 'test_helper'
 
 class UnitTest < Minitest::Test
   def setup

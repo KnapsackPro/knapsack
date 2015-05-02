@@ -1,4 +1,4 @@
-require 'minitest/autorun'
+require 'test_helper'
 
 class SlowTest < Minitest::Test
   def setup
