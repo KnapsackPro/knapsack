@@ -12,9 +12,15 @@ addons:
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 script:
+  # Test for knapsack gem
   - bin/print_header.sh "Run specs for Knapsack gem"
   - bundle exec rspec spec
 
+
+  - bin/print_header.sh "======================================================"
+
+
+  # Tests for example rspec test suite
   - bin/print_header.sh "Generate knapsack report"
   - KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples --tag focus
 
