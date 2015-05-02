@@ -7,7 +7,7 @@ namespace :knapsack do
     t.test_files = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::MinitestAdapter).allocator.node_tests
   end
 
-  task :minitest, [:minitest_args] do |t, args|
+  task :minitest, [:minitest_args] do |_, args|
     allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::MinitestAdapter).allocator
 
     puts

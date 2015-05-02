@@ -1,7 +1,7 @@
 require 'knapsack'
 
 namespace :knapsack do
-  task :rspec, [:rspec_args] do |t, args|
+  task :rspec, [:rspec_args] do |_, args|
     allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::RspecAdapter).allocator
 
     puts
