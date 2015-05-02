@@ -62,7 +62,7 @@ describe Knapsack::Report do
       it do
         expect {
           subject
-        }.to raise_error("Knapsack report file doesn't exist. Please generate report first!")
+        }.to raise_error("Knapsack report file #{report_path} doesn't exist. Please generate report first!")
       end
     end
   end
