@@ -61,10 +61,14 @@ http://knapsack.launchrock.com}
 
       def pretty_seconds(seconds)
         sign = ''
+
         if seconds < 0
           seconds = seconds*-1
           sign = '-'
         end
+
+        return "#{sign}#{seconds}s" if seconds.abs < 1
+
         time = Time.at(seconds).gmtime.strftime('%Hh %Mm %Ss')
         time_without_zeros = time.gsub(/00(h|m|s)/, '').strip
         sign + time_without_zeros

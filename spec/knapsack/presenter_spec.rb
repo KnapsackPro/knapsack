@@ -84,6 +84,16 @@ describe Knapsack::Presenter do
   describe '.pretty_seconds' do
     subject { described_class.pretty_seconds(seconds) }
 
+    context 'when less then one second' do
+      let(:seconds) { 0.987 }
+      it { should eql '0.987s' }
+    end
+
+    context 'when one second' do
+      let(:seconds) { 1 }
+      it { should eql '01s' }
+    end
+
     context 'when only seconds' do
       let(:seconds) { 5 }
       it { should eql '05s' }
