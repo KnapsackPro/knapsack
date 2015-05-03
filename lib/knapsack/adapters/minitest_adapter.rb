@@ -1,5 +1,3 @@
-# See how to write hooks and plugins
-# https://github.com/seattlerb/minitest/blob/master/lib/minitest/test.rb
 module Knapsack
   module Adapters
     class MinitestAdapter < BaseAdapter
@@ -12,6 +10,8 @@ module Knapsack
         @@parent_of_test_dir = File.expand_path('../', test_dir_path)
       end
 
+      # See how to write hooks and plugins
+      # https://github.com/seattlerb/minitest/blob/master/lib/minitest/test.rb
       module BindTimeTrackerMinitestPlugin
         def before_setup
           super
