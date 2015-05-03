@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.2.0
+
+* Add minitest adapter.
+
+https://github.com/ArturT/knapsack/compare/v1.1.1...v1.2.0
+
 ### 1.1.1
 
 * Use `system` instead of `exec` in rake tasks so we can return exit code from command.
