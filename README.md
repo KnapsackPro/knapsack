@@ -32,9 +32,9 @@ Presentations about gem:
 ![With Knapsack gem](docs/images/with_knapsack.png)
 
 
-# Table of Contents
-
-*generated with [DocToc](http://doctoc.herokuapp.com)*
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Update gem](#update-gem)
 - [Installation](#installation)
@@ -44,7 +44,7 @@ Presentations about gem:
   - [Step for Minitest](#step-for-minitest)
   - [Custom configuration](#custom-configuration)
   - [Common step](#common-step)
-    - [Adding or removing tests](#dding-or-removing-tests)
+    - [Adding or removing tests](#adding-or-removing-tests)
 - [Setup your CI server](#setup-your-ci-server)
   - [Info about ENV variables](#info-about-env-variables)
   - [Passing arguments to rspec](#passing-arguments-to-rspec)
@@ -68,6 +68,8 @@ Presentations about gem:
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 - [Mentions](#mentions)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 ## Update gem
