@@ -31,6 +31,45 @@ Presentations about gem:
 
 ![With Knapsack gem](docs/images/with_knapsack.png)
 
+
+# Table of Contents
+
+*generated with [DocToc](http://doctoc.herokuapp.com)*
+
+- [Update gem](#)
+- [Installation](#)
+- [Usage](#)
+  - [Step for RSpec](#)
+  - [Step for Cucumber](#)
+  - [Step for Minitest](#)
+  - [Custom configuration](#)
+  - [Common step](#)
+    - [Adding or removing tests](#)
+- [Setup your CI server](#)
+  - [Info about ENV variables](#)
+  - [Passing arguments to rspec](#)
+  - [Passing arguments to cucumber](#)
+  - [Passing arguments to minitest](#)
+  - [Info for CircleCI users](#)
+    - [Step 1](#)
+    - [Step 2](#)
+  - [Info for Travis users](#)
+    - [Step 1](#)
+    - [Step 2](#)
+  - [Info for semaphoreapp.com users](#)
+    - [Step 1](#)
+    - [Step 2](#)
+  - [Info for buildkite.com users](#)
+    - [Step 1](#)
+    - [Step 2](#)
+- [Gem tests](#)
+  - [Spec](#)
+  - [Spec examples](#)
+- [Contributing](#)
+- [Acknowledgements](#)
+- [Mentions](#)
+
+
 ## Update gem
 
 Please check [changelog](CHANGELOG.md) before update gem. Knapsack follows [semantic versioning](http://semver.org).
