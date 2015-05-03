@@ -28,7 +28,6 @@ module Knapsack
         end
       end
 
-
       def bind_report_generator
         Minitest.after_run do
           Knapsack.report.save
