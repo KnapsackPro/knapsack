@@ -51,7 +51,8 @@ module Knapsack
         test_method_name = obj.name
         method_object = obj.method(test_method_name)
         full_test_path = method_object.source_location.first
-        test_path = full_test_path.gsub(@@parent_of_test_dir, '.')
+        parent_of_test_dir_regexp = Regexp.new("^#{@@parent_of_test_dir}")
+        test_path = full_test_path.gsub(parent_of_test_dir_regexp, '.')
         # test_path will look like ./test/dir/unit_test.rb
         test_path
       end
