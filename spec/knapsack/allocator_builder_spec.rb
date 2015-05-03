@@ -85,4 +85,24 @@ describe Knapsack::AllocatorBuilder do
       it_behaves_like 'allocator builder'
     end
   end
+
+  describe '#test_dir' do
+    let(:adapter_class) { Knapsack::Adapters::RspecAdapter }
+
+    subject { allocator_builder.test_dir }
+
+    before do
+      expect(Knapsack::Config::Env).to receive(:test_file_pattern).and_return(env_test_file_pattern)
+    end
+
+    context 'when ENV test_file_pattern has value' do
+      let(:env_test_file_pattern) { 'custom_spec/**/*_spec.rb' }
+
+      it { should eq 'custom_spec' }
+    end
+
+    context 'when ENV test_file_pattern has no value' do
+      it { should eq 'spec' }
+    end
+  end
 end

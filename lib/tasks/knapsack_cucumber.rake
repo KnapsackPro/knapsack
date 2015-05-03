@@ -1,7 +1,7 @@
 require 'knapsack'
 
 namespace :knapsack do
-  task :cucumber, [:cucumber_args] do |t, args|
+  task :cucumber, [:cucumber_args] do |_, args|
     allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::CucumberAdapter).allocator
 
     puts

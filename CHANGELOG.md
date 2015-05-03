@@ -2,6 +2,13 @@
 
 * TODO
 
+### 1.2.0
+
+* Add minitest adapter.
+* Fix bug with missing global time execution when tests took less than second.
+
+https://github.com/ArturT/knapsack/compare/v1.1.1...v1.2.0
+
 ### 1.1.1
 
 * Use `system` instead of `exec` in rake tasks so we can return exit code from command.

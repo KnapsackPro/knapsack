@@ -25,7 +25,7 @@ module Knapsack
       report = File.read(report_path)
       JSON.parse(report)
     rescue Errno::ENOENT
-      raise "Knapsack report file doesn't exist. Please generate report first!"
+      raise "Knapsack report file #{report_path} doesn't exist. Please generate report first!"
     end
 
     private
