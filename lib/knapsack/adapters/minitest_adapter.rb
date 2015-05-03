@@ -5,11 +5,6 @@ module Knapsack
       REPORT_PATH = 'knapsack_minitest_report.json'
       @@parent_of_test_dir = nil
 
-      def set_test_helper_path(file_path)
-        test_dir_path = File.dirname(file_path)
-        @@parent_of_test_dir = File.expand_path('../', test_dir_path)
-      end
-
       # See how to write hooks and plugins
       # https://github.com/seattlerb/minitest/blob/master/lib/minitest/test.rb
       module BindTimeTrackerMinitestPlugin
@@ -45,6 +40,11 @@ module Knapsack
         Minitest.after_run do
           Knapsack.logger.warn(Presenter.time_offset_warning)
         end
+      end
+
+      def set_test_helper_path(file_path)
+        test_dir_path = File.dirname(file_path)
+        @@parent_of_test_dir = File.expand_path('../', test_dir_path)
       end
 
       def self.test_path(obj)
