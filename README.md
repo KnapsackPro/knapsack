@@ -51,6 +51,10 @@ And then execute:
 
 ## Usage
 
+You can find here example of rails app with already configured knapsack.
+
+https://github.com/KnapsackPro/rails-app-with-knapsack
+
 ### Step for RSpec
 
 Add at the beginning of your `spec_helper.rb`:
