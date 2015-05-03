@@ -36,7 +36,7 @@ Presentations about gem:
 
 *generated with [DocToc](http://doctoc.herokuapp.com)*
 
-- [Update gem](#)
+- [Update gem](#update-gem)
 - [Installation](#)
 - [Usage](#)
   - [Step for RSpec](#)
