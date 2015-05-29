@@ -482,3 +482,4 @@ Many thanks to [Małgorzata Nowak](https://github.com/informatykgosia) for beaut
 * Travis CI | [Parallelizing RSpec and Cucumber on multiple VMs](http://docs.travis-ci.com/user/speeding-up-the-build/#Parallelizing-RSpec-and-Cucumber-on-multiple-VMs)
 * Semaphore | [Running RSpec specs in parallel](https://semaphoreapp.com/docs/running-rspec-specs-in-threads.html)
 * Semaphore | [Running Cucumber scenarios in parallel](https://semaphoreapp.com/docs/running-cucumber-scenarios-in-threads.html)
+* Buildkite | [Libraries](https://buildkite.com/docs/guides/parallelizing-builds#libraries)
