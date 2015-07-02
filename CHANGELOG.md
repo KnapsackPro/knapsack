@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.2.1
+
+* Add support for Turnip features
+
+    https://github.com/ArturT/knapsack/pull/19
+
+https://github.com/ArturT/knapsack/compare/v1.2.0...v1.2.1
+
 ### 1.2.0
 
 * Add minitest adapter.
