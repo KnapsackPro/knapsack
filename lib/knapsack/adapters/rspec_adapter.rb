@@ -45,9 +45,12 @@ module Knapsack
       end
 
       def self.test_path(example_group)
-        until example_group[:parent_example_group].nil?
-          example_group = example_group[:parent_example_group]
+        unless example_group[:turnip]
+          until example_group[:parent_example_group].nil?
+            example_group = example_group[:parent_example_group]
+          end
         end
+
         example_group[:file_path]
       end
     end

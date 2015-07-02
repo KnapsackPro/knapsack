@@ -94,5 +94,21 @@ describe Knapsack::Adapters::RspecAdapter do
     subject { described_class.test_path(current_example_metadata) }
 
     it { should eql 'a_spec.rb' }
+
+    context 'with turnip features' do
+      let(:current_example_metadata) do
+        {
+          file_path: "./spec/features/logging_in.feature",
+          turnip: true,
+          parent_example_group: {
+            file_path: "gems/turnip-1.2.4/lib/turnip/rspec.rb",
+          }
+        }
+      end
+
+      subject { described_class.test_path(current_example_metadata) }
+
+      it { should eql './spec/features/logging_in.feature' }
+    end
   end
 end
