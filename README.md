@@ -254,6 +254,16 @@ For instance to run verbose tests:
 
     $ bundle exec rake "knapsack:minitest[--verbose]"
 
+### Knapsack binary
+
+You can install knapsack globally and use binary. For instance:
+
+    $ knapsack rspec "--tag custom_tag_name --profile"
+    $ knapsack cucumber
+    $ knapsack minitest "--verbose --pride"
+
+[Here](https://github.com/ArturT/knapsack/pull/21) you will find example when it might be useful.
+
 ### Info for CircleCI users
 
 If you are using circleci.com you can omit `CI_NODE_TOTAL` and `CI_NODE_INDEX`. Knapsack will use `CIRCLE_NODE_TOTAL` and `CIRCLE_NODE_INDEX` provided by CircleCI.
