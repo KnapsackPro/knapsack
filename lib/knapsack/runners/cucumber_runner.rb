@@ -12,7 +12,7 @@ module Knapsack
         puts allocator.leftover_node_tests
         puts
 
-        cmd = %Q[bundle exec cucumber #{args[:cucumber_args]} -- #{allocator.stringify_node_tests}]
+        cmd = %Q[bundle exec cucumber #{args} -- #{allocator.stringify_node_tests}]
 
         system(cmd)
         exit($?.exitstatus)
