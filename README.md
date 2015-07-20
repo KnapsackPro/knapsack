@@ -224,7 +224,9 @@ You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non defa
 
 `CI_NODE_INDEX` - index of current CI node starts from 0. Second CI node should have `CI_NODE_INDEX=1`.
 
-### Passing arguments to rspec
+### Passing arguments to rake task
+
+#### Passing arguments to rspec
 
 Knapsack allows you to pass arguments through to rspec. For example if you want to run only specs that have the tag `focus`. If you do this with rspec directly it would look like:
 
@@ -236,13 +238,13 @@ To do this with Knapsack you simply add your rspec arguments as parameters to th
 
 Remember that using tags to limit which specs get run will affect the time each file takes to run. One solution to this is to generate a new `knapsack_rspec_report.json` for the commonly run scenarios.
 
-### Passing arguments to cucumber
+#### Passing arguments to cucumber
 
 Add arguments to knapsack cucumber task like this:
 
     $ bundle exec rake "knapsack:cucumber[--name feature]"
 
-### Passing arguments to minitest
+#### Passing arguments to minitest
 
 Add arguments to knapsack minitest task like this:
 
