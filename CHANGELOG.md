@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.3.0
+
+* Add knapsack binary
+
+    https://github.com/ArturT/knapsack/pull/21
+
+https://github.com/ArturT/knapsack/compare/v1.2.1...v1.3.0
+
 ### 1.2.1
 
 * Add support for Turnip features
