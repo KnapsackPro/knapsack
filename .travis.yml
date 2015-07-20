@@ -12,7 +12,6 @@ addons:
     repo_token: 38686058eed480dd0fcf8bce9015733e0bae88e44e30f4a1ac63df8aec2f86d8
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
-  - bundle install
 script:
   # Test for knapsack gem
   - bin/print_header.sh "Run specs for Knapsack gem"
