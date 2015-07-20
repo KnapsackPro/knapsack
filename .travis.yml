@@ -34,6 +34,7 @@ script:
 
   - bin/print_header.sh "Check passing arguments to rspec. Run only specs with custom_focus tag"
   - KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake "knapsack:rspec[--tag custom_focus]"
+  - KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bin/knapsack rspec "--tag custom_focus --profile"
 
   - bin/print_header.sh "Run specs with custom knapsack logger"
   - CUSTOM_LOGGER=true KNAPSACK_TEST_FILE_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec

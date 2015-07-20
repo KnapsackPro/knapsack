@@ -16,7 +16,6 @@ module Knapsack
 
         system(cmd)
         exit($?.exitstatus)
-
       end
     end
   end

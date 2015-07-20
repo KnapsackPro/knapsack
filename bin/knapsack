@@ -1,11 +1,19 @@
 #!/usr/bin/env ruby
 
-require "knapsack"
+require_relative '../lib/knapsack'
 
 runner = ARGV[0]
 arguments = ARGV[1]
 
-case runner
-when "rspec"
-  Knapsack::Runners::RSpecRunner.run(arguments)
+MAP = {
+  'rspec' => Knapsack::Runners::RSpecRunner,
+  'cucumber' => Knapsack::Runners::CucumberRunner,
+}
+
+runner_class = MAP[runner]
+
+if runner_class
+  runner_class.run(arguments)
+else
+  raise 'Undefined runner. Please provide runner name and optional arguments, for instance: knapsack rspec "--color --profile"'
 end

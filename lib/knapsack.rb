@@ -17,6 +17,7 @@ require_relative 'knapsack/adapters/rspec_adapter'
 require_relative 'knapsack/adapters/cucumber_adapter'
 require_relative 'knapsack/adapters/minitest_adapter'
 require_relative 'knapsack/runners/rspec_runner'
+require_relative 'knapsack/runners/cucumber_runner'
 
 module Knapsack
   class << self
