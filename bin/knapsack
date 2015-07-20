@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "knapsack"
+
+runner = ARGV[0]
+arguments = ARGV[1]
+
+system("bundle exec rake \"knapsack:#{runner}[#{arguments}]\"")
+exit($?.exitstatus)
