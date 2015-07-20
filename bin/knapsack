@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "knapsack"
+
+runner = ARGV[0]
+arguments = ARGV[1]
+
+case runner
+when "rspec"
+  Knapsack::Runners::RSpecRunner.run(arguments)
+end
