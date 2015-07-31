@@ -80,8 +80,6 @@ module Knapsack
       })
     end
 
-    private
-
     def now_without_mock_time
       if defined?(Timecop)
         Time.now_without_mock_time
