@@ -121,13 +121,6 @@ describe Knapsack::Tracker do
     let(:test_paths) { ['a_spec.rb', 'b_spec.rb'] }
     let(:delta) { 0.02 }
 
-    shared_examples 'test tracker' do
-      it { expect(tracker.global_time).to be_within(delta).of(0.3) }
-      it { expect(tracker.test_files_with_time.keys.size).to eql 2 }
-      it { expect(tracker.test_files_with_time['a_spec.rb']).to be_within(delta).of(0.1) }
-      it { expect(tracker.test_files_with_time['b_spec.rb']).to be_within(delta).of(0.2) }
-    end
-
     context 'without Timecop' do
       before do
         test_paths.each_with_index do |test_path, index|
