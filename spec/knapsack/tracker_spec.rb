@@ -9,7 +9,6 @@ describe Knapsack::Tracker do
   it_behaves_like 'default trakcer attributes'
 
   describe '#config' do
-
     context 'when passed options' do
       let(:generate_report) { 'true' }
       let(:opts) do
