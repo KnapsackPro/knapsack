@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.3.1
+
+* Treat KNAPSACK_GENERATE_REPORT=false as generate_report -> false
+
+    https://github.com/ArturT/knapsack/pull/22
+
+https://github.com/ArturT/knapsack/compare/v1.3.0...v1.3.1
+
 ### 1.3.0
 
 * Add knapsack binary
