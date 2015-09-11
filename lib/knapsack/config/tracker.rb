@@ -11,7 +11,7 @@ module Knapsack
         end
 
         def generate_report
-          ENV['KNAPSACK_GENERATE_REPORT'] || false
+          !!(ENV['KNAPSACK_GENERATE_REPORT'] =~ /\Atrue|0\z/i)
         end
       end
     end
