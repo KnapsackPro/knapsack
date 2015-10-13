@@ -47,7 +47,7 @@ module Knapsack
       end
 
       def post_run_method
-        if Minitest.respond_to(:after_run)
+        if Minitest.respond_to?(:after_run)
           Minitest.method(:after_run)
         else
           Minitest::Unit.method(:after_tests)
