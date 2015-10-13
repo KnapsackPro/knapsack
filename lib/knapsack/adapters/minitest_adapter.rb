@@ -23,20 +23,20 @@ module Knapsack
       def bind_time_tracker
         ::Minitest::Test.send(:include, BindTimeTrackerMinitestPlugin)
 
-        post_run_method do
+        add_post_run_callback do
           Knapsack.logger.info(Presenter.global_time)
         end
       end
 
       def bind_report_generator
-        post_run_method do
+        add_post_run_callback do
           Knapsack.report.save
           Knapsack.logger.info(Presenter.report_details)
         end
       end
 
       def bind_time_offset_warning
-        post_run_method do
+        add_post_run_callback do
           Knapsack.logger.warn(Presenter.time_offset_warning)
         end
       end
@@ -46,11 +46,11 @@ module Knapsack
         @@parent_of_test_dir = File.expand_path('../', test_dir_path)
       end
 
-      def post_run_method
+      def add_post_run_callback(&block)
         if Minitest.respond_to?(:after_run)
-          Minitest.method(:after_run)
+          Minitest.after_run { block.call }
         else
-          Minitest::Unit.method(:after_tests)
+          Minitest::Unit.after_tests { block.call }
         end
       end
 
