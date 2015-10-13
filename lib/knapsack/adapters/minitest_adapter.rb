@@ -23,20 +23,20 @@ module Knapsack
       def bind_time_tracker
         ::Minitest::Test.send(:include, BindTimeTrackerMinitestPlugin)
 
-        ::Minitest.after_run do
+        ::Minitest.after_tests do
           Knapsack.logger.info(Presenter.global_time)
         end
       end
 
       def bind_report_generator
-        Minitest.after_run do
+        Minitest.after_tests do
           Knapsack.report.save
           Knapsack.logger.info(Presenter.report_details)
         end
       end
 
       def bind_time_offset_warning
-        Minitest.after_run do
+        Minitest.after_tests do
           Knapsack.logger.warn(Presenter.time_offset_warning)
         end
       end
