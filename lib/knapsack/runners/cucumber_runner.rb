@@ -15,7 +15,7 @@ module Knapsack
         cmd = %Q[bundle exec cucumber #{args} -- #{allocator.stringify_node_tests}]
 
         system(cmd)
-        exit($?.exitstatus)
+        exit($?.exitstatus) unless $?.exitstatus == 0
       end
     end
   end
