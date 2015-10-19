@@ -5,6 +5,9 @@
 ### 1.3.2
 
 * Use Timecop as dependency and always use Time.now_without_mock_time to avoid problem when someone did stub on Time without using Timecop.
+* Don't exit on successful RSpec and Cucumber runs
+
+    https://github.com/ArturT/knapsack/pull/25
 
 https://github.com/ArturT/knapsack/compare/v1.3.1...v1.3.2
 
