@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.3.3
+
+* Fix wrong dependency for timecop
+
+https://github.com/ArturT/knapsack/compare/v1.3.2...v1.3.3
+
 ### 1.3.2
 
 * Use Timecop as dependency and always use Time.now_without_mock_time to avoid problem when someone did stub on Time without using Timecop.
