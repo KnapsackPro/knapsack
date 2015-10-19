@@ -81,11 +81,7 @@ module Knapsack
     end
 
     def now_without_mock_time
-      if defined?(Timecop)
-        Time.now_without_mock_time
-      else
-        Time.now
-      end
+      Time.now_without_mock_time
     end
   end
 end

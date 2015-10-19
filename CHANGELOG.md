@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.3.2
+
+* Use Timecop as dependency and always use Time.now_without_mock_time to avoid problem when someone did stub on Time without using Timecop.
+
+https://github.com/ArturT/knapsack/compare/v1.3.1...v1.3.2
+
 ### 1.3.1
 
 * Treat KNAPSACK_GENERATE_REPORT=false as generate_report -> false
