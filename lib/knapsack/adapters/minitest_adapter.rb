@@ -46,14 +46,6 @@ module Knapsack
         @@parent_of_test_dir = File.expand_path('../', test_dir_path)
       end
 
-      def add_post_run_callback(&block)
-        if Minitest.respond_to?(:after_run)
-          Minitest.after_run { block.call }
-        else
-          Minitest::Unit.after_tests { block.call }
-        end
-      end
-
       def self.test_path(obj)
         # Pick the first public method in the class itself, that starts with "test_"
         test_method_name = obj.public_methods(false).select{|m| m =~ /^test_/ }.first
@@ -63,6 +55,16 @@ module Knapsack
         test_path = full_test_path.gsub(parent_of_test_dir_regexp, '.')
         # test_path will look like ./test/dir/unit_test.rb
         test_path
+      end
+
+      private
+
+      def add_post_run_callback(&block)
+        if Minitest.respond_to?(:after_run)
+          Minitest.after_run { block.call }
+        else
+          Minitest::Unit.after_tests { block.call }
+        end
       end
     end
   end
