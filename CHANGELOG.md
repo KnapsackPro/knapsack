@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.3.4
+
+* Make knapsack backwards compatible with earlier version of minitest
+
+    https://github.com/ArturT/knapsack/pull/26
+
+https://github.com/ArturT/knapsack/compare/v1.3.3...v1.3.4
+
 ### 1.3.3
 
 * Fix wrong dependency for timecop
