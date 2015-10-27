@@ -23,20 +23,20 @@ module Knapsack
       def bind_time_tracker
         ::Minitest::Test.send(:include, BindTimeTrackerMinitestPlugin)
 
-        ::Minitest.after_run do
+        add_post_run_callback do
           Knapsack.logger.info(Presenter.global_time)
         end
       end
 
       def bind_report_generator
-        Minitest.after_run do
+        add_post_run_callback do
           Knapsack.report.save
           Knapsack.logger.info(Presenter.report_details)
         end
       end
 
       def bind_time_offset_warning
-        Minitest.after_run do
+        add_post_run_callback do
           Knapsack.logger.warn(Presenter.time_offset_warning)
         end
       end
@@ -46,8 +46,17 @@ module Knapsack
         @@parent_of_test_dir = File.expand_path('../', test_dir_path)
       end
 
+      def add_post_run_callback(&block)
+        if Minitest.respond_to?(:after_run)
+          Minitest.after_run { block.call }
+        else
+          Minitest::Unit.after_tests { block.call }
+        end
+      end
+
       def self.test_path(obj)
-        test_method_name = obj.name
+        # Pick the first public method in the class itself, that starts with "test_"
+        test_method_name = obj.public_methods(false).select{|m| m =~ /^test_/ }.first
         method_object = obj.method(test_method_name)
         full_test_path = method_object.source_location.first
         parent_of_test_dir_regexp = Regexp.new("^#{@@parent_of_test_dir}")
