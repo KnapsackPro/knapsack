@@ -21,7 +21,7 @@ Presentations about gem:
 * [X 2014 Kraków Ruby User Group](http://slides.com/arturt/parallel-tests-in-comparable-time)
 * [VII 2014 Lunar Logic Dev Meeting](http://slides.com/arturt/knapsack)
 
-**[Sign up](http://knapsack.launchrock.com) to get info about launch Knapsack Pro with more features and free access for beta users.**
+**Would you like to try [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) with more features and free access for beta users? Please [fill the form](https://docs.google.com/forms/d/1S8b5I-W2wr4_8C0tKu9AiW9y_5vq3SW9j2MMUql-hjE/viewform?c=0&w=1&hl=en).**
 
 ### Without Knapsack
 
