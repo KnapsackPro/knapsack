@@ -1,6 +1,6 @@
 module Knapsack
   module Adapters
-    class RspecAdapter < BaseAdapter
+    class RSpecAdapter < BaseAdapter
       TEST_DIR_PATTERN = 'spec/**/*_spec.rb'
       REPORT_PATH = 'knapsack_rspec_report.json'
 
@@ -13,7 +13,7 @@ module Knapsack
               else
                 example.metadata
               end
-            Knapsack.tracker.test_path = RspecAdapter.test_path(current_example_group)
+            Knapsack.tracker.test_path = RSpecAdapter.test_path(current_example_group)
             Knapsack.tracker.start_timer
           end
 
@@ -53,6 +53,10 @@ module Knapsack
 
         example_group[:file_path]
       end
+    end
+
+    # This is added to provide backwards compatabiliy
+    class RspecAdapter < RSpecAdapter
     end
   end
 end

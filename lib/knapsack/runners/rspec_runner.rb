@@ -2,7 +2,7 @@ module Knapsack
   module Runners
     class RSpecRunner
       def self.run(args)
-        allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::RspecAdapter).allocator
+        allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::RSpecAdapter).allocator
 
         puts
         puts 'Report specs:'

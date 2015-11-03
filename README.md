@@ -107,7 +107,7 @@ require 'knapsack'
 
 # CUSTOM_CONFIG_GOES_HERE
 
-Knapsack::Adapters::RspecAdapter.bind
+Knapsack::Adapters::RSpecAdapter.bind
 ```
 
 ### Step for Cucumber
