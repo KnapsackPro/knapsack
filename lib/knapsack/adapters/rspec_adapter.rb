@@ -1,7 +1,7 @@
 module Knapsack
   module Adapters
     class RSpecAdapter < BaseAdapter
-      TEST_DIR_PATTERN = 'spec/**/*_spec.rb'
+      TEST_DIR_PATTERN = 'spec/**{,/*/**}/*_spec.rb'
       REPORT_PATH = 'knapsack_rspec_report.json'
 
       def bind_time_tracker
