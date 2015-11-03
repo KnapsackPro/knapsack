@@ -2,6 +2,18 @@
 
 * TODO
 
+### 1.4.0
+
+* Rename RspecAdapter to RSpecAdapter so that it is consistent
+
+    https://github.com/ArturT/knapsack/pull/28
+
+* Change file path patterns to support 1-level symlinks by default
+
+    https://github.com/ArturT/knapsack/pull/27
+
+https://github.com/ArturT/knapsack/compare/v1.3.4...v1.4.0
+
 ### 1.3.4
 
 * Make knapsack backwards compatible with earlier version of minitest
