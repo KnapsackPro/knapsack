@@ -1,7 +1,7 @@
 module Knapsack
   module Adapters
     class MinitestAdapter < BaseAdapter
-      TEST_DIR_PATTERN = 'test/**/*_test.rb'
+      TEST_DIR_PATTERN = 'test/**{,/*/**}/*_test.rb'
       REPORT_PATH = 'knapsack_minitest_report.json'
       @@parent_of_test_dir = nil
 
