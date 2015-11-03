@@ -84,7 +84,7 @@ describe Knapsack::AllocatorBuilder do
     context 'when RspecAdapter' do
       let(:adapter_class) { Knapsack::Adapters::RspecAdapter }
       it_behaves_like 'allocator builder'
-    end 
+    end
 
     context 'when CucumberAdapter' do
       let(:adapter_class) { Knapsack::Adapters::CucumberAdapter }
