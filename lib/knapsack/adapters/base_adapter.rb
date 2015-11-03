@@ -2,7 +2,7 @@ module Knapsack
   module Adapters
     class BaseAdapter
       # Just examples, please overwrite constants in subclasses
-      TEST_DIR_PATTERN = 'test/**/*_test.rb'
+      TEST_DIR_PATTERN = 'test/**{,/*/**}/*_test.rb'
       REPORT_PATH = 'knapsack_base_report.json'
 
       def self.bind
