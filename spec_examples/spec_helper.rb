@@ -15,7 +15,7 @@ if ENV['CUSTOM_LOGGER']
   Knapsack.logger.level = Logger::INFO
 end
 
-Knapsack::Adapters::RspecAdapter.bind
+Knapsack::Adapters::RSpecAdapter.bind
 
 RSpec.configure do |config|
   config.order = :random

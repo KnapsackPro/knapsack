@@ -1,4 +1,4 @@
-describe Knapsack::Adapters::RspecAdapter do
+describe Knapsack::Adapters::RSpecAdapter do
   context do
     before { expect(::RSpec).to receive(:configure) }
     it_behaves_like 'adapter'

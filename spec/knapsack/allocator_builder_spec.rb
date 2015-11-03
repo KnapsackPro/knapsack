@@ -75,10 +75,16 @@ describe Knapsack::AllocatorBuilder do
       end
     end
 
+    context 'when RSpecAdapter' do
+      let(:adapter_class) { Knapsack::Adapters::RSpecAdapter }
+      it_behaves_like 'allocator builder'
+    end
+
+    # To make sure we do not break backwards compatibility
     context 'when RspecAdapter' do
       let(:adapter_class) { Knapsack::Adapters::RspecAdapter }
       it_behaves_like 'allocator builder'
-    end
+    end 
 
     context 'when CucumberAdapter' do
       let(:adapter_class) { Knapsack::Adapters::CucumberAdapter }
@@ -87,7 +93,7 @@ describe Knapsack::AllocatorBuilder do
   end
 
   describe '#test_dir' do
-    let(:adapter_class) { Knapsack::Adapters::RspecAdapter }
+    let(:adapter_class) { Knapsack::Adapters::RSpecAdapter }
 
     subject { allocator_builder.test_dir }
 
