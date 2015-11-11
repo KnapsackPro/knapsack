@@ -37,7 +37,7 @@ module Knapsack
       end
 
       def all_tests
-        @all_tests ||= Dir[test_file_pattern].sort
+        @all_tests ||= Dir.glob(test_file_pattern).uniq.sort
       end
 
       protected

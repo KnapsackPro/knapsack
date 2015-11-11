@@ -33,6 +33,10 @@ describe Knapsack::Distributors::LeftoverDistributor do
         it { should_not be_empty }
         it { should include 'spec/knapsack/tracker_spec.rb' }
         it { should include 'spec/knapsack/adapters/rspec_adapter_spec.rb' }
+
+        it 'has no duplicated test file paths' do
+          expect(subject.size).to eq subject.uniq.size
+        end
       end
 
       context 'spec_examples/**{,/*/**}/*_spec.rb' do
@@ -41,6 +45,10 @@ describe Knapsack::Distributors::LeftoverDistributor do
         it { should_not be_empty }
         it { should include 'spec_examples/fast/1_spec.rb' }
         it { should include 'spec_examples/leftover/a_spec.rb' }
+
+        it 'has no duplicated test file paths' do
+          expect(subject.size).to eq subject.uniq.size
+        end
       end
     end
 
