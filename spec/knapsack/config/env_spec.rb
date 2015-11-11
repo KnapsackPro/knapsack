@@ -77,7 +77,7 @@ describe Knapsack::Config::Env do
     subject { described_class.test_file_pattern }
 
     context 'when ENV exists' do
-      let(:test_file_pattern) { 'custom_spec/**/*_spec.rb' }
+      let(:test_file_pattern) { 'custom_spec/**{,/*/**}/*_spec.rb' }
       before { stub_const("ENV", { 'KNAPSACK_TEST_FILE_PATTERN' => test_file_pattern }) }
       it { should eql test_file_pattern }
     end

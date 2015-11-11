@@ -6,5 +6,5 @@ Knapsack.load_tasks
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'test_examples'
-  t.pattern = 'test_examples/**/*_test.rb'
+  t.pattern = 'test_examples/**{,/*/**}/*_test.rb'
 end

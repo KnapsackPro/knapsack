@@ -7,7 +7,7 @@ describe Knapsack::Distributors::LeftoverDistributor do
       'd_spec.rb' => 2.5,
     }
   end
-  let(:test_file_pattern) { 'spec/**/*_spec.rb' }
+  let(:test_file_pattern) { 'spec/**{,/*/**}/*_spec.rb' }
   let(:default_args) do
     {
       report: report,
@@ -29,14 +29,14 @@ describe Knapsack::Distributors::LeftoverDistributor do
     subject { distributor.all_tests }
 
     context 'when given test_file_pattern' do
-      context 'spec/**/*_spec.rb' do
+      context 'spec/**{,/*/**}/*_spec.rb' do
         it { should_not be_empty }
         it { should include 'spec/knapsack/tracker_spec.rb' }
         it { should include 'spec/knapsack/adapters/rspec_adapter_spec.rb' }
       end
 
-      context 'spec_examples/**/*_spec.rb' do
-        let(:test_file_pattern) { 'spec_examples/**/*_spec.rb' }
+      context 'spec_examples/**{,/*/**}/*_spec.rb' do
+        let(:test_file_pattern) { 'spec_examples/**{,/*/**}/*_spec.rb' }
 
         it { should_not be_empty }
         it { should include 'spec_examples/fast/1_spec.rb' }

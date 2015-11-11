@@ -146,7 +146,7 @@ Knapsack.tracker.config({
 })
 
 Knapsack.report.config({
-  test_file_pattern: 'spec/**/*_spec.rb', # default value based on adapter
+  test_file_pattern: 'spec/**{,/*/**}/*_spec.rb', # default value based on adapter
   report_path: 'knapsack_custom_report.json'
 })
 
@@ -205,13 +205,13 @@ On your CI server run this command for the first CI node. Update `CI_NODE_INDEX`
 You can add `KNAPSACK_TEST_FILE_PATTERN` if your tests are not in default directory. For instance:
 
     # Step for RSpec
-    $ KNAPSACK_TEST_FILE_PATTERN="directory_with_specs/**/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
+    $ KNAPSACK_TEST_FILE_PATTERN="directory_with_specs/**{,/*/**}/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:rspec
 
     # Step for Cucumber
     $ KNAPSACK_TEST_FILE_PATTERN="directory_with_features/**/*.feature" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:cucumber
 
     # Step for Minitest
-    $ KNAPSACK_TEST_FILE_PATTERN="directory_with_tests/**/*_test.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:minitest
+    $ KNAPSACK_TEST_FILE_PATTERN="directory_with_tests/**{,/*/**}/*_spec.rb" CI_NODE_TOTAL=2 CI_NODE_INDEX=0 bundle exec rake knapsack:minitest
 
 You can set `KNAPSACK_REPORT_PATH` if your knapsack report was saved in non default location. Example:
 
@@ -476,7 +476,7 @@ To generate a new knapsack report for specs with `focus` tag (only specs in `spe
 
 To see specs distributed for the first CI node type:
 
-    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**/*_spec.rb" bundle exec rake knapsack:rspec
+    $ CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_SPEC_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
 
 Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a Knapsack time offset warning because we set `time_offset_in_seconds` to 3 in `spec_examples/spec_helper.rb`. Type below to see warning:
 

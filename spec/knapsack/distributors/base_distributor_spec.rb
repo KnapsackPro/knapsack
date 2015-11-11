@@ -3,7 +3,7 @@ describe Knapsack::Distributors::BaseDistributor do
   let(:default_args) do
     {
       report: report,
-      test_file_pattern: 'spec/**/*_spec.rb',
+      test_file_pattern: 'spec/**{,/*/**}/*_spec.rb',
       ci_node_total: '1',
       ci_node_index: '0'
     }

@@ -43,7 +43,7 @@ describe Knapsack::Allocator do
   end
 
   describe '#test_dir' do
-    let(:test_file_pattern) { "test_dir/**/*_spec.rb" }
+    let(:test_file_pattern) { "test_dir/**{,/*/**}/*_spec.rb" }
 
     subject { allocator.test_dir }
 

@@ -60,7 +60,7 @@ describe Knapsack::AllocatorBuilder do
       end
 
       context 'when ENV test_file_pattern has value' do
-        let(:env_test_file_pattern) { 'custom_spec/**/*_spec.rb' }
+        let(:env_test_file_pattern) { 'custom_spec/**{,/*/**}/*_spec.rb' }
         let(:report_config) { { report_path: adapter_report_path } }
         let(:allocator_args) do
           {
@@ -102,7 +102,7 @@ describe Knapsack::AllocatorBuilder do
     end
 
     context 'when ENV test_file_pattern has value' do
-      let(:env_test_file_pattern) { 'custom_spec/**/*_spec.rb' }
+      let(:env_test_file_pattern) { 'custom_spec/**{,/*/**}/*_spec.rb' }
 
       it { should eq 'custom_spec' }
     end
