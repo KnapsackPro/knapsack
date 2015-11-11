@@ -55,7 +55,7 @@ module Knapsack
       end
     end
 
-    # This is added to provide backwards compatabiliy
+    # This is added to provide backwards compatibility
     class RspecAdapter < RSpecAdapter
     end
   end
