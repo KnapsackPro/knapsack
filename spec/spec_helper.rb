@@ -1,3 +1,5 @@
+require 'rspec/its'
+
 require 'timecop'
 Timecop.safe_mode = true
 
