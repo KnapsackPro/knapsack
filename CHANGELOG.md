@@ -2,6 +2,13 @@
 
 * TODO
 
+### 1.4.1
+
+* Update test file pattern in tests also. Related PR https://github.com/ArturT/knapsack/pull/27
+* Ensure there are no duplicates in leftover tests because of new test file pattern
+
+https://github.com/ArturT/knapsack/compare/v1.4.0...v1.4.1
+
 ### 1.4.0
 
 * Rename RspecAdapter to RSpecAdapter so that it is consistent
