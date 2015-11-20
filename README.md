@@ -92,6 +92,12 @@ And then execute:
 
     $ bundle
 
+Add this line at the bottom of `Rakefile`:
+
+```ruby
+Knapsack.load_tasks if defined?(Knapsack)
+```
+
 ## Usage
 
 You can find here example of rails app with already configured knapsack.
@@ -157,12 +163,6 @@ Knapsack.logger.level = Logger::INFO
 ```
 
 ### Common step
-
-Add this line at the bottom of `Rakefile`:
-
-```ruby
-Knapsack.load_tasks if defined?(Knapsack)
-```
 
 Generate time execution report for your test files. Run below command on one of your CI nodes.
 
