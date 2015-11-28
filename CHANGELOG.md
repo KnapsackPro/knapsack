@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.5.0
+
+* Add support for snap-ci.com
+
+https://github.com/ArturT/knapsack/compare/v1.4.1...v1.5.0
+
 ### 1.4.1
 
 * Update test file pattern in tests also. Related PR https://github.com/ArturT/knapsack/pull/27
