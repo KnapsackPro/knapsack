@@ -64,6 +64,9 @@ Presentations about gem:
   - [Info for buildkite.com users](#info-for-buildkitecom-users)
     - [Step 1](#step-1-3)
     - [Step 2](#step-2-3)
+  - [Info for snap-ci.com users](#info-for-snap-cicom-users)
+    - [Step 1](#step-1-4)
+    - [Step 2](#step-2-4)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
@@ -446,6 +449,36 @@ After tests pass your should copy knapsack json report which is rendered at the 
 #### Step 2
 
 Knapsack supports buildkite ENVs `BUILDKITE_PARALLEL_JOB_COUNT` and `BUILDKITE_PARALLEL_JOB`. The only thing you need to do is to configure the parallelism parameter in your build step and run the appropiate command in your build
+
+    # Step for RSpec
+    bundle exec rake knapsack:rspec
+
+    # Step for Cucumber
+    bundle exec rake knapsack:cucumber
+
+    # Step for Minitest
+    bundle exec rake knapsack:minitest
+
+### Info for snap-ci.com users
+
+#### Step 1
+
+For the first time run all tests at once with enabled report generator. Run the following commands locally:
+
+    # Step for RSpec
+    KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
+
+    # Step for Cucumber
+    KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
+
+    # Step for Minitest
+    KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+
+After tests pass your should copy knapsack json report which is rendered at the end of rspec/cucumber/minitest results. Save it into your repository as `knapsack_rspec_report.json`, `knapsack_cucumber_report.json` or `knapsack_minitest_report.json` file and commit.
+
+#### Step 2
+
+Knapsack supports snap-ci.com ENVs `SNAP_WORKER_TOTAL` and `SNAP_WORKER_INDEX`. The only thing you need to do is to configure number of workers for your project in configuration settings in order to enable parallelism. Next thing is to set below commands to be executed in your stage:
 
     # Step for RSpec
     bundle exec rake knapsack:rspec
