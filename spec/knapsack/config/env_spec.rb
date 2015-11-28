@@ -36,6 +36,11 @@ describe Knapsack::Config::Env do
         before { stub_const("ENV", { 'BUILDKITE_PARALLEL_JOB_COUNT' => 4 }) }
         it { should eql 4 }
       end
+
+      context 'when SNAP_WORKER_TOTAL has value' do
+        before { stub_const("ENV", { 'SNAP_WORKER_TOTAL' => 6 }) }
+        it { should eql 6 }
+      end
     end
 
     context "when ENV doesn't exist" do
@@ -65,6 +70,11 @@ describe Knapsack::Config::Env do
       context 'when BUILDKITE_PARALLEL_JOB has value' do
         before { stub_const("ENV", { 'BUILDKITE_PARALLEL_JOB' => 2 }) }
         it { should eql 2 }
+      end
+
+      context 'when SNAP_WORKER_INDEX has value' do
+        before { stub_const("ENV", { 'SNAP_WORKER_INDEX' => 4 }) }
+        it { should eql 3 }
       end
     end
 
