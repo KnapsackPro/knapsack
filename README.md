@@ -534,3 +534,4 @@ Many thanks to [Małgorzata Nowak](https://github.com/informatykgosia) for beaut
 * Semaphore | [Running RSpec specs in parallel](https://semaphoreapp.com/docs/running-rspec-specs-in-threads.html)
 * Semaphore | [Running Cucumber scenarios in parallel](https://semaphoreapp.com/docs/running-cucumber-scenarios-in-threads.html)
 * Buildkite | [Libraries](https://buildkite.com/docs/guides/parallelizing-builds#libraries)
+* Snap CI | [Knapsack: optimal test suite split based on time execution](https://docs.snap-ci.com/speeding-up-builds/test-parallelism/#parallelism-using-third-party-tools%23knapsack-optimal-test-suite-split-based-on-time-execution)
