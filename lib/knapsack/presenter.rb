@@ -52,6 +52,8 @@ or bump time_offset_in_seconds setting.}
 Global time execution for this CI node is fine.
 Happy testing!}
         end
+        str << "\n\nNeed explanation? See FAQ:"
+        str << "\nhttps://github.com/ArturT/knapsack#faq"
         str << "\n=================================================\n"
         str << %{Sign up for beta Knapsack Pro here:
 http://knapsackpro.com}
