@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.5.1
+
+* Add link to FAQ at the end of time offset warning
+
+https://github.com/ArturT/knapsack/compare/v1.5.0...v1.5.1
+
 ### 1.5.0
 
 * Add support for snap-ci.com
