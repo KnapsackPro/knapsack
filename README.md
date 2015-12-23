@@ -67,6 +67,7 @@ Presentations about gem:
   - [Info for snap-ci.com users](#info-for-snap-cicom-users)
     - [Step 1](#step-1-4)
     - [Step 2](#step-2-4)
+- [FAQ](#faq)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
@@ -488,6 +489,31 @@ Knapsack supports snap-ci.com ENVs `SNAP_WORKER_TOTAL` and `SNAP_WORKER_INDEX`. 
 
     # Step for Minitest
     bundle exec rake knapsack:minitest
+
+## FAQ
+
+* What time offset warning means?
+
+At the end of tests execution results you can see warning like this:
+
+```
+========= Knapsack Time Offset Warning ==========
+Time offset: 30s
+Max allowed node time execution: 02m 30s
+Exceeded time: 37s
+```
+
+`Time offset: 30s` - this is the current time offset value, by default it’s 30s. Let’s assume whole test suite takes 4 minutes and you do split across 2 CI nodes so the optimal split is 2 minutes per node. Time offset 30s means when tests on single CI node will take longer than 2 minutes and 30s then you see warning about regenerating report because probably test suite files changed and the knapsack report contains old time execution data about each test file so regenerating knapsack report should help you provide a more optimal test suite split.
+
+`Max allowed node time execution: 02m 30s` - it’s average time execution of tests per CI node + time offset. In this case average tests time execution per CI node is 2 minutes.
+
+`Exceeded time: 37s` - it means tests on particular CI node took 37s longer than `max allowed node time execution`. Sometimes this value is negative when tests executed faster than `max allowed node time execution`.
+
+If you want to regenerate report take a look [here](#common-step).
+
+`KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec`
+
+If you run command like this on your development machine then test suite time execution might be different than if you generate a report on CI machine (for instance tests might be faster on your machine then on CI node) so that might be a reason why you see warning about regenerating report. You can generate the report on single CI node which should give you result specific for your CI node instead of your development machine. In case you don't want to bother about manually regenerating knapsack report please take a look on [knapsack_pro gem](http://knapsackpro.com).
 
 ## Gem tests
 
