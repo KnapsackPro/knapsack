@@ -54,7 +54,7 @@ Happy testing!}
         end
         str << "\n=================================================\n"
         str << %{Sign up for beta Knapsack Pro here:
-http://knapsack.launchrock.com}
+http://knapsackpro.com}
         str << "\n=================================================\n"
         str
       end
