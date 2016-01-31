@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.6.0
+
+* Add support for Cucumber 2
+
+    https://github.com/ArturT/knapsack/issues/30
+
+https://github.com/ArturT/knapsack/compare/v1.5.1...v1.6.0
+
 ### 1.5.1
 
 * Add link to FAQ at the end of time offset warning
