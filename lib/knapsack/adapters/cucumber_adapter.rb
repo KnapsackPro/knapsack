@@ -5,8 +5,8 @@ module Knapsack
       REPORT_PATH = 'knapsack_cucumber_report.json'
 
       def bind_time_tracker
-        Around do |scenario_or_outline_table, block|
-          Knapsack.tracker.test_path = CucumberAdapter.test_path(scenario_or_outline_table)
+        Around do |object, block|
+          Knapsack.tracker.test_path = CucumberAdapter.test_path(object)
           Knapsack.tracker.start_timer
           block.call
           Knapsack.tracker.stop_timer
@@ -30,11 +30,17 @@ module Knapsack
         end
       end
 
-      def self.test_path(scenario_or_outline_table)
-        if scenario_or_outline_table.respond_to?(:file)
-          scenario_or_outline_table.file
+      def self.test_path(object)
+        if Cucumber::VERSION.to_i >= 2
+          test_case = object
+          test_case.location.file
         else
-          scenario_or_outline_table.scenario_outline.file
+          scenario_or_outline_table = object
+          if scenario_or_outline_table.respond_to?(:file)
+            scenario_or_outline_table.file
+          else
+            scenario_or_outline_table.scenario_outline.file
+          end
         end
       end
 

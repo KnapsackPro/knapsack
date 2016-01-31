@@ -9,32 +9,59 @@ describe Knapsack::Adapters::CucumberAdapter do
   end
 
   describe 'bind methods' do
-    let(:file) { 'features/a.feature' }
-    let(:scenario) { double(file: file) }
-    let(:block) { double }
     let(:logger) { instance_double(Knapsack::Logger) }
-    let(:global_time) { 'Global time: 01m 05s' }
 
     before do
       expect(Knapsack).to receive(:logger).and_return(logger)
     end
 
     describe '#bind_time_tracker' do
+      let(:file) { 'features/a.feature' }
+      let(:block) { double }
+      let(:global_time) { 'Global time: 01m 05s' }
       let(:tracker) { instance_double(Knapsack::Tracker) }
 
-      it do
-        expect(subject).to receive(:Around).and_yield(scenario, block)
-        allow(Knapsack).to receive(:tracker).and_return(tracker)
-        expect(tracker).to receive(:test_path=).with(file)
-        expect(tracker).to receive(:start_timer)
-        expect(block).to receive(:call)
-        expect(tracker).to receive(:stop_timer)
+      context 'when Cucumber version 1' do
+        let(:scenario) { double(file: file) }
 
-        expect(::Kernel).to receive(:at_exit).and_yield
-        expect(Knapsack::Presenter).to receive(:global_time).and_return(global_time)
-        expect(logger).to receive(:info).with(global_time)
+        before { stub_const('Cucumber::VERSION', '1.3.20') }
 
-        subject.bind_time_tracker
+        it do
+          expect(subject).to receive(:Around).and_yield(scenario, block)
+          allow(Knapsack).to receive(:tracker).and_return(tracker)
+          expect(tracker).to receive(:test_path=).with(file)
+          expect(tracker).to receive(:start_timer)
+          expect(block).to receive(:call)
+          expect(tracker).to receive(:stop_timer)
+
+          expect(::Kernel).to receive(:at_exit).and_yield
+          expect(Knapsack::Presenter).to receive(:global_time).and_return(global_time)
+          expect(logger).to receive(:info).with(global_time)
+
+          subject.bind_time_tracker
+        end
+      end
+
+      context 'when Cucumber version 2' do
+        let(:test_case) { double(location: double(file: file)) }
+
+        # complex version name to ensure we can catch that too
+        before { stub_const('Cucumber::VERSION', '2.0.0.rc.5') }
+
+        it do
+          expect(subject).to receive(:Around).and_yield(test_case, block)
+          allow(Knapsack).to receive(:tracker).and_return(tracker)
+          expect(tracker).to receive(:test_path=).with(file)
+          expect(tracker).to receive(:start_timer)
+          expect(block).to receive(:call)
+          expect(tracker).to receive(:stop_timer)
+
+          expect(::Kernel).to receive(:at_exit).and_yield
+          expect(Knapsack::Presenter).to receive(:global_time).and_return(global_time)
+          expect(logger).to receive(:info).with(global_time)
+
+          subject.bind_time_tracker
+        end
       end
     end
 
@@ -68,22 +95,37 @@ describe Knapsack::Adapters::CucumberAdapter do
   end
 
   describe '.test_path' do
-    subject { described_class.test_path(scenario_or_outline_table) }
+    context 'when Cucumber version 1' do
+      subject { described_class.test_path(scenario_or_outline_table) }
 
-    context 'when scenario' do
-      let(:scenario_file) { 'features/scenario.feature' }
-      let(:scenario_or_outline_table) { double(file: scenario_file) }
+      before { stub_const('Cucumber::VERSION', '1') }
 
-      it { should eql scenario_file }
-    end
+      context 'when scenario' do
+        let(:scenario_file) { 'features/scenario.feature' }
+        let(:scenario_or_outline_table) { double(file: scenario_file) }
 
-    context 'when scenario outline' do
-      let(:scenario_outline_file) { 'features/scenario_outline.feature' }
-      let(:scenario_or_outline_table) do
-        double(scenario_outline: double(file: scenario_outline_file))
+        it { should eql scenario_file }
       end
 
-      it { should eql scenario_outline_file }
+      context 'when scenario outline' do
+        let(:scenario_outline_file) { 'features/scenario_outline.feature' }
+        let(:scenario_or_outline_table) do
+          double(scenario_outline: double(file: scenario_outline_file))
+        end
+
+        it { should eql scenario_outline_file }
+      end
+    end
+
+    context 'when Cucumber version 2' do
+      let(:file) { 'features/a.feature' }
+      let(:test_case) { double(location: double(file: file)) } # Cucumber 2
+
+      subject { described_class.test_path(test_case) }
+
+      before { stub_const('Cucumber::VERSION', '2') }
+
+      it { should eql file }
     end
   end
 end
