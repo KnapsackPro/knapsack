@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.6.1
+
+* Changed rake task in minitest_runner.rb to have no warnings output
+
+    https://github.com/KnapsackPro/knapsack_pro-ruby/pull/4
+
+https://github.com/ArturT/knapsack/compare/v1.6.0...v1.6.1
+
 ### 1.6.0
 
 * Add support for Cucumber 2
