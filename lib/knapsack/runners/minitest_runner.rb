@@ -19,6 +19,7 @@ module Knapsack
         end
 
         Rake::TestTask.new(task_name) do |t|
+          t.warning = false
           t.libs << allocator.test_dir
           t.test_files = allocator.node_tests
           t.options = args
