@@ -68,6 +68,7 @@ Presentations about gem:
     - [Step 1](#step-1-4)
     - [Step 2](#step-2-4)
 - [FAQ](#faq)
+  - [What time offset warning means?](#what-time-offset-warning-means)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
@@ -492,7 +493,7 @@ Knapsack supports snap-ci.com ENVs `SNAP_WORKER_TOTAL` and `SNAP_WORKER_INDEX`. 
 
 ## FAQ
 
-* What time offset warning means?
+### What time offset warning means?
 
 At the end of tests execution results you can see warning like this:
 
