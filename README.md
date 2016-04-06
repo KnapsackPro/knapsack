@@ -70,6 +70,7 @@ Presentations about gem:
 - [FAQ](#faq)
   - [What time offset warning means?](#what-time-offset-warning-means)
   - [How to generate knapsack report?](#how-to-generate-knapsack-report)
+  - [What does "leftover specs" mean?](#what-does-leftover-specs-mean)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
@@ -518,6 +519,24 @@ If you want to regenerate report take a look [here](#common-step).
 `KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec`
 
 If you run command like this on your development machine then test suite time execution might be different than if you generate a report on CI machine (for instance tests might be faster on your machine then on CI node) so that might be a reason why you see warning about regenerating report. You can generate the report on single CI node which should give you result specific for your CI node instead of your development machine. In case you don't want to bother about manually regenerating knapsack report please take a look on [knapsack_pro gem](http://knapsackpro.com).
+
+### What does "leftover specs" mean?
+
+When you run your specs with knapsack rake task then you will see in the output something like:
+
+```
+Report specs:
+spec/models/user_spec.rb
+spec/controllers/users_controller_spec.rb
+
+Leftover specs:
+spec/models/book_spec.rb
+spec/models/author_spec.rb
+```
+
+The leftover specs mean we don't have recorded time execution for those test files so the leftover specs were distributed across CI nodes based on file name instead.
+The reason might be that someone added a new test file after knapsack report was generated. Another reason might be an empty spec file.
+If you have a lot of leftover specs then you can [generate knapsack report again](#how-to-generate-knapsack-report) to improve you test distribution across CI nodes.
 
 ## Gem tests
 
