@@ -69,6 +69,7 @@ Presentations about gem:
     - [Step 2](#step-2-4)
 - [FAQ](#faq)
   - [What time offset warning means?](#what-time-offset-warning-means)
+  - [How to generate knapsack report?](#how-to-generate-knapsack-report)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
@@ -509,6 +510,8 @@ Exceeded time: 37s
 `Max allowed node time execution: 02m 30s` - it’s average time execution of tests per CI node + time offset. In this case average tests time execution per CI node is 2 minutes.
 
 `Exceeded time: 37s` - it means tests on particular CI node took 37s longer than `max allowed node time execution`. Sometimes this value is negative when tests executed faster than `max allowed node time execution`.
+
+### How to generate knapsack report?
 
 If you want to regenerate report take a look [here](#common-step).
 
