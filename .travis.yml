@@ -49,6 +49,8 @@ script:
   - rm spec_examples/fast/1_spec.rb
   - KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
 
+  - bin/print_header.sh "Run specs from multiple directories with manually specified test_dir"
+  - KNAPSACK_TEST_DIR=spec_examples KNAPSACK_TEST_FILE_PATTERN="{spec_examples,spec_engine_examples}/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
 
   - bin/print_header.sh "------------------------------------------------------"
 

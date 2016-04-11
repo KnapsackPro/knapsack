@@ -97,18 +97,28 @@ describe Knapsack::AllocatorBuilder do
 
     subject { allocator_builder.test_dir }
 
-    before do
-      expect(Knapsack::Config::Env).to receive(:test_file_pattern).and_return(env_test_file_pattern)
-    end
-
-    context 'when ENV test_file_pattern has value' do
-      let(:env_test_file_pattern) { 'custom_spec/**{,/*/**}/*_spec.rb' }
+    context 'when ENV test_dir has value' do
+      before do
+        expect(Knapsack::Config::Env).to receive(:test_dir).and_return("custom_spec")
+      end
 
       it { should eq 'custom_spec' }
     end
 
-    context 'when ENV test_file_pattern has no value' do
-      it { should eq 'spec' }
+    context 'when ENV test_dir has no value' do
+      before do
+        expect(Knapsack::Config::Env).to receive(:test_file_pattern).and_return(env_test_file_pattern)
+      end
+
+      context 'when ENV test_file_pattern has value' do
+        let(:env_test_file_pattern) { 'custom_spec/**{,/*/**}/*_spec.rb' }
+
+        it { should eq 'custom_spec' }
+      end
+
+      context 'when ENV test_file_pattern has no value' do
+        it { should eq 'spec' }
+      end
     end
   end
 end

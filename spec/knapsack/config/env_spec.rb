@@ -96,4 +96,18 @@ describe Knapsack::Config::Env do
       it { should be_nil }
     end
   end
+
+  describe '.test_dir' do
+    subject { described_class.test_dir }
+
+    context 'when ENV exists' do
+      let(:test_dir) { 'spec' }
+      before { stub_const("ENV", { 'KNAPSACK_TEST_DIR' => test_dir }) }
+      it { should eql test_dir }
+    end
+
+    context "when ENV doesn't exist" do
+      it { should be_nil }
+    end
+  end
 end

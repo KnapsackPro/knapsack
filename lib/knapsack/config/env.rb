@@ -18,6 +18,10 @@ module Knapsack
           ENV['KNAPSACK_TEST_FILE_PATTERN']
         end
 
+        def test_dir
+          ENV['KNAPSACK_TEST_DIR']
+        end
+
         private
 
         def index_starting_from_one(index)
