@@ -71,6 +71,7 @@ Presentations about gem:
   - [What time offset warning means?](#what-time-offset-warning-means)
   - [How to generate knapsack report?](#how-to-generate-knapsack-report)
   - [What does "leftover specs" mean?](#what-does-leftover-specs-mean)
+  - [How can I run tests from multiple directories?](#how-can-i-run-tests-from-multiple-directories)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
