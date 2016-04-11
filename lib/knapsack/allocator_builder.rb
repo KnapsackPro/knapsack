@@ -15,7 +15,7 @@ module Knapsack
     end
 
     def test_dir
-      test_file_pattern.split('/').first
+      Knapsack::Config::Env.default_test_dir || test_file_pattern.split('/').first
     end
 
     private

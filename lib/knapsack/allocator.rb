@@ -22,7 +22,7 @@ module Knapsack
     end
 
     def test_dir
-      @report_distributor.test_file_pattern.gsub(/^(.*?)\//).first
+      Knapsack::Config::Env.default_test_dir || @report_distributor.test_file_pattern.gsub(/^(.*?)\//).first
     end
   end
 end
