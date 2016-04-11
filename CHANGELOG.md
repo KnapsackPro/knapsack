@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.7.0
+
+* Add ability to run tests from multiple directories
+
+    https://github.com/ArturT/knapsack/pull/35
+
+https://github.com/ArturT/knapsack/compare/v1.6.1...v1.7.0
+
 ### 1.6.1
 
 * Changed rake task in minitest_runner.rb to have no warnings output
