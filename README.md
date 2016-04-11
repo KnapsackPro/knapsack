@@ -72,6 +72,7 @@ Presentations about gem:
   - [How to generate knapsack report?](#how-to-generate-knapsack-report)
   - [What does "leftover specs" mean?](#what-does-leftover-specs-mean)
   - [How can I run tests from multiple directories?](#how-can-i-run-tests-from-multiple-directories)
+  - [How to update existing knapsack report for a few test files?](#how-to-update-existing-knapsack-report-for-a-few-test-files)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
@@ -544,6 +545,10 @@ If you have a lot of leftover specs then you can [generate knapsack report again
 The test file pattern config option supports any glob pattern handled by [`Dir.glob`](http://ruby-doc.org/core-2.2.0/Dir.html#method-c-glob) and can be configured to pull test files from multiple directories. An example of this when using RSpec would be `"{spec,engines/**/spec}/**{,/*/**}/*_spec.rb"`. For complex cases like this, the test directory can't be extracted and must be specified manually using the `KNAPSACK_TEST_DIR` environment variable:
 
     $ KNAPSACK_TEST_DIR=spec KNAPSACK_TEST_FILE_PATTERN="{spec,engines/**/spec}/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
+
+### How to update existing knapsack report for a few test files?
+
+You may want to look at solution in [this issue](https://github.com/ArturT/knapsack/issues/34). Take into account that there are some cons of this approach.
 
 ## Gem tests
 
