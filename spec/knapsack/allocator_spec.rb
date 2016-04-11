@@ -45,17 +45,17 @@ describe Knapsack::Allocator do
   describe '#test_dir' do
     subject { allocator.test_dir }
 
-    context 'when ENV default_test_dir has value' do
-      let(:default_test_dir) { "custom_dir" }
+    context 'when ENV test_dir has value' do
+      let(:test_dir) { "custom_dir" }
 
       before do
-        expect(Knapsack::Config::Env).to receive(:default_test_dir).and_return(default_test_dir)
+        expect(Knapsack::Config::Env).to receive(:test_dir).and_return(test_dir)
       end
 
       it { should eql 'custom_dir' }
     end
 
-    context 'when ENV default_test_dir has no value' do
+    context 'when ENV test_dir has no value' do
       let(:test_file_pattern) { "test_dir/**{,/*/**}/*_spec.rb" }
 
       before do

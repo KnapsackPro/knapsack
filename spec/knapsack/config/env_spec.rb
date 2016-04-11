@@ -97,13 +97,13 @@ describe Knapsack::Config::Env do
     end
   end
 
-  describe '.default_test_dir' do
-    subject { described_class.default_test_dir }
+  describe '.test_dir' do
+    subject { described_class.test_dir }
 
     context 'when ENV exists' do
-      let(:default_test_dir) { 'spec' }
-      before { stub_const("ENV", { 'KNAPSACK_DEFAULT_TEST_DIR' => default_test_dir }) }
-      it { should eql default_test_dir }
+      let(:test_dir) { 'spec' }
+      before { stub_const("ENV", { 'KNAPSACK_TEST_DIR' => test_dir }) }
+      it { should eql test_dir }
     end
 
     context "when ENV doesn't exist" do

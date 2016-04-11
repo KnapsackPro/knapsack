@@ -97,15 +97,15 @@ describe Knapsack::AllocatorBuilder do
 
     subject { allocator_builder.test_dir }
 
-    context 'when ENV default_test_dir has value' do
+    context 'when ENV test_dir has value' do
       before do
-        expect(Knapsack::Config::Env).to receive(:default_test_dir).and_return("custom_spec")
+        expect(Knapsack::Config::Env).to receive(:test_dir).and_return("custom_spec")
       end
 
       it { should eq 'custom_spec' }
     end
 
-    context 'when ENV default_test_dir has no value' do
+    context 'when ENV test_dir has no value' do
       before do
         expect(Knapsack::Config::Env).to receive(:test_file_pattern).and_return(env_test_file_pattern)
       end

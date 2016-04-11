@@ -18,8 +18,8 @@ module Knapsack
           ENV['KNAPSACK_TEST_FILE_PATTERN']
         end
 
-        def default_test_dir
-          ENV['KNAPSACK_DEFAULT_TEST_DIR']
+        def test_dir
+          ENV['KNAPSACK_TEST_DIR']
         end
 
         private
