@@ -548,7 +548,7 @@ The test file pattern config option supports any glob pattern handled by [`Dir.g
 
 ### How to update existing knapsack report for a few test files?
 
-You may want to look at solution in [this issue](https://github.com/ArturT/knapsack/issues/34). Take into account that there are some cons of this approach.
+You may want to look at monkey patch in [this issue](https://github.com/ArturT/knapsack/issues/34). Take into account that there are some cons of this approach.
 
 ## Gem tests
 
