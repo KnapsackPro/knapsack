@@ -122,26 +122,4 @@ describe Knapsack::Adapters::MinitestAdapter do
 
     it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
   end
-
-  describe 'shoulda context installed' do
-    class FakeUserTest
-      def test_user_age; end
-
-      def name
-        "test_: on delete qqq should allow us to make another portfolio for that user. "
-      end
-    end
-
-    let(:obj) { FakeUserTest.new }
-
-    subject { described_class.test_path(obj) }
-
-    before do
-      parent_of_test_dir = File.expand_path('../../../', File.dirname(__FILE__))
-      parent_of_test_dir_regexp = Regexp.new("^#{parent_of_test_dir}")
-      described_class.class_variable_set(:@@parent_of_test_dir, parent_of_test_dir_regexp)
-    end
-
-    it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
-  end
 end
