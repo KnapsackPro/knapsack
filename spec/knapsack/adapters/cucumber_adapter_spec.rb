@@ -100,20 +100,40 @@ describe Knapsack::Adapters::CucumberAdapter do
 
       before { stub_const('Cucumber::VERSION', '1') }
 
-      context 'when scenario' do
-        let(:scenario_file) { 'features/scenario.feature' }
-        let(:scenario_or_outline_table) { double(file: scenario_file) }
+      context 'when cucumber >= 1.3' do
+        context 'when scenario' do
+          let(:scenario_file) { 'features/scenario.feature' }
+          let(:scenario_or_outline_table) { double(file: scenario_file) }
 
-        it { should eql scenario_file }
-      end
-
-      context 'when scenario outline' do
-        let(:scenario_outline_file) { 'features/scenario_outline.feature' }
-        let(:scenario_or_outline_table) do
-          double(scenario_outline: double(file: scenario_outline_file))
+          it { should eql scenario_file }
         end
 
-        it { should eql scenario_outline_file }
+        context 'when scenario outline' do
+          let(:scenario_outline_file) { 'features/scenario_outline.feature' }
+          let(:scenario_or_outline_table) do
+            double(scenario_outline: double(file: scenario_outline_file))
+          end
+
+          it { should eql scenario_outline_file }
+        end
+      end
+
+      context 'when cucumber < 1.3' do
+        context 'when scenario' do
+          let(:scenario_file) { 'features/scenario.feature' }
+          let(:scenario_or_outline_table) { double(feature: double(file: scenario_file)) }
+
+          it { should eql scenario_file }
+        end
+
+        context 'when scenario outline' do
+          let(:scenario_outline_file) { 'features/scenario_outline.feature' }
+          let(:scenario_or_outline_table) do
+            double(scenario_outline: double(feature: double(file: scenario_outline_file)))
+          end
+
+          it { should eql scenario_outline_file }
+        end
       end
     end
 
