@@ -6,6 +6,8 @@
 
 * Add support for older cucumber versions than 1.3
 
+    https://github.com/KnapsackPro/knapsack_pro-ruby/issues/5
+
 https://github.com/ArturT/knapsack/compare/v1.7.0...v1.8.0
 
 ### 1.7.0
