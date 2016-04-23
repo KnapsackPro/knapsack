@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.8.0
+
+* Add support for older cucumber versions than 1.3
+
+https://github.com/ArturT/knapsack/compare/v1.7.0...v1.8.0
+
 ### 1.7.0
 
 * Add ability to run tests from multiple directories
