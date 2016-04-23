@@ -35,11 +35,22 @@ module Knapsack
           test_case = object
           test_case.location.file
         else
-          scenario_or_outline_table = object
-          if scenario_or_outline_table.respond_to?(:file)
-            scenario_or_outline_table.file
+          if object.respond_to?(:scenario_outline)
+            if object.scenario_outline.respond_to?(:feature)
+              # Cucumber < 1.3
+              object.scenario_outline.feature.file
+            else
+              # Cucumber >= 1.3
+              object.scenario_outline.file
+            end
           else
-            scenario_or_outline_table.scenario_outline.file
+            if object.respond_to?(:feature)
+              # Cucumber < 1.3
+              object.feature.file
+            else
+              # Cucumber >= 1.3
+              object.file
+            end
           end
         end
       end
