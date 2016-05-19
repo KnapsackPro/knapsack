@@ -8,6 +8,8 @@
 
     https://github.com/ArturT/knapsack/pull/39
 
+https://github.com/ArturT/knapsack/compare/v1.8.0...v1.9.0
+
 ### 1.8.0
 
 * Add support for older cucumber versions than 1.3
