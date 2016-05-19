@@ -4,13 +4,13 @@ module Knapsack
       def self.run(args)
         allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::CucumberAdapter).allocator
 
-        puts
-        puts 'Report features:'
-        puts allocator.report_node_tests
-        puts
-        puts 'Leftover features:'
-        puts allocator.leftover_node_tests
-        puts
+        Knapsack.logger.info
+        Knapsack.logger.info 'Report features:'
+        Knapsack.logger.info allocator.report_node_tests
+        Knapsack.logger.info
+        Knapsack.logger.info 'Leftover features:'
+        Knapsack.logger.info allocator.leftover_node_tests
+        Knapsack.logger.info
 
         cmd = %Q[bundle exec cucumber #{args} -- #{allocator.stringify_node_tests}]
 

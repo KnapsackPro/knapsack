@@ -4,13 +4,13 @@ module Knapsack
       def self.run(args)
         allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::RSpecAdapter).allocator
 
-        puts
-        puts 'Report specs:'
-        puts allocator.report_node_tests
-        puts
-        puts 'Leftover specs:'
-        puts allocator.leftover_node_tests
-        puts
+        Knapsack.logger.info
+        Knapsack.logger.info 'Report specs:'
+        Knapsack.logger.info allocator.report_node_tests
+        Knapsack.logger.info
+        Knapsack.logger.info 'Leftover specs:'
+        Knapsack.logger.info allocator.leftover_node_tests
+        Knapsack.logger.info
 
         cmd = %Q[bundle exec rspec #{args} --default-path #{allocator.test_dir} -- #{allocator.stringify_node_tests}]
 
