@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.9.0
+
+* Use Knapsack.logger for runner output
+
+    https://github.com/ArturT/knapsack/pull/39
+
 ### 1.8.0
 
 * Add support for older cucumber versions than 1.3
