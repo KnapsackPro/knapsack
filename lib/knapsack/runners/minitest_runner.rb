@@ -4,13 +4,13 @@ module Knapsack
       def self.run(args)
         allocator = Knapsack::AllocatorBuilder.new(Knapsack::Adapters::MinitestAdapter).allocator
 
-        puts
-        puts 'Report tests:'
-        puts allocator.report_node_tests
-        puts
-        puts 'Leftover tests:'
-        puts allocator.leftover_node_tests
-        puts
+        Knapsack.logger.info
+        Knapsack.logger.info 'Report tests:'
+        Knapsack.logger.info allocator.report_node_tests
+        Knapsack.logger.info
+        Knapsack.logger.info 'Leftover tests:'
+        Knapsack.logger.info allocator.leftover_node_tests
+        Knapsack.logger.info
 
         task_name = 'knapsack:minitest_run'
 
