@@ -1,3 +1,5 @@
+require 'spinach'
+
 module Knapsack
   module Adapters
     class SpinachAdapter < BaseAdapter
@@ -6,7 +8,7 @@ module Knapsack
 
       def bind_time_tracker
         Spinach.hooks.before_scenario do |scenario_data, step_definitions|
-          Knapsack.tracker.test_path = scenario_data.feature.filename
+          Knapsack.tracker.test_path = SpinachAdapter.test_path(scenario_data)
           Knapsack.tracker.start_timer
         end
 
@@ -32,14 +34,8 @@ module Knapsack
         end
       end
 
-      def self.test_path(example_group)
-        unless example_group[:turnip]
-          until example_group[:parent_example_group].nil?
-            example_group = example_group[:parent_example_group]
-          end
-        end
-
-        example_group[:file_path]
+      def self.test_path(scenario)
+        scenario.feature.filename
       end
     end
   end

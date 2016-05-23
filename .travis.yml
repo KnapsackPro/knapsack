@@ -82,5 +82,29 @@ script:
   - bin/print_header.sh "Run tests when test file was removed and still exists in knapsack report json"
   - rm test_examples/fast/unit_test.rb
   - KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake knapsack:minitest
+
+  
+  # Tests for example spinach test suite
+  - bin/print_header.sh "Generate knapsack report"
+  - KNAPSACK_GENERATE_REPORT=true bundle exec spinach -f spinach_examples
+
+  - bin/print_header.sh "Run tests with enabled time offset warning"
+  - bundle exec spinach -f spinach_examples
+
+  - bin/print_header.sh "Run rake task for the first CI node"
+  - CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+  - bin/print_header.sh "Run rake task for the second CI node"
+  - CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+
+  - bin/print_header.sh "Run tests with custom knapsack logger"
+  - CUSTOM_LOGGER=true KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+
+  - bin/print_header.sh "Run tests for custom knapsack report path"
+  - cp knapsack_spinach_report.json knapsack_custom_spinach_report.json
+  - KNAPSACK_REPORT_PATH="knapsack_custom_spinach_report.json" KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+
+  - bin/print_header.sh "Run tests when test file was removed and still exists in knapsack report json"
+  - rm spinach_examples/scenario1.feature
+  - KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
 notifications:
   email: false

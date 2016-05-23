@@ -154,7 +154,7 @@ knapsack_adapter.set_test_helper_path(__FILE__)
 
 ### Step for Spinach
 
-Create file `features/support/knapsack.rb` and add there:
+Create file `features/support/env.rb` and add there:
 
 ```ruby
 require 'knapsack'
