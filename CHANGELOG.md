@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.10.0
+
+* Log the time offset warning at INFO if time not exceeded
+
+    https://github.com/ArturT/knapsack/pull/40
+
+https://github.com/ArturT/knapsack/compare/v1.9.0...v1.10.0
+
 ### 1.9.0
 
 * Use Knapsack.logger for runner output
