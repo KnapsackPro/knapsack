@@ -65,13 +65,15 @@ describe Knapsack::Adapters::RSpecAdapter do
 
     describe '#bind_time_offset_warning' do
       let(:time_offset_warning) { 'Time offset warning' }
+      let(:log_level) { :info }
 
-      it do
+      it 'creates a post-suite callback to log the time offset message at the specified log level' do
         expect(config).to receive(:after).with(:suite).and_yield
         expect(::RSpec).to receive(:configure).and_yield(config)
 
         expect(Knapsack::Presenter).to receive(:time_offset_warning).and_return(time_offset_warning)
-        expect(logger).to receive(:warn).with(time_offset_warning)
+        expect(Knapsack::Presenter).to receive(:time_offset_log_level).and_return(log_level)
+        expect(logger).to receive(:log).with(log_level, time_offset_warning)
 
         subject.bind_time_offset_warning
       end

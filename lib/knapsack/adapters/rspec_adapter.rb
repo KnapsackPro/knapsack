@@ -39,7 +39,10 @@ module Knapsack
       def bind_time_offset_warning
         ::RSpec.configure do |config|
           config.after(:suite) do
-            Knapsack.logger.warn(Presenter.time_offset_warning)
+            Knapsack.logger.log(
+              Presenter.time_offset_log_level,
+              Presenter.time_offset_warning
+            )
           end
         end
       end

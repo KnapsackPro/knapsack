@@ -37,7 +37,10 @@ module Knapsack
 
       def bind_time_offset_warning
         add_post_run_callback do
-          Knapsack.logger.warn(Presenter.time_offset_warning)
+          Knapsack.logger.log(
+            Presenter.time_offset_log_level,
+            Presenter.time_offset_warning
+          )
         end
       end
 
