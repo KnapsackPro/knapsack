@@ -57,4 +57,25 @@ describe Knapsack::Logger do
       it { expect { subject.warn(text) }.to output(/#{text}/).to_stdout }
     end
   end
+
+  describe '#log' do
+    let(:log_level) { Knapsack::Logger::INFO }
+    let(:log_message) { 'log-message' }
+
+    it 'delegates to the method matching the specified log level' do
+      expect(subject).to receive(:info).with(log_message)
+
+      subject.log(log_level, log_message)
+    end
+
+    context 'when the log level is unknown' do
+      let(:log_level) { 5 }
+
+      it 'raises an UnknownLogLevel error' do
+        expect {
+          subject.log(log_level, log_message)
+        }.to raise_error Knapsack::Logger::UnknownLogLevel
+      end
+    end
+  end
 end

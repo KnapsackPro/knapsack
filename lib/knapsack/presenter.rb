@@ -35,6 +35,14 @@ module Knapsack
         "Exceeded time: #{exceeded_time}"
       end
 
+      def time_offset_log_level
+        if Knapsack.tracker.time_exceeded?
+          Knapsack::Logger::WARN
+        else
+          Knapsack::Logger::INFO
+        end
+      end
+
       def time_offset_warning
         str = %{\n========= Knapsack Time Offset Warning ==========
 #{Presenter.time_offset}

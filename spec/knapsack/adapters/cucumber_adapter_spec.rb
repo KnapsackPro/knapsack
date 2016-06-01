@@ -12,7 +12,7 @@ describe Knapsack::Adapters::CucumberAdapter do
     let(:logger) { instance_double(Knapsack::Logger) }
 
     before do
-      expect(Knapsack).to receive(:logger).and_return(logger)
+      allow(Knapsack).to receive(:logger).and_return(logger)
     end
 
     describe '#bind_time_tracker' do
@@ -83,11 +83,13 @@ describe Knapsack::Adapters::CucumberAdapter do
 
     describe '#bind_time_offset_warning' do
       let(:time_offset_warning) { 'Time offset warning' }
+      let(:log_level) { :info }
 
-      it do
+      it 'creates an at-exit callback to log the time offset message at the specified log level' do
         expect(::Kernel).to receive(:at_exit).and_yield
         expect(Knapsack::Presenter).to receive(:time_offset_warning).and_return(time_offset_warning)
-        expect(logger).to receive(:warn).with(time_offset_warning)
+        expect(Knapsack::Presenter).to receive(:time_offset_log_level).and_return(log_level)
+        expect(logger).to receive(:log).with(log_level, time_offset_warning)
 
         subject.bind_time_offset_warning
       end

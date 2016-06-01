@@ -45,6 +45,29 @@ describe Knapsack::Presenter do
     it { should eql "Knapsack report was generated. Preview:\n{}" }
   end
 
+  describe '.time_offset_log_level' do
+    before do
+      allow(Knapsack).to receive(:tracker) { tracker }
+      allow(tracker).to receive(:time_exceeded?).and_return(time_exceeded)
+    end
+
+    context 'when the time offset is exceeded' do
+      let(:time_exceeded) { true }
+
+      it 'returns a WARN log level' do
+        expect(described_class.time_offset_log_level).to eq(Knapsack::Logger::WARN)
+      end
+    end
+
+    context 'when the time offset is not exceeded' do
+      let(:time_exceeded) { false }
+
+      it 'returns an INFO log level' do
+        expect(described_class.time_offset_log_level).to eq(Knapsack::Logger::INFO)
+      end
+    end
+  end
+
   describe '.time_offset_warning' do
     let(:time_offset_in_seconds) { 30 }
     let(:max_node_time_execution) { 60 }
