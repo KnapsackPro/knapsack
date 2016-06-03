@@ -9,6 +9,7 @@ MAP = {
   'rspec' => Knapsack::Runners::RSpecRunner,
   'cucumber' => Knapsack::Runners::CucumberRunner,
   'minitest' => Knapsack::Runners::MinitestRunner,
+  'spinach' => Knapsack::Runners::SpinachRunner,
 }
 
 runner_class = MAP[runner]
