@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.11.0
+
+* Add support for Spinach
+
+    https://github.com/ArturT/knapsack/pull/41
+
+https://github.com/ArturT/knapsack/compare/v1.10.0...v1.11.0
+
 ### 1.10.0
 
 * Log the time offset warning at INFO if time not exceeded
