@@ -650,7 +650,8 @@ Specs in `spec_examples/leftover` take more than 3 seconds. This should cause a 
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+5. You can create example tests in related repository with example of [rails application and knapsack gem usage](https://github.com/KnapsackPro/rails-app-with-knapsack).
+6. Create a new Pull Request
 
 ## Acknowledgements
 
