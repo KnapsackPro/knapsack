@@ -58,12 +58,14 @@ describe Knapsack::Adapters::SpinachAdapter do
 
     describe '#bind_time_offset_warning' do
       let(:time_offset_warning) { 'Time offset warning' }
+      let(:log_level) { :info }
 
       it do
         expect(Spinach.hooks).to receive(:after_run).and_yield
 
         expect(Knapsack::Presenter).to receive(:time_offset_warning).and_return(time_offset_warning)
-        expect(logger).to receive(:warn).with(time_offset_warning)
+        expect(Knapsack::Presenter).to receive(:time_offset_log_level).and_return(log_level)
+        expect(logger).to receive(:log).with(log_level, time_offset_warning)
 
         subject.bind_time_offset_warning
       end
