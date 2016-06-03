@@ -6,6 +6,11 @@
 
 * Require spinach in spec helper so tests will pass but don't require it in spinach adapter because it breaks for users who don't use spinach and they don't want to add it to their Gemfile
 
+    Related PR:
+    https://github.com/ArturT/knapsack/pull/41
+
+https://github.com/ArturT/knapsack/compare/v1.11.0...v1.11.1
+
 ### 1.11.0
 
 * Add support for Spinach
