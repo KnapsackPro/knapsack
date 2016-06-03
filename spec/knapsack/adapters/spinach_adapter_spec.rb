@@ -74,11 +74,11 @@ describe Knapsack::Adapters::SpinachAdapter do
 
   describe '.test_path' do
     let(:scenario_data) do
-      double(feature: double(filename: 'a_spec.rb'))
+      double(feature: double(filename: 'a.feature'))
     end
 
     subject { described_class.test_path(scenario_data) }
 
-    it { should eql 'a_spec.rb' }
+    it { should eql 'a.feature' }
   end
 end
