@@ -13,11 +13,10 @@ describe Knapsack::Adapters::SpinachAdapter do
 
     describe '#bind_time_tracker' do
       let(:tracker) { instance_double(Knapsack::Tracker) }
-      let(:test_path) { 'spec/a_spec.rb' }
+      let(:test_path) { 'features/a.feature' }
       let(:global_time) { 'Global time: 01m 05s' }
-      let(:example_group) { double }
       let(:scenario_data) do
-        double(feature: double(filename: 'a_spec.rb'))
+        double(feature: double(filename: test_path))
       end
 
       it do
