@@ -1,4 +1,5 @@
 require 'rspec/its'
+require 'spinach'
 
 require 'timecop'
 Timecop.safe_mode = true
