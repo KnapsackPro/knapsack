@@ -53,6 +53,7 @@ script:
   - bin/print_header.sh "Run specs from multiple directories with manually specified test_dir"
   - KNAPSACK_TEST_DIR=spec_examples KNAPSACK_TEST_FILE_PATTERN="{spec_examples,spec_engine_examples}/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
 
+
   - bin/print_header.sh "------------------------------------------------------"
 
 
@@ -83,7 +84,10 @@ script:
   - rm test_examples/fast/unit_test.rb
   - KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake knapsack:minitest
 
-  
+
+  - bin/print_header.sh "------------------------------------------------------"
+
+
   # Tests for example spinach test suite
   - bin/print_header.sh "Generate knapsack report"
   - KNAPSACK_GENERATE_REPORT=true bundle exec spinach -f spinach_examples
