@@ -308,6 +308,7 @@ You can install knapsack globally and use binary. For instance:
     $ knapsack rspec "--tag custom_tag_name --profile"
     $ knapsack cucumber
     $ knapsack minitest "--verbose --pride"
+    $ knapsack spinach "-f spinach_examples"
 
 [Here](https://github.com/ArturT/knapsack/pull/21) you will find example when it might be useful.
 
