@@ -75,6 +75,7 @@ Presentations about gem:
   - [What does "leftover specs" mean?](#what-does-leftover-specs-mean)
   - [How can I run tests from multiple directories?](#how-can-i-run-tests-from-multiple-directories)
   - [How to update existing knapsack report for a few test files?](#how-to-update-existing-knapsack-report-for-a-few-test-files)
+  - [How to run tests for particular CI node in your development environment](#how-to-run-tests-for-particular-ci-node-in-your-development-environment)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
@@ -617,6 +618,17 @@ The test file pattern config option supports any glob pattern handled by [`Dir.g
 ### How to update existing knapsack report for a few test files?
 
 You may want to look at monkey patch in [this issue](https://github.com/ArturT/knapsack/issues/34). Take into account that there are some cons of this approach.
+
+### How to run tests for particular CI node in your development environment
+
+In your development environment you can debug tests that were run on the particular CI node.
+For instance to run subset of tests for the first CI node with specified seed you can do.
+
+    CI_NODE_TOTAL=2 \
+    CI_NODE_INDEX=0 \
+    bundle exec rake "knapsack:rspec[--seed 123]"
+
+Above example is for RSpec. You can use respectively rake task name and token environment variable when you want to run tests for minitest, cucumber or spinach.
 
 ## Gem tests
 
