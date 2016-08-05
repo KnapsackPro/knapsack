@@ -198,6 +198,8 @@ Generate time execution report for your test files. Run below command on one of 
 
     # Step for Minitest
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+    # If you use rails 5 then run this instead:
+    $ KNAPSACK_GENERATE_REPORT=true bundle exec rake knapsack:minitest
 
     # Step for Spinach
     $ KNAPSACK_GENERATE_REPORT=true bundle exec spinach
