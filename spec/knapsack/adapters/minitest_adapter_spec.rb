@@ -102,6 +102,18 @@ describe Knapsack::Adapters::MinitestAdapter do
   end
 
   describe '.test_path' do
+    class FakeUserTest
+      def test_user_age; end
+
+      # method provided by Minitest
+      # it returns test method name
+      def name
+        :test_user_age
+      end
+    end
+
+    let(:obj) { FakeUserTest.new }
+
     subject { described_class.test_path(obj) }
 
     before do
@@ -110,30 +122,6 @@ describe Knapsack::Adapters::MinitestAdapter do
       described_class.class_variable_set(:@@parent_of_test_dir, parent_of_test_dir_regexp)
     end
 
-    context 'when regular tes' do
-      class FakeUserTest
-        def test_user_age; end
-
-        # method provided by Minitest
-        # it returns test method name
-        def name
-          :test_user_age
-        end
-      end
-
-      let(:obj) { FakeUserTest.new }
-
-      it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
-    end
-
-    context 'when shared example test' do
-      class FakeSharedExampleUserTest
-        include SharedExampleSpec
-      end
-
-      let(:obj) { FakeSharedExampleUserTest.new }
-
-      it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
-    end
+    it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
   end
 end
