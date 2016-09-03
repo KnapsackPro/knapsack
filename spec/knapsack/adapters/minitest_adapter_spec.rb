@@ -124,4 +124,24 @@ describe Knapsack::Adapters::MinitestAdapter do
 
     it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
   end
+
+  describe '.test_path' do
+    class FakeUserTest
+      describe "fake_test" do
+        include SharedExampleSpec
+      end
+    end
+
+    let(:obj) { FakeUserTest.new }
+
+    subject { described_class.test_path(obj) }
+
+    before do
+      parent_of_test_dir = File.expand_path('../../../', File.dirname(__FILE__))
+      parent_of_test_dir_regexp = Regexp.new("^#{parent_of_test_dir}")
+      described_class.class_variable_set(:@@parent_of_test_dir, parent_of_test_dir_regexp)
+    end
+
+    it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
+  end
 end
