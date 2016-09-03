@@ -127,7 +127,7 @@ describe Knapsack::Adapters::MinitestAdapter do
 
   describe '.test_path' do
     class FakeUserTest
-      def fake_test do
+      def fake_test
         include SharedExampleSpec
       end
       fake_test
