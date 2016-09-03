@@ -102,18 +102,6 @@ describe Knapsack::Adapters::MinitestAdapter do
   end
 
   describe '.test_path' do
-    class FakeUserTest
-      def test_user_age; end
-
-      # method provided by Minitest
-      # it returns test method name
-      def name
-        :test_user_age
-      end
-    end
-
-    let(:obj) { FakeUserTest.new }
-
     subject { described_class.test_path(obj) }
 
     before do
@@ -122,29 +110,30 @@ describe Knapsack::Adapters::MinitestAdapter do
       described_class.class_variable_set(:@@parent_of_test_dir, parent_of_test_dir_regexp)
     end
 
-    it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
-  end
+    context 'when regular tes' do
+      class FakeUserTest
+        def test_user_age; end
 
-  describe '.test_path for shared examles' do
-    class FakeTest
-      def fake_test
+        # method provided by Minitest
+        # it returns test method name
+        def name
+          :test_user_age
+        end
+      end
+
+      let(:obj) { FakeUserTest.new }
+
+      it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
+    end
+
+    context 'when shared example test' do
+      class FakeSharedExampleUserTest
         include SharedExampleSpec
       end
-      def name
-        :fake_test
-      end
+
+      let(:obj) { FakeSharedExampleUserTest.new }
+
+      it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
     end
-
-    let(:obj) { FakeTest.new }
-
-    subject { described_class.test_path(obj) }
-
-    before do
-      parent_of_test_dir = File.expand_path('../../../', File.dirname(__FILE__))
-      parent_of_test_dir_regexp = Regexp.new("^#{parent_of_test_dir}")
-      described_class.class_variable_set(:@@parent_of_test_dir, parent_of_test_dir_regexp)
-    end
-
-    it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
   end
 end

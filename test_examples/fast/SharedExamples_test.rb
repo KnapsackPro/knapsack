@@ -24,5 +24,8 @@ SharedExampleSpec = Minitest::SharedExamples.new do
     sleep 1
     skip 'test this later'
   end
+end
 
+describe "test that use SharedExamples" do
+  include SharedExampleSpec
 end
