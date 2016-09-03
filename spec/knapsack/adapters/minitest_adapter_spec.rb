@@ -125,15 +125,15 @@ describe Knapsack::Adapters::MinitestAdapter do
     it { should eq './spec/knapsack/adapters/minitest_adapter_spec.rb' }
   end
 
-  describe '.test_path' do
-    class FakeUserTest
+  describe '.test_path for shared examles' do
+    class FakeTest
       def fake_test
         include SharedExampleSpec
       end
       fake_test
     end
 
-    let(:obj) { FakeUserTest.new }
+    let(:obj) { FakeTest.new }
 
     subject { described_class.test_path(obj) }
 
