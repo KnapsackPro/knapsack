@@ -127,9 +127,10 @@ describe Knapsack::Adapters::MinitestAdapter do
 
   describe '.test_path' do
     class FakeUserTest
-      describe "fake_test" do
+      def fake_test do
         include SharedExampleSpec
       end
+      fake_test
     end
 
     let(:obj) { FakeUserTest.new }
