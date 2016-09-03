@@ -130,7 +130,9 @@ describe Knapsack::Adapters::MinitestAdapter do
       def fake_test
         include SharedExampleSpec
       end
-      fake_test
+      def name
+        :fake_test
+      end
     end
 
     let(:obj) { FakeTest.new }
