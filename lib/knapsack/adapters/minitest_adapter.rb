@@ -52,7 +52,11 @@ module Knapsack
       def self.test_path(obj)
         # Pick the first public method in the class itself, that starts with "test_"
         test_method_name = obj.public_methods(false).select{|m| m =~ /^test_/ }.first
-        method_object = obj.method(test_method_name)
+        if test_method_name.nil?
+          method_object = obj.method(obj.location.sub(/.*?test_/, 'test_'))
+        else
+          method_object = obj.method(test_method_name)
+        end
         full_test_path = method_object.source_location.first
         parent_of_test_dir_regexp = Regexp.new("^#{@@parent_of_test_dir}")
         test_path = full_test_path.gsub(parent_of_test_dir_regexp, '.')
