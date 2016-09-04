@@ -21,7 +21,6 @@ SharedExampleSpec = Minitest::SharedExamples.new do
   end
 
   def test_that_will_be_skipped
-    sleep 1
     skip 'test this later'
   end
 end
