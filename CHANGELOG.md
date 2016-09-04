@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.12.0
+
+* Add support for Minitest::SharedExamples
+
+    https://github.com/ArturT/knapsack/pull/46
+
+https://github.com/ArturT/knapsack/compare/v1.11.1...v1.12.0
+
 ### 1.11.1
 
 * Require spinach in spec helper so tests will pass but don't require it in spinach adapter because it breaks for users who don't use spinach and they don't want to add it to their Gemfile
