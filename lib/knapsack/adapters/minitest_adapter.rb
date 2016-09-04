@@ -53,6 +53,7 @@ module Knapsack
         # Pick the first public method in the class itself, that starts with "test_"
         test_method_name = obj.public_methods(false).select{|m| m =~ /^test_/ }.first
         if test_method_name.nil?
+          # case for shared examples
           method_object = obj.method(obj.location.sub(/.*?test_/, 'test_'))
         else
           method_object = obj.method(test_method_name)
