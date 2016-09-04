@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/spec'
 
 class Minitest::SharedExamples < Module
   include Minitest::Spec::DSL
