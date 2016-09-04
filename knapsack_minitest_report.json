@@ -1,6 +1,6 @@
 {
-  "test_examples/slow/slow_test.rb": 2.5111711025238037,
-  "test_examples/fast/shared_examples_test.rb": 1.6154117584228516,
-  "test_examples/fast/unit_test.rb": 1.6185731887817383,
-  "test_examples/fast/spec_test.rb": 0.00012803077697753906
+  "test_examples/slow/slow_test.rb": 2.5080618858337402,
+  "test_examples/fast/spec_test.rb": 0.00015115737915039062,
+  "test_examples/fast/shared_examples_test.rb": 0.616192102432251,
+  "test_examples/fast/unit_test.rb": 1.6202473640441895
 }
