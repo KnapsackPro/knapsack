@@ -31,13 +31,14 @@ Parallel tests across CI server nodes based on each test file's time execution. 
 | Test suite split based on tests time execution | ✔ | ✔
 | Automated tests time execution recording | ✘ | ✔
 | Test suite split based on most up to date tests time execution data | ✘ | ✔
+| [Show all features](https://knapsackpro.com/features?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=show_all_features) | |
 
-Presentations about gem:
+**Would you like to try [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) with more features and free access for early users? Please [visit Knapsack Pro](http://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=try_knapsack_pro).**
+
+### Presentations about knapsack gem
 
 * [X 2014 Kraków Ruby User Group](http://slides.com/arturt/parallel-tests-in-comparable-time)
 * [VII 2014 Lunar Logic Dev Meeting](http://slides.com/arturt/knapsack)
-
-**Would you like to try [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) with more features and free access for beta users? Please [visit Knapsack Pro](http://knapsackpro.com).**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -598,7 +599,7 @@ If you want to regenerate report take a look [here](#common-step).
 
 `KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec`
 
-If you run command like this on your development machine then test suite time execution might be different than if you generate a report on CI machine (for instance tests might be faster on your machine then on CI node) so that might be a reason why you see warning about regenerating report. You can generate the report on single CI node which should give you result specific for your CI node instead of your development machine. In case you don't want to bother about manually regenerating knapsack report please take a look on [knapsack_pro gem](http://knapsackpro.com).
+If you run command like this on your development machine then test suite time execution might be different than if you generate a report on CI machine (for instance tests might be faster on your machine then on CI node) so that might be a reason why you see warning about regenerating report. You can generate the report on single CI node which should give you result specific for your CI node instead of your development machine. In case you don't want to bother about manually regenerating knapsack report please take a look on [knapsack_pro gem](http://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=no_manual_report).
 
 ### What does "leftover specs" mean?
 
