@@ -16,13 +16,6 @@
 
 Parallel tests across CI server nodes based on each test file's time execution. Knapsack generates a test time execution report and uses it for future test runs.
 
-Presentations about gem:
-
-* [X 2014 Kraków Ruby User Group](http://slides.com/arturt/parallel-tests-in-comparable-time)
-* [VII 2014 Lunar Logic Dev Meeting](http://slides.com/arturt/knapsack)
-
-**Would you like to try [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) with more features and free access for beta users? Please [visit Knapsack Pro](http://knapsackpro.com).**
-
 ### Without Knapsack
 
 ![Without Knapsack gem](docs/images/without_knapsack.png)
@@ -31,6 +24,12 @@ Presentations about gem:
 
 ![With Knapsack gem](docs/images/with_knapsack.png)
 
+Presentations about gem:
+
+* [X 2014 Kraków Ruby User Group](http://slides.com/arturt/parallel-tests-in-comparable-time)
+* [VII 2014 Lunar Logic Dev Meeting](http://slides.com/arturt/knapsack)
+
+**Would you like to try [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) with more features and free access for beta users? Please [visit Knapsack Pro](http://knapsackpro.com).**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
