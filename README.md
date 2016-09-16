@@ -29,8 +29,8 @@ Parallel tests across CI server nodes based on each test file's time execution. 
 | Feature | knapsack gem | knapsack_pro gem
 | --- | :---: | :---:
 | Test suite split based on tests time execution | ✔ | ✔
-| Automated tests time execution recording | × | ✔
-| Test suite split based on most up to date tests time execution data | × | ✔
+| Automated tests time execution recording | ✘ | ✔
+| Test suite split based on most up to date tests time execution data | ✘ | ✔
 
 Presentations about gem:
 
