@@ -12,7 +12,7 @@ module Knapsack
         Knapsack.logger.info allocator.leftover_node_tests
         Knapsack.logger.info
 
-        cmd = %Q[bundle exec cucumber #{args} -- #{allocator.stringify_node_tests}]
+        cmd = %Q[bundle exec cucumber #{args} --require #{allocator.test_dir} -- #{allocator.stringify_node_tests}]
 
         system(cmd)
         exit($?.exitstatus) unless $?.exitstatus.zero?
