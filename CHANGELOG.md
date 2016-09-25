@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.12.1
+
+* Cucumber and Spinach should load files from proper folder in case when you use custom test directory.
+
+https://github.com/ArturT/knapsack/compare/v1.12.0...v1.12.1
+
 ### 1.12.0
 
 * Add support for Minitest::SharedExamples
