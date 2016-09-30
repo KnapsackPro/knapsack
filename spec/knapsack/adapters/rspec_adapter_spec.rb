@@ -98,19 +98,41 @@ describe Knapsack::Adapters::RSpecAdapter do
     it { should eql 'a_spec.rb' }
 
     context 'with turnip features' do
-      let(:current_example_metadata) do
-        {
-          file_path: "./spec/features/logging_in.feature",
-          turnip: true,
-          parent_example_group: {
-            file_path: "gems/turnip-1.2.4/lib/turnip/rspec.rb",
+      describe 'when the turnip version is less than 2' do
+        let(:current_example_metadata) do
+          {
+            file_path: "./spec/features/logging_in.feature",
+            turnip: true,
+            parent_example_group: {
+              file_path: "gems/turnip-1.2.4/lib/turnip/rspec.rb"
+            }
           }
-        }
+        end
+
+        before { stub_const("Turnip::VERSION", '1.2.4') }
+
+        subject { described_class.test_path(current_example_metadata) }
+
+        it { should eql './spec/features/logging_in.feature' }
       end
 
-      subject { described_class.test_path(current_example_metadata) }
+      describe 'when turnip is version 2 or greater' do
+        let(:current_example_metadata) do
+          {
+            file_path: "gems/turnip-2.0.0/lib/turnip/rspec.rb",
+            turnip: true,
+            parent_example_group: {
+              file_path: "./spec/features/logging_in.feature",
+            }
+          }
+        end
 
-      it { should eql './spec/features/logging_in.feature' }
+        before { stub_const("Turnip::VERSION",  '2.0.0') }
+
+        subject { described_class.test_path(current_example_metadata) }
+
+        it { should eql './spec/features/logging_in.feature' }
+      end
     end
   end
 end

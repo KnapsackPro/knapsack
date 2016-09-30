@@ -48,7 +48,13 @@ module Knapsack
       end
 
       def self.test_path(example_group)
-        unless example_group[:turnip]
+        if defined?(Turnip) && Turnip::VERSION.to_i < 2
+          unless example_group[:turnip]
+            until example_group[:parent_example_group].nil?
+              example_group = example_group[:parent_example_group]
+            end
+          end
+        else
           until example_group[:parent_example_group].nil?
             example_group = example_group[:parent_example_group]
           end
