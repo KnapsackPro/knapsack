@@ -16,6 +16,14 @@
 
 Parallel tests across CI server nodes based on each test file's time execution. Knapsack generates a test time execution report and uses it for future test runs.
 
+The knapsack gem supports:
+
+* [RSpec](http://rspec.info)
+* [Cucumber](https://cucumber.io)
+* [Minitest](http://docs.seattlerb.org/minitest/)
+* [Spinach](https://github.com/codegram/spinach)
+* [Turnip](https://github.com/jnicklas/turnip)
+
 ### Without Knapsack
 
 ![Without Knapsack gem](docs/images/without_knapsack.png)
