@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.12.2
+
+* Fix support for turnip >= 2.x
+
+    https://github.com/ArturT/knapsack/pull/47
+
+https://github.com/ArturT/knapsack/compare/v1.12.1...v1.12.2
+
 ### 1.12.1
 
 * Cucumber and Spinach should load files from proper folder in case when you use custom test directory.
