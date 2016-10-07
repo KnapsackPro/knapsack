@@ -111,8 +111,6 @@ describe Knapsack::Adapters::RSpecAdapter do
 
         before { stub_const("Turnip::VERSION", '1.2.4') }
 
-        subject { described_class.test_path(current_example_metadata) }
-
         it { should eql './spec/features/logging_in.feature' }
       end
 
@@ -128,8 +126,6 @@ describe Knapsack::Adapters::RSpecAdapter do
         end
 
         before { stub_const("Turnip::VERSION",  '2.0.0') }
-
-        subject { described_class.test_path(current_example_metadata) }
 
         it { should eql './spec/features/logging_in.feature' }
       end
