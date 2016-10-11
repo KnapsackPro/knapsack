@@ -637,10 +637,10 @@ The test file pattern config option supports any glob pattern handled by [`Dir.g
 
 ```ruby
 # good
-require 'spec_helper'
+require_relative 'spec_helper'
 
 # bad - won't work
-require_relative 'spec_helper'
+require 'spec_helper'
 ```
 
 ### How to update existing knapsack report for a few test files?
