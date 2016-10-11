@@ -633,6 +633,16 @@ The test file pattern config option supports any glob pattern handled by [`Dir.g
 
     $ KNAPSACK_TEST_DIR=spec KNAPSACK_TEST_FILE_PATTERN="{spec,engines/**/spec}/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
 
+`KNAPSACK_TEST_DIR` will be your default path for rspec so you should put there your `spec_helper.rb`. Please ensure you will require it in your test files this way:
+
+```ruby
+# good
+require 'spec_helper'
+
+# bad - won't work
+require_relative 'spec_helper'
+```
+
 ### How to update existing knapsack report for a few test files?
 
 You may want to look at monkey patch in [this issue](https://github.com/ArturT/knapsack/issues/34). Take into account that there are some cons of this approach.
