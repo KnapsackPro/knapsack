@@ -110,4 +110,18 @@ describe Knapsack::Config::Env do
       it { should be_nil }
     end
   end
+
+  describe '.log_level' do
+    subject { described_class.log_level }
+
+    context 'when ENV exists' do
+      let(:log_level) { 'debug' }
+      before { stub_const("ENV", { 'KNAPSACK_LOG_LEVEL' => log_level }) }
+      it { should eql Knapsack::Logger::DEBUG }
+    end
+
+    context "when ENV doesn't exist" do
+      it { should eql Knapsack::Logger::INFO }
+    end
+  end
 end

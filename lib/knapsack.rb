@@ -48,7 +48,7 @@ module Knapsack
     def logger
       return @@logger if @@logger
       log = Knapsack::Logger.new
-      log.level = Knapsack::Logger::INFO
+      log.level = Knapsack::Config::Env.log_level
       @@logger = log
     end
 

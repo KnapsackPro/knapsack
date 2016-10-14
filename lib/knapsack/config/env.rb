@@ -22,6 +22,14 @@ module Knapsack
           ENV['KNAPSACK_TEST_DIR']
         end
 
+        def log_level
+          {
+            "debug" => Knapsack::Logger::DEBUG,
+            "info"  => Knapsack::Logger::INFO,
+            "warn"  => Knapsack::Logger::WARN,
+          }[ENV['KNAPSACK_LOG_LEVEL']] || Knapsack::Logger::INFO
+        end
+
         private
 
         def index_starting_from_one(index)
