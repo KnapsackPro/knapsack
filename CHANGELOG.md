@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.13.0
+
+* Add KNAPSACK_LOG_LEVEL option
+
+    https://github.com/ArturT/knapsack/pull/49
+
+https://github.com/ArturT/knapsack/compare/v1.12.2...v1.13.0
+
 ### 1.12.2
 
 * Fix support for turnip >= 2.x
