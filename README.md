@@ -92,6 +92,7 @@ The knapsack gem supports:
   - [How can I run tests from multiple directories?](#how-can-i-run-tests-from-multiple-directories)
   - [How to update existing knapsack report for a few test files?](#how-to-update-existing-knapsack-report-for-a-few-test-files)
   - [How to run tests for particular CI node in your development environment](#how-to-run-tests-for-particular-ci-node-in-your-development-environment)
+  - [How can I change log level?](#how-can-i-change-log-level)
 - [Gem tests](#gem-tests)
   - [Spec](#spec)
   - [Spec examples](#spec-examples)
