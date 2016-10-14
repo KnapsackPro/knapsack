@@ -664,7 +664,7 @@ Above example is for RSpec. You can use respectively rake task name and token en
 You can change log level by specifying the `KNAPSACK_LOG_LEVEL` environment variable.
 
     KNAPSACK_LOG_LEVEL=warn bundle exec rake knapsack:rspec
-    
+
 Available values are `debug`, `info`, and `warn`. The default log level is `info`.
 
 ## Gem tests
