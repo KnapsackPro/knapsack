@@ -2,10 +2,10 @@
 
 # ![Knapsack logo](docs/images/logos/knapsack-logo-@2.png)
 
-[![Gem Version](https://badge.fury.io/rb/knapsack.png)][gem_version]
+[![Gem Version](https://badge.fury.io/rb/knapsack.svg)][gem_version]
 [![Build Status](https://travis-ci.org/ArturT/knapsack.svg?branch=master)][travis]
-[![Code Climate](https://codeclimate.com/github/ArturT/knapsack.png)][codeclimate]
-[![Coverage Status](https://codeclimate.com/github/ArturT/knapsack/coverage.png)][coverage]
+[![Code Climate](https://codeclimate.com/github/ArturT/knapsack.svg)][codeclimate]
+[![Coverage Status](https://codeclimate.com/github/ArturT/knapsack/coverage.svg)][coverage]
 
 [gem_version]: https://rubygems.org/gems/knapsack
 [travis]: http://travis-ci.org/ArturT/knapsack
