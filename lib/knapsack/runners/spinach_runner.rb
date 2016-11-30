@@ -15,7 +15,7 @@ module Knapsack
         cmd = %Q[bundle exec spinach #{args} --features_path #{allocator.test_dir} -- #{allocator.stringify_node_tests}]
 
         system(cmd)
-        exit($?.exitstatus) unless $?.exitstatus.zero?
+        exit($?.exitstatus) unless $?.exitstatus == 0
       end
     end
   end
