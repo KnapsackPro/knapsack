@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.13.1
+
+* Fix: Get rid of call #zero? method on $?.exitstatus in test runners tasks
+
+    https://github.com/ArturT/knapsack/pull/52
+
+https://github.com/ArturT/knapsack/compare/v1.13.0...v1.13.1
+
 ### 1.13.0
 
 * Add KNAPSACK_LOG_LEVEL option
