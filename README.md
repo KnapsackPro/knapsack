@@ -41,6 +41,12 @@ The knapsack gem supports:
 | Test suite split based on most up to date tests time execution data | ✘ | ✔
 | [Show all features](https://knapsackpro.com/features?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=show_all_features) | |
 
+How knapsack_pro makes my life easier as opposed to regular knapsack gem?
+
+* With the knapsack_pro version the setup and the ongoing work is easier because you don’t have to manually generate knapsack json report with test files time execution for each test suite like rspec, cucumber etc.
+* The knapsack_pro version tracks all you branches so when your test code changes the knapsack_pro tries to provide you as optimal test suite split as possible. 
+* When your test codebase changes over time you need to manually generate a new knapsack report in free gem version which is extra overhead and waste of time of the developer.
+
 **Would you like to try [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) with more features and free access for early users? Please [visit Knapsack Pro](http://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=try_knapsack_pro).**
 
 ### Presentations about knapsack gem
