@@ -36,6 +36,7 @@ The knapsack gem supports:
 
 | Feature | knapsack gem | knapsack_pro gem
 | --- | :---: | :---:
+| Queue mode designed for most optimal dynamic test suite split | ✘ | ✔
 | Test suite split based on tests time execution | ✔ | ✔
 | Automated tests time execution recording | ✘ | ✔
 | Test suite split based on most up to date tests time execution data | ✘ | ✔
