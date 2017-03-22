@@ -2,6 +2,15 @@
 
 * TODO
 
+### 1.13.2
+
+* Add support for test files in directory with spaces.
+
+    Related:
+    https://github.com/KnapsackPro/knapsack_pro-ruby/issues/27
+
+https://github.com/ArturT/knapsack/compare/v1.13.1...v1.13.2
+
 ### 1.13.1
 
 * Fix: Get rid of call #zero? method on $?.exitstatus in test runners tasks
