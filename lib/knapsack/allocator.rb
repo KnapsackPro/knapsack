@@ -18,7 +18,10 @@ module Knapsack
     end
 
     def stringify_node_tests
-      node_tests.join(' ')
+      node_tests
+      .map do |test_file|
+        %{"#{test_file}"}
+      end.join(' ')
     end
 
     def test_dir

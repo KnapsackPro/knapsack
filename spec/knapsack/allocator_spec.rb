@@ -39,7 +39,7 @@ describe Knapsack::Allocator do
 
   describe '#stringify_node_tests' do
     subject { allocator.stringify_node_tests }
-    it { should eql node_tests.join(' ') }
+    it { should eql %{"a_spec.rb" "b_spec.rb" "c_spec.rb" "d_spec.rb"} }
   end
 
   describe '#test_dir' do
