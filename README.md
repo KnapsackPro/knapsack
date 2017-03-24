@@ -93,6 +93,7 @@ How knapsack_pro makes my life easier as opposed to regular knapsack gem?
   - [Info for snap-ci.com users](#info-for-snap-cicom-users)
     - [Step 1](#step-1-4)
     - [Step 2](#step-2-4)
+  - [Info for Jenkins](#info-for-jenkins)
 - [FAQ](#faq)
   - [What time offset warning means?](#what-time-offset-warning-means)
   - [How to generate knapsack report?](#how-to-generate-knapsack-report)
@@ -590,6 +591,17 @@ Knapsack supports snap-ci.com ENVs `SNAP_WORKER_TOTAL` and `SNAP_WORKER_INDEX`. 
 
     # Step for Spinach
     bundle exec rake knapsack:spinach
+
+### Info for Jenkins
+
+In order to run parallel jobs with Jenkins you should use Jenkins Pipeline.
+You can learn basics about it in the article [Parallelism and Distributed Builds with Jenkins](https://www.cloudbees.com/blog/parallelism-and-distributed-builds-jenkins).
+
+Here is example `Jenkinsfile` working with Jenkins Pipeline:
+
+https://github.com/mknapik/jenkins-pipeline-knapsack/blob/master/Jenkinsfile
+
+More info can be found int the [issue](https://github.com/ArturT/knapsack/issues/42).
 
 ## FAQ
 
