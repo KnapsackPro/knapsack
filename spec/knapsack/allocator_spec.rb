@@ -62,7 +62,7 @@ describe Knapsack::Allocator do
         expect(report_distributor).to receive(:test_file_pattern).and_return(test_file_pattern)
       end
 
-      it { should eql 'test_dir/' }
+      it { should eql 'test_dir' }
     end
   end
 end

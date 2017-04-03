@@ -25,7 +25,7 @@ module Knapsack
     end
 
     def test_dir
-      Knapsack::Config::Env.test_dir || @report_distributor.test_file_pattern.gsub(/^(.*?)\//).first
+      Knapsack::Config::Env.test_dir || @report_distributor.test_file_pattern.split('/').first
     end
   end
 end
