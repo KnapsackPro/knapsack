@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.13.3
+
+* Fix: Trailing slash should be removed from allocator test_dir.
+
+    https://github.com/ArturT/knapsack/issues/57
+
+https://github.com/ArturT/knapsack/compare/v1.13.2...v1.13.3
+
 ### 1.13.2
 
 * Add support for test files in directory with spaces.
