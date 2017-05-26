@@ -48,7 +48,7 @@ __Play video how dynamic rspec allocation works__
 
 How knapsack_pro makes my life easier as opposed to regular knapsack gem?
 
-* The knapsack_pro version has queue mode designed for most optimal test suite split thanks to dynamic tests allocation.
+* The knapsack_pro version has queue mode designed for optimal test suite split thanks to dynamic tests allocation.
 * With the knapsack_pro version the setup and the ongoing work is easier because you don’t have to manually generate knapsack json report with test files time execution for each test suite like rspec, cucumber etc.
 * The knapsack_pro version tracks all you branches so when your test code changes the knapsack_pro tries to provide you as optimal test suite split as possible. 
 * When your test codebase changes over time you need to manually generate a new knapsack report in free gem version which is extra overhead and waste of time of the developer.
