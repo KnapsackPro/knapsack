@@ -63,7 +63,7 @@ Happy testing!}
         str << "\n\nNeed explanation? See FAQ:"
         str << "\nhttps://github.com/ArturT/knapsack#faq"
         str << "\n=================================================\n"
-        str << %{Sign up for beta Knapsack Pro here:
+        str << %{Sign up for Knapsack Pro here:
 http://knapsackpro.com}
         str << "\n=================================================\n"
         str
