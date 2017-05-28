@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.14.0
+
+* Moves Timecop to development dependency.
+
+    https://github.com/ArturT/knapsack/pull/61
+
+https://github.com/ArturT/knapsack/compare/v1.13.3...v1.14.0
+
 ### 1.13.3
 
 * Fix: Trailing slash should be removed from allocator test_dir.
