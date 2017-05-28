@@ -1,7 +1,7 @@
 require 'singleton'
 require 'rake/testtask'
-require_relative 'extensions/time'
 require_relative 'knapsack/version'
+require_relative 'knapsack/extensions/time'
 require_relative 'knapsack/config/env'
 require_relative 'knapsack/config/tracker'
 require_relative 'knapsack/logger'
