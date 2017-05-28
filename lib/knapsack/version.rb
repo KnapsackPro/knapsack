@@ -1,3 +1,3 @@
 module Knapsack
-  VERSION = '1.13.3'
+  VERSION = '1.14.0'
 end
