@@ -601,11 +601,11 @@ Knapsack supports snap-ci.com ENVs `SNAP_WORKER_TOTAL` and `SNAP_WORKER_INDEX`. 
 In order to run parallel jobs with Jenkins you should use Jenkins Pipeline.
 You can learn basics about it in the article [Parallelism and Distributed Builds with Jenkins](https://www.cloudbees.com/blog/parallelism-and-distributed-builds-jenkins).
 
-Here is example `Jenkinsfile` working with Jenkins Pipeline:
+Here is an example [`Jenkinsfile`](https://github.com/mknapik/jenkins-pipeline-knapsack/blob/master/Jenkinsfile) working with Jenkins Pipeline and knapsack gem.
 
-https://github.com/mknapik/jenkins-pipeline-knapsack/blob/master/Jenkinsfile
+You may want to read article [Knapsack with Jenkins Pipeline](http://blog.knapik.me/knapsack-with-jenkins-pipeline/) from Michał Knapik.
 
-More info can be found int the [issue](https://github.com/ArturT/knapsack/issues/42).
+More tips can be found in the [issue](https://github.com/ArturT/knapsack/issues/42).
 
 ## FAQ
 
