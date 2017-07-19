@@ -52,7 +52,7 @@ module Knapsack
       {
         enable_time_offset_warning: Config::Tracker.enable_time_offset_warning,
         time_offset_in_seconds: Config::Tracker.time_offset_in_seconds,
-        generate_report: Config::Tracker.generate_report
+        generate_report: Config::Tracker.generate_report,
         merge_report: Config::Tracker.merge_report
       }
     end
