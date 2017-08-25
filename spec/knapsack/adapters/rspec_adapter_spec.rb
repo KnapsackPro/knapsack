@@ -24,8 +24,8 @@ describe Knapsack::Adapters::RSpecAdapter do
       end
 
       it do
-        expect(config).to receive(:before).with(:each).and_yield
-        expect(config).to receive(:after).with(:each).and_yield
+        expect(config).to receive(:prepend_before).with(:each).and_yield
+        expect(config).to receive(:append_after).with(:each).and_yield
         expect(config).to receive(:after).with(:suite).and_yield
         expect(::RSpec).to receive(:configure).and_yield(config)
 
