@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.14.1
+
+* Update RSpec timing adapter to be more resilient.
+
+    https://github.com/ArturT/knapsack/pull/64
+
+https://github.com/ArturT/knapsack/compare/v1.14.0...v1.14.1
+
 ### 1.14.0
 
 * Moves Timecop to development dependency.
