@@ -102,6 +102,7 @@ How knapsack_pro makes my life easier as opposed to regular knapsack gem?
   - [What time offset warning means?](#what-time-offset-warning-means)
   - [How to generate knapsack report?](#how-to-generate-knapsack-report)
   - [What does "leftover specs" mean?](#what-does-leftover-specs-mean)
+  - [Why some of test files are still in "leftover specs" after I generate a new report?](#why-some-of-test-files-are-still-in-leftover-specs-after-i-generate-a-new-report)
   - [How can I run tests from multiple directories?](#how-can-i-run-tests-from-multiple-directories)
   - [How to update existing knapsack report for a few test files?](#how-to-update-existing-knapsack-report-for-a-few-test-files)
   - [How to run tests for particular CI node in your development environment](#how-to-run-tests-for-particular-ci-node-in-your-development-environment)
@@ -651,6 +652,10 @@ spec/models/author_spec.rb
 The leftover specs mean we don't have recorded time execution for those test files so the leftover specs were distributed across CI nodes based on file name instead.
 The reason might be that someone added a new test file after knapsack report was generated. Another reason might be an empty spec file.
 If you have a lot of leftover specs then you can [generate knapsack report again](#how-to-generate-knapsack-report) to improve you test distribution across CI nodes.
+
+### Why some of test files are still in "leftover specs" after I generate a new report?
+
+If test file is empty or has only pending tests then it cannot be recorded so it will end up in leftovers specs list.
 
 ### How can I run tests from multiple directories?
 
