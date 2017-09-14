@@ -357,6 +357,7 @@ Here is an example for test configuration in your `circleci.yml` file.
 For the first time run all tests on a single CI node with enabled report generator.
 
 ```yaml
+# CircleCI 1.0
 test:
   override:
     # Step for RSpec
@@ -372,6 +373,37 @@ test:
     - KNAPSACK_GENERATE_REPORT=true bundle exec spinach
 ```
 
+```YAML
+# CircleCI 2.0
+- run:
+  name: Step for RSpec
+  command: |
+    # export word is important here!
+    export KNAPSACK_GENERATE_REPORT=true
+    bundle exec rspec spec
+
+- run:
+  name: Step for Cucumber
+  command: |
+    # export word is important here!
+    export KNAPSACK_GENERATE_REPORT=true
+    bundle exec cucumber features
+
+- run:
+  name: Step for Minitest
+  command: |
+    # export word is important here!
+    export KNAPSACK_GENERATE_REPORT=true
+    bundle exec rake test
+
+- run:
+  name: Step for Spinach
+  command: |
+    # export word is important here!
+    export KNAPSACK_GENERATE_REPORT=true
+    bundle exec rspec spinach
+```
+
 After tests pass on your CircleCI machine your should copy knapsack json report which is rendered at the end of rspec/cucumber/minitest results. Save it into your repository as `knapsack_rspec_report.json`, `knapsack_cucumber_report.json`, `knapsack_minitest_report.json` or `knapsack_spinach_report.json` file and commit.
 
 #### Step 2
@@ -379,6 +411,7 @@ After tests pass on your CircleCI machine your should copy knapsack json report 
 Now you should update test command and enable parallel. Please remember to add additional containers for your project in CircleCI settings.
 
 ```yaml
+# CircleCI 1.0
 test:
   override:
     # Step for RSpec
@@ -396,6 +429,25 @@ test:
     # Step for Spinach
     - bundle exec rake knapsack:spinach:
         parallel: true # Caution: there are 8 spaces indentation!
+```
+
+```YAML
+# CircleCI 2.0
+- run:
+  name: Step for RSpec
+  command: bundle exec rake knapsack:rspec
+
+- run:
+  name: Step for Cucumber
+  command: bundle exec rake knapsack:cucumber
+
+- run:
+  name: Step for Minitest
+  command: bundle exec rake knapsack:minitest
+
+- run:
+  name: Step for Spinach
+  command: bundle exec rake knapsack:spinach
 ```
 
 Now everything should works. You will get warning at the end of rspec/cucumber/minitest results if time execution will take too much.
