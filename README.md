@@ -12,6 +12,8 @@
 [codeclimate]: https://codeclimate.com/github/ArturT/knapsack
 [coverage]: https://codeclimate.com/github/ArturT/knapsack
 
+Follow us on [Twitter @KnapsackPro](https://twitter.com/KnapsackPro) and give Like on [Facebook KnapsackPro](https://www.facebook.com/KnapsackPro)
+
 **Knapsack splits tests across CI nodes and makes sure that tests will run comparable time on each node.**
 
 Parallel tests across CI server nodes based on each test file's time execution. Knapsack generates a test time execution report and uses it for future test runs.
