@@ -26,15 +26,19 @@ The knapsack gem supports:
 * [Spinach](https://github.com/codegram/spinach)
 * [Turnip](https://github.com/jnicklas/turnip)
 
-### Without Knapsack
+### Without Knapsack - bad test suite split
 
 ![Without Knapsack gem](docs/images/without_knapsack.png)
 
-### With Knapsack
+### With Knapsack - better test suite split
 
 ![With Knapsack gem](docs/images/with_knapsack.png)
 
-### Features
+### With Knapsack Pro - optimal test suite split
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pkdLzKlnlQg/0.jpg)](https://knapsackpro.com/?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=video#x-play-how-it-works-video)
+
+### Features in knapsack vs knapsack_pro
 
 | Feature | knapsack gem | knapsack_pro gem
 | --- | :---: | :---:
@@ -44,10 +48,6 @@ The knapsack gem supports:
 | Test suite split based on most up to date tests time execution data | ✘ | ✔
 | [Show all features](https://knapsackpro.com/features?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=show_all_features) | |
 
-__Play video how dynamic rspec allocation works__
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pkdLzKlnlQg/0.jpg)](https://knapsackpro.com/?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=video#x-play-how-it-works-video)
-
 How knapsack_pro makes my life easier as opposed to regular knapsack gem?
 
 * The knapsack_pro version has queue mode designed for optimal test suite split thanks to dynamic tests allocation.
@@ -55,7 +55,7 @@ How knapsack_pro makes my life easier as opposed to regular knapsack gem?
 * The knapsack_pro version tracks all you branches so when your test code changes the knapsack_pro tries to provide you as optimal test suite split as possible. 
 * When your test codebase changes over time you need to manually generate a new knapsack report in free gem version which is extra overhead and waste of time of the developer.
 
-**Would you like to try [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) with more features and free access for early users? Please [visit Knapsack Pro](http://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=try_knapsack_pro).**
+**Only [knapsack_pro gem](https://github.com/KnapsackPro/knapsack_pro-ruby) has Queue Mode feature that saves optimal amount of time? Please [visit Knapsack Pro](http://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=try_knapsack_pro).**
 
 ### Presentations about knapsack gem
 
