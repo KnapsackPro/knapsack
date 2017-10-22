@@ -1,11 +1,34 @@
 describe Knapsack::Adapters::CucumberAdapter do
   context do
-    before do
-      allow(::Cucumber::RbSupport::RbDsl).to receive(:register_rb_hook)
-      allow(Kernel).to receive(:at_exit)
+    context 'when Cucumber version 1' do
+      before do
+        stub_const('Cucumber::VERSION', '1.3.20')
+        allow(::Cucumber::RbSupport::RbDsl).to receive(:register_rb_hook)
+        allow(Kernel).to receive(:at_exit)
+      end
+
+      it_behaves_like 'adapter'
     end
 
-    it_behaves_like 'adapter'
+    context 'when Cucumber version 2' do
+      before do
+        stub_const('Cucumber::VERSION', '2')
+        allow(::Cucumber::RbSupport::RbDsl).to receive(:register_rb_hook)
+        allow(Kernel).to receive(:at_exit)
+      end
+
+      it_behaves_like 'adapter'
+    end
+
+    context 'when Cucumber version 3' do
+      before do
+        stub_const('Cucumber::VERSION', '3.0.0')
+        allow(::Cucumber::Glue::Dsl).to receive(:register_rb_hook)
+        allow(Kernel).to receive(:at_exit)
+      end
+
+      it_behaves_like 'adapter'
+    end
   end
 
   describe 'bind methods' do
