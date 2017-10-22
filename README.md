@@ -36,7 +36,7 @@ The knapsack gem supports:
 
 ### With Knapsack Pro - optimal test suite split
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pkdLzKlnlQg/0.jpg)](https://knapsackpro.com/?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=video#x-play-how-it-works-video)
+[Watch 1 minute video ![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pkdLzKlnlQg/0.jpg)](https://knapsackpro.com/?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=video#x-play-how-it-works-video)
 
 ### Features in knapsack vs knapsack_pro
 
