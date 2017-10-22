@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.15.0
+
+* Add support for Cucumber 3.
+
+    https://github.com/ArturT/knapsack/pull/68
+
+https://github.com/ArturT/knapsack/compare/v1.14.1...v1.15.0
+
 ### 1.14.1
 
 * Update RSpec timing adapter to be more resilient.
