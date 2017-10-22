@@ -46,7 +46,7 @@ The knapsack gem supports:
 
 __Play video how dynamic rspec allocation works__
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pkdLzKlnlQg/0.jpg)](https://knapsackpro.com/?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=video#video)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pkdLzKlnlQg/0.jpg)](https://knapsackpro.com/?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=video#x-play-how-it-works-video)
 
 How knapsack_pro makes my life easier as opposed to regular knapsack gem?
 
