@@ -14,6 +14,9 @@ module Knapsack
 
         cmd = %Q[bin/rspec #{args} --default-path #{allocator.test_dir} -- #{allocator.stringify_node_tests}]
 
+        puts "\n\nunderlying rspec command invoked by knapsack:"
+        puts cmd
+        puts "\n\n"
         system(cmd)
         exit($?.exitstatus) unless $?.exitstatus == 0
       end
