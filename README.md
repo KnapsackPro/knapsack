@@ -403,7 +403,7 @@ test:
   command: |
     # export word is important here!
     export KNAPSACK_GENERATE_REPORT=true
-    bundle exec rake test 
+    bundle exec rake test
 
 - run:
   name: Step for Spinach
