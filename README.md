@@ -233,8 +233,12 @@ Generate time execution report for your test files. Run below command on one of 
 
     # Step for Minitest
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+
     # If you use rails 5 then run this instead:
     $ KNAPSACK_GENERATE_REPORT=true bundle exec rake knapsack:minitest
+
+    # If you use rails 5.1's SystemTest, run both regular and system tests
+    $ KNAPSACK_GENERATE_REPORT=true bundle exec rake test test:system
 
     # Step for Spinach
     $ KNAPSACK_GENERATE_REPORT=true bundle exec spinach
@@ -372,6 +376,7 @@ test:
 
     # Step for Minitest
     - KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+    - KNAPSACK_GENERATE_REPORT=true bundle exec rake test # For rails 5.1 with system tests
 
     # Step for Spinach
     - KNAPSACK_GENERATE_REPORT=true bundle exec spinach
@@ -398,7 +403,7 @@ test:
   command: |
     # export word is important here!
     export KNAPSACK_GENERATE_REPORT=true
-    bundle exec rake test
+    bundle exec rake test 
 
 - run:
   name: Step for Spinach
@@ -472,6 +477,7 @@ script:
 
   # Step for Minitest
   - "KNAPSACK_GENERATE_REPORT=true bundle exec rake test"
+  - "KNAPSACK_GENERATE_REPORT=true bundle exec rake test:system" # For rails 5.1 with system tests
 
   # Step for Spinach
   - "KNAPSACK_GENERATE_REPORT=true bundle exec spinach"
@@ -595,6 +601,7 @@ For the first time run all tests at once with enabled report generator. Run the 
 
     # Step for Minitest
     KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+    KNAPSACK_GENERATE_REPORT=true bundle exec rake test test:system # rails 5.1 with system tests
 
     # Step for Spinach
     KNAPSACK_GENERATE_REPORT=true bundle exec spinach
@@ -631,6 +638,7 @@ For the first time run all tests at once with enabled report generator. Run the 
 
     # Step for Minitest
     KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+    KNAPSACK_GENERATE_REPORT=true bundle exec rake test test:system # rails 5.1 with system tests
 
     # Step for Spinach
     KNAPSACK_GENERATE_REPORT=true bundle exec spinach
