@@ -64,6 +64,10 @@ How knapsack_pro makes my life easier as opposed to regular knapsack gem?
 * [X 2014 Kraków Ruby User Group](http://slides.com/arturt/parallel-tests-in-comparable-time)
 * [VII 2014 Lunar Logic Dev Meeting](http://slides.com/arturt/knapsack)
 
+### Requirements
+
+`>= Ruby 1.9.3`
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
