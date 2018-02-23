@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.16.0
+
+* Add support for Ruby >= 1.9.3.
+
+    https://github.com/ArturT/knapsack/pull/77
+
+https://github.com/ArturT/knapsack/compare/v1.15.0...v1.16.0
+
 ### 1.15.0
 
 * Add support for Cucumber 3.
