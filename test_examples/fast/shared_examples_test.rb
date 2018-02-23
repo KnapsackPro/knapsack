@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Minitest::SharedExamples < Module
-  include Minitest::Spec::DSL
+  include Minitest::Spec::DSL if RUBY_VERSION != "1.9.3"
 end
 
 SharedExampleSpec = Minitest::SharedExamples.new do

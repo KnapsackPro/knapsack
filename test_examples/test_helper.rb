@@ -2,6 +2,15 @@ require 'minitest/autorun'
 
 require 'knapsack'
 
+if RUBY_VERSION == "1.9.3"
+  unless defined? Minitest
+    Minitest = MiniTest
+  end
+  unless defined? Minitest::Test
+    Minitest::Test = MiniTest::Unit::TestCase
+  end
+end
+
 Knapsack.tracker.config({
   enable_time_offset_warning: true,
   time_offset_in_seconds: 3
