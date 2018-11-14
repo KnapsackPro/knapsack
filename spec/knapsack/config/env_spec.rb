@@ -57,6 +57,11 @@ describe Knapsack::Config::Env do
         it { should eql 3 }
       end
 
+      context 'when CI_NODE_INDEX has value and is in GitLab CI' do
+        before { stub_const("ENV", { 'CI_NODE_INDEX' => 3, 'GITLAB_CI' => 'true' }) }
+        it { should eql 2 }
+      end
+
       context 'when CIRCLE_NODE_INDEX has value' do
         before { stub_const("ENV", { 'CIRCLE_NODE_INDEX' => 2 }) }
         it { should eql 2 }
