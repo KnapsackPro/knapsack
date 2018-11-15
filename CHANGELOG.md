@@ -2,6 +2,10 @@
 
 * TODO
 
+* Add support for GitLab CI ENV variable CI_NODE_INDEX starting from 1 
+
+    https://github.com/ArturT/knapsack/pull/83
+
 ### 1.16.0
 
 * Add support for Ruby >= 1.9.3.

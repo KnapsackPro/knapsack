@@ -11,7 +11,7 @@ module Knapsack
         end
 
         def ci_node_index
-          ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX'] || semaphore_current_thread || ENV['BUILDKITE_PARALLEL_JOB'] || snap_ci_worker_index || 0
+          gitlab_ci_node_index || ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX'] || semaphore_current_thread || ENV['BUILDKITE_PARALLEL_JOB'] || snap_ci_worker_index || 0
         end
 
         def test_file_pattern
@@ -42,6 +42,12 @@ module Knapsack
 
         def snap_ci_worker_index
           index_starting_from_one(ENV['SNAP_WORKER_INDEX'])
+        end
+
+        def gitlab_ci_node_index
+          return unless ENV['GITLAB_CI']
+
+          index_starting_from_one(ENV['CI_NODE_INDEX'])
         end
       end
     end
