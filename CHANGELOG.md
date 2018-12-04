@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.17.1
+
+* Fix RSpec signal handling by replacing process
+
+    https://github.com/ArturT/knapsack/pull/86
+
+https://github.com/ArturT/knapsack/compare/v1.17.0...v1.17.1
+
 ### 1.17.0
 
 * Add support for GitLab CI ENV variable `CI_NODE_INDEX` starting from 1.
