@@ -14,8 +14,7 @@ module Knapsack
 
         cmd = %Q[bundle exec rspec #{args} --default-path #{allocator.test_dir} -- #{allocator.stringify_node_tests}]
 
-        system(cmd)
-        exit($?.exitstatus) unless $?.exitstatus == 0
+        exec(cmd)
       end
     end
   end
