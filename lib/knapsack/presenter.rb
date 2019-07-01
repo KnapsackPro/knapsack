@@ -61,7 +61,7 @@ Global time execution for this CI node is fine.
 Happy testing!}
         end
         str << "\n\nNeed explanation? See FAQ:"
-        str << "\nhttps://github.com/ArturT/knapsack#faq"
+        str << "\nhttps://docs.knapsackpro.com/ruby/knapsack#faq"
         str << "\n=================================================\n"
         str << %{Sign up for Knapsack Pro here:
 https://knapsackpro.com}
