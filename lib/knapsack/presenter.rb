@@ -63,7 +63,11 @@ Happy testing!}
         str << "\n\nNeed explanation? See FAQ:"
         str << "\nhttps://docs.knapsackpro.com/ruby/knapsack#faq"
         str << "\n=================================================\n"
-        str << %{Sign up for Knapsack Pro here:
+        str << %{See how to split tests in a dynamic way using Queue Mode to ensure all parallel nodes
+finish work at a similar time even when your CI or random test execution is a bottleneck:
+https://youtu.be/hUEB1XDKEFY
+
+Sign up for Knapsack Pro here:
 https://knapsackpro.com}
         str << "\n=================================================\n"
         str
