@@ -4,7 +4,10 @@
 
 ### 1.17.2
 
-* Update URL to FAQ
+* Allow for new `bundler` in development
+* Test Ruby 2.6 on CI
+* Add info about Knapsack Pro Queue Mode in knapsack output
+* Update URL to FAQ in knapsack output
 
     https://github.com/ArturT/knapsack/pull/90
 
