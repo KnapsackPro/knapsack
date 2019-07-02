@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.17.2
+
+* Update URL to FAQ
+
+    https://github.com/ArturT/knapsack/pull/90
+
+https://github.com/ArturT/knapsack/compare/v1.17.1...v1.17.2
+
 ### 1.17.1
 
 * Fix RSpec signal handling by replacing process
