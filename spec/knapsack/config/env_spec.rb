@@ -27,6 +27,11 @@ describe Knapsack::Config::Env do
         it { should eql 4 }
       end
 
+      context 'when SEMAPHORE_JOB_COUNT has value' do
+        before { stub_const("ENV", { 'SEMAPHORE_JOB_COUNT' => 3 }) }
+        it { should eql 3 }
+      end
+
       context 'when SEMAPHORE_THREAD_COUNT has value' do
         before { stub_const("ENV", { 'SEMAPHORE_THREAD_COUNT' => 3 }) }
         it { should eql 3 }
@@ -64,6 +69,11 @@ describe Knapsack::Config::Env do
 
       context 'when CIRCLE_NODE_INDEX has value' do
         before { stub_const("ENV", { 'CIRCLE_NODE_INDEX' => 2 }) }
+        it { should eql 2 }
+      end
+
+      context 'when SEMAPHORE_JOB_INDEX has value' do
+        before { stub_const("ENV", { 'SEMAPHORE_JOB_INDEX' => 3 }) }
         it { should eql 2 }
       end
 
