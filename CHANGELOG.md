@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.18.0
+
+* Add support for Semaphore 2.0
+
+    https://github.com/ArturT/knapsack/pull/92
+
+https://github.com/ArturT/knapsack/compare/v1.17.2...v1.18.0
+
 ### 1.17.2
 
 * Allow for new `bundler` in development
