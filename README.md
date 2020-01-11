@@ -15,6 +15,7 @@ https://docs.knapsackpro.com/2019/how-to-run-tests-faster-on-heroku-ci-with-para
 
 ## Do you know
 
-* Adding 3rd party tool to CI is risky so Knapsack Pro can run your tests in Fallback Mode even when our API is not available.
+* Knapsack Pro is risk-free integration! Knapsack Pro runs tests in Fallback Mode if your CI servers can't reach our API for any reason.
 * We don't need access to your repository. Knapsack Pro is just wrapper around test runner like RSpec, Cucumber, Minitest etc.
 * Hundreds of developers use Knapsack Pro every day to run fast CI builds.
+* It works with other programming languages.
