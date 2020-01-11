@@ -1,5 +1,9 @@
 # [Open README](http://docs.knapsackpro.com/ruby/knapsack)
 
+|   | knapsack gem | knapsack_pro gem |
+| - | ------------ | ---------------- |
+| __Is free__ | Yes | Yes, [free plan](https://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=free_plan) |
+
 # Do you use Heroku?
 
 Do you know Knapsack Pro Ruby gem is available as Heroku add-on that's currently in beta and it's free to all beta users? It works with your current CI server.
