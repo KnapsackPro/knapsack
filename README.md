@@ -6,10 +6,10 @@ Knapsack splits tests evenly across parallel CI nodes to run fast CI build and s
 | -------------------------------------------- | ------------ | ---------------- |
 | __Is free__                                  | ✓ Yes        | ✓ Yes, [free plan](https://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=free_plan) |
 | __Regular Mode - a static tests split__      | ✓ Yes        | ✓ Yes |
-| __Queue Mode - a dynamic tests split__       | No           | ✓ Yes |
-| __Tracking tests timing per commit, branch__ | No           | ✓ Yes |
-| __Support for other programming languages__  | No           | ✓ Yes |
-| __Support for CI providers__                 | limited      | ✓ Yes |
+| __Queue Mode - a dynamic tests split__ (ensures all CI nodes finish work at the same time)       | No           | ✓ Yes |
+| Tracking tests timing per commit, branch     | No           | ✓ Yes |
+| Support for other programming languages      | No           | ✓ Yes |
+| Support for CI providers                     | limited      | ✓ Yes |
 | __Installation README__                      | [Install README](http://docs.knapsackpro.com/ruby/knapsack) | [Install README](https://docs.knapsackpro.com/integration/) |
 
 [Features of knapsack vs knapsack_pro Ruby gem](https://knapsackpro.com/features/ruby_knapsack_pro_vs_knapsack?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=ruby_knapsack_pro_vs_knapsack)
