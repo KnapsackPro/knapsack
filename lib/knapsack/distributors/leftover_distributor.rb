@@ -6,7 +6,7 @@ module Knapsack
       end
 
       def leftover_tests
-        @leftover_tests ||= all_tests - report_tests
+        @leftover_tests ||= all_tests - report_tests - (ENV['SLOW_SPECS']&.split(',') || [])
       end
 
       private
