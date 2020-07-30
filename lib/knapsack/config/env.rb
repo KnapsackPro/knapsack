@@ -30,6 +30,18 @@ module Knapsack
           }[ENV['KNAPSACK_LOG_LEVEL']] || Knapsack::Logger::INFO
         end
 
+        def slow_spec_examples
+          if ENV['SLOW_SPEC_EXAMPLES']
+            ENV['SLOW_SPEC_EXAMPLES'].split(',')
+          else
+            []
+          end
+        end
+
+        def slow_spec_files
+          @slow_spec_files ||= slow_spec_examples.map { |example| example.split('[').first }.uniq
+        end
+
         private
 
         def index_starting_from_one(index)
