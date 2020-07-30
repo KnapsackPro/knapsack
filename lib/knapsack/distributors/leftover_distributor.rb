@@ -6,7 +6,7 @@ module Knapsack
       end
 
       def leftover_tests
-        @leftover_tests ||= (all_tests - report_tests - Knapsack::Config::Env.slow_spec_examples)
+        @leftover_tests ||= all_tests - report_tests
       end
 
       private

@@ -62,8 +62,11 @@ module Knapsack
           end
         end
 
-        slow_spec_files = Knapsack::Config::Env.slow_spec_files
-        if slow_spec_files.any? { |slow_spec_path| example_group[:file_path] =~ Regexp.new(slow_spec_path) }
+        slow_spec_examples = Knapsack::Config::Env.slow_spec_examples
+        match_slow_spec_examples = slow_spec_examples.any? do |slow_spec_example|
+          slow_spec_example =~ Regexp.new(example_group[:file_path].sub(/^\.\//, ''))
+        end
+        if match_slow_spec_examples
           "#{example_group[:file_path]}[#{original_example_group[:scoped_id].split(':').first(2).join(':')}]"
         else
           example_group[:file_path]
