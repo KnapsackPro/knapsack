@@ -39,7 +39,7 @@ module Knapsack
         end
 
         def slow_spec_files
-          slow_spec_examples.map { |example| example.split('[').first }.uniq
+          @slow_spec_files ||= slow_spec_examples.map { |example| example.split('[').first }.uniq
         end
 
         private
