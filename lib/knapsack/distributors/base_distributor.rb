@@ -38,6 +38,8 @@ module Knapsack
 
       def all_tests
         @all_tests ||= (Dir.glob(test_file_pattern) + Knapsack::Config::Env.slow_spec_examples).uniq.sort
+        puts ">>>>>>>>>>>>>>>>>>>>>>> all_tests: #{@all_tests}"
+        @all_tests
       end
 
       protected
