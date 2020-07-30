@@ -37,9 +37,7 @@ module Knapsack
       end
 
       def all_tests
-        @all_tests ||= (Dir.glob(test_file_pattern) + Knapsack::Config::Env.slow_spec_examples).uniq.sort
-        puts ">>>>>>>>>>>>>>>>>>>>>>> all_tests: #{@all_tests}"
-        @all_tests
+        @all_tests ||= (Dir.glob(test_file_pattern).reject { |test_file| Knapsack::Config::Env.slow_spec_files.any? { |slow_spec_path| test_file =~ Regexp.new(slow_spec_path) }  } + Knapsack::Config::Env.slow_spec_examples).uniq.sort
       end
 
       protected
