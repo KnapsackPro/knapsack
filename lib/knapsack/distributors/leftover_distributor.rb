@@ -6,7 +6,7 @@ module Knapsack
       end
 
       def leftover_tests
-        @leftover_tests ||= all_tests - report_tests - (ENV['SLOW_SPECS']&.split(',') || [])
+        @leftover_tests ||= (all_tests - report_tests).reject { |test_path| Knapsack::Config::Env.slow_spec_files.any? { |slow_spec_path| slow_spec_path =~ Regexp.new(test_path.sub(/^\.\//, ''))} }
       end
 
       private

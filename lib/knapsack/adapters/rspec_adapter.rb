@@ -62,10 +62,8 @@ module Knapsack
           end
         end
 
-        require 'pry'; binding.pry
-        slow_spec_list = ENV['SLOW_SPECS']&.split(',')&.flat_map { |spec| ["#{spec}[1:1]", "#{spec}[1:2]"] } || []
+        slow_spec_list = Knapsack::Config::Env.slow_spec_examples
         if slow_spec_list.any? { |slow_file_with_group| slow_file_with_group =~ Regexp.new(example_group[:file_path].sub(/^\.\//, '')) }
-          require 'pry'; binding.pry
           "#{example_group[:file_path]}[#{original_example_group[:scoped_id].split(':').first(2).join(':')}]"
         else
           example_group[:file_path]

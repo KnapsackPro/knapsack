@@ -37,7 +37,7 @@ module Knapsack
       end
 
       def all_tests
-        @all_tests ||= (Dir.glob(test_file_pattern) + (ENV['SLOW_SPECS']&.split(',')&.flat_map { |spec| ["#{spec}[1:1]", "#{spec}[1:2]"] } || [])).uniq.sort
+        @all_tests ||= (Dir.glob(test_file_pattern) + Knapsack::Config::Env.slow_spec_examples).uniq.sort
       end
 
       protected
