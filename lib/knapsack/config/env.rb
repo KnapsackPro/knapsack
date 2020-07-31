@@ -31,7 +31,13 @@ module Knapsack
         end
 
         def slow_spec_examples
-          if ENV['SLOW_SPEC_EXAMPLES']
+          if ENV['SLOW_SPEC_EXAMPLES_JSON']
+            require 'json'
+            slow_spec_examples_hash = JSON.parse(File.read(ENV['SLOW_SPEC_EXAMPLES_JSON']))
+            slow_spec_examples_hash.flat_map do |file_path, scoped_ids|
+              scoped_ids.map { |scoped_id| "#{file_path}[#{scoped_id}]" }
+            end
+          elsif ENV['SLOW_SPEC_EXAMPLES']
             ENV['SLOW_SPEC_EXAMPLES'].split(',')
           else
             []
