@@ -37,7 +37,21 @@ module Knapsack
       end
 
       def all_tests
-        @all_tests ||= (Dir.glob(test_file_pattern).reject { |test_file| Knapsack::Config::Env.slow_spec_files.any? { |slow_spec_path| test_file =~ Regexp.new(slow_spec_path) }  } + Knapsack::Config::Env.slow_spec_examples).uniq.sort
+        @all_tests ||= (
+          Dir.glob(test_file_pattern)
+            .flat_map { |test_file| 
+              slow_spec_file = slow_spec_file_for(test_file)
+              if slow_spec_file.nil?
+                [test_file]
+              else
+                Knapsack::Config::Env.slow_spec_examples.map { |slow_spec_example| slow_spec_example.sub(slow_spec_file, test_file) }
+              end
+            } 
+        ).uniq.sort
+      end
+
+      def slow_spec_file_for(test_file)
+        Knapsack::Config::Env.slow_spec_files.detect { |slow_spec_path| test_file =~ Regexp.new(slow_spec_path) }
       end
 
       protected
