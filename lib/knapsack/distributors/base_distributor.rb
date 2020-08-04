@@ -51,7 +51,7 @@ module Knapsack
       end
 
       def slow_spec_file_for(test_file)
-        Knapsack::Config::Env.slow_spec_files.find { |slow_spec_path| test_file =~ Regexp.new(slow_spec_path) }
+        Knapsack::Config::Env.slow_spec_files.detect { |slow_spec_path| test_file =~ Regexp.new(slow_spec_path) }
       end
 
       protected
