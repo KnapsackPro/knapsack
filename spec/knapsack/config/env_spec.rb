@@ -46,6 +46,11 @@ describe Knapsack::Config::Env do
         before { stub_const("ENV", { 'SNAP_WORKER_TOTAL' => 6 }) }
         it { should eql 6 }
       end
+
+      context 'when BITBUCKET_PARALLEL_STEP_COUNT has value' do
+        before { stub_const("ENV", { 'BITBUCKET_PARALLEL_STEP_COUNT' => 8 }) }
+        it { should eql 8 }
+      end
     end
 
     context "when ENV doesn't exist" do
@@ -90,6 +95,11 @@ describe Knapsack::Config::Env do
       context 'when SNAP_WORKER_INDEX has value' do
         before { stub_const("ENV", { 'SNAP_WORKER_INDEX' => 4 }) }
         it { should eql 3 }
+      end
+
+      context 'when BITBUCKET_PARALLEL_STEP has value' do
+        before { stub_const("ENV", { 'BITBUCKET_PARALLEL_STEP' => 8 }) }
+        it { should eql 8 }
       end
     end
 
