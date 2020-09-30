@@ -98,8 +98,8 @@ describe Knapsack::Config::Env do
       end
 
       context 'when BITBUCKET_PARALLEL_STEP has value' do
-        before { stub_const("ENV", { 'BITBUCKET_PARALLEL_STEP' => 8 }) }
-        it { should eql 8 }
+        before { stub_const("ENV", { 'BITBUCKET_PARALLEL_STEP' => 7 }) }
+        it { should eql 7 }
       end
     end
 
