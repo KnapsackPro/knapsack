@@ -7,11 +7,11 @@ module Knapsack
         end
 
         def ci_node_total
-          ENV['CI_NODE_TOTAL'] || ENV['CIRCLE_NODE_TOTAL'] || ENV['SEMAPHORE_JOB_COUNT'] || ENV['SEMAPHORE_THREAD_COUNT'] || ENV['BUILDKITE_PARALLEL_JOB_COUNT'] || ENV['SNAP_WORKER_TOTAL'] || 1
+          ENV['CI_NODE_TOTAL'] || ENV['CIRCLE_NODE_TOTAL'] || ENV['SEMAPHORE_JOB_COUNT'] || ENV['SEMAPHORE_THREAD_COUNT'] || ENV['BUILDKITE_PARALLEL_JOB_COUNT'] || ENV['SNAP_WORKER_TOTAL'] || ENV['BITBUCKET_PARALLEL_STEP_COUNT'] || 1
         end
 
         def ci_node_index
-          gitlab_ci_node_index || ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX'] || semaphore_job_index || semaphore_current_thread || ENV['BUILDKITE_PARALLEL_JOB'] || snap_ci_worker_index || 0
+          gitlab_ci_node_index || ENV['CI_NODE_INDEX'] || ENV['CIRCLE_NODE_INDEX'] || semaphore_job_index || semaphore_current_thread || ENV['BUILDKITE_PARALLEL_JOB'] || snap_ci_worker_index || ENV['BITBUCKET_PARALLEL_STEP'] || 0
         end
 
         def test_file_pattern
