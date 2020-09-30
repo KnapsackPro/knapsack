@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.19.0
+
+* Add support for Bitbucket Pipelines
+
+    https://github.com/ArturT/knapsack/pull/97
+
+https://github.com/ArturT/knapsack/compare/v1.18.0...v1.19.0
+
 ### 1.18.0
 
 * Add support for Semaphore 2.0
