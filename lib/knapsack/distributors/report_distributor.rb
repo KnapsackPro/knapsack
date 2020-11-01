@@ -2,7 +2,7 @@ module Knapsack
   module Distributors
     class ReportDistributor < BaseDistributor
       def sorted_report
-        @sorted_report ||= report.sort_by { |test_path, time| time }.reverse
+        @sorted_report ||= report.sort_by { |_test_path, time| -time }
       end
 
       def sorted_report_with_existing_tests
@@ -10,7 +10,7 @@ module Knapsack
       end
 
       def total_time_execution
-        @total_time_execution ||= sorted_report_with_existing_tests.map(&:last).reduce(0, :+).to_f
+        @total_time_execution ||= sorted_report_with_existing_tests.sum { |_test_path, time| time }.to_f
       end
 
       def node_time_execution
@@ -20,72 +20,48 @@ module Knapsack
       private
 
       def post_assign_test_files_to_node
-        assign_slow_test_files
-        assign_remaining_test_files
+        assign_test_files
         sort_assigned_test_files
       end
 
       def sort_assigned_test_files
-        ci_node_total.times do |index|
-          # sort by first key (file name)
-          # reverse it and then sort by second key (time) in reverse order
-          node_tests[index][:test_files_with_time].sort!.reverse!.sort! do |x, y|
-            y[1] <=> x[1]
-          end
+        node_tests.map do |node|
+          node[:test_files_with_time].sort_by! { |file_name, _time| -file_name }
+                                     .sort_by! { |_file_name, time| -time }
         end
       end
 
       def post_tests_for_node(node_index)
         node_test = node_tests[node_index]
         return unless node_test
-        node_test[:test_files_with_time].map(&:first)
+        node_test[:test_files_with_time].map { |file_name, _time| file_name }
       end
 
       def default_node_tests
-        @node_tests = []
-        ci_node_total.times do |index|
-          @node_tests << {
+        @node_tests = Array.new(ci_node_total) do |index|
+          {
             node_index: index,
             time_left: node_time_execution,
-            test_files_with_time: []
+            test_files_with_time: [],
+            weight: 0
           }
         end
       end
 
-      def assign_slow_test_files
-        @not_assigned_test_files = []
-        node_index = 0
-        sorted_report_with_existing_tests.each do |test_file_with_time|
-          assign_slow_test_file(node_index, test_file_with_time)
-          node_index += 1
-          node_index %= ci_node_total
+      def assign_test_files
+        sorted_report_with_existing_tests.map do |test_file_with_time|
+          test_execution_time = test_file_with_time.last
+
+          current_lightest_node = node_tests.min_by { |node| node[:weight] }
+
+          updated_node_data = {
+            time_left:            current_lightest_node[:time_left] - test_execution_time,
+            weight:               current_lightest_node[:weight] + test_execution_time,
+            test_files_with_time: current_lightest_node[:test_files_with_time] << test_file_with_time
+          }
+
+          current_lightest_node.merge!(updated_node_data)
         end
-      end
-
-      def assign_slow_test_file(node_index, test_file_with_time)
-        time = test_file_with_time[1]
-        time_left = node_tests[node_index][:time_left] - time
-
-        if time_left >= 0 or node_tests[node_index][:test_files_with_time].empty?
-          node_tests[node_index][:time_left] -= time
-          node_tests[node_index][:test_files_with_time] << test_file_with_time
-        else
-          @not_assigned_test_files << test_file_with_time
-        end
-      end
-
-      def assign_remaining_test_files
-        @not_assigned_test_files.each do |test_file_with_time|
-          index = node_with_max_time_left
-          time = test_file_with_time[1]
-          node_tests[index][:time_left] -= time
-          node_tests[index][:test_files_with_time] << test_file_with_time
-        end
-      end
-
-      def node_with_max_time_left
-        node_test = node_tests.max { |a,b| a[:time_left] <=> b[:time_left] }
-        node_test[:node_index]
       end
     end
   end

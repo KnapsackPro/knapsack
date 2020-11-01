@@ -8,7 +8,8 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
 require 'knapsack'
-
+require 'pry'
+require 'pry-byebug'
 Dir["#{Knapsack.root}/spec/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
