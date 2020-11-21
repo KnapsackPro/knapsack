@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.20.0
+
+* Use `Process.clock_gettime` to measure track execution time
+
+    https://github.com/ArturT/knapsack/pull/100
+
+https://github.com/ArturT/knapsack/compare/v1.19.0...v1.20.0
+
 ### 1.19.0
 
 * Add support for Bitbucket Pipelines
