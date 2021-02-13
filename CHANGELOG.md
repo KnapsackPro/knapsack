@@ -6,25 +6,25 @@
 
 * Use `Process.clock_gettime` to measure track execution time
 
-    https://github.com/ArturT/knapsack/pull/100
+    https://github.com/KnapsackPro/knapsack/pull/100
 
-https://github.com/ArturT/knapsack/compare/v1.19.0...v1.20.0
+https://github.com/KnapsackPro/knapsack/compare/v1.19.0...v1.20.0
 
 ### 1.19.0
 
 * Add support for Bitbucket Pipelines
 
-    https://github.com/ArturT/knapsack/pull/97
+    https://github.com/KnapsackPro/knapsack/pull/97
 
-https://github.com/ArturT/knapsack/compare/v1.18.0...v1.19.0
+https://github.com/KnapsackPro/knapsack/compare/v1.18.0...v1.19.0
 
 ### 1.18.0
 
 * Add support for Semaphore 2.0
 
-    https://github.com/ArturT/knapsack/pull/92
+    https://github.com/KnapsackPro/knapsack/pull/92
 
-https://github.com/ArturT/knapsack/compare/v1.17.2...v1.18.0
+https://github.com/KnapsackPro/knapsack/compare/v1.17.2...v1.18.0
 
 ### 1.17.2
 
@@ -33,65 +33,65 @@ https://github.com/ArturT/knapsack/compare/v1.17.2...v1.18.0
 * Add info about Knapsack Pro Queue Mode in knapsack output
 * Update URL to FAQ in knapsack output
 
-    https://github.com/ArturT/knapsack/pull/90
+    https://github.com/KnapsackPro/knapsack/pull/90
 
-https://github.com/ArturT/knapsack/compare/v1.17.1...v1.17.2
+https://github.com/KnapsackPro/knapsack/compare/v1.17.1...v1.17.2
 
 ### 1.17.1
 
 * Fix RSpec signal handling by replacing process
 
-    https://github.com/ArturT/knapsack/pull/86
+    https://github.com/KnapsackPro/knapsack/pull/86
 
-https://github.com/ArturT/knapsack/compare/v1.17.0...v1.17.1
+https://github.com/KnapsackPro/knapsack/compare/v1.17.0...v1.17.1
 
 ### 1.17.0
 
 * Add support for GitLab CI ENV variable `CI_NODE_INDEX` starting from 1.
 
-    https://github.com/ArturT/knapsack/pull/83
+    https://github.com/KnapsackPro/knapsack/pull/83
 
-https://github.com/ArturT/knapsack/compare/v1.16.0...v1.17.0
+https://github.com/KnapsackPro/knapsack/compare/v1.16.0...v1.17.0
 
 ### 1.16.0
 
 * Add support for Ruby >= 1.9.3.
 
-    https://github.com/ArturT/knapsack/pull/77
+    https://github.com/KnapsackPro/knapsack/pull/77
 
-https://github.com/ArturT/knapsack/compare/v1.15.0...v1.16.0
+https://github.com/KnapsackPro/knapsack/compare/v1.15.0...v1.16.0
 
 ### 1.15.0
 
 * Add support for Cucumber 3.
 
-    https://github.com/ArturT/knapsack/pull/68
+    https://github.com/KnapsackPro/knapsack/pull/68
 
-https://github.com/ArturT/knapsack/compare/v1.14.1...v1.15.0
+https://github.com/KnapsackPro/knapsack/compare/v1.14.1...v1.15.0
 
 ### 1.14.1
 
 * Update RSpec timing adapter to be more resilient.
 
-    https://github.com/ArturT/knapsack/pull/64
+    https://github.com/KnapsackPro/knapsack/pull/64
 
-https://github.com/ArturT/knapsack/compare/v1.14.0...v1.14.1
+https://github.com/KnapsackPro/knapsack/compare/v1.14.0...v1.14.1
 
 ### 1.14.0
 
 * Moves Timecop to development dependency.
 
-    https://github.com/ArturT/knapsack/pull/61
+    https://github.com/KnapsackPro/knapsack/pull/61
 
-https://github.com/ArturT/knapsack/compare/v1.13.3...v1.14.0
+https://github.com/KnapsackPro/knapsack/compare/v1.13.3...v1.14.0
 
 ### 1.13.3
 
 * Fix: Trailing slash should be removed from allocator test_dir.
 
-    https://github.com/ArturT/knapsack/issues/57
+    https://github.com/KnapsackPro/knapsack/issues/57
 
-https://github.com/ArturT/knapsack/compare/v1.13.2...v1.13.3
+https://github.com/KnapsackPro/knapsack/compare/v1.13.2...v1.13.3
 
 ### 1.13.2
 
@@ -100,78 +100,78 @@ https://github.com/ArturT/knapsack/compare/v1.13.2...v1.13.3
     Related:
     https://github.com/KnapsackPro/knapsack_pro-ruby/issues/27
 
-https://github.com/ArturT/knapsack/compare/v1.13.1...v1.13.2
+https://github.com/KnapsackPro/knapsack/compare/v1.13.1...v1.13.2
 
 ### 1.13.1
 
 * Fix: Get rid of call #zero? method on $?.exitstatus in test runners tasks
 
-    https://github.com/ArturT/knapsack/pull/52
+    https://github.com/KnapsackPro/knapsack/pull/52
 
-https://github.com/ArturT/knapsack/compare/v1.13.0...v1.13.1
+https://github.com/KnapsackPro/knapsack/compare/v1.13.0...v1.13.1
 
 ### 1.13.0
 
 * Add KNAPSACK_LOG_LEVEL option
 
-    https://github.com/ArturT/knapsack/pull/49
+    https://github.com/KnapsackPro/knapsack/pull/49
 
-https://github.com/ArturT/knapsack/compare/v1.12.2...v1.13.0
+https://github.com/KnapsackPro/knapsack/compare/v1.12.2...v1.13.0
 
 ### 1.12.2
 
 * Fix support for turnip >= 2.x
 
-    https://github.com/ArturT/knapsack/pull/47
+    https://github.com/KnapsackPro/knapsack/pull/47
 
-https://github.com/ArturT/knapsack/compare/v1.12.1...v1.12.2
+https://github.com/KnapsackPro/knapsack/compare/v1.12.1...v1.12.2
 
 ### 1.12.1
 
 * Cucumber and Spinach should load files from proper folder in case when you use custom test directory.
 
-https://github.com/ArturT/knapsack/compare/v1.12.0...v1.12.1
+https://github.com/KnapsackPro/knapsack/compare/v1.12.0...v1.12.1
 
 ### 1.12.0
 
 * Add support for Minitest::SharedExamples
 
-    https://github.com/ArturT/knapsack/pull/46
+    https://github.com/KnapsackPro/knapsack/pull/46
 
-https://github.com/ArturT/knapsack/compare/v1.11.1...v1.12.0
+https://github.com/KnapsackPro/knapsack/compare/v1.11.1...v1.12.0
 
 ### 1.11.1
 
 * Require spinach in spec helper so tests will pass but don't require it in spinach adapter because it breaks for users who don't use spinach and they don't want to add it to their Gemfile
 
     Related PR:
-    https://github.com/ArturT/knapsack/pull/41
+    https://github.com/KnapsackPro/knapsack/pull/41
 
-https://github.com/ArturT/knapsack/compare/v1.11.0...v1.11.1
+https://github.com/KnapsackPro/knapsack/compare/v1.11.0...v1.11.1
 
 ### 1.11.0
 
 * Add support for Spinach
 
-    https://github.com/ArturT/knapsack/pull/41
+    https://github.com/KnapsackPro/knapsack/pull/41
 
-https://github.com/ArturT/knapsack/compare/v1.10.0...v1.11.0
+https://github.com/KnapsackPro/knapsack/compare/v1.10.0...v1.11.0
 
 ### 1.10.0
 
 * Log the time offset warning at INFO if time not exceeded
 
-    https://github.com/ArturT/knapsack/pull/40
+    https://github.com/KnapsackPro/knapsack/pull/40
 
-https://github.com/ArturT/knapsack/compare/v1.9.0...v1.10.0
+https://github.com/KnapsackPro/knapsack/compare/v1.9.0...v1.10.0
 
 ### 1.9.0
 
 * Use Knapsack.logger for runner output
 
-    https://github.com/ArturT/knapsack/pull/39
+    https://github.com/KnapsackPro/knapsack/pull/39
 
-https://github.com/ArturT/knapsack/compare/v1.8.0...v1.9.0
+https://github.com/KnapsackPro/knapsack/compare/v1.8.0...v1.9.0
 
 ### 1.8.0
 
@@ -179,15 +179,15 @@ https://github.com/ArturT/knapsack/compare/v1.8.0...v1.9.0
 
     https://github.com/KnapsackPro/knapsack_pro-ruby/issues/5
 
-https://github.com/ArturT/knapsack/compare/v1.7.0...v1.8.0
+https://github.com/KnapsackPro/knapsack/compare/v1.7.0...v1.8.0
 
 ### 1.7.0
 
 * Add ability to run tests from multiple directories
 
-    https://github.com/ArturT/knapsack/pull/35
+    https://github.com/KnapsackPro/knapsack/pull/35
 
-https://github.com/ArturT/knapsack/compare/v1.6.1...v1.7.0
+https://github.com/KnapsackPro/knapsack/compare/v1.6.1...v1.7.0
 
 ### 1.6.1
 
@@ -195,106 +195,106 @@ https://github.com/ArturT/knapsack/compare/v1.6.1...v1.7.0
 
     https://github.com/KnapsackPro/knapsack_pro-ruby/pull/4
 
-https://github.com/ArturT/knapsack/compare/v1.6.0...v1.6.1
+https://github.com/KnapsackPro/knapsack/compare/v1.6.0...v1.6.1
 
 ### 1.6.0
 
 * Add support for Cucumber 2
 
-    https://github.com/ArturT/knapsack/issues/30
+    https://github.com/KnapsackPro/knapsack/issues/30
 
-https://github.com/ArturT/knapsack/compare/v1.5.1...v1.6.0
+https://github.com/KnapsackPro/knapsack/compare/v1.5.1...v1.6.0
 
 ### 1.5.1
 
 * Add link to FAQ at the end of time offset warning
 
-https://github.com/ArturT/knapsack/compare/v1.5.0...v1.5.1
+https://github.com/KnapsackPro/knapsack/compare/v1.5.0...v1.5.1
 
 ### 1.5.0
 
 * Add support for snap-ci.com
 
-https://github.com/ArturT/knapsack/compare/v1.4.1...v1.5.0
+https://github.com/KnapsackPro/knapsack/compare/v1.4.1...v1.5.0
 
 ### 1.4.1
 
-* Update test file pattern in tests also. Related PR https://github.com/ArturT/knapsack/pull/27
+* Update test file pattern in tests also. Related PR https://github.com/KnapsackPro/knapsack/pull/27
 * Ensure there are no duplicates in leftover tests because of new test file pattern
 
-https://github.com/ArturT/knapsack/compare/v1.4.0...v1.4.1
+https://github.com/KnapsackPro/knapsack/compare/v1.4.0...v1.4.1
 
 ### 1.4.0
 
 * Rename RspecAdapter to RSpecAdapter so that it is consistent
 
-    https://github.com/ArturT/knapsack/pull/28
+    https://github.com/KnapsackPro/knapsack/pull/28
 
 * Change file path patterns to support 1-level symlinks by default
 
-    https://github.com/ArturT/knapsack/pull/27
+    https://github.com/KnapsackPro/knapsack/pull/27
 
-https://github.com/ArturT/knapsack/compare/v1.3.4...v1.4.0
+https://github.com/KnapsackPro/knapsack/compare/v1.3.4...v1.4.0
 
 ### 1.3.4
 
 * Make knapsack backwards compatible with earlier version of minitest
 
-    https://github.com/ArturT/knapsack/pull/26
+    https://github.com/KnapsackPro/knapsack/pull/26
 
-https://github.com/ArturT/knapsack/compare/v1.3.3...v1.3.4
+https://github.com/KnapsackPro/knapsack/compare/v1.3.3...v1.3.4
 
 ### 1.3.3
 
 * Fix wrong dependency for timecop
 
-https://github.com/ArturT/knapsack/compare/v1.3.2...v1.3.3
+https://github.com/KnapsackPro/knapsack/compare/v1.3.2...v1.3.3
 
 ### 1.3.2
 
 * Use Timecop as dependency and always use Time.now_without_mock_time to avoid problem when someone did stub on Time without using Timecop.
 * Don't exit on successful RSpec and Cucumber runs
 
-    https://github.com/ArturT/knapsack/pull/25
+    https://github.com/KnapsackPro/knapsack/pull/25
 
-https://github.com/ArturT/knapsack/compare/v1.3.1...v1.3.2
+https://github.com/KnapsackPro/knapsack/compare/v1.3.1...v1.3.2
 
 ### 1.3.1
 
 * Treat KNAPSACK_GENERATE_REPORT=false as generate_report -> false
 
-    https://github.com/ArturT/knapsack/pull/22
+    https://github.com/KnapsackPro/knapsack/pull/22
 
-https://github.com/ArturT/knapsack/compare/v1.3.0...v1.3.1
+https://github.com/KnapsackPro/knapsack/compare/v1.3.0...v1.3.1
 
 ### 1.3.0
 
 * Add knapsack binary
 
-    https://github.com/ArturT/knapsack/pull/21
+    https://github.com/KnapsackPro/knapsack/pull/21
 
-https://github.com/ArturT/knapsack/compare/v1.2.1...v1.3.0
+https://github.com/KnapsackPro/knapsack/compare/v1.2.1...v1.3.0
 
 ### 1.2.1
 
 * Add support for Turnip features
 
-    https://github.com/ArturT/knapsack/pull/19
+    https://github.com/KnapsackPro/knapsack/pull/19
 
-https://github.com/ArturT/knapsack/compare/v1.2.0...v1.2.1
+https://github.com/KnapsackPro/knapsack/compare/v1.2.0...v1.2.1
 
 ### 1.2.0
 
 * Add minitest adapter.
 * Fix bug with missing global time execution when tests took less than second.
 
-https://github.com/ArturT/knapsack/compare/v1.1.1...v1.2.0
+https://github.com/KnapsackPro/knapsack/compare/v1.1.1...v1.2.0
 
 ### 1.1.1
 
 * Use `system` instead of `exec` in rake tasks so we can return exit code from command.
 
-https://github.com/ArturT/knapsack/compare/v1.1.0...v1.1.1
+https://github.com/KnapsackPro/knapsack/compare/v1.1.0...v1.1.1
 
 ### 1.1.0
 
@@ -304,15 +304,15 @@ https://github.com/ArturT/knapsack/compare/v1.1.0...v1.1.1
 
 * Pull request #12 - Raise error when CI_NODE_INDEX >= CI_NODE_TOTAL
 
-    https://github.com/ArturT/knapsack/pull/12
+    https://github.com/KnapsackPro/knapsack/pull/12
 
 ### 1.0.3
 
 * Fix bug #11 - Track properly time when using Timecop gem in tests.
 
-    https://github.com/ArturT/knapsack/issues/11
+    https://github.com/KnapsackPro/knapsack/issues/11
 
-    https://github.com/ArturT/knapsack/issues/9
+    https://github.com/KnapsackPro/knapsack/issues/9
 
 ### 1.0.2
 

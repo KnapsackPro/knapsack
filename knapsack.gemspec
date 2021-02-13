@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["arturtrzop@gmail.com"]
   spec.summary       = %q{Knapsack splits tests across CI nodes and makes sure that tests will run comparable time on each node.}
   spec.description   = %q{Parallel tests across CI server nodes based on each test file's time execution. It generates a test time execution report and uses it for future test runs.}
-  spec.homepage      = "https://github.com/ArturT/knapsack"
+  spec.homepage      = "https://github.com/KnapsackPro/knapsack"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
