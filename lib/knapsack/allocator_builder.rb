@@ -36,7 +36,7 @@ module Knapsack
     end
 
     def test_file_list_source_file
-      Knapsack::Config::test_file_list_source_file
+      Knapsack::Config::Env.test_file_list_source_file
     end
   end
 end
