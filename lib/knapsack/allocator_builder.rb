@@ -9,6 +9,7 @@ module Knapsack
       Knapsack::Allocator.new({
         report: Knapsack.report.open,
         test_file_pattern: test_file_pattern,
+        test_file_list_source_file: test_file_list_source_file,
         ci_node_total: Knapsack::Config::Env.ci_node_total,
         ci_node_index: Knapsack::Config::Env.ci_node_index
       })
@@ -32,6 +33,10 @@ module Knapsack
 
     def test_file_pattern
       Knapsack::Config::Env.test_file_pattern || @adapter_class::TEST_DIR_PATTERN
+    end
+
+    def test_file_list_source_file
+      Knapsack::Config::test_file_list_source_file
     end
   end
 end
