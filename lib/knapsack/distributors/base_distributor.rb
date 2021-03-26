@@ -45,12 +45,17 @@ module Knapsack
       # support specifying a list_file to use similar to KnapsackPro
       # ref: KnapsackPro/knapsack_pro-ruby/commit/7d7b8db8be524f2f30d7d80d3a6444dad9f85b1b
       def test_files
-        return Dir.glob(test_file_pattern).uniq.sort if test_file_list_source_file.nil?
+        default = Dir.glob(test_file_pattern).uniq.sort
 
-        File.read(test_file_list_source_file)
+        return default if test_file_list_source_file.nil?
+
+        test_file_list = File.read(test_file_list_source_file)
           .split(/\n/)
           .uniq
           .sort
+
+        return default if test_file_list.empty?
+        return test_file_list
       end
 
       protected
