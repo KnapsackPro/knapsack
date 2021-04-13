@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.21.0
+
+* Update time offset warning
+
+    https://github.com/KnapsackPro/knapsack/pull/105
+
+https://github.com/KnapsackPro/knapsack/compare/v1.20.0...v1.21.0
+
 ### 1.20.0
 
 * Use `Process.clock_gettime` to measure track execution time
