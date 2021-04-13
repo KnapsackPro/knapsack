@@ -51,11 +51,15 @@ module Knapsack
         }
         if Knapsack.tracker.time_exceeded?
           str << %{
-Tests on this CI node took more than max allowed node time execution.
+Tests on this CI node took more than the max allowed time execution per CI node.
 Please regenerate your knapsack report.
 
-If that didn't help then split your heavy test file
-or bump time_offset_in_seconds setting.}
+If that didn't help then split your slow test file into smaller test files
+or bump time_offset_in_seconds setting.
+
+You can also use knapsack_pro gem to automatically divide slow test files between parallel CI nodes.
+https://knapsackpro.com/faq/question/how-to-auto-split-test-files-by-test-cases-on-parallel-jobs-ci-nodes?utm_source=knapsack_gem&utm_medium=knapsack_gem_output&utm_campaign=knapsack_gem_time_offset_warning
+}
         else
           str << %{
 Global time execution for this CI node is fine.
