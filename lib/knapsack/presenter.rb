@@ -53,6 +53,7 @@ module Knapsack
           str << %{
 Tests on this CI node took more than max allowed node time execution.
 Please regenerate your knapsack report.
+
 If that didn't help then split your heavy test file
 or bump time_offset_in_seconds setting.}
         else
