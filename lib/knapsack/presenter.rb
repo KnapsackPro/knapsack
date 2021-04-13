@@ -51,7 +51,7 @@ module Knapsack
         }
         if Knapsack.tracker.time_exceeded?
           str << %{
-Tests on this CI node took more than the max allowed time execution per CI node.
+Tests on this CI node took more than the max allowed node time execution.
 Please regenerate your knapsack report.
 
 If that didn't help then split your slow test file into smaller test files
