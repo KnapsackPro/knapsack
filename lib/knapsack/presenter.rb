@@ -69,7 +69,7 @@ Happy testing!}
         str << "\nhttps://docs.knapsackpro.com/ruby/knapsack#faq"
         str << "\n=================================================\n"
         str << %{See how to split tests in a dynamic way using Queue Mode to ensure all parallel nodes
-finish work at a similar time even when your CI or random test execution is a bottleneck:
+finish work at a similar time even when your CI server or a random tests execution time is a bottleneck:
 https://docs.knapsackpro.com/2020/how-to-speed-up-ruby-and-javascript-tests-with-ci-parallelisation
 
 Sign up for Knapsack Pro here:
