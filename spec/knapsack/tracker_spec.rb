@@ -48,7 +48,7 @@ describe Knapsack::Tracker do
 
     context 'when test_path not set' do
       it do
-        expect { subject }.to raise_error("test_path needs to be set by Knapsack Adapter's bind method")
+        expect(subject).to be_nil
       end
     end
 
@@ -133,6 +133,9 @@ describe Knapsack::Tracker do
       it { expect(tracker.test_files_with_time.keys.size).to eql 2 }
       it { expect(tracker.test_files_with_time['a_spec.rb']).to be_within(delta).of(0.1) }
       it { expect(tracker.test_files_with_time['b_spec.rb']).to be_within(delta).of(0.2) }
+      it 'resets test_path after time is measured' do
+        expect(tracker.test_path).to be_nil
+      end
     end
 
     context "with Timecop - Timecop shouldn't have impact on measured test time" do
@@ -157,6 +160,9 @@ describe Knapsack::Tracker do
       it { expect(tracker.test_files_with_time.keys.size).to eql 2 }
       it { expect(tracker.test_files_with_time['a_spec.rb']).to be_within(delta).of(0) }
       it { expect(tracker.test_files_with_time['b_spec.rb']).to be_within(delta).of(0) }
+      it 'resets test_path after time is measured' do
+        expect(tracker.test_path).to be_nil
+      end
     end
   end
 

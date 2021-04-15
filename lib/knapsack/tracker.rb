@@ -23,15 +23,19 @@ module Knapsack
     end
 
     def stop_timer
-      @execution_time = now_without_mock_time.to_f - @start_time
-      update_global_time
-      update_test_file_time
-      @execution_time
+      execution_time = now_without_mock_time.to_f - @start_time
+
+      if test_path
+        update_global_time(execution_time)
+        update_test_file_time(execution_time)
+        @test_path = nil
+      end
+
+      execution_time
     end
 
     def test_path
-      raise("test_path needs to be set by Knapsack Adapter's bind method") unless @test_path
-      @test_path.sub(/^\.\//, '')
+      @test_path.sub(/^\.\//, '') if @test_path
     end
 
     def time_exceeded?
@@ -62,13 +66,13 @@ module Knapsack
       @test_path = nil
     end
 
-    def update_global_time
-      @global_time += @execution_time
+    def update_global_time(execution_time)
+      @global_time += execution_time
     end
 
-    def update_test_file_time
+    def update_test_file_time(execution_time)
       @test_files_with_time[test_path] ||= 0
-      @test_files_with_time[test_path] += @execution_time
+      @test_files_with_time[test_path] += execution_time
     end
 
     def report_distributor
