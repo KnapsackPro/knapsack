@@ -24,8 +24,9 @@ describe Knapsack::Adapters::RSpecAdapter do
       end
 
       it do
+        expect(config).to receive(:prepend_before).with(:context).and_yield
         expect(config).to receive(:prepend_before).with(:each).and_yield
-        expect(config).to receive(:append_after).with(:each).and_yield
+        expect(config).to receive(:append_after).with(:context).and_yield
         expect(config).to receive(:after).with(:suite).and_yield
         expect(::RSpec).to receive(:configure).and_yield(config)
 
@@ -33,10 +34,9 @@ describe Knapsack::Adapters::RSpecAdapter do
         expect(described_class).to receive(:test_path).with(example_group).and_return(test_path)
 
         allow(Knapsack).to receive(:tracker).and_return(tracker)
-        expect(tracker).to receive(:test_path=).with(test_path)
-        expect(tracker).to receive(:start_timer)
-
-        expect(tracker).to receive(:stop_timer)
+        expect(tracker).to receive(:start_timer).ordered
+        expect(tracker).to receive(:test_path=).with(test_path).ordered
+        expect(tracker).to receive(:stop_timer).ordered
 
         expect(Knapsack::Presenter).to receive(:global_time).and_return(global_time)
         expect(logger).to receive(:info).with(global_time)
