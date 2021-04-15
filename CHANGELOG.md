@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.21.1
+
+* Fix a bug with tracking time for pending specs in RSpec
+
+    https://github.com/KnapsackPro/knapsack/pull/109
+
+https://github.com/KnapsackPro/knapsack/compare/v1.21.0...v1.21.1
+
 ### 1.21.0
 
 * Track time in before and after `:context` hooks
