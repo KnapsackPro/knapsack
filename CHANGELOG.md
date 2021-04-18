@@ -2,11 +2,27 @@
 
 * TODO
 
-### 1.21.0
+### 1.22.0
 
 * Update time offset warning
 
     https://github.com/KnapsackPro/knapsack/pull/105
+
+https://github.com/KnapsackPro/knapsack/compare/v1.21.1...v1.22.0
+
+### 1.21.1
+
+* Fix a bug with tracking time for pending specs in RSpec
+
+    https://github.com/KnapsackPro/knapsack/pull/109
+
+https://github.com/KnapsackPro/knapsack/compare/v1.21.0...v1.21.1
+
+### 1.21.0
+
+* Track time in before and after `:context` hooks
+
+    https://github.com/KnapsackPro/knapsack/pull/107
 
 https://github.com/KnapsackPro/knapsack/compare/v1.20.0...v1.21.0
 

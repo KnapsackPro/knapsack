@@ -6,6 +6,10 @@ module Knapsack
 
       def bind_time_tracker
         ::RSpec.configure do |config|
+          config.prepend_before(:context) do
+            Knapsack.tracker.start_timer
+          end
+
           config.prepend_before(:each) do
             current_example_group =
               if ::RSpec.respond_to?(:current_example)
@@ -14,10 +18,9 @@ module Knapsack
                 example.metadata
               end
             Knapsack.tracker.test_path = RSpecAdapter.test_path(current_example_group)
-            Knapsack.tracker.start_timer
           end
 
-          config.append_after(:each) do
+          config.append_after(:context) do
             Knapsack.tracker.stop_timer
           end
 
