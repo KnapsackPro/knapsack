@@ -56,7 +56,7 @@ Please regenerate your knapsack report.
 
 If that doesn't help, you can split your slowest test files into smaller files, or bump up the time_offset_in_seconds setting.
 
-You can also use knapsack_pro gem to automatically divide slow test files between parallel CI nodes.
+You can also allow the knapsack_pro gem to automatically divide your slow test files across parallel CI nodes.
 https://knapsackpro.com/faq/question/how-to-auto-split-test-files-by-test-cases-on-parallel-jobs-ci-nodes?utm_source=knapsack_gem&utm_medium=knapsack_gem_output&utm_campaign=knapsack_gem_time_offset_warning
 }
         else
