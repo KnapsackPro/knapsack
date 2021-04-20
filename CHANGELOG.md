@@ -2,6 +2,14 @@
 
 * TODO
 
+### 1.22.0
+
+* Update time offset warning
+
+    https://github.com/KnapsackPro/knapsack/pull/105
+
+https://github.com/KnapsackPro/knapsack/compare/v1.21.1...v1.22.0
+
 ### 1.21.1
 
 * Fix a bug with tracking time for pending specs in RSpec

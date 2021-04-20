@@ -51,10 +51,14 @@ module Knapsack
         }
         if Knapsack.tracker.time_exceeded?
           str << %{
-Tests on this CI node took more than max allowed node time execution.
+Test on this CI node ran for longer than the max allowed node time execution.
 Please regenerate your knapsack report.
-If that didn't help then split your heavy test file
-or bump time_offset_in_seconds setting.}
+
+If that doesn't help, you can split your slowest test files into smaller files, or bump up the time_offset_in_seconds setting.
+
+You can also allow the knapsack_pro gem to automatically divide your slow test files across parallel CI nodes.
+https://knapsackpro.com/faq/question/how-to-auto-split-test-files-by-test-cases-on-parallel-jobs-ci-nodes?utm_source=knapsack_gem&utm_medium=knapsack_gem_output&utm_campaign=knapsack_gem_time_offset_warning
+}
         else
           str << %{
 Global time execution for this CI node is fine.
@@ -63,9 +67,8 @@ Happy testing!}
         str << "\n\nNeed explanation? See FAQ:"
         str << "\nhttps://docs.knapsackpro.com/ruby/knapsack#faq"
         str << "\n=================================================\n"
-        str << %{See how to split tests in a dynamic way using Queue Mode to ensure all parallel nodes
-finish work at a similar time even when your CI or random test execution is a bottleneck:
-https://youtu.be/hUEB1XDKEFY
+        str << %{Read up on the benefits of a dynamic test split with Knapsack Pro Queue Mode:
+https://docs.knapsackpro.com/2020/how-to-speed-up-ruby-and-javascript-tests-with-ci-parallelisation
 
 Sign up for Knapsack Pro here:
 https://knapsackpro.com}
