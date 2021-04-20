@@ -67,7 +67,7 @@ Happy testing!}
         str << "\n\nNeed explanation? See FAQ:"
         str << "\nhttps://docs.knapsackpro.com/ruby/knapsack#faq"
         str << "\n=================================================\n"
-        str << %{Read up on the benefits of a dynamic test split with Knapsack's Queue Mode:
+        str << %{Read up on the benefits of a dynamic test split with Knapsack Pro Queue Mode:
 https://docs.knapsackpro.com/2020/how-to-speed-up-ruby-and-javascript-tests-with-ci-parallelisation
 
 Sign up for Knapsack Pro here:
