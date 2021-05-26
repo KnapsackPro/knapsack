@@ -4,9 +4,6 @@ require 'spinach'
 require 'timecop'
 Timecop.safe_mode = true
 
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'knapsack'
 
 Dir["#{Knapsack.root}/spec/support/**/*.rb"].each { |f| require f }
