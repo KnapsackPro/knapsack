@@ -8,6 +8,10 @@
 
     https://github.com/KnapsackPro/knapsack/pull/113
 
+* Use Ruby 3 and add small development adjustments in codebase
+
+    https://github.com/KnapsackPro/knapsack/pull/110
+
 https://github.com/KnapsackPro/knapsack/compare/v1.22.0...v2.0.0
 
 ### 1.22.0
