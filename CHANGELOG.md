@@ -2,6 +2,14 @@
 
 * TODO
 
+### 2.0.0
+
+* (breaking change) Ruby 2.1 is a minimum required version
+
+    https://github.com/KnapsackPro/knapsack/pull/113
+
+https://github.com/KnapsackPro/knapsack/compare/v1.22.0...v2.0.0
+
 ### 1.22.0
 
 * Update time offset warning
