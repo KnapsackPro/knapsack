@@ -23,20 +23,20 @@ module Knapsack
       def bind_time_tracker
         ::Minitest::Test.send(:include, BindTimeTrackerMinitestPlugin)
 
-        add_post_run_callback do
+        Minitest.after_run do
           Knapsack.logger.info(Presenter.global_time)
         end
       end
 
       def bind_report_generator
-        add_post_run_callback do
+        Minitest.after_run do
           Knapsack.report.save
           Knapsack.logger.info(Presenter.report_details)
         end
       end
 
       def bind_time_offset_warning
-        add_post_run_callback do
+        Minitest.after_run do
           Knapsack.logger.log(
             Presenter.time_offset_log_level,
             Presenter.time_offset_warning
@@ -63,16 +63,6 @@ module Knapsack
         test_path = full_test_path.gsub(parent_of_test_dir_regexp, '.')
         # test_path will look like ./test/dir/unit_test.rb
         test_path
-      end
-
-      private
-
-      def add_post_run_callback(&block)
-        if Minitest.respond_to?(:after_run)
-          Minitest.after_run { block.call }
-        else
-          Minitest::Unit.after_tests { block.call }
-        end
       end
     end
   end
