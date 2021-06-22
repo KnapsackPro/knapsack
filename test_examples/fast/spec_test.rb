@@ -16,10 +16,22 @@ describe FakeCalculator do
   end
 
   it '#add' do
-    _(@calc.add(2, 3)).must_equal 5
+    result = @calc.add(2, 3)
+
+    if self.respond_to?(:_)
+      _(result).must_equal 5
+    else
+      result.must_equal 5
+    end
   end
 
   it '#mal' do
-    _(@calc.mal(2, 3)).must_equal 6
+    result = @calc.mal(2, 3)
+
+    if self.respond_to?(:_)
+      _(result).must_equal 6
+    else
+      result.must_equal 6
+    end
   end
 end
