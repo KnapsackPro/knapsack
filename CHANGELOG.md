@@ -2,6 +2,14 @@
 
 * TODO
 
+### 3.0.0
+
+* (breaking change) Drop support for Minitest 4.x. Force to use minitest 5.x even on CI.
+
+    https://github.com/KnapsackPro/knapsack/pull/114
+
+https://github.com/KnapsackPro/knapsack/compare/v2.0.0...v3.0.0
+
 ### 2.0.0
 
 * (breaking change) Ruby 2.1 is a minimum required version
