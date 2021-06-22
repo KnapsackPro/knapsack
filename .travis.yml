@@ -17,8 +17,6 @@ addons:
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 script:
-  # We need minitest 5.x
-  - (ruby -v | grep 'ruby 2.1' && gem install minitest -v 5.12.0 || exit 1) || true
   # Test for knapsack gem
   - bin/print_header.sh "Run specs for Knapsack gem"
   - bundle exec rspec spec
