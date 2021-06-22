@@ -1,0 +1,127 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
+        ruby: [2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, '3.0', truffleruby-head]
+        # Use minitest 5.12.0 on Ruby 2.1 (which has bundled minitest 4.x)
+        # (Note: minitest 5.12.1+ supports only Ruby 2.2+)
+        include:
+          - ruby: 2.1
+            minitest: 5.12.0
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+    # Use the latest minitest gem on Ruby 2.1
+    - name: Install minitest v5
+      if: ${{ matrix.minitest }}
+      run: gem install -N minitest -v ${{ matrix.minitest }}
+
+    # Test for knapsack gem
+    - name: Run specs for Knapsack gem
+      run: bundle exec rspec spec
+
+    # Tests for example rspec test suite
+    - name: Generate knapsack report
+      run: KNAPSACK_GENERATE_REPORT=true bundle exec rspec --default-path spec_examples --tag focus
+
+    - name: Run specs with enabled time offset warning
+      run: bundle exec rspec --default-path spec_examples
+
+    - name: Run rake task for the first CI node
+      run: CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
+    - name: Run rake task for the second CI node
+      run: CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
+
+    - name: Check passing arguments to rspec. Run only specs with custom_focus tag (1/2)
+      run: KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake "knapsack:rspec[--tag custom_focus]"
+    - name: Check passing arguments to rspec. Run only specs with custom_focus tag (2/2)
+      run: KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bin/knapsack rspec "--tag custom_focus --profile"
+
+    - name: Run specs with custom knapsack logger
+      run: CUSTOM_LOGGER=true KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
+
+    - name: Run specs for custom knapsack report path
+      run: |
+        cp knapsack_rspec_report.json knapsack_custom_rspec_report.json
+        KNAPSACK_REPORT_PATH="knapsack_custom_rspec_report.json" KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
+
+    - name: Run specs when spec file was removed and still exists in knapsack report json
+      run: |
+        rm spec_examples/fast/1_spec.rb
+        KNAPSACK_TEST_FILE_PATTERN="spec_examples/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
+
+    - name: Run specs from multiple directories with manually specified test_dir
+      run: KNAPSACK_TEST_DIR=spec_examples KNAPSACK_TEST_FILE_PATTERN="{spec_examples,spec_engine_examples}/**{,/*/**}/*_spec.rb" bundle exec rake knapsack:rspec
+
+    # Tests for example minitest test suite
+    - name: Generate knapsack report
+      run: KNAPSACK_GENERATE_REPORT=true bundle exec rake test
+
+    - name: Run tests with enabled time offset warning
+      run: bundle exec rake test
+
+    - name: Run rake task for the first CI node
+      run: CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake knapsack:minitest
+    - name: Run rake task for the second CI node
+      run: CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake knapsack:minitest
+
+    - name: Check passing arguments to minitest. Run verbose tests
+      run: |
+        KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake "knapsack:minitest[--verbose]"
+        KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bin/knapsack minitest "--verbose --pride"
+
+    - name: Run tests with custom knapsack logger
+      run: CUSTOM_LOGGER=true KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake knapsack:minitest
+
+    - name: Run tests for custom knapsack report path
+      run: |
+        cp knapsack_minitest_report.json knapsack_custom_minitest_report.json
+        KNAPSACK_REPORT_PATH="knapsack_custom_minitest_report.json" KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake knapsack:minitest
+
+    - name: Run tests when test file was removed and still exists in knapsack report json
+      run: |
+        rm test_examples/fast/unit_test.rb
+        KNAPSACK_TEST_FILE_PATTERN="test_examples/**{,/*/**}/*_test.rb" bundle exec rake knapsack:minitest
+
+    # Tests for example spinach test suite
+    - name: Generate knapsack report
+      run: KNAPSACK_GENERATE_REPORT=true bundle exec spinach -f spinach_examples
+
+    - name: Run tests with enabled time offset warning
+      run: bundle exec spinach -f spinach_examples
+
+    - name: Run rake task for the first CI node
+      run: CI_NODE_TOTAL=2 CI_NODE_INDEX=0 KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+    - name: Run rake task for the second CI node
+      run: CI_NODE_TOTAL=2 CI_NODE_INDEX=1 KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+
+    - name: Run tests with custom knapsack logger
+      run: CUSTOM_LOGGER=true KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+
+    - name: Run tests for custom knapsack report path
+      run: |
+        cp knapsack_spinach_report.json knapsack_custom_spinach_report.json
+        KNAPSACK_REPORT_PATH="knapsack_custom_spinach_report.json" KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
+
+    - name: Run tests when test file was removed and still exists in knapsack report json
+      run: |
+        rm spinach_examples/scenario1.feature
+        KNAPSACK_TEST_FILE_PATTERN="spinach_examples/**{,/*/**}/*.feature" bundle exec rake "knapsack:spinach[-f spinach_examples]"
