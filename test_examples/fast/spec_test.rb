@@ -16,10 +16,10 @@ describe FakeCalculator do
   end
 
   it '#add' do
-    @calc.add(2, 3).must_equal 5
+    _(@calc.add(2, 3)).must_equal 5
   end
 
   it '#mal' do
-    @calc.mal(2, 3).must_equal 6
+    _(@calc.mal(2, 3)).must_equal 6
   end
 end
