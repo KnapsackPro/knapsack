@@ -8,6 +8,10 @@
 
     https://github.com/KnapsackPro/knapsack/pull/114
 
+* Replace Travis CI with GitHub Actions
+
+    https://github.com/KnapsackPro/knapsack/pull/112
+
 https://github.com/KnapsackPro/knapsack/compare/v2.0.0...v3.0.0
 
 ### 2.0.0
