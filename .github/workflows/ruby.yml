@@ -2,9 +2,9 @@ name: Ruby
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   test:
@@ -14,12 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby: [2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, '3.0', truffleruby-head]
-        # Use minitest 5.12.0 on Ruby 2.1 (which has bundled minitest 4.x)
-        # (Note: minitest 5.12.1+ supports only Ruby 2.2+)
-        include:
-          - ruby: 2.1
-            minitest: 5.12.0
+        ruby: [2.2, 2.3, 2.4, 2.5, 2.6, 2.7, '3.0', truffleruby-head]
 
     steps:
     - uses: actions/checkout@v2
@@ -28,11 +23,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-
-    # Use the latest minitest gem on Ruby 2.1
-    - name: Install minitest v5
-      if: ${{ matrix.minitest }}
-      run: gem install -N minitest -v ${{ matrix.minitest }}
 
     # Test for knapsack gem
     - name: Run specs for Knapsack gem
