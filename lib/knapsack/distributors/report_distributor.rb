@@ -26,8 +26,11 @@ module Knapsack
 
       def sort_assigned_test_files
         node_tests.map do |node|
-          node[:test_files_with_time].sort_by! { |file_name, _time| -file_name }
-                                     .sort_by! { |_file_name, time| -time }
+          node[:test_files_with_time]
+            .sort_by! { |file_name, _time| file_name }
+            .reverse!
+            .sort_by! { |_file_name, time| time }
+            .reverse!
         end
       end
 
