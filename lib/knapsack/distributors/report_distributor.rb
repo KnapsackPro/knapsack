@@ -10,7 +10,7 @@ module Knapsack
       end
 
       def total_time_execution
-        @total_time_execution ||= sorted_report_with_existing_tests.sum { |_test_path, time| time }.to_f
+        @total_time_execution ||= sorted_report_with_existing_tests.map { |_test_path, time| time }.reduce(0, :+).to_f
       end
 
       def node_time_execution
