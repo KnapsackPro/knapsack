@@ -186,7 +186,7 @@ describe Knapsack::Distributors::ReportDistributor do
     end
   end
 
-  describe 'algorithmic eficiency' do
+  describe 'algorithmic efficiency' do
     subject(:node_weights) do
       distro = distributor
       distro.assign_test_files_to_node
