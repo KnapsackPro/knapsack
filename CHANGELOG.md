@@ -2,6 +2,14 @@
 
 * TODO
 
+### 3.1.0
+
+* Sorting Algorithm: round robin to least connections
+
+    https://github.com/KnapsackPro/knapsack/pull/99
+
+https://github.com/KnapsackPro/knapsack/compare/v3.0.0...v3.1.0
+
 ### 3.0.0
 
 * __(breaking change)__ Require minimum Ruby 2.2 version
