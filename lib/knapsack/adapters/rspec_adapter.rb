@@ -10,13 +10,8 @@ module Knapsack
             Knapsack.tracker.start_timer
           end
 
-          config.prepend_before(:each) do
-            current_example_group =
-              if ::RSpec.respond_to?(:current_example)
-                ::RSpec.current_example.metadata[:example_group]
-              else
-                example.metadata
-              end
+          config.prepend_before(:each) do |example|
+            current_example_group = example.metadata[:example_group]
             Knapsack.tracker.test_path = RSpecAdapter.test_path(current_example_group)
           end
 
