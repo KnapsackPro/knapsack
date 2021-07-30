@@ -15,6 +15,7 @@ module Knapsack
               if ::RSpec.respond_to?(:current_example)
                 ::RSpec.current_example.metadata[:example_group]
               else
+                # support for an old RSpec 2.x version
                 example.metadata
               end
             Knapsack.tracker.test_path = RSpecAdapter.test_path(current_example_group)
