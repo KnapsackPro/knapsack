@@ -10,15 +10,8 @@ module Knapsack
             Knapsack.tracker.start_timer
           end
 
-          config.prepend_before(:each) do
-            current_example_group =
-              if ::RSpec.respond_to?(:current_example)
-                ::RSpec.current_example.metadata[:example_group]
-              else
-                # support for an old RSpec 2.x version
-                example.metadata
-              end
-            Knapsack.tracker.test_path = RSpecAdapter.test_path(current_example_group)
+          config.prepend_before(:each) do |example|
+            Knapsack.tracker.test_path = RSpecAdapter.test_path(example)
           end
 
           config.append_after(:context) do
@@ -51,7 +44,15 @@ module Knapsack
         end
       end
 
-      def self.test_path(example_group)
+      def self.test_path(example)
+        example_group =
+          if Gem::Version.new(::RSpec::Core::Version::STRING) < Gem::Version.new('3.0.0')
+            # support for an old RSpec 2.x version
+            example.metadata
+          else
+            example.metadata[:example_group]
+          end
+
         if defined?(::Turnip) && Gem::Version.new(::Turnip::VERSION) < Gem::Version.new('2.0.0')
           unless example_group[:turnip]
             until example_group[:parent_example_group].nil?
