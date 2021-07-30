@@ -2,6 +2,14 @@
 
 * TODO
 
+### 3.1.1
+
+* Use RSpec `example` from RSpec `each` hook instead of global `RSpec.current_example`. This allows running tests with async-rspec gem.
+
+    https://github.com/KnapsackPro/knapsack/pull/117
+
+https://github.com/KnapsackPro/knapsack/compare/v3.1.0...v3.1.1
+
 ### 3.1.0
 
 * Sorting Algorithm: round robin to least connections
