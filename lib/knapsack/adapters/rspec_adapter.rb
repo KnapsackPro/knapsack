@@ -52,7 +52,7 @@ module Knapsack
       end
 
       def self.test_path(example_group)
-        if defined?(Turnip) && Turnip::VERSION.to_i < 2
+        if defined?(::Turnip) && Gem::Version.new(::Turnip::VERSION) < Gem::Version.new('2.0.0')
           unless example_group[:turnip]
             until example_group[:parent_example_group].nil?
               example_group = example_group[:parent_example_group]
