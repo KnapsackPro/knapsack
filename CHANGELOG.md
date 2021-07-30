@@ -2,13 +2,14 @@
 
 * TODO
 
-### 3.1.1
+### 4.0.0
 
-* Use RSpec `example` from RSpec `each` hook instead of global `RSpec.current_example`. This allows running tests with async-rspec gem.
+* __(breaking change)__ Remove support for RSpec 2.x. This change was already done by accident in [the pull request](https://github.com/KnapsackPro/knapsack/pull/107).
+* Use RSpec `example` from RSpec `each` hook instead of global `RSpec.current_example`. It allows running tests with async-rspec gem.
 
     https://github.com/KnapsackPro/knapsack/pull/117
 
-https://github.com/KnapsackPro/knapsack/compare/v3.1.0...v3.1.1
+https://github.com/KnapsackPro/knapsack/compare/v3.1.0...v4.0.0
 
 ### 3.1.0
 
