@@ -45,13 +45,7 @@ module Knapsack
       end
 
       def self.test_path(example)
-        example_group =
-          if Gem::Version.new(::RSpec::Core::Version::STRING) < Gem::Version.new('3.0.0')
-            # support for an old RSpec 2.x version
-            example.metadata
-          else
-            example.metadata[:example_group]
-          end
+        example_group = example.metadata[:example_group]
 
         if defined?(::Turnip) && Gem::Version.new(::Turnip::VERSION) < Gem::Version.new('2.0.0')
           unless example_group[:turnip]
