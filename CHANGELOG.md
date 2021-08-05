@@ -2,6 +2,15 @@
 
 * TODO
 
+### 4.0.0
+
+* __(breaking change)__ Remove support for RSpec 2.x. This change was already done by accident in [the pull request](https://github.com/KnapsackPro/knapsack/pull/107) when we added the RSpec `context` hook, which is available only since RSpec 3.x.
+* Use RSpec `example` block argument instead of the global `RSpec.current_example`. This allows to run tests with the `async-rspec` gem.
+
+    https://github.com/KnapsackPro/knapsack/pull/117
+
+https://github.com/KnapsackPro/knapsack/compare/v3.1.0...v4.0.0
+
 ### 3.1.0
 
 * Sorting Algorithm: round robin to least connections

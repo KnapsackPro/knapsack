@@ -16,22 +16,16 @@ describe Knapsack::Adapters::RSpecAdapter do
       let(:tracker) { instance_double(Knapsack::Tracker) }
       let(:test_path) { 'spec/a_spec.rb' }
       let(:global_time) { 'Global time: 01m 05s' }
-      let(:example_group) { double }
-      let(:current_example) do
-        OpenStruct.new(metadata: {
-          example_group: example_group
-        })
-      end
+      let(:current_example) { double }
 
       it do
         expect(config).to receive(:prepend_before).with(:context).and_yield
-        expect(config).to receive(:prepend_before).with(:each).and_yield
+        expect(config).to receive(:prepend_before).with(:each).and_yield(current_example)
         expect(config).to receive(:append_after).with(:context).and_yield
         expect(config).to receive(:after).with(:suite).and_yield
         expect(::RSpec).to receive(:configure).and_yield(config)
 
-        expect(::RSpec).to receive(:current_example).twice.and_return(current_example)
-        expect(described_class).to receive(:test_path).with(example_group).and_return(test_path)
+        expect(described_class).to receive(:test_path).with(current_example).and_return(test_path)
 
         allow(Knapsack).to receive(:tracker).and_return(tracker)
         expect(tracker).to receive(:start_timer).ordered
@@ -81,7 +75,7 @@ describe Knapsack::Adapters::RSpecAdapter do
   end
 
   describe '.test_path' do
-    let(:current_example_metadata) do
+    let(:example_group) do
       {
           file_path: '1_shared_example.rb',
           parent_example_group: {
@@ -92,14 +86,19 @@ describe Knapsack::Adapters::RSpecAdapter do
           }
       }
     end
+    let(:current_example) do
+      OpenStruct.new(metadata: {
+        example_group: example_group
+      })
+    end
 
-    subject { described_class.test_path(current_example_metadata) }
+    subject { described_class.test_path(current_example) }
 
     it { should eql 'a_spec.rb' }
 
     context 'with turnip features' do
       describe 'when the turnip version is less than 2' do
-        let(:current_example_metadata) do
+        let(:example_group) do
           {
             file_path: "./spec/features/logging_in.feature",
             turnip: true,
@@ -115,7 +114,7 @@ describe Knapsack::Adapters::RSpecAdapter do
       end
 
       describe 'when turnip is version 2 or greater' do
-        let(:current_example_metadata) do
+        let(:example_group) do
           {
             file_path: "gems/turnip-2.0.0/lib/turnip/rspec.rb",
             turnip: true,
