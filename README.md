@@ -17,7 +17,7 @@ Knapsack splits tests evenly across parallel CI nodes to run fast CI build and s
 
 # Do you use Heroku?
 
-Do you know Knapsack Pro Ruby gem is available as Heroku add-on that's currently in beta and it's free to all beta users? It works with your current CI server.
+Do you know Knapsack Pro Ruby gem is available as Heroku add-on? It works with your current CI server.
 https://elements.heroku.com/addons/knapsack-pro
 
 Knapsack Pro has Queue Mode that will split Ruby & JS tests in a dynamic way across parallel CI nodes to ensure each parallel job takes a similar time. Thanks to that there is no bottleneck in your CI pipelines.
