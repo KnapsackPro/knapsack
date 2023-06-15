@@ -11,7 +11,7 @@ Knapsack splits tests evenly across parallel CI nodes to run fast CI build and s
 | Tracking tests timing per commit, branch     | No           | ✓ Yes |
 | Support for other programming languages      | No           | ✓ Yes |
 | Support for CI providers                     | limited      | ✓ Yes |
-| __Installation README__                      | [Install README](http://docs.knapsackpro.com/ruby/knapsack) | [Install README](https://docs.knapsackpro.com/integration/) |
+| __Installation README__                      | [Install README](http://docs.knapsackpro.com/ruby/knapsack) | [Install README](https://docs.knapsackpro.com) |
 
 [Features of knapsack vs knapsack_pro Ruby gem](https://knapsackpro.com/features/ruby_knapsack_pro_vs_knapsack?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=ruby_knapsack_pro_vs_knapsack)
 
