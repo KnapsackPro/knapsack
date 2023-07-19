@@ -15,9 +15,15 @@ module Knapsack
         update_report_config
 
         if tracker.config[:generate_report]
-          Knapsack.logger.info 'Knapsack report generator started!'
-          bind_time_tracker
-          bind_report_generator
+          if tracker.config[:merge_report]
+            Knapsack.logger.info 'Knapsack report generator started! Will merge results into existing json'
+            bind_time_tracker
+            bind_merge_report
+          else
+            Knapsack.logger.info 'Knapsack report generator started!'
+            bind_time_tracker
+            bind_report_generator
+          end
         elsif tracker.config[:enable_time_offset_warning]
           Knapsack.logger.info 'Knapsack time offset warning enabled!'
           bind_time_tracker
@@ -39,6 +45,9 @@ module Knapsack
         raise NotImplementedError
       end
 
+      def bind_merge_report
+        raise NotImplementedError
+      end
       private
 
       def tracker

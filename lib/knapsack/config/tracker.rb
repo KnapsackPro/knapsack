@@ -13,6 +13,10 @@ module Knapsack
         def generate_report
           !!(ENV['KNAPSACK_GENERATE_REPORT'] =~ /\Atrue|0\z/i)
         end
+
+        def merge_report
+          !!(ENV['KNAPSACK_MERGE_REPORT'] =~ /\Atrue|0\z/i)
+        end
       end
     end
   end
