@@ -1,11 +1,12 @@
 module Knapsack
   module Distributors
     class BaseDistributor
-      attr_reader :report, :node_tests, :test_file_pattern
+      attr_reader :report, :node_tests, :test_file_pattern, :test_file_list_source_file
 
       def initialize(args={})
         @report = args[:report] || raise('Missing report')
         @test_file_pattern = args[:test_file_pattern] || raise('Missing test_file_pattern')
+        @test_file_list_source_file = args[:test_file_list_source_file]
         @ci_node_total = args[:ci_node_total] || raise('Missing ci_node_total')
         @ci_node_index = args[:ci_node_index] || raise('Missing ci_node_index')
 
@@ -37,7 +38,19 @@ module Knapsack
       end
 
       def all_tests
-        @all_tests ||= Dir.glob(test_file_pattern).uniq.sort
+        @all_tests ||= test_files
+      end
+
+      # NOTE: Use the test_file_pattern by default
+      # support specifying a list_file to use similar to KnapsackPro
+      # ref: KnapsackPro/knapsack_pro-ruby/commit/7d7b8db8be524f2f30d7d80d3a6444dad9f85b1b
+      def test_files
+        return Dir.glob(test_file_pattern).uniq.sort if test_file_list_source_file.nil?
+
+        File.read(test_file_list_source_file)
+          .split(/\n/)
+          .uniq
+          .sort
       end
 
       protected
