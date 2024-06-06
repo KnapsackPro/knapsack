@@ -1,3 +1,5 @@
+require 'ostruct'
+
 describe Knapsack::Adapters::RSpecAdapter do
   context do
     before { expect(::RSpec).to receive(:configure) }

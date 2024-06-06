@@ -1,36 +1,44 @@
-# knapsack gem
+# Knapsack
 
-Knapsack splits tests evenly across parallel CI nodes to run fast CI build and save you time.
+<p align="center">
+  <a href="https://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=hero_logo">
+    <img alt="Knapsack" src="./.github/assets/knapsack-diamonds.png" width="300" height="300" style="max-width: 100%;" />
+  </a>
+</p>
 
-|                                              | knapsack gem | knapsack_pro gem |
-| -------------------------------------------- | ------------ | ---------------- |
-| __Is free__                                  | ✓ Yes        | ✓ Yes, [free plan](https://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=free_plan) |
-| __Regular Mode - a static tests split__      | ✓ Yes        | ✓ Yes |
-| __Queue Mode - a dynamic tests split__ <br>([ensures all CI nodes finish work at the same time](https://docs.knapsackpro.com/2020/how-to-speed-up-ruby-and-javascript-tests-with-ci-parallelisation))       | No           | ✓ Yes |
-| __Auto [split slow RSpec test file](https://knapsackpro.com/faq/question/how-to-split-slow-rspec-test-files-by-test-examples-by-individual-it) between parallel CI nodes__ <br>(a single test file can be auto split by test examples between parallel jobs) | No           | ✓ Yes |
-| Tracking tests timing per commit, branch     | No           | ✓ Yes |
-| Support for other programming languages      | No           | ✓ Yes |
-| Support for CI providers                     | limited      | ✓ Yes |
-| __Installation README__                      | [Install README](http://docs.knapsackpro.com/ruby/knapsack) | [Install README](https://docs.knapsackpro.com) |
+<h3 align="center">Speed up your tests</h3>
+<p align="center">Run your 1-hour test suite in 2 minutes with optimal parallelisation on your existing CI infrastructure</p>
 
-[Features of knapsack vs knapsack_pro Ruby gem](https://knapsackpro.com/features/ruby_knapsack_pro_vs_knapsack?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=ruby_knapsack_pro_vs_knapsack)
+---
 
-# Do you use Heroku?
+<div align="center">
+  <a href="https://rubygems.org/gems/knapsack">
+    <img alt="Gem Version" src="https://badge.fury.io/rb/knapsack.svg" />
+  </a>
+</div>
 
-Do you know Knapsack Pro Ruby gem is available as Heroku add-on? It works with your current CI server.
-https://elements.heroku.com/addons/knapsack-pro
+<br />
+<br />
 
-Knapsack Pro has Queue Mode that will split Ruby & JS tests in a dynamic way across parallel CI nodes to ensure each parallel job takes a similar time. Thanks to that there is no bottleneck in your CI pipelines.
+Knapsack wraps your current test runner and works with your existing CI infrastructure to split tests optimally.
 
-__See introduction how the Knapsack Pro add-on works__
-https://youtu.be/rmXES2N0_QU
+It comes in two flavors, `knapsack` and `knapsack_pro`:
 
-You may also find useful article how to run parallel dynos on Heroku CI to complete tests faster
-https://docs.knapsackpro.com/2019/how-to-run-tests-faster-on-heroku-ci-with-parallel-dynos
+|                                 | `knapsack` | `knapsack_pro`                          |
+| ------------------------------- | ---------- | --------------------------------------- |
+| Free                            | ✅         | ✅ [Free plan](https://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=free_plan) |
+| Static split                    | ✅         | ✅                                      |
+| [Dynamic split](https://docs.knapsackpro.com/overview/#queue-mode-dynamic-split)       | ❌ | ✅ |
+| [Split by test examples](https://docs.knapsackpro.com/ruby/split-by-test-examples/)    | ❌ | ✅ |
+| Graphs, metrics, and stats      | ❌         | ✅                                      |
+| Programming languages           | 🤞 (Ruby)  | ✅ (Ruby, Cypress, Jest, SDK/API)       |
+| CI providers                    | 🤞 Limited | ✅ (All)                                |
+| [Heroku add-on](https://elements.heroku.com/addons/knapsack-pro)                       | ❌ | ✅ |
+| Additional features             | ❌         | 🤘 ([Overview](https://docs.knapsackpro.com/overview/)) |
+|                                 | [Install](http://docs.knapsackpro.com/ruby/knapsack) | [Install](https://docs.knapsackpro.com) |
 
-## Do you know
+[`knapsack` vs `knapsack_pro` full comparison](https://knapsackpro.com/features/ruby_knapsack_pro_vs_knapsack?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem&utm_content=ruby_knapsack_pro_vs_knapsack)
 
-* Knapsack Pro is risk-free integration! Knapsack Pro runs tests in Fallback Mode if your CI servers can't reach our API for any reason.
-* We don't need access to your repository. Knapsack Pro is just wrapper around test runner like RSpec, Cucumber, Minitest etc.
-* Hundreds of developers use Knapsack Pro every day to run fast CI builds.
-* It works with other programming languages.
+# Migrate from `knapsack` to `knapsack_pro`
+
+If you are already using `knapsack` and want to give `knapsack_pro` a try, here's [how to migrate in 10 minutes](./MIGRATE_TO_KNAPSACK_PRO.md).
