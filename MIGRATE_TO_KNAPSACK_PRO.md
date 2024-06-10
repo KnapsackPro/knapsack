@@ -4,7 +4,8 @@ Follow these steps to migrate from `knapsack` to `knapsack_pro` in 10 minutes.
 
 Commands are provided to help you with each step.
 
-On Linux, you need to remove the `''` part from the `sed` commands. Also, you can ignore the `sed: no input files` warning that is printed when there's no substitution to perform.
+> [!TIP]
+> On Linux, you need to remove the `''` part from the `sed` commands. Also, you can ignore the `sed: no input files` warning that is printed when there's no substitution to perform.
 
 ## Steps
 
