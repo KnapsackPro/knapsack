@@ -24,6 +24,7 @@ describe Knapsack::Tracker do
             enable_time_offset_warning: false,
             time_offset_in_seconds: 30,
             generate_report: true,
+	    merge_report: false,
             fake: true
           })
         end
@@ -37,7 +38,8 @@ describe Knapsack::Tracker do
         expect(tracker.config).to eql({
           enable_time_offset_warning: true,
           time_offset_in_seconds: 30,
-          generate_report: false
+          generate_report: false,
+	  merge_report: false
         })
       end
     end
