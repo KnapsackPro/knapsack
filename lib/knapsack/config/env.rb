@@ -18,6 +18,10 @@ module Knapsack
           ENV['KNAPSACK_TEST_FILE_PATTERN']
         end
 
+        def test_file_list_source_file
+          ENV['KNAPSACK_TEST_FILE_LIST_SOURCE_FILE']
+        end
+
         def test_dir
           ENV['KNAPSACK_TEST_DIR']
         end

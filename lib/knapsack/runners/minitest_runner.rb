@@ -12,6 +12,10 @@ module Knapsack
         Knapsack.logger.info allocator.leftover_node_tests
         Knapsack.logger.info
 
+        # NOTE: return if there are no specs to execute for this node.
+        # This can occurr if test_file_list_source_file is used with less then CI_NODES specs
+        return Knapsack.logger.warn('No specs to execute') if allocator.stringify_node_tests.empty?
+
         task_name = 'knapsack:minitest_run'
 
         if Rake::Task.task_defined?(task_name)

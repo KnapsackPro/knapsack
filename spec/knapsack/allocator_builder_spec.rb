@@ -12,6 +12,7 @@ describe Knapsack::AllocatorBuilder do
   let(:env_ci_node_index) { double }
   let(:env_report_path) { nil }
   let(:env_test_file_pattern) { nil }
+  let(:env_test_file_list_source_file) { nil }
 
   describe '#allocator' do
     subject { allocator_builder.allocator }
@@ -19,6 +20,7 @@ describe Knapsack::AllocatorBuilder do
     before do
       expect(Knapsack::Config::Env).to receive(:report_path).and_return(env_report_path)
       expect(Knapsack::Config::Env).to receive(:test_file_pattern).and_return(env_test_file_pattern)
+      expect(Knapsack::Config::Env).to receive(:test_file_list_source_file).and_return(env_test_file_list_source_file)
       expect(Knapsack::Config::Env).to receive(:ci_node_total).and_return(env_ci_node_total)
       expect(Knapsack::Config::Env).to receive(:ci_node_index).and_return(env_ci_node_index)
 
@@ -36,6 +38,7 @@ describe Knapsack::AllocatorBuilder do
           {
             report: report,
             test_file_pattern: adapter_test_file_pattern,
+            test_file_list_source_file: env_test_file_list_source_file,
             ci_node_total: env_ci_node_total,
             ci_node_index: env_ci_node_index
           }
@@ -51,6 +54,7 @@ describe Knapsack::AllocatorBuilder do
           {
             report: report,
             test_file_pattern: adapter_test_file_pattern,
+            test_file_list_source_file: env_test_file_list_source_file,
             ci_node_total: env_ci_node_total,
             ci_node_index: env_ci_node_index
           }
@@ -66,6 +70,23 @@ describe Knapsack::AllocatorBuilder do
           {
             report: report,
             test_file_pattern: env_test_file_pattern,
+            test_file_list_source_file: env_test_file_list_source_file,
+            ci_node_total: env_ci_node_total,
+            ci_node_index: env_ci_node_index
+          }
+        end
+
+        it { should eql allocator }
+      end
+
+      context 'when ENV test_file_list_source_file has value' do
+        let(:env_test_file_list_source_file) { 'knapsack_custom_file_list.txt' }
+        let(:report_config) { { report_path: adapter_report_path } }
+        let(:allocator_args) do
+          {
+            report: report,
+            test_file_pattern: adapter_test_file_pattern,
+            test_file_list_source_file: env_test_file_list_source_file,
             ci_node_total: env_ci_node_total,
             ci_node_index: env_ci_node_index
           }
