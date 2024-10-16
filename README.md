@@ -1,7 +1,7 @@
 > [!WARNING]
 > Knapsack is [archived](https://knapsackpro.com/knapsack_gem?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem_archived&utm_content=warning_knapsack_gem). But [Knapsack Pro](https://knapsackpro.com?utm_source=github&utm_medium=readme&utm_campaign=knapsack_gem_archived&utm_content=warning_knapsack_pro) is available.
 >
-> Knapsack Pro comes with a free plan and discounts on paid plans for people coming from Knapsack.
+> Knapsack Pro comes with a free plan and discounts on paid plans for people coming from Knapsack (see [how to migrate in 10 minutes](./MIGRATE_TO_KNAPSACK_PRO.md)).
 >
 > This repository remains available to fork and the gem hosted on RubyGems, so your existing setup won't be affected.
 
